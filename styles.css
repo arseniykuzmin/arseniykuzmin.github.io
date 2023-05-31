@@ -1,0 +1,465 @@
+/*********************** Fonts ***********************/
+
+@import url(https://fonts.googleapis.com/css?family=Arapey:400italic,400);
+
+@font-face {
+    font-family: 'Archer-LightItalic';
+    /* font sources */
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Archer-Book';
+    /* font sources */
+    font-weight: normal;
+    font-style: normal;
+    text-rendering: optimizeLegibility;
+}
+
+/*********************** Google Fonts ***********************/
+:root {
+    --main-content-width: 1040px;
+}
+
+/* Navigation bar on top */
+.navbar {
+    background-color: #f2f2f2;
+    height: 30px;
+    padding: 20px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 9999;
+}
+
+.navbar-container {
+    max-width: var(--main-content-width);
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0;
+}
+
+.navbar a {
+    text-decoration: none;
+    color: #8c0c0c;
+}
+
+.navbar-logo {
+    font-weight: bold;
+    font-size: 30px;
+}
+
+.navbar-toggle {
+    font-size: 24px;
+    cursor: pointer;
+    display: none;
+}
+
+.navbar-items {
+    display: flex;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    margin-right: 30px;
+    flex-wrap: wrap;
+    margin-left: auto;
+}
+
+
+.navbar-items li {
+    margin-left: 20px;
+}
+
+.navbar-items li a {
+    text-decoration: none;
+    color: #333;
+}
+
+/* Media query for mobile devices */
+
+@media (max-width: 960px) {
+    .navbar {
+        width: 20px;
+        height: 20px;
+        padding: 20px;
+        padding-top: 10px;
+    }
+
+    .navbar-logo {
+        display: none;
+    }
+
+    .navbar-toggle {
+        display: block;
+    }
+
+    .navbar-items {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background-color: #f2f2f2;
+        padding: 5px;
+        margin: 0;
+        width: 100%;
+        box-sizing: border-box;
+    }
+
+    .navbar-items.show {
+        display: flex;
+        width: max-content;
+    }
+
+    .navbar-items li {
+        margin-bottom: 10px;
+    }
+
+    .navbar-items li a {
+        font-size: 20px;
+    }
+}
+
+
+/* Add margin to the top of the main content */
+
+.main-content {
+    margin-top: 60px;
+    max-width: var(--main-content-width);
+    margin-left: auto;
+    margin-right: auto;
+}
+
+
+/* Simple style for simple CV */
+body {
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    margin: 0;
+    padding: 20px;
+}
+
+h1 {
+    color: #8c0c0c;
+    margin-bottom: 20px;
+}
+
+h3 span {
+    color: #ffffff;
+    background-color: #8c0c0c;
+    letter-spacing: 2px;
+    padding: 8px 20px;
+    font-size: 11px;
+}
+
+@media (max-width:960px) {
+    .main-content {
+        margin-top: 50px;
+    }
+}
+
+.personal-info {
+    display: flex;
+    align-items: center;
+}
+
+.photo {
+    flex-shrink: 0;
+    margin-right: 20px;
+}
+
+.photo img {
+    max-width: 200px;
+}
+
+.info {
+    flex-grow: 1;
+}
+
+#personal-info {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+#photo-container {
+    flex: 0 0 auto;
+    margin-right: 20px;
+}
+
+#photo-container img {
+    max-width: 200px;
+    max-height: 200px;
+    width: auto;
+    height: auto;
+}
+
+#personal-info>div {
+    flex: 1 1 auto;
+    text-align: left;
+}
+
+/* Education */
+.education-item {
+    background-color: #ffd3b6;
+    border-radius: 5px;
+    padding: 5px;
+    margin-bottom: 10px;
+}
+
+/* Experience */
+.experience-item {
+    background-color: #f2f2f2;
+    padding: 5px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+}
+
+.experience-item h4 {
+    margin: 5px;
+}
+
+.experience-item p {
+    margin: 10px;
+}
+
+
+/* Publications */
+.toggle-button {
+    position: relative;
+    padding: 10px;
+    font-size: 16px;
+    border: none;
+    background-color: #8c0c0c;
+    color: #fff;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+    margin: 5px;
+}
+
+.sort-button {
+    position: relative;
+    padding: 10px;
+    padding-right: 30px;
+    font-size: 16px;
+    border: none;
+    background-color: #8c0c0c;
+    color: #fff;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+    margin: 5px;
+}
+
+.toggle-button:hover,
+.sort-button:hover {
+    background-color: #a91a1a;
+}
+
+.toggle-button.active {
+    background-color: #d42626;
+}
+
+.count-label {
+    font-size: 16px;
+    color: #8c0c0c;
+    margin-right: auto;
+}
+
+.sort-button.active .arrow::before {
+    transform: rotate(-45deg);
+}
+
+.sort-button.active .arrow::after {
+    transform: rotate(45deg);
+}
+
+.button-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+
+
+.arrow {
+    position: absolute;
+    top: 50%;
+    right: 10px;
+    transform: translateY(-50%);
+}
+
+.arrow::before,
+.arrow::after {
+    position: relative;
+    content: '';
+    display: block;
+    width: 10px;
+    height: 1px;
+    background: white;
+    transition: 0.3s ease-in-out;
+}
+
+.arrow::before {
+    transform: rotate(45deg);
+}
+
+.arrow::after {
+    left: 6px;
+    top: -1px;
+    transform: rotate(-45deg);
+}
+
+
+
+/* Citations */
+.citations {
+    counter-reset: mycounter;
+    max-width: var(--main-content-width);
+    margin: 0 auto;
+    background-color: #ffffff;
+    padding: 10px;
+}
+
+
+.citations-spacer {
+    padding: 50px 0 30px 0;
+}
+
+.split {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.split li::before {
+    counter-increment: mycounter;
+    content: counter(mycounter) ". ";
+}
+
+.citations .citations-item {
+    border-bottom: 1px solid #a91a1a;
+}
+
+.citations h1 {
+    background-color: #fff;
+    margin: -10px auto 0 auto;
+    z-index: 5;
+    line-height: 1.3em;
+    font-size: 24px;
+    text-align: left;
+    font-weight: normal;
+}
+
+.citations h1 span {
+    letter-spacing: 2px;
+    padding: 8px 20px;
+    font-size: 11px;
+    z-index: 100;
+    color: #fff;
+    background-color: #000;
+}
+
+.citations .citations-item .title {
+    font-family: "Archer-Book", Georgia, Serif;
+    font-size: 18px;
+    font-weight: normal;
+}
+
+div.citations .authors {
+    font-family: "Archer-Book", Georgia, Serif;
+    font-size: 12px;
+    font-weight: normal;
+    margin-bottom: 10px;
+}
+
+.citations .authors span {
+    font-family: "Archer-Book", Georgia, Serif;
+    font-weight: normal;
+    font-style: italic;
+    text-decoration: underline;
+    margin-top: 5px;
+    color: #888;
+}
+
+.citations .journal {
+    font-size: 14px;
+    font-weight: normal;
+    margin-top: 2px;
+    margin-bottom: 10px;
+}
+
+.citations .citations-link {
+    margin: 5px 0 5px 10px;
+    font-size: 15px;
+}
+
+.citations .citations-link a {
+    margin-right: 5px;
+    border-radius: 100%;
+    padding: 5px;
+    background-color: #fff;
+}
+
+.citations .citations-link a:hover {
+    transition: .4s;
+    background-color: #dbff38;
+}
+
+@media (max-width: 960px) {
+    .citations {
+        padding: 0;
+    }
+}
+
+@media (max-width: 960px) {
+    .body {
+        padding: 10px;
+    }
+
+    .photo img {
+        max-width: 150px;
+    }
+}
+
+/*
+@media (max-width: 960px) {
+    .citations {
+        margin: 3px;
+    }
+
+    .citations .citations-item .title {
+        font-size: 24px;
+    }
+
+    .citations .authors {
+        font-size: 16px;
+    }
+
+    .citations .journal {
+        font-size: 20px;
+    }
+
+    .citations .citations-link {
+        font-size: 20px;
+    }
+
+    .citations h1 {
+        font-size: 32px;
+    }
+
+    .custom-button {
+        font-size: 24px;
+    }
+
+    .count-label {
+        font-size: 20px;
+    }
+}
+*/

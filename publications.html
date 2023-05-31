@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Arseniy Kuzmin: Publications</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/he/1.2.0/he.min.js"></script>
+    <meta name="viewport" content="width=device-width">
+    <!--JQuery for button arrows -->
+    <script type="text/javascript" src="http://code.jquery.com/jquery-3.2.1.min.js"></script>
+</head>
+
+<body>
+    <script src="script_navbar.js"></script>
+    <nav id="navbar"></nav>
+    <div class="main-content">
+        <div class="citations">
+            <h1>Publication List</h1>
+            <div class="button-container">
+                <button id="sortButton" class="sort-button">Year<span class="arrow"></span></button>
+                <button id="filterButton" class="toggle-button">Featured</button>
+                <button id="firstButton" class="toggle-button">1st&nbsp;*</button>
+                <p id="publicationCount" class="count-label">0</p>
+            </div>
+            <p>* - first and corresponding author</p>
+
+
+        </div>
+
+        <div id="citations" class="citations"></div>
+    </div>
+    <script src="script_publications.js"></script>
+</body>
+
+</html>
