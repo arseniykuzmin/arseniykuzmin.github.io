@@ -13,6 +13,11 @@ fetch('data.json')
             const divItem = document.createElement('div');
             divItem.classList.add('education-item');
 
+            const titleDiv = document.createElement('div');
+            titleDiv.classList.add('education-item-title');
+            titleDiv.textContent = education.title;
+            divItem.appendChild(titleDiv);
+
             const degreeDiv = document.createElement('div');
             degreeDiv.classList.add('education-item-degree');
             degreeDiv.textContent = education.degree;
@@ -42,12 +47,38 @@ fetch('data.json')
         data.experience.forEach(experience => {
             const divItem = document.createElement('div');
             divItem.classList.add('experience-item');
-            divItem.innerHTML = `
-            <h4>${experience.title}</h4>
-            <p>${experience.employer} (${experience.location})</p>
-            <p>${experience.startDate} - ${experience.endDate}</p>
-            <p>${experience.description}</p>
-          `;
+
+            const titleDiv = document.createElement('div');
+            titleDiv.classList.add('experience-title');
+            titleDiv.innerHTML = `<h2>${experience.title}</h2>`;
+            divItem.appendChild(titleDiv);
+
+            const detailsDiv = document.createElement('div');
+            detailsDiv.classList.add('experience-details');
+            detailsDiv.innerHTML = `
+                <p>${experience.employer} (${experience.location})</p>
+                <p>${experience.startDate} - ${experience.endDate}</p>              
+            `;
+            divItem.appendChild(detailsDiv);
+
+
+            const plusSymbol = document.createElement('span');
+            plusSymbol.classList.add('plus-symbol');
+            plusSymbol.textContent = 'show details';
+            divItem.appendChild(plusSymbol);
+
+            const descriptionDiv = document.createElement('div');
+            descriptionDiv.classList.add('experience-description', 'collapsed'); // Add the 'collapsed' class initially
+            descriptionDiv.innerHTML = `      
+                <p>${experience.description}</p>
+            `;
+            divItem.appendChild(descriptionDiv);
+
+            divItem.addEventListener('click', () => {
+                descriptionDiv.classList.toggle('collapsed'); // Toggle the 'collapsed' class
+                plusSymbol.textContent = descriptionDiv.classList.contains('collapsed') ? 'show details' : ''; // Toggle plus/minus symbol
+            });
+
             experienceList.appendChild(divItem);
         });
 

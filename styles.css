@@ -136,11 +136,13 @@
 }
 
 
+
 /* Simple style for simple CV */
 body {
     font-family: Georgia, 'Times New Roman', Times, serif;
     margin: 0;
     padding: 20px;
+    overflow-y: scroll;
 }
 
 h1 {
@@ -218,16 +220,42 @@ h3 span {
     padding: 5px;
     margin-bottom: 10px;
     border-radius: 5px;
+    cursor: pointer;
 }
 
-.experience-item h4 {
+.experience-title {
     margin: 5px;
+    font-size: medium;
 }
 
 .experience-item p {
     margin: 10px;
 }
 
+.plus-symbol {
+    margin-right: 5px;
+}
+
+.experience-description.collapsed {
+    display: none;
+}
+
+/* Conferences */
+.conferences h1 {
+    background-color: #fff;
+    margin: -10px auto 0 auto;
+    z-index: 5;
+    line-height: 1.3em;
+    font-size: 24px;
+    text-align: left;
+    font-weight: normal;
+}
+
+.conference-item {
+    border-bottom: 1px solid #a91a1a;
+}
+
+.conference-item
 
 /* Publications */
 .toggle-button {

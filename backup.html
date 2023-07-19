@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Publication List</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+        }
+
+        h1 {
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        .publication {
+            margin-bottom: 40px;
+        }
+
+        .publication h3 {
+            color: #844f4f;
+            font-size: 18px;
+            margin-bottom: 5px;
+        }
+
+        .publication p {
+            margin-bottom: 5px;
+        }
+
+        .publication .authors {
+            font-weight: bold;
+        }
+
+        .publication .venue {
+            font-style: italic;
+        }
+    </style>
+</head>
+
+<body>
+    <button id="sortButton">Sort by Year</button>
+    <h1>Publication List</h1>
+
+    <div id="publications"></div>
+
+    <script>
+        // Load BibTeX data from a separate file
+        fetch('mypapers.bib')
+            .then(response => response.text())
+            .then(data => {
+                // Parse BibTeX data
+                var publications = parseBibTeX(data);
+
+                // Generate HTML for publication list
+                var html = '';
+                for (var i = 0; i < publications.length; i++) {
+                    var publication = publications[i];
+                    html += '<div class="publication">';
+                    html += '<h3>' + publication.title + '</h3>';
+                    html += '<p><span class="authors">' + publication.authors + '</span></p>';
+                    html += '<p><span class="venue">' + publication.venue + '</span></p>';
+                    if (publication.year) {
+                        html += '<p><span class="date">' + publication.year + '</span></p>';
+                    }
+                    if (publication.doi) {
+                        html += '<p><span class="date"> <a href="https://doi.org/' + publication.doi + '">' + publication.doi + '</a></span></p>';
+                    }
+                    html += '</div>';
+                    //console.log(publication.venue)
+                    console.log("%s %s", i, publication.year)
+                }
+
+
+                // Display publication list in the HTML page
+                var publicationsContainer = document.getElementById('publications');
+                publicationsContainer.innerHTML = html;
+            })
+            .catch(error => {
+                console.error('Error loading BibTeX data:', error);
+            });
+
+        // Function to parse BibTeX data
+        function parseBibTeX(data) {
+            var entries = data.split('@');
+            var publications = [];
+            for (var i = 1; i < entries.length; i++) {
+                var entry = entries[i].trim();
+                var typeEnd = entry.indexOf('{');
+                var type = entry.substring(0, typeEnd);
+                var fields = entry.substring(typeEnd + 1);
+
+                var publication = {
+                    type: type,
+                    authors: getFieldValue(fields, 'author'),
+                    title: getFieldValue(fields, 'title'),
+                    venue: getFieldValue(fields, 'journal') || getFieldValue(fields, 'booktitle'),
+                    year: getFieldValue(fields, 'year'),
+                    date: getFieldValue(fields, 'date'),
+                    note: getFieldValue(fields, 'note'),
+                    issn: getFieldValue(fields, 'issn'),
+                    doi: getFieldValue(fields, 'doi'),
+                    url: getFieldValue(fields, 'url'),
+                    abstract: getFieldValue(fields, 'abstract'),
+                    language: getFieldValue(fields, 'language')
+                };
+
+                publications.push(publication);
+            }
+            return publications;
+        }
+
+        // Function to extract a field value from BibTeX fields
+        function getFieldValue(fields, fieldName) {
+            var fieldRegex = new RegExp(fieldName + '\\s*=\\s*\\{([^}]*)\\}', 'g');
+            var match = fieldRegex.exec(fields);
+            if (match && match.length >= 2) {
+                return match[1];
+            }
+            return '';
+        }
+
+        let sortAscending = true; // Flag to keep track of the sorting order
+
+        // Event listener for the sort button
+        document.getElementById('sortButton').addEventListener('click', function () {
+            sortAscending = !sortAscending; // Toggle the sorting order
+
+            publications.sort(function (a, b) {
+                if (sortAscending) {
+                    return a.year - b.year; // Sort by year in ascending order
+                } else {
+                    return b.year - a.year; // Sort by year in descending order
+                }
+            });
+
+            renderPublications(publications, sortAscending);
+        });
+
+        function renderPublications(publications, sortAscending) {
+            var html = '';
+            for (var i = 0; i < publications.length; i++) {
+                var publication = publications[i];
+                html += '<div class="publication">';
+                html += '<h3>' + publication.title + '</h3>';
+                html += '<p><span class="authors">' + publication.authors + '</span></p>';
+                html += '<p><span class="venue">' + publication.venue + '</span></p>';
+                html += '<p><span class="date">' + publication.date + '</span></p>';
+                html += '</div>';
+            }
+            document.getElementById('publications').innerHTML = html;
+        }
+
+
+    </script>
+</body>
+
+</html>
+
+// Example BibTeX data
+var bibTeXData = `@article{airapetov_2009_deuterium,
+title = {Deuterium trapping in carbon fiber composites exposed to D plasma},
+journal = {Journal of Nuclear Materials},
+volume = {390-391},
+pages = {589-592},
+year = {2009},
+note = {Proceedings of the 18th International Conference on Plasma-Surface Interactions in Controlled Fusion Device},
+issn = {0022-3115},
+doi = {10.1016/j.jnucmat.2009.01.118},
+url = {https://www.sciencedirect.com/science/article/pii/S002231150900186X},
+author = {A. Airapetov and L. Begrambekov and C. Brosset and J.P. Gunn and C. Grisolia and A. Kuzmin and T. Loarer and
+M. Lipa and P. Monier-Garbet and P. Shigin and E. Tsitrone and A. Zakharov},
+abstract = {Deuterium trapping in carbon fiber composite N11 and pyrolitic graphite PG99 irradiated with plasma ions and
+electrons was examined with thermal desorption spectrometry. It has been found that the deuterium trapping takes place
+even at ion and electron energies of about 10eV. For equal ion fluences, the deuterium retention and probability of CD4
+formation are higher for ion irradiation at lower ion flux. Peculiarities of the deuterium retention and CD4 formation
+are explained; driving forces and mechanisms of the D trapping are discussed.},
+language = {english},
+hyphenation = {english}
+}
+@article{me_2015_effects,
+title = {Effects of surface conditions on the plasma-driven permeation behaviour through a ferritic steel alloy observed
+in {VEHICLE-1} and QUEST},
+author = {Zhou, H. and Hirooka, Y. and Zushi, H. and Kuzmin, A. and Ashikawa, N. and Muroga, T. and Sagara, A.},
+journal = {Journal of Nuclear Materials},
+year = {2015},
+number = {},
+pages = {1066--1070},
+volume = {463},
+publisher = {},
+doi = {10.1016/j.jnucmat.2014.10.092},
+language = {english},
+hyphenation = {english}
+}
+`;
+
+// Parse the BibTeX data
+var publications = parseBibTeX(bibTeXData);
+// Initial rendering of publications
+renderPublications(publications, true);
+console.log(publications)
