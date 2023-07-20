@@ -79,21 +79,71 @@
             "description": "I investigated the retention of hydrogen in the plasma-facing components of Tore-Supra tokamak. I found that the hydrogen retention in graphites, which were exposed to tokamak plasma, was significantly higher compared to similarly exposed graphites in the laboratory set-up. I discovered that the main hydrogen retention in Tore-Supra tiles occurs in the amorphous layer, deposited on the surface of the tiles. In the contract work with Tore-Supra tokamak team, I studied the hydrogen retention in the plasma-facing components. In this work, I discovered that small concentrations of oxygen in the gas mixture could lead to a significant increase in the hydrogen retention."
         }
     ],
-    "skills": [
+    "skilllist": [
         "Plasma Diagnostics",
-        "Spectroscopy",
-        "Thermal Desorption Spectroscopy (TDS)",
-        "Plasma Assisted Sputter Deposition",
-        "Ion and Plasma Irradiation of Materials",
-        "Scanning Electron Microscopy (SEM)",
-        "Energy-dispersive X-ray Spectroscopy (EDS)",
-        "Design and Engineering of Plasma and Vacuum Devices",
-        "3D CAD Software: SolidWorks, Inventor, Fusion 360",
-        "Simulation of Physical Processes",
-        "Signal Processing and Device Control using Python and C",
-        "Data Analysis using C, Python, numpy, scipy, and scikit-learn",
-        "Teamwork and Project Coordination",
-        "Languages: Russian (native), English (fluent), Japanese (conversation), German (intermediate)"
+        "Spectroscopy"
+    ],
+    "skills": [
+        {
+            "title": "Project coordination",
+            "skills": [
+                "For several years I'm supervising a research team of 2-4 persons",
+                "Long term collaborations with several research labs across Japan and abroad"
+            ]
+        },
+        {
+            "title": "Physical Analysis",
+            "skills": [
+                "Thermal Desorption Spectroscopy (TDS)",
+                "Scanning Electron Microscopy (SEM)",
+                "Energy-Dispersive X-ray Spectroscopy (EDS)",
+                "Laser Induced Breakdown Spectroscopy (LIBS)",
+                "Raman scattering for surface analysis"
+            ]
+        },
+        {
+            "title": "Physical Processes",
+            "skills": [
+                "Plasma Assisted Sputter Deposition",
+                "Ion and Plasma Irradiation of Materials"
+            ]
+        },
+        {
+            "title": "Manufacturing and Design",
+            "skills": [
+                "3D Cad (SolidWorks, Inventor, Fusion 360)",
+                "Vacuum devices",
+                "Plasma-deposition devices",
+                "Plasma-irradiation devices"
+            ]
+        },
+        {
+            "title": "Signal Processing and Data Analysis",
+            "skills": [
+                "Python: numpy, pandas, xarray, matplotlib, plotly, bokeh, scikit-learn",
+                "Worked with OriginPro and Igor Pro",
+                "Familiar with Matplotlib, Mathematica, Maple"
+            ]
+        },
+        {
+            "title": "Programming Languages",
+            "skills": [
+                "Python",
+                "C++",
+                "Pascal",
+                "Fortran",
+                "Matlab"
+            ]
+        },
+        {
+            "title": "Languages",
+            "skills": [
+                "Russian (native)",
+                "English (fluent)",
+                "Japanese (conversation)",
+                "German (intermediate)"
+            ]
+        }
     ],
     "interests": [
         "Interaction of hydrogen molecules, atoms, and ions with solid materials",

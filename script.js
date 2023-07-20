@@ -84,11 +84,50 @@ fetch('data.json')
 
         // Skills
         const skillsList = document.getElementById('skills');
-        data.skills.forEach(skill => {
-            const listItem = document.createElement('li');
-            listItem.textContent = skill;
-            skillsList.appendChild(listItem);
-        });
+        // data.skilllist.forEach(skill => {
+        //     const listItem = document.createElement('li');
+        //     listItem.textContent = skill;
+        //     skillsList.appendChild(listItem);
+        // });
+
+        function createSkillsItem(title, skills) {
+            const skillsItem = document.createElement('div');
+            skillsItem.classList.add('skills-item');
+
+            const skillsTitle = document.createElement('div');
+            skillsTitle.classList.add('skills-title');
+            skillsTitle.textContent = title;
+            skillsItem.appendChild(skillsTitle);
+
+            const skillsArrow = document.createElement('div');
+            skillsArrow.classList.add('skills-arrow');
+            skillsItem.appendChild(skillsArrow);
+
+            const skillsDescription = document.createElement('div');
+            skillsDescription.classList.add('skills-description');
+            skills.forEach(skill => {
+                const skillItem = document.createElement('p');
+                skillItem.textContent = skill;
+                skillsDescription.appendChild(skillItem);
+            });
+            skillsItem.appendChild(skillsDescription);
+
+            skillsItem.addEventListener('click', () => {
+                skillsItem.classList.toggle('expanded');
+                skillsDescription.classList.toggle('expanded');
+            });
+
+            return skillsItem;
+        }
+
+        function populateSkills() {
+
+            data.skills.forEach(skill => {
+                const skillsItem = createSkillsItem(skill.title, skill.skills);
+                skillsList.appendChild(skillsItem);
+            });
+        }
+        populateSkills();
 
         // Interests
         const interestsList = document.getElementById('interests');
