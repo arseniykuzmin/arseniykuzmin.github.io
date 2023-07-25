@@ -253,7 +253,6 @@ h3 span {
     padding: 10px;
     margin-bottom: 10px;
     border-radius: 5px;
-    cursor: pointer;
     transition: background-color 0.3s ease;
 }
 
@@ -274,6 +273,10 @@ h3 span {
 }
 
 /* Styles for the arrow icon */
+.skills-arrow {
+    cursor: pointer;
+}
+
 .skills-arrow::before {
     content: "\25B6";
     /* Unicode for right-pointing triangle (►) */
@@ -287,7 +290,14 @@ h3 span {
     transform: rotate(90deg);
 }
 
+.skills-arrow.expanded::before {
+    transform: rotate(90deg);
+}
 
+.about-heading {
+    display: flex;
+    align-items: center;
+}
 
 /* Experience */
 .experience-item {
@@ -295,7 +305,6 @@ h3 span {
     padding: 5px;
     margin-bottom: 10px;
     border-radius: 5px;
-    cursor: pointer;
 }
 
 .experience-title {
@@ -307,12 +316,13 @@ h3 span {
     margin: 10px;
 }
 
-.plus-symbol {
-    margin-right: 5px;
-}
 
 .experience-description.collapsed {
     display: none;
+}
+
+.experience-item.expanded .skills-arrow::before {
+    transform: rotate(90deg);
 }
 
 /* Conferences */

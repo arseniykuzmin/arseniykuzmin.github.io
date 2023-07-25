@@ -31,7 +31,7 @@
             "startDate": "12/2018",
             "endDate": "Present",
             "url": "https://www.kyoto-u.ac.jp/en",
-            "description": "Teaching 4 classes, working on research projects in Kyoto University, Kyushu University, and NIFS. Main focus remains the hydrogen interaction with materials in fusion applications."
+            "description": "I'm responsible for choosing several research directions for my scientific work and supervision of Master and Bachelor students. I give four lectures in physics and mathematics for undergrade students. I continue my previous research in my collaborations with <a href='https://www.triam.kyushu-u.ac.jp/QUEST_HP/indexen.html'>QUEST team at Kyushu University</a> and <a href='http://www.nifs.ac.jp/index.html'>NIFS</a>. The focus of my research remains the hydrogen interaction with materials in fusion applications. I am also investigating hydrogen transport through metals, exposed to hydrogen and oxygen plasmas. This time I've added to my set of tools laser techniques to investigate the surface chemistry of my samples in-situ in vacuum without exposing them to atmospheric air after experiments."
         },
         {
             "title": "Research Fellow",
@@ -40,7 +40,7 @@
             "startDate": "04/2017",
             "endDate": "11/2018",
             "url": "https://www.nifs.ac.jp/en/",
-            "description": "I was using a novel approach for the plasma spectroscopy in fusion devices. Various data could be collected simultaneously using a high resolution and wide range spectrometer of the Echelle type. I developed a tool for processing the raw images from the spectrometer written in Python programming language. I investigated the isotope effect on the carbon impurity flow in the edge plasma of Large Helical Device (LHD)."
+            "description": "I worked with several spectroscopic set-ups for plasma analysis. A somewhat unusual spectroscopic diagnostic for a fusion device, a high resolution and wide range spectrometer of the Echelle type, was used for my studies. I developed a tool for processing the raw images from the spectrometer written in Python. I investigated the isotope effect on the carbon impurity flow in the edge plasma of Large Helical Device (LHD). The data, collected by my system, included molecular hydrogen emission lines, which I've analyzed later."
         },
         {
             "title": "Research Fellow",
@@ -49,7 +49,7 @@
             "startDate": "06/2013",
             "endDate": "03/2017",
             "url": "https://www.triam.kyushu-u.ac.jp/QUEST_HP/indexen.html",
-            "description": "I developed a new diagnostic, a permeation probe, which can detect for the first time atomic hydrogen flux at the wall of a tokamak directly. I developed an analysis method to evaluate the absolute atomic flux to the first wall of fusion devices. Using this new tool, I investigated the effect of atomic hydrogen on the global gas balance in the QUEST tokamak. I found that a significant portion of the retention occurs at the far wall without direct exposure to plasma."
+            "description": "I developed a new diagnostic, a permeation probe, which can detect atomic hydrogen flux coming to the walls of a fusion device. Using this tool, I investigated the effect of atomic hydrogen on the global gas balance in the QUEST tokamak. I found that a significant portion of the retention occurs at the far wall without direct exposure to plasma."
         },
         {
             "title": "Leading Scientist",
@@ -58,7 +58,7 @@
             "startDate": "10/2012",
             "endDate": "05/2013",
             "url": "https://niitfa.ru/",
-            "description": "I developed and patented a new filter to improve the resolution of the non-destructive radiographic inspection. This new filter is now used in the production of the fission reactors fuel assemblies."
+            "description": "I developed and patented a new filter to improve the resolution of the non-destructive radiographic inspection. This new filter is now used in the production of fission reactors fuel assemblies."
         },
         {
             "title": "Researcher",
@@ -67,7 +67,7 @@
             "startDate": "04/2008",
             "endDate": "09/2012",
             "url": "https://eng.mephi.ru/",
-            "description": "In another contract with Tore-Supra tokamak team, I studied the glow-discharge cleaning efficiency. In this work, I proposed a new glow-discharge cleaning scenario for the tokamak operation. This scenario increased the cleaning procedure efficiency and decreased time required for this unavoidable procedure. I developed a multi-spices deposition device for tungsten-carbon thin film deposition. Further, I upgraded this device to study boron-carbon films. The boron is in the form of powder and special care should be taken to prevent this powder from sputtering due to various reasons, such as charging up of boron particles. Based on my prototype device after my graduation, an improved device was designed to investigate and improve boronization efficiency for the ITER project."
+            "description": "Continuing my work in the same lab during my Ph.D, I've worked on several contracts with Tore-Supra tokamak team. I studied glow-discharge cleaning efficiency. In this work, I proposed a new glow-discharge cleaning scenario for the tokamak operation. This scenario increased the cleaning procedure efficiency and decreased time required for this unavoidable procedure. I developed a multi-spices deposition device for tungsten-carbon thin film deposition. Further, I upgraded this device to study boron-carbon films. The boron is in the form of powder and special care should be taken to prevent this powder from sputtering due to various reasons, such as charging up of boron particles. Based on my prototype device after my graduation, an improved device was designed to investigate and improve boronization efficiency for the ITER project."
         },
         {
             "title": "Research Engineer",
@@ -76,7 +76,7 @@
             "startDate": "03/2006",
             "endDate": "03/2008",
             "url": "https://eng.mephi.ru/",
-            "description": "I investigated the retention of hydrogen in the plasma-facing components of Tore-Supra tokamak. I found that the hydrogen retention in graphites, which were exposed to tokamak plasma, was significantly higher compared to similarly exposed graphites in the laboratory set-up. I discovered that the main hydrogen retention in Tore-Supra tiles occurs in the amorphous layer, deposited on the surface of the tiles. In the contract work with Tore-Supra tokamak team, I studied the hydrogen retention in the plasma-facing components. In this work, I discovered that small concentrations of oxygen in the gas mixture could lead to a significant increase in the hydrogen retention."
+            "description": "This was my first lab where I got my master’s degree and Ph. D. During my masters, I was employed by the lab. Here I got my first hands-on experience with vacuum and plasma set-ups. My goal was to investigate the retention of hydrogen in the plasma-facing components of <a href='https://en.wikipedia.org/wiki/WEST_(formerly_Tore_Supra)'>Tore-Supra tokamak</a>. I found that the hydrogen retention in graphites, which were exposed to tokamak plasma, was significantly higher compared to similarly exposed graphites in the laboratory set-up. I discovered that the main hydrogen retention in Tore-Supra tiles occurs in the amorphous layer, deposited on the surface of the tiles. In the contract work with Tore-Supra tokamak team, I studied hydrogen retention in plasma-facing components. In this work, I discovered that small concentrations of oxygen in the gas mixture could lead to a significant increase in hydrogen retention."
         }
     ],
     "skilllist": [
@@ -88,30 +88,32 @@
             "title": "Project coordination",
             "skills": [
                 "For several years I'm supervising a research team of 2-4 persons",
-                "Long term collaborations with several research labs across Japan and abroad"
+                "Long term collaborations with several research labs across Japan and abroad",
+                "Project Managment Software: <a href='https://clickup.com/about'>ClickUp</a>"
             ]
         },
         {
             "title": "Physical Analysis",
             "skills": [
-                "Thermal Desorption Spectroscopy (TDS)",
-                "Scanning Electron Microscopy (SEM)",
-                "Energy-Dispersive X-ray Spectroscopy (EDS)",
-                "Laser Induced Breakdown Spectroscopy (LIBS)",
-                "Raman scattering for surface analysis"
+                "Thermal Desorption Spectroscopy (<a href='https://en.wikipedia.org/wiki/Thermal_desorption_spectroscopy'>TDS</a>)",
+                "Scanning Electron Microscopy (<a href='https://en.wikipedia.org/wiki/Scanning_electron_microscope'>SEM</a>)",
+                "Energy-Dispersive X-ray Spectroscopy (<a href='https://en.wikipedia.org/wiki/Energy-dispersive_X-ray_spectroscopy'>EDS</a>)",
+                "X-ray photoelectron spectroscopy (<a href='https://en.wikipedia.org/wiki/X-ray_photoelectron_spectroscopy'>XPS</a>)",
+                "Laser Induced Breakdown Spectroscopy (<a href='https://en.wikipedia.org/wiki/Laser-induced_breakdown_spectroscopy'>LIBS</a>)",
+                "<a href='https://en.wikipedia.org/wiki/Raman_spectroscopy'>Raman spectroscopy</a> for surface analysis"
             ]
         },
         {
             "title": "Physical Processes",
             "skills": [
-                "Plasma Assisted Sputter Deposition",
+                "Plasma-Enhanced Deposition (<a href='https://en.wikipedia.org/wiki/Plasma-enhanced_chemical_vapor_deposition'>PECVD</a>)",
                 "Ion and Plasma Irradiation of Materials"
             ]
         },
         {
             "title": "Manufacturing and Design",
             "skills": [
-                "3D Cad (SolidWorks, Inventor, Fusion 360)",
+                "3D Cad (<a href='https://www.solidworks.com/'>SolidWorks</a>, <a href='https://www.autodesk.com/products/inventor/features'>Autodesk Inventor</a>, <a href='https://www.autodesk.com/products/fusion-360'>Autodesk Fusion 360</a>)",
                 "Vacuum devices",
                 "Plasma-deposition devices",
                 "Plasma-irradiation devices"
@@ -120,19 +122,38 @@
         {
             "title": "Signal Processing and Data Analysis",
             "skills": [
-                "Python: numpy, pandas, xarray, matplotlib, plotly, bokeh, scikit-learn",
-                "Worked with OriginPro and Igor Pro",
-                "Familiar with Matplotlib, Mathematica, Maple"
+                "Python: <a href='https://numpy.org/'>numpy</a>, <a href='https://scipy.org/'>scipy</a>, <a href='https://pandas.pydata.org/'>pandas</a>, <a href='https://docs.xarray.dev/en/stable/'>xarray</a>, <a href='https://matplotlib.org/'>matplotlib</a>, <a href='https://plotly.com/'>plotly</a>, <a href='https://bokeh.org/'>bokeh</a>, <a href='https://www.pyqtgraph.org/'>pyqtgraph</a>, <a href='https://scikit-learn.org/stable/'>scikit-learn</a>",
+                "Worked with <a href='https://www.originlab.com/origin'>OriginPro</a> and <a href='https://www.wavemetrics.com/'>Igor Pro</a>",
+                "Familiar with <a href='https://www.mathworks.com/products/matlab.html'>Matlab</a>, <a href='https://www.wolfram.com/mathematica/'>Mathematica</a>, <a href='https://www.maplesoft.com/'>Maple</a>"
             ]
         },
         {
             "title": "Programming Languages",
             "skills": [
                 "Python",
+                "Javascript",
                 "C++",
                 "Pascal",
                 "Fortran",
-                "Matlab"
+                "Basic"
+            ]
+        },
+        {
+            "title": "Data Acquisition",
+            "skills": [
+                "Control Systems based on Raspberry Pi and <a href='https://en.wikipedia.org/wiki/Digital-to-analog_converter'>DAC</a>/<a href='https://en.wikipedia.org/wiki/Analog-to-digital_converter'>ADC</a>",
+                "Some familiarity with <a href='https://www.ni.com/en-ca/shop/labview.html'>LabView</a> and <a href='https://en.wikipedia.org/wiki/LabWindows/CVI'>LabWindows</a>",
+                "Experience with National Intsruments devices"
+            ]
+        },
+        {
+            "title": "Office Software, Typesetting, Visual Design",
+            "skills": [
+                "<a href='https://www.microsoft.com/en-us/microsoft-365/microsoft-office'>Microsoft Office</a>: Word, Powerpoint, Excell",
+                "<a href='https://www.libreoffice.org/'>Libre Office</a>",
+                "<a href='https://www.openoffice.org/'>OpenOffice</a>",
+                "Vector Design: <a href='https://inkscape.org/'>Inkscape</a>, <a href='https://www.adobe.com/products/illustrator.html'>Adobe Illustrator</a>",
+                "<a href='https://www.latex-project.org/'>LaTeX</a>, <a href='https://www.tug.org/applications/pdftex/'>pdfTeX</a>, <a href='https://tug.org/xetex/'>XeTeX</a>, <a href='https://www.luatex.org/'>LuaTex</a>"
             ]
         },
         {

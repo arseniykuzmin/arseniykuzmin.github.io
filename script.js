@@ -45,13 +45,13 @@ fetch('data.json')
         // Experience
         const experienceList = document.getElementById('experience');
         data.experience.forEach(experience => {
-            const divItem = document.createElement('div');
-            divItem.classList.add('experience-item');
+            const experienceItem = document.createElement('div');
+            experienceItem.classList.add('experience-item');
 
             const titleDiv = document.createElement('div');
             titleDiv.classList.add('experience-title');
             titleDiv.innerHTML = `<h2>${experience.title}</h2>`;
-            divItem.appendChild(titleDiv);
+            experienceItem.appendChild(titleDiv);
 
             const detailsDiv = document.createElement('div');
             detailsDiv.classList.add('experience-details');
@@ -59,28 +59,43 @@ fetch('data.json')
                 <p>${experience.employer} (${experience.location})</p>
                 <p>${experience.startDate} - ${experience.endDate}</p>              
             `;
-            divItem.appendChild(detailsDiv);
+            experienceItem.appendChild(detailsDiv);
 
 
-            const plusSymbol = document.createElement('span');
-            plusSymbol.classList.add('plus-symbol');
-            plusSymbol.textContent = 'show details';
-            divItem.appendChild(plusSymbol);
+            const expArrow = document.createElement('span');
+            //expArrow.classList.add('plus-symbol');
+            expArrow.classList.add('skills-arrow');
+            expArrow.textContent = 'show details';
+            experienceItem.appendChild(expArrow);
 
             const descriptionDiv = document.createElement('div');
             descriptionDiv.classList.add('experience-description', 'collapsed'); // Add the 'collapsed' class initially
             descriptionDiv.innerHTML = `      
                 <p>${experience.description}</p>
             `;
-            divItem.appendChild(descriptionDiv);
+            experienceItem.appendChild(descriptionDiv);
+            expArrow.addEventListener('click', () => {
+                descriptionDiv.classList.toggle('collapsed');
+                experienceItem.classList.toggle('expanded');
+                expArrow.textContent = expArrow.innerText == 'show details' ? 'hide details' : 'show details';
 
-            divItem.addEventListener('click', () => {
-                descriptionDiv.classList.toggle('collapsed'); // Toggle the 'collapsed' class
-                plusSymbol.textContent = descriptionDiv.classList.contains('collapsed') ? 'show details' : ''; // Toggle plus/minus symbol
             });
 
-            experienceList.appendChild(divItem);
+            experienceList.appendChild(experienceItem);
         });
+
+        // Expand All Skills
+        // function toggleExpandSkills() {
+        //     const skillItems = document.querySelectorAll('.skill-item');
+        //     console.log('toggle skill expand')
+        //     skillItems.forEach(item => {
+        //         item.classList.toggle('expanded');
+        //         console.log(item)
+        //     });
+        // }
+
+        // const expandSkills = document.getElementById('expand-skills');
+        // expandSkills.addEventListener('click', toggleExpandSkills)
 
         // Skills
         const skillsList = document.getElementById('skills');
@@ -107,15 +122,15 @@ fetch('data.json')
             skillsDescription.classList.add('skills-description');
             skills.forEach(skill => {
                 const skillItem = document.createElement('p');
-                skillItem.textContent = skill;
+                skillItem.innerHTML = skill;
                 skillsDescription.appendChild(skillItem);
             });
             skillsItem.appendChild(skillsDescription);
 
-            skillsItem.addEventListener('click', () => {
-                skillsItem.classList.toggle('expanded');
-                skillsDescription.classList.toggle('expanded');
-            });
+            // skillsArrow.addEventListener('click', () => {
+            //     skillsItem.classList.toggle('expanded');
+            //     skillsDescription.classList.toggle('expanded');
+            // });
 
             return skillsItem;
         }
@@ -128,6 +143,43 @@ fetch('data.json')
             });
         }
         populateSkills();
+
+        function toggleExpandSkills(event) {
+            const target = event.target;
+            const skillsArrow = target.closest('.skills-arrow');
+            if (skillsArrow) {
+                const skillsItem = skillsArrow.closest('.skills-item');
+                if (skillsItem) {
+                    skillsItem.classList.toggle('expanded');
+                    const skillsDescription = skillsItem.querySelector('.skills-description');
+                    skillsDescription.classList.toggle('expanded');
+                }
+            }
+        }
+        skillsList.addEventListener('click', toggleExpandSkills);
+
+        const skillExpander = document.getElementById('expand-skills');
+        let allSkillsExpanded = false;
+        function setAllSkillsExpanded(expand) {
+            const skillsItems = document.querySelectorAll('.skills-item');
+            skillsItems.forEach(skillsItem => {
+                if (expand) {
+                    skillsItem.classList.add('expanded');
+                } else {
+                    skillsItem.classList.remove('expanded');
+                }
+                const skillsDescription = skillsItem.querySelector('.skills-description');
+                if (expand) {
+                    skillsDescription.classList.add('expanded');
+                } else {
+                    skillsDescription.classList.remove('expanded');
+                }
+            });
+            allSkillsExpanded = expand
+            skillExpander.classList.toggle('expanded')
+        }
+
+        skillExpander.addEventListener('click', () => setAllSkillsExpanded(!allSkillsExpanded));
 
         // Interests
         const interestsList = document.getElementById('interests');
