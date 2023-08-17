@@ -129,14 +129,15 @@
             "date": "2020",
             "year": "2020"
         },
+        "poster": "Poster-2-F3-14",
         "presentation": "poster presentation"
     },
     {
-        "authors": "A. Kuzmin, H. Ishihara, M. Kobayashi, T. Shikama, K. Sawada, S. Saito, H. Nakamura, K. Fujii, M. Hasuo",
-        "title": "Spatial distribution of the hydrogen retention in long duration discharges",
+        "authors": "A. Kuzmin, M. Kobayashi, K. Hanada, H. Idei, T. Onchi, S. Mori, N. Yoneda, T. Shikama, M. Hasuo, T. Ido, Y. Nagashima, R. Ikezoe, M. Hasegawa, K. Kuroda, K. Kono, S. Matsuo, T. Nagata, S. Shimabukuro, A. Higashijima, I. Niiya, H. Zushi",
+        "title": "Investigation of radial distribution of atomic hydrogen flow to the plasma facing components in steady state tokamak operation",
         "conference": {
             "name": "24th international conference on plasma surface interactions in controlled fusion devices (PSI-24)",
-            "location": "Jeju, Korea",
+            "location": "Jeju, Korea (online)",
             "date": "25-29 January 2021",
             "year": "2021"
         },
@@ -147,7 +148,7 @@
         "title": "Oxygen effect on hydrogen permeability through PdCu membrane under hydrogen plasma irradiation",
         "conference": {
             "name": "30th international Toki conference (ITC-30)",
-            "location": "Toki, Japan",
+            "location": "Toki, Japan (online)",
             "date": "2021",
             "year": "2021"
         },
@@ -158,7 +159,7 @@
         "title": "Atomic and ionic hydrogen flux probe for quantitative in-situ monitoring of hydrogen recycling",
         "conference": {
             "name": "25th international conference on plasma surface interactions in controlled fusion devices (PSI-25)",
-            "location": "Korea",
+            "location": "Korea (online)",
             "date": "13-17 June 2022",
             "year": "2022"
         },
