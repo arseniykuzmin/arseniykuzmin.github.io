@@ -1,0 +1,92 @@
+[
+    {
+        "id": 1,
+        "title": "Deposition Device",
+        "content": "<p>Multi material deposition device was developed to investigate the growth tungsten-carbon films during simultaneous deposition.</p>",
+        "imageUrl": "img/vup2-metal.jpg"
+    },
+    {
+        "id": 2,
+        "title": "Hydrogen Retention in Tore-Supra Tiles",
+        "content": "<p>We investigated hydrogen retention in Tore-Supra tokamak tiles after they were exposed to the plasma for several campaigns. It was found that most of hydrogen is retained in the deposited layers and top layers of the tile.<br> Moreover, hydrogen diffused deep inside the bulk of the graphite.</p>",
+        "imageUrl": "img/ToreSupra.png"
+    },
+    {
+        "id": 3,
+        "title": "Tungsten-Carbon Film Growth Model",
+        "content": "<p>Tungsten-Carbon film is deposited by simultaneous spattering of W and C targets by ions from Ar+H plasma. The growth of the film was investigated at different stages. Scanning electron microscopy (SEM) to follow the development of surface morphology of the film. A growth model of two component film is proposed.</p>",
+        "imageUrl": "img/wcfilm.jpg"
+    },
+    {
+        "id": 4,
+        "title": "Oxygen Removal from Graphite Wall",
+        "content": "<p>We searched for optimal parameters for glow discharge cleaning to remove oxygen from graphite tiles in Tore-Supra tokamak.</p>",
+        "imageUrl": "img/CO2-m.png"
+    },
+    {
+        "id": 5,
+        "title": "Cell Adhesion Study",
+        "content": "<p>I developed a prototype device to investigate cell adhesion in a batch. To do so, we measured displacement of cells in the field of view and estimated the adhesion forces from the parameters of the actuater and measured dispacement. Cell identification is done automatically with the help of cellpose. Based on my prototype a US grant was won by my collaborators.</p>",
+        "imageUrl": "img/bioshake.png"
+    },
+    {
+        "id": 6,
+        "title": "Plasma Device Control Unit",
+        "content": "<p>An open-source based control and acquisition unit was developed for my  plasma irradiation and hydrogen transport investigations (PIHTI). The source code is availiable on <a href='https://github.com/queezz/ControlUnit'>GitHub</a></p>",
+        "imageUrl": "img/ControlUnit.png"
+    },
+    {
+        "id": 7,
+        "title": "X-ray Filter for Non-destructive Inspection",
+        "content": "<p>I developed a new filter for X-ray and radio isotope sources used for non-destructive inspecion of welded joints. Significant improvement of the detection limit for defects was achived. This designed was patented, <a href='https://patents.google.com/patent/RU2530452C1/en?oq=RU2530452C1'>RU2530452C1</a>. </p>",
+        "imageUrl": "img/Xrayfilter.jpg"
+    },
+    {
+        "id": 8,
+        "title": "Permeation Experiments in QUEST",
+        "content": "<p>For several years I worked as a member of the QUEST tokamak team. I worked with membrane prboes to detect atomic and ionic hydrogen flux, coming to the walls of the device. Several iterations of the diagnostic were designed and adopted, and several papers regarding hydrogen recycling in QUEST were published.</p>",
+        "imageUrl": "img/kaainquest.jpg"
+    },
+    {
+        "id": 9,
+        "title": "Carbon impurity flow in LHD",
+        "content": "<p>I investigated carbon impurity flow in the perefiral plasma of Large Helical Device (<a href='https://en.wikipedia.org/wiki/Large_Helical_Device'>LHD</a>).</p>",
+        "imageUrl": "img/carbonflow.png"
+    },
+    {
+        "id": 10,
+        "title": "Boron powder plasma sputtering",
+        "content": "<p>I developed a prototype plasma deposition device where a boron powder is sputtered to simulate deposition of hard BCH films.</p>",
+        "imageUrl": "img/boronpowder.jpg"
+    },
+    {
+        "id": 11,
+        "title": "Hydrogen Molecule Spectroscopy",
+        "content": "<p>We investigated population distribution of hydrogen molecules in Large Helical Device (<a href='https://en.wikipedia.org/wiki/Large_Helical_Device'>LHD</a>) perefiral plasma. The results show non-equilibrium distribution with two rotational temperatures.</p>",
+        "imageUrl": "img/fulcheralpha.png"
+    },
+    {
+        "id": 12,
+        "title": "Seawater Desalination Device",
+        "content": "<p>I've participated in R&D of a  multi-effect evaporation seawater desalination system based on renewable energy. Plasma deposition was used to increase light absorptivity of the heat pipes to boil water.</p>",
+        "imageUrl": "img/CuFefilm.png"
+    },
+    {
+        "id": 13,
+        "title": "GUI for Echelle Spectrometer Image processing",
+        "content": "<p>The GUI is developed to work with 2D Echelle images to convert them into calibrated spectra. The GUI is written in <a href='https://wiki.python.org/moin/PyQt'>pyqt</a> and relies on <a href='https://www.pyqtgraph.org/'>pyqtgrph</a> for fast plotting. See the project on <a href='https://github.com/queezz/echelle_spectra'>GitHub</a>.</p>",
+        "imageUrl": "img/echellegui.png"
+    },
+    {
+        "id": 14,
+        "title": "Oxygen Effect on Hydrogen Retention in Graphites",
+        "content": "<p>We've investigated how oxygen presence in hydrogen plasma affects retention in graphites. Turnes out, addition of a small concentration of oxygen leads to a tremendous increas in retention, even when ion irradiation energy is close to 0, or when irradiating graphites with only electrons.</p>",
+        "imageUrl": "img/D2O2-m.png"
+    },
+    {
+        "id": 15,
+        "title": "Fulcher-alpha Emission Analizer",
+        "content": "<p>This python project workes with molecular hydrogen Fulcher-alpha emission. It analized 1 and 2 temperature Boltzman distributino, and calculates rotational and vibrational temperatures of hydrogen molecules in the ground (X) and excieted (d) states. The code is avaliable on <a href='https://github.com/queezz/fulcheranalyzer'>GitHub</a>.</p>",
+        "imageUrl": "img/fulcheranalizer.png"
+    }
+]

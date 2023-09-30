@@ -1,5 +1,5 @@
 // Fetch and parse the JSON data
-fetch('data.json')
+fetch('data/about.json')
     .then(response => response.json())
     .then(data => {
         // Access the data and update the HTML elements

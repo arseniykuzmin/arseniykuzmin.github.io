@@ -3,8 +3,10 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Arseniy Kuzmin: Conferences</title>
+    <title>Arseniy Kuzmin: About</title>
     <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="styles_projects.css">
+    <link rel="stylesheet" href="styles/projects.css">
     <meta name="keywords" content="physics, fusion, hydrogen, oxygen, tokamak">
     <meta name="viewport" content="width=device-width">
     <meta name="description" content="Plasma physicist">
@@ -16,24 +18,23 @@
 
 <body>
     <script src="scripts/navbar.js"></script>
-    <!-- Floating button to go back to the top -->
     <script src="scripts/scroltotop.js"></script>
+
+    <!-- Floating button to go back to the top -->
+    <script src="script_scroltotop.js"></script>
     <div class="scroll-to-top-button" id="scrollToTopButton"><span class="scroll-to-top-arrow"></span></div>
 
-    <script src="scripts/conferences.js"></script>
     <div class="main-content">
         <nav id="navbar"></nav>
-        <div class="citations">
-            <h1>Presentations at international Conferences</h1>
-            <div class="button-container">
-                <button id="sortButton" class="sort-button">Year<span class="arrow"></span></button>
-                <p id="conferenceCount" class="count-label">0</p>
-            </div>
 
-            <div class="citations" id="conference-list"></div>
+        <script src="scripts/projects.js"></script>
+        <h1>Projects</h1>
+        <div class="grid-container" id="gridContainer">
+            <!-- Grid items will be added here -->
         </div>
 
     </div>
+
 </body>
 
 </html>

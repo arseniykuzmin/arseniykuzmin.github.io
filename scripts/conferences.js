@@ -73,7 +73,7 @@ function sortConferences() {
 }
 
 function fetchConferencesData() {
-    fetch('conferences.json')
+    fetch('data/conferences.json')
         .then(response => response.json())
         .then(data => {
             conferencesData = data;
