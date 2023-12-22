@@ -159,18 +159,14 @@
 }
 
 
-/* Add margin to the top of the main content */
-
 .main-content {
     margin-top: 60px;
+    /* Add margin to the top of the main content */
     max-width: var(--main-content-width);
     margin-left: auto;
     margin-right: auto;
 }
 
-
-
-/* Simple style for simple CV */
 body {
     font-family: Georgia, 'Times New Roman', Times, serif;
     margin: 0;
@@ -191,384 +187,52 @@ h3 span {
     font-size: 11px;
 }
 
+/* On Page Navigation */
+.bd-sidebar-secondary {
+    width: 150px;
+    /* Fixed width for the sidebar */
+    background-color: #f7f7f7;
+    padding-top: 3rem;
+    padding-left: 1rem;
+    box-sizing: border-box;
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    overflow-y: auto;
+}
+
+.nav {
+    list-style-type: none;
+    padding-left: 0;
+}
+
+.nav-item {
+    margin-bottom: 0.5rem;
+}
+
+.nav-link {
+    color: #333;
+    text-decoration: none;
+}
+
+.nav-link.active,
+.nav-link:hover {
+    color: #007BFF;
+    /* This is a blue color. Adjust as needed. */
+    text-decoration: none;
+    /* Removing the underline. */
+}
+
 @media (max-width:960px) {
     .main-content {
         margin-top: 50px;
     }
 }
 
-.personal-info {
-    display: flex;
-    align-items: center;
-}
-
-.photo {
-    flex-shrink: 0;
-    margin-right: 20px;
-}
-
-.photo img {
-    max-width: 200px;
-}
-
-.info {
-    flex-grow: 1;
-}
-
-#personal-info {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-bottom: 20px;
-}
-
-#photo-container {
-    flex: 0 0 auto;
-    margin-right: 20px;
-}
-
-#photo-container img {
-    max-width: 200px;
-    max-height: 200px;
-    width: auto;
-    height: auto;
-}
-
-#personal-info>div {
-    flex: 1 1 auto;
-    text-align: left;
-}
-
-/* Education */
-.education-item {
-    background-color: #ffd3b6;
-    border-radius: 5px;
-    padding: 5px;
-    margin-bottom: 10px;
-}
-
-/* Skills */
-.skills-item {
-    background-color: #f2f2f2;
-    padding: 10px;
-    margin-bottom: 10px;
-    border-radius: 5px;
-    transition: background-color 0.3s ease;
-}
-
-.skills-title {
-    font-size: 18px;
-    font-weight: bold;
-    margin-bottom: 5px;
-}
-
-.skills-description {
-    display: none;
-    margin-left: 20px;
-    font-size: 14px;
-}
-
-.skills-description.expanded {
-    display: block;
-}
-
-/* Styles for the arrow icon */
-.skills-arrow {
-    cursor: pointer;
-}
-
-.skills-arrow::before {
-    content: "\25B6";
-    /* Unicode for right-pointing triangle (►) */
-    display: inline-block;
-    margin-right: 5px;
-    transition: transform 0.3s ease;
-}
-
-/* Rotate the arrow when the box is expanded */
-.skills-item.expanded .skills-arrow::before {
-    transform: rotate(90deg);
-}
-
-.skills-arrow.expanded::before {
-    transform: rotate(90deg);
-}
-
-.about-heading {
-    display: flex;
-    align-items: center;
-}
-
-/* Experience */
-.experience-item {
-    background-color: #f2f2f2;
-    padding: 5px;
-    margin-bottom: 10px;
-    border-radius: 5px;
-}
-
-.experience-title {
-    margin: 5px;
-    font-size: medium;
-}
-
-.experience-item p {
-    margin: 10px;
-}
-
-
-.experience-description.collapsed {
-    display: none;
-}
-
-.experience-item.expanded .skills-arrow::before {
-    transform: rotate(90deg);
-}
-
-/* Conferences */
-.conferences h1 {
-    background-color: #fff;
-    margin: -10px auto 0 auto;
-    z-index: 5;
-    line-height: 1.3em;
-    font-size: 24px;
-    text-align: left;
-    font-weight: normal;
-}
-
-.conference-item {
-    border-bottom: 1px solid #a91a1a;
-}
-
-/* Publications */
-.toggle-button {
-    position: relative;
-    padding: 10px;
-    font-size: 16px;
-    border: none;
-    background-color: #8c0c0c;
-    color: #fff;
-    cursor: pointer;
-    border-radius: 4px;
-    transition: background-color 0.3s ease;
-    margin: 5px;
-}
-
-.sort-button {
-    position: relative;
-    padding: 10px;
-    padding-right: 30px;
-    font-size: 16px;
-    border: none;
-    background-color: #8c0c0c;
-    color: #fff;
-    cursor: pointer;
-    border-radius: 4px;
-    transition: background-color 0.3s ease;
-    margin: 5px;
-}
-
-.toggle-button:hover,
-.sort-button:hover {
-    background-color: #a91a1a;
-}
-
-.toggle-button.active {
-    background-color: #d42626;
-}
-
-.count-label {
-    font-size: 16px;
-    color: #8c0c0c;
-    margin-right: auto;
-}
-
-.sort-button.active .arrow::before {
-    transform: rotate(-45deg);
-}
-
-.sort-button.active .arrow::after {
-    transform: rotate(45deg);
-}
-
-.button-container {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    margin-bottom: 10px;
-}
-
-
-.arrow {
-    position: absolute;
-    top: 50%;
-    right: 10px;
-    transform: translateY(-50%);
-}
-
-.arrow::before,
-.arrow::after {
-    position: relative;
-    content: '';
-    display: block;
-    width: 10px;
-    height: 1px;
-    background: white;
-    transition: 0.3s ease-in-out;
-}
-
-.arrow::before {
-    transform: rotate(45deg);
-}
-
-.arrow::after {
-    left: 6px;
-    top: -1px;
-    transform: rotate(-45deg);
-}
-
-/* Citations */
-.citations {
-    counter-reset: mycounter;
-    max-width: var(--main-content-width);
-    margin: 0 auto;
-    background-color: #ffffff;
-    padding: 10px;
-}
-
-
-.citations-spacer {
-    padding: 50px 0 30px 0;
-}
-
-.split {
-    margin: 0;
-    padding: 0;
-    list-style: none;
-}
-
-.split li::before {
-    counter-increment: mycounter;
-    content: counter(mycounter) ". ";
-}
-
-.citations .citations-item {
-    border-bottom: 1px solid #a91a1a;
-}
-
-.citations h1 {
-    background-color: #fff;
-    margin: -10px auto 0 auto;
-    z-index: 5;
-    line-height: 1.3em;
-    font-size: 24px;
-    text-align: left;
-    font-weight: normal;
-}
-
-.citations h1 span {
-    letter-spacing: 2px;
-    padding: 8px 20px;
-    font-size: 11px;
-    z-index: 100;
-    color: #fff;
-    background-color: #000;
-}
-
-.citations .citations-item .title {
-    font-family: "Archer-Book", Georgia, Serif;
-    font-size: 18px;
-    font-weight: normal;
-}
-
-div.citations .authors {
-    font-family: "Archer-Book", Georgia, Serif;
-    font-size: 12px;
-    font-weight: normal;
-    margin-bottom: 10px;
-}
-
-.citations .authors span {
-    font-family: "Archer-Book", Georgia, Serif;
-    font-weight: normal;
-    font-style: italic;
-    text-decoration: underline;
-    margin-top: 5px;
-    color: #888;
-}
-
-.citations .journal {
-    font-size: 14px;
-    font-weight: normal;
-    margin-top: 2px;
-    margin-bottom: 10px;
-}
-
-.citations .citations-link {
-    margin: 5px 0 5px 10px;
-    font-size: 15px;
-}
-
-.citations .citations-link a {
-    margin-right: 5px;
-    border-radius: 100%;
-    padding: 5px;
-    background-color: #fff;
-}
-
-.citations .citations-link a:hover {
-    transition: .4s;
-    background-color: #dbff38;
-}
-
-@media (max-width: 960px) {
-    .citations {
-        padding: 0;
-    }
-}
 
 @media (max-width: 960px) {
     .body {
         padding: 10px;
     }
-
-    .photo img {
-        max-width: 150px;
-    }
 }
-
-/*
-@media (max-width: 960px) {
-    .citations {
-        margin: 3px;
-    }
-
-    .citations .citations-item .title {
-        font-size: 24px;
-    }
-
-    .citations .authors {
-        font-size: 16px;
-    }
-
-    .citations .journal {
-        font-size: 20px;
-    }
-
-    .citations .citations-link {
-        font-size: 20px;
-    }
-
-    .citations h1 {
-        font-size: 32px;
-    }
-
-    .custom-button {
-        font-size: 24px;
-    }
-
-    .count-label {
-        font-size: 20px;
-    }
-}
-*/

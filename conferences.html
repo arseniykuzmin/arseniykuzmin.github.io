@@ -5,6 +5,9 @@
     <meta charset="UTF-8">
     <title>Arseniy Kuzmin: Conferences</title>
     <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="/styles/conferences.css">
+    <link rel="stylesheet" href="/styles/sortbuttons.css">
+    <link rel="stylesheet" href="/styles/citations.css">
     <meta name="keywords" content="physics, fusion, hydrogen, oxygen, tokamak">
     <meta name="viewport" content="width=device-width">
     <meta name="description" content="Plasma physicist">
@@ -15,16 +18,11 @@
 </head>
 
 <body>
-    <script src="scripts/navbar.js"></script>
-    <!-- Floating button to go back to the top -->
-    <script src="scripts/scroltotop.js"></script>
-    <div class="scroll-to-top-button" id="scrollToTopButton"><span class="scroll-to-top-arrow"></span></div>
-
     <script src="scripts/conferences.js"></script>
     <div class="main-content">
         <nav id="navbar"></nav>
         <div class="citations">
-            <h1>Presentations at international Conferences</h1>
+            <h1>International Conferences</h1>
             <div class="button-container">
                 <button id="sortButton" class="sort-button">Year<span class="arrow"></span></button>
                 <p id="conferenceCount" class="count-label">0</p>
@@ -32,8 +30,29 @@
 
             <div class="citations" id="conference-list"></div>
         </div>
+        <!--
+        <div class="citations">
+            <h1>Domestic Conferences</h1>
+        </div>
+
+        <div class="bd-sidebar-secondary bd-toc">
+            <div class="sidebar-secondary-items sidebar-secondary__inner">
+                <div class="page-toc tocsection onthispage">
+                    <i class="fa-solid fa-list"></i> Contents
+                </div>
+                <nav class="bd-toc-nav page-toc">
+                    <ul class="visible nav section-nav flex-column"></ul>
+                </nav>
+            </div>
+        </div>
 
     </div>
+-->
+        <script src="scripts/navbar.js"></script>
+        <!-- <script src="sidemenu.js" defer></script> -->
+        <!-- Floating button to go back to the top -->
+        <script src="scripts/scroltotop.js"></script>
+        <div class="scroll-to-top-button" id="scrollToTopButton"><span class="scroll-to-top-arrow"></span></div>
 </body>
 
 </html>

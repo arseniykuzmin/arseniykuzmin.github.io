@@ -25,7 +25,9 @@ function parseBibTeX(data) {
             volume: getFieldValue(fields, 'volume'),
             pages: getFieldValue(fields, 'pages'),
             abstract: getFieldValue(fields, 'abstract'),
-            language: getFieldValue(fields, 'language')
+            language: getFieldValue(fields, 'language'),
+            aknotes: getFieldValue(fields, 'aknotes'),
+            keywords: getFieldValue(fields, 'keywords'),
         };
         //console.log(entry)
         //console.log(publication)
@@ -153,7 +155,8 @@ function sortPublications(ascending) {
     return sortedPublications;
 }
 
-function filterPublications() {
+// get featured publications
+function filterPublicationsbackup() {
     filteredPublications = originalPublications.filter(function (publication) {
         var authors = publication.authors.split(' and '); // Split authors by 'and' to handle multiple authors
         return (
@@ -170,6 +173,19 @@ function filterPublications() {
     renderPublications(sortPublications(sortAscending));
 }
 
+function filterPublications() {
+    filteredPublications = originalPublications.filter(function (publication) {
+        return (
+            publication.aknotes.includes('featured')
+
+        );
+    });
+
+    renderPublications(sortPublications(sortAscending));
+}
+
+
+// get first autor publications
 function filterPublicationsFirst() {
     filteredPublications = originalPublications.filter(function (publication) {
         var authors = publication.authors.split(' and '); // Split authors by 'and' to handle multiple authors

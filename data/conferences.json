@@ -164,5 +164,16 @@
             "year": "2022"
         },
         "presentation": "poster presentation"
+    },
+    {
+        "authors": "A. Kuzmin, K. Miura, S. Kurokawa, T. Shikama, M. Hasuo",
+        "title": "Effect of oxygen on plasma driven permeation of hydrogen through metal membranes",
+        "conference": {
+            "name": "International conference on materials innovation for sustainable development goals (MRM2023 / IUMRS-ICA2023)",
+            "location": "Kyoto, Japan",
+            "date": "11-16 December 2023",
+            "year": "2023"
+        },
+        "presentation": "oral presentation"
     }
 ]

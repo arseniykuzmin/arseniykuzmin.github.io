@@ -1,0 +1,99 @@
+/* Citations */
+.citations {
+    counter-reset: mycounter;
+    max-width: var(--main-content-width);
+    margin: 0 auto;
+    background-color: #ffffff;
+    padding: 10px;
+}
+
+
+.citations-spacer {
+    padding: 50px 0 30px 0;
+}
+
+.split {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.split li::before {
+    counter-increment: mycounter;
+    content: counter(mycounter) ". ";
+}
+
+.citations .citations-item {
+    border-bottom: 1px solid #a91a1a;
+}
+
+.citations h1 {
+    background-color: #fff;
+    margin: -10px auto 0 auto;
+    z-index: 5;
+    line-height: 1.3em;
+    font-size: 24px;
+    text-align: left;
+    font-weight: normal;
+}
+
+.citations h1 span {
+    letter-spacing: 2px;
+    padding: 8px 20px;
+    font-size: 11px;
+    z-index: 100;
+    color: #fff;
+    background-color: #000;
+}
+
+.citations .citations-item .title {
+    font-family: "Archer-Book", Georgia, Serif;
+    font-size: 18px;
+    font-weight: normal;
+}
+
+div.citations .authors {
+    font-family: "Archer-Book", Georgia, Serif;
+    font-size: 12px;
+    font-weight: normal;
+    margin-bottom: 10px;
+}
+
+.citations .authors span {
+    font-family: "Archer-Book", Georgia, Serif;
+    font-weight: normal;
+    font-style: italic;
+    text-decoration: underline;
+    margin-top: 5px;
+    color: #888;
+}
+
+.citations .journal {
+    font-size: 14px;
+    font-weight: normal;
+    margin-top: 2px;
+    margin-bottom: 10px;
+}
+
+.citations .citations-link {
+    margin: 5px 0 5px 10px;
+    font-size: 15px;
+}
+
+.citations .citations-link a {
+    margin-right: 5px;
+    border-radius: 100%;
+    padding: 5px;
+    background-color: #fff;
+}
+
+.citations .citations-link a:hover {
+    transition: .4s;
+    background-color: #dbff38;
+}
+
+@media (max-width: 960px) {
+    .citations {
+        padding: 0;
+    }
+}

@@ -1,0 +1,46 @@
+.container {
+    display: flex;
+}
+
+.content {
+    flex-grow: 1;
+    /* This will let the content fill the rest of the space */
+    padding: 1rem;
+    margin-right: 150px;
+    /* This is sidebar width + padding + a bit more space for margin */
+}
+
+.bd-sidebar-secondary {
+    width: 150px;
+    /* Fixed width for the sidebar */
+    background-color: #f7f7f7;
+    padding: 1rem;
+    box-sizing: border-box;
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    overflow-y: auto;
+}
+
+.nav {
+    list-style-type: none;
+    padding-left: 0;
+}
+
+.nav-item {
+    margin-bottom: 0.5rem;
+}
+
+.nav-link {
+    color: #333;
+    text-decoration: none;
+}
+
+.nav-link.active,
+.nav-link:hover {
+    color: #007BFF;
+    /* This is a blue color. Adjust as needed. */
+    text-decoration: none;
+    /* Removing the underline. */
+}
