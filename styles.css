@@ -22,7 +22,7 @@
     --main-content-width: 1040px;
 }
 
-/* Navigation bar on top */
+/* MARK: Navbar */
 .navbar {
     background-color: #f2f2f2;
     height: 30px;
@@ -125,7 +125,46 @@
     }
 }
 
-/* Scroll to top button */
+.nav {
+    list-style-type: none;
+    padding-left: 0;
+}
+
+.nav-item {
+    margin-bottom: 0.5rem;
+}
+
+.nav-link {
+    color: #333;
+    text-decoration: none;
+}
+
+.nav-link.active,
+.nav-link:hover {
+    color: #007BFF;
+    /* This is a blue color. Adjust as needed. */
+    text-decoration: none;
+    /* Removing the underline. */
+}
+
+.dark-mode-toggle {
+  background: none;
+  border: none;
+  color: inherit;
+  font-size: 1.2em;
+  cursor: pointer;
+  padding: 0 10px;
+  align-self: center;
+}
+
+.navbar-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+
+/* MARK: Scroll */
 
 .scroll-to-top-button {
     display: none;
@@ -150,7 +189,7 @@
     height: 0;
     border-style: solid;
     border-width: 10px 7px 0 7px;
-    border-color: wheat transparent transparent transparent;
+    border-color: rgb(165, 152, 128) transparent transparent transparent;
     position: absolute;
     top: 50%;
     left: 50%;
@@ -158,7 +197,7 @@
     -webkit-transform: translate(-50%, -50%) rotate(180deg);
 }
 
-
+/* MARK: main */
 .main-content {
     margin-top: 60px;
     /* Add margin to the top of the main content */
@@ -202,27 +241,7 @@ h3 span {
     overflow-y: auto;
 }
 
-.nav {
-    list-style-type: none;
-    padding-left: 0;
-}
 
-.nav-item {
-    margin-bottom: 0.5rem;
-}
-
-.nav-link {
-    color: #333;
-    text-decoration: none;
-}
-
-.nav-link.active,
-.nav-link:hover {
-    color: #007BFF;
-    /* This is a blue color. Adjust as needed. */
-    text-decoration: none;
-    /* Removing the underline. */
-}
 
 @media (max-width:960px) {
     .main-content {
@@ -235,4 +254,125 @@ h3 span {
     .body {
         padding: 10px;
     }
+}
+
+/* MARK: Dark */
+body.dark-mode {
+    background-color: #1c1c1c;
+    color: #e0e0e0;
+}
+
+body.dark-mode a {
+    color: #80bfff;
+}
+
+body.dark-mode .skills-item,
+body.dark-mode .experience-item {
+    background-color: #2a2a2a;
+    border-left-color: #555;
+}
+
+body.dark-mode .education-item {
+    background-color: #2a2a2a;
+    border-left-color: #8c0c0c;
+}
+
+
+body.dark-mode h1,
+body.dark-mode h2,
+body.dark-mode h3 {
+    color: #ffffff;
+}
+
+body.dark-mode .scroll-to-top-button {
+    background-color: #444;
+}
+
+body.dark-mode .section-title {
+    background-color: #611414; /* match your dark red */
+    color: #fff;
+}
+
+body.dark-mode .navbar {
+    background-color: #2a2a2a;
+}
+
+body.dark-mode .navbar a {
+    color: #e0e0e0;
+}
+
+body.dark-mode .navbar a:hover {
+    color: #80bfff;
+}
+
+#darkModeToggle {
+    background: none;
+    border: none;
+    color: inherit;
+    font-size: 1.2em;
+    cursor: pointer;
+    padding: 0 10px;
+}
+
+
+body.dark-mode .skills-title,
+body.dark-mode .education-item-title,
+body.dark-mode .experience-title,
+body.dark-mode .section-title {
+    color: #fff; /* or something like #e0e0e0 for softer white */
+}
+
+body.dark-mode .education-item-degree {
+    color: #e0e0e0;
+}
+
+body.dark-mode #title,
+body.dark-mode .experience-description ,
+body.dark-mode #profile {
+    color: #e0e0e0;
+}
+
+body.dark-mode .experience-details p {
+    color: #d39c9c;
+}
+
+body.dark-mode .experience-details p:nth-child(2) {
+  color: #ece3c6;
+}
+
+
+body.dark-mode .navbar-items {
+  background-color: #2a2a2a; /* Or #2a2a2a to match the desktop navbar */
+}
+
+body.dark-mode .navbar-items a {
+  color: #e0e0e0;
+}
+
+body.dark-mode .navbar-items a:hover {
+  color: #80bfff;
+}
+
+#darkModeToggle {
+  font-size: 1.5rem;
+  background: none;
+  border: none;
+  color: inherit;
+  cursor: pointer;
+  padding: 0 10px;
+  align-self: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+@media (max-width: 960px) {
+  #darkModeToggle {
+    margin-left: 10px;
+    padding: 4px;
+  }
+
+  .navbar-container {
+    justify-content: flex-start;
+    gap: 15px;
+  }
 }

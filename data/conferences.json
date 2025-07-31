@@ -175,5 +175,36 @@
             "year": "2023"
         },
         "presentation": "oral presentation"
-    }
+    },
+
+ {
+    "title": "Effect of oxide and tungsten films on plasma driven hydrogen permeation through Pd, Ni, and steel membranes",
+    "conference":{
+        "name":"13th International Conference on Material Science and Engineering Technology",
+        "conf": "ICMSET 2024",
+        "year": "2024",
+        "location": "Nagoya, Japan",
+        "date": "22-24 November 2024"
+    },
+    "presentation": "oral presentation",
+    "authors":  "A. Kuzmin,J. Hayashi, T. Hashizuka, T. Shikama,M. Hasuo"
+  },
+
+   {
+    "title": "BH molecular emission in the divertor region of LHD: Q-branch analysis and rotational temperature measurement",
+    "conference":{
+        "name": "22nd International Conference on Atomic Processes in Plasmas",
+        "conf": "APiP 2025",
+        "year": 2025,
+        "location": "Tokyo, Japan",
+        "date": "21-25 July 2025",
+        "type": "poster"
+    },
+    "authors": "A. Kuzmin, T. Shikama, T. Kawate, S. Masuzaki, M. Shoji, F. Nespoli, R. Lunsford, E. Gilson, M. Hasuo",
+    "presentation":"oral presentation"
+    
+  }
+
+
+
 ]

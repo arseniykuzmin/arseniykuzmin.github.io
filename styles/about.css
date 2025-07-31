@@ -40,91 +40,159 @@
     text-align: left;
 }
 
+#title {
+    font-size: 20px;
+    font-weight: 600;
+    margin-bottom: 6px;
+    color: #222;
+}
+
+#location {
+    font-size: 13px;
+    color: #666;
+    margin-bottom: 10px;
+}
+
+#profile {
+    font-style: normal !important;
+    font-family: inherit;
+    font-size: 18px;
+    color: #444;
+    line-height: 1.5;
+}
+
+
 /* Education */
 .education-item {
-    background-color: #ffd3b6;
-    border-radius: 5px;
-    padding: 5px;
-    margin-bottom: 10px;
+    background-color: #f9f9f9;
+    border-left: 4px solid #b04b34;
+    padding: 10px 15px;
+    margin-bottom: 12px;
+    border-radius: 4px;
+    font-size: 14px;
+}
+
+.education-item-title {
+    font-weight: 600;
+    font-size: 15px;
+    margin-bottom: 2px;
+    color: #333;
+}
+
+.education-item-degree {
+    font-style: italic;
+    margin-bottom: 4px;
+    color: #555;
+}
+
+.education-item a {
+    display: inline-block;
+    margin-bottom: 4px;
+    color: #0044cc;
+    text-decoration: none;
+}
+
+.education-item a:hover {
+    text-decoration: underline;
+}
+
+.education-item-graduation,
+.education-item-location {
+    color: #777;
+    font-size: 13px;
 }
 
 /* Skills */
 .skills-item {
-    background-color: #f2f2f2;
-    padding: 10px;
+    background-color: #f9f9f9;
+    border-left: 4px solid #ccc;
+    padding: 10px 15px;
     margin-bottom: 10px;
-    border-radius: 5px;
-    transition: background-color 0.3s ease;
+    border-radius: 4px;
 }
 
 .skills-title {
-    font-size: 18px;
     font-weight: bold;
+    font-size: 16px;
     margin-bottom: 5px;
+    color: #333;
 }
 
 .skills-description {
-    display: none;
-    margin-left: 20px;
     font-size: 14px;
+    margin-left: 0;
 }
 
-.skills-description.expanded {
-    display: block;
+.skills-description p {
+    margin: 2px 0;
 }
 
-/* Styles for the arrow icon */
-.skills-arrow {
-    cursor: pointer;
+@media (min-width: 900px) {
+    #skills {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 10px 20px;
+    }
 }
 
-.skills-arrow::before {
-    content: "\25B6";
-    /* Unicode for right-pointing triangle (►) */
-    display: inline-block;
-    margin-right: 5px;
-    transition: transform 0.3s ease;
-}
-
-/* Rotate the arrow when the box is expanded */
-.skills-item.expanded .skills-arrow::before {
-    transform: rotate(90deg);
-}
-
-.skills-arrow.expanded::before {
-    transform: rotate(90deg);
-}
-
-.about-heading {
-    display: flex;
-    align-items: center;
-}
 
 /* Experience */
 .experience-item {
-    background-color: #f2f2f2;
-    padding: 5px;
-    margin-bottom: 10px;
-    border-radius: 5px;
+    background-color: #f9f9f9;
+    border-left: 4px solid #ccc;
+    padding: 10px 15px;
+    margin-bottom: 12px;
+    border-radius: 4px;
+    font-size: 14px;
 }
 
-.experience-title {
-    margin: 5px;
-    font-size: medium;
+.experience-title h2 {
+    font-size: 16px;
+    margin: 0;
+    font-weight: 600;
+    color: #222;
 }
 
-.experience-item p {
-    margin: 10px;
+.experience-details p {
+    margin: 2px 0;
+    color: #555;
+    font-size: 13px;
 }
 
+.experience-description {
+    font-size: 13px;
+    color: #444;
+    margin-top: 5px;
+}
 
 .experience-description.collapsed {
     display: none;
 }
 
-.experience-item.expanded .skills-arrow::before {
-    transform: rotate(90deg);
+.skills-arrow {
+    font-size: 12px;
+    color: #888;
+    cursor: pointer;
+    margin-top: 4px;
+    display: inline-block;
 }
+.experience-details p:nth-child(1) {
+    font-weight: 500;
+}
+
+.experience-details p:nth-child(2) {
+    font-size: 13px;
+    color: #666;
+}
+
+@media (min-width: 900px) {
+    .experience-container {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 12px 20px;
+    }
+}
+
 
 @media (max-width: 960px) {
 
