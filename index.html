@@ -2,6 +2,11 @@
 <html>
 
 <head>
+    <script>
+        if (localStorage.getItem('darkMode') === '1') {
+        document.documentElement.classList.add('dark-mode');
+        }
+    </script>
     <meta charset="UTF-8">
     <title>Arseniy Kuzmin: About</title>
     <link rel="stylesheet" href="styles.css">
@@ -35,8 +40,7 @@
                 <p id="profile"></p>
             </div>
         </div>
-
-
+        
         <script src="scripts/about.js"></script>
 
         <h3><span>Education</span></h3>

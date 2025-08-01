@@ -1,6 +1,7 @@
 function updateToggleIcon() {
     const toggleButton = document.getElementById('darkModeToggle');
-    const isDark = document.body.classList.contains('dark-mode');
+    const isDark = document.documentElement.classList.contains('dark-mode');
+
     if (toggleButton) {
         toggleButton.textContent = isDark ? '🌝' : '🌚';
     }
@@ -15,18 +16,14 @@ function setupDarkModeToggle() {
     }
 
     toggleButton.addEventListener('click', () => {
-        document.body.classList.toggle('dark-mode');
-        const isDark = document.body.classList.contains('dark-mode');
+        const html = document.documentElement;
+        html.classList.toggle('dark-mode');
+        const isDark = html.classList.contains('dark-mode');
         localStorage.setItem('darkMode', isDark ? '1' : '0');
         updateToggleIcon();
     });
 
-    // Apply saved preference
-    if (localStorage.getItem('darkMode') === '1') {
-        document.body.classList.add('dark-mode');
-    }
-
-    updateToggleIcon();
+    updateToggleIcon(); // Icon reflects current state
 }
 
 function toggleNavbar() {
@@ -34,7 +31,6 @@ function toggleNavbar() {
     const toggleIcon = document.getElementById('toggleIcon');
 
     navbarItems.classList.toggle('show');
-
     toggleIcon.innerHTML = navbarItems.classList.contains('show') ? '&#10005;' : '&#9776;';
 }
 

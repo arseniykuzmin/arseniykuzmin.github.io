@@ -118,4 +118,29 @@ fetch('data/about.json')
         }
         populateSkills();
 
+        // Move profile responsively
+        const profile = document.getElementById("profile");
+        const info = document.querySelector(".info");
+        const personalInfo = document.querySelector(".personal-info");
+        const parent = personalInfo.parentNode;
+
+        function moveProfileIfNeeded() {
+            const alreadyOutside = profile.parentNode !== info;
+
+            if (window.innerWidth <= 768 && !alreadyOutside) {
+                info.removeChild(profile);
+                parent.insertBefore(profile, personalInfo.nextSibling);
+            } else if (window.innerWidth > 768 && alreadyOutside) {
+                parent.removeChild(profile);
+                info.appendChild(profile);
+            }
+        }
+
+        moveProfileIfNeeded();
+        window.addEventListener("resize", moveProfileIfNeeded);
+
+
     });
+
+
+    
