@@ -12,6 +12,25 @@
     max-width: 200px;
 }
 
+.photo-links {
+    margin-top: 8px;
+    display: flex;
+    gap: 10px;
+}
+
+.icon-link {
+    width: 24px;
+    height: 24px;
+    opacity: 0.8;
+    transition: opacity 0.2s ease;
+}
+
+.icon-link:hover {
+    opacity: 1;
+}
+
+
+
 .info {
     flex-grow: 1;
 }
