@@ -398,3 +398,8 @@ html.dark-mode .citations h3 {
 html.dark-mode .citations a {
   color: #80bfff;
 }
+
+html.dark-mode #conferenceCount,
+html.dark-mode #publicationCount {
+    color: #ffc857; /* soft yellow or pick your preferred highlight color */
+}
