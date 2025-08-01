@@ -4,21 +4,33 @@
 }
 
 .photo {
-    flex-shrink: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
     margin-right: 20px;
 }
 
 .photo img {
     max-width: 200px;
+    border-radius: 8px;
+    display: block;
 }
 
+/* Overlay effect by negative margin */
 .photo-links {
-    margin-top: 8px;
+    margin-top: -35px;
     display: flex;
-    gap: 10px;
-    max-width: 100%;
-    height: auto;
+    gap: 12px;
+    padding: 6px 12px;
+    background: rgba(0, 0, 0, 0.25);  /* Subtle translucent black */
+    backdrop-filter: blur(4px);       /* Frosted glass effect (optional) */
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);  /* Soft drop shadow */
+    z-index: 1;
 }
+
+
 
 .icon-link {
     width: 24px;
@@ -32,6 +44,7 @@
 .icon-link:hover {
     opacity: 1;
 }
+
 
 
 
