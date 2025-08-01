@@ -16,12 +16,16 @@
     margin-top: 8px;
     display: flex;
     gap: 10px;
+    max-width: 100%;
+    height: auto;
 }
 
 .icon-link {
     width: 24px;
     height: 24px;
     opacity: 0.8;
+    display: inline-block;
+    object-fit: contain;
     transition: opacity 0.2s ease;
 }
 
