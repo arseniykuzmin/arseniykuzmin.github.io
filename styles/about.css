@@ -13,6 +13,7 @@
 
 .photo img {
     max-width: 200px;
+    height: auto;
     border-radius: 8px;
     display: block;
 }
@@ -235,5 +236,6 @@
 
     .photo img {
         max-width: 150px;
+        height: auto;
     }
 }

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <script>
+    if (localStorage.getItem('darkMode') === '1') {
+      document.documentElement.classList.add('dark-mode');
+    }
+  </script>
+  <meta charset="UTF-8" />
+  <title>Project Details</title>
+  <meta name="viewport" content="width=device-width" />
+  <link rel="stylesheet" href="styles/styles.css" />
+  <link rel="stylesheet" href="styles/project.css" />
+</head>
+<body>
+  <script src="scripts/navbar.js"></script>
+  <nav id="navbar"></nav>
+
+  <div class="main-content">
+    <a href="projects.html" class="back-link">&larr; Back to Projects</a>
+    <div id="projectContainer" class="project-content"></div>
+  </div>
+
+  <!-- libs -->
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/js-yaml@4/dist/js-yaml.min.js"></script>
+  <!-- KaTeX -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.css">
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/contrib/auto-render.min.js"></script>
+
+
+  <script defer src="scripts/project.js"></script>
+</body>
+</html>

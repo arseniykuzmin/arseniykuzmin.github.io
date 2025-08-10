@@ -341,6 +341,55 @@ html.dark-mode .navbar-items a:hover {
     color: #80bfff;
 }
 
+/* Citations - Dark mode overrides */
+html.dark-mode .citations {
+    background-color: #1c1c1c;
+    color: #e0e0e0;
+}
+
+html.dark-mode .citations h1,
+html.dark-mode .citations h2,
+html.dark-mode .citations h3 {
+    background-color: #1c1c1c;
+    color: #e0e0e0;
+}
+
+html.dark-mode .citations h1 span {
+    background-color: #444;
+    color: #e0e0e0;
+}
+
+html.dark-mode .citations a {
+    color: #80bfff;
+}
+
+html.dark-mode .citations .citations-item {
+    border-bottom: 1px solid #444;
+}
+
+html.dark-mode .citations .citations-link a {
+    background-color: #2a2a2a;
+    color: #e0e0e0;
+}
+
+html.dark-mode .citations .citations-link a:hover {
+    background-color: #557700; /* or something nice in dark */
+    color: #fff;
+}
+
+html.dark-mode .citations .authors span {
+    color: #aaa;
+}
+
+html.dark-mode .citations .journal {
+    color: #ccc;
+}
+
+html.dark-mode #conferenceCount,
+html.dark-mode #publicationCount {
+    color: #ffc857; /* soft yellow or pick your preferred highlight color */
+}
+
 /* Dark mode toggle button — global, not specific to theme */
 #darkModeToggle {
     font-size: 1.5rem;
@@ -355,21 +404,6 @@ html.dark-mode .navbar-items a:hover {
     justify-content: center;
 }
 
-html.dark-mode .citations {
-  background-color: #1f1f1f; /* dark background */
-  color: #e0e0e0; /* light readable text */
-}
-
-html.dark-mode .citations h1,
-html.dark-mode .citations h2,
-html.dark-mode .citations h3 {
-  color: #ffffff;
-}
-
-html.dark-mode .citations a {
-  color: #80bfff;
-}
-
 @media (max-width: 960px) {
     #darkModeToggle {
         margin-left: 10px;
@@ -382,24 +416,3 @@ html.dark-mode .citations a {
     }
 }
 
-/* Dark mode overrides for citations */
-html.dark-mode .citations {
-  background-color: #1f1f1f;
-  color: #e0e0e0;
-}
-
-html.dark-mode .citations h1,
-html.dark-mode .citations h2,
-html.dark-mode .citations h3 {
-  background-color: transparent;
-  color: #ffffff;
-}
-
-html.dark-mode .citations a {
-  color: #80bfff;
-}
-
-html.dark-mode #conferenceCount,
-html.dark-mode #publicationCount {
-    color: #ffc857; /* soft yellow or pick your preferred highlight color */
-}

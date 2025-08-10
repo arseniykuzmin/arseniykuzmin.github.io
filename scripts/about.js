@@ -26,6 +26,8 @@ fetch('data/about.json')
 
             const universityLink = document.createElement('a');
             universityLink.href = education.url;
+            universityLink.target = '_blank';
+            universityLink.rel = 'noopener noreferrer';
             universityLink.textContent = education.university;
             divItem.appendChild(universityLink);
 

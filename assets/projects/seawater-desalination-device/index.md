@@ -1,0 +1,1 @@
+I've participated in R&D of a  multi-effect evaporation seawater desalination system based on renewable energy. Plasma deposition was used to increase light absorptivity of the heat pipes to boil water.

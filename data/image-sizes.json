@@ -1,0 +1,122 @@
+{
+  "img/m6_nozzle_holder.jpg": {
+    "width": 5632,
+    "height": 4224
+  },
+  "img/fulcheranalizer.png": {
+    "width": 771,
+    "height": 679
+  },
+  "img/fulcheralpha.png": {
+    "width": 2649,
+    "height": 2542
+  },
+  "img/github.svg": {
+    "width": 24,
+    "height": 24
+  },
+  "img/ToreSupra.png": {
+    "width": 673,
+    "height": 534
+  },
+  "img/D2O2-m.png": {
+    "width": 785,
+    "height": 537
+  },
+  "img/Xrayfilter.jpg": {
+    "width": 592,
+    "height": 555
+  },
+  "img/CuFefilm.png": {
+    "width": 924,
+    "height": 991
+  },
+  "img/kaainquest.jpg": {
+    "width": 176,
+    "height": 235
+  },
+  "img/boronpowder.jpg": {
+    "width": 500,
+    "height": 437
+  },
+  "img/carbonflow.png": {
+    "width": 706,
+    "height": 928
+  },
+  "img/bioshake.png": {
+    "width": 1250,
+    "height": 1250
+  },
+  "img/google-scholar.svg": {
+    "width": 24,
+    "height": 24
+  },
+  "img/vup2-metal.jpg": {
+    "width": 1709,
+    "height": 1709
+  },
+  "img/palp.png": {
+    "width": 511,
+    "height": 329
+  },
+  "img/CO2-m.png": {
+    "width": 881,
+    "height": 639
+  },
+  "img/ControlUnit.png": {
+    "width": 2048,
+    "height": 1536
+  },
+  "img/wcfilm.jpg": {
+    "width": 1181,
+    "height": 558
+  },
+  "img/XraySimulationResult.png": {
+    "width": 1534,
+    "height": 2064
+  },
+  "img/echellegui.png": {
+    "width": 999,
+    "height": 929
+  },
+  "assets/projects/hydrogen-retention-tore-supra/ToreSupra.png": {
+    "width": 673,
+    "height": 534
+  },
+  "assets/projects/hydrogen-retention-tore-supra/retention_tsitrone.png": {
+    "width": 1102,
+    "height": 871
+  },
+  "assets/projects/hydrogen-retention-tore-supra/sem_1.jpg": {
+    "width": 483,
+    "height": 675
+  },
+  "assets/projects/hydrogen-retention-tore-supra/tds_summary.jpg": {
+    "width": 408,
+    "height": 344
+  },
+  "assets/projects/deposition-device/wc_maker_cad.png": {
+    "width": 608,
+    "height": 710
+  },
+  "assets/projects/deposition-device/wc-film.jpg": {
+    "width": 1081,
+    "height": 878
+  },
+  "assets/projects/deposition-device/wc-film-growth-model.png": {
+    "width": 785,
+    "height": 944
+  },
+  "assets/projects/deposition-device/vup2-metal.jpg": {
+    "width": 1709,
+    "height": 1709
+  },
+  "assets/projects/deposition-device/samples_heated.jpg": {
+    "width": 913,
+    "height": 608
+  },
+  "kaa.png": {
+    "width": 946,
+    "height": 1171
+  }
+}

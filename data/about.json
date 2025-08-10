@@ -32,7 +32,7 @@
             "startDate": "12/2018",
             "endDate": "Present",
             "url": "https://www.kyoto-u.ac.jp/en",
-            "description": "Research on hydrogen interaction with materials and surface analysis using laser-based diagnostics. Supervising students and teaching undergraduate physics. Collaborating with <a href='https://www.triam.kyushu-u.ac.jp/QUEST_HP/indexen.html'>Kyushu Univ.</a> and <a href='http://www.nifs.ac.jp/index.html'>NIFS</a>. Full project: <a href='projects.html#hydrogen-gettering'>Hydrogen Getter Films</a>."
+            "description": "Research on hydrogen interaction with materials and surface analysis using laser-based diagnostics. Supervising students and teaching undergraduate physics. Collaborating with <a href='https://www.triam.kyushu-u.ac.jp/QUEST_HP/indexen.html' target='_blank' rel='noopener noreferrer'>Kyushu Univ.</a> and <a href='http://www.nifs.ac.jp/index.html' target='_blank' rel='noopener noreferrer'>NIFS</a>. Full project: <a href='projects.html#hydrogen-gettering'>Hydrogen Getter Films</a>."
         },
         {
             "title": "Research Fellow",
@@ -77,7 +77,7 @@
             "startDate": "03/2006",
             "endDate": "03/2008",
             "url": "https://eng.mephi.ru/",
-            "description": "Earned my M.Sc. and Ph.D. while working in this lab, gaining hands-on experience with vacuum and plasma systems. Investigated hydrogen retention in plasma-facing components of the <a href='https://en.wikipedia.org/wiki/WEST_(formerly_Tore_Supra)'>Tore Supra tokamak</a>. Found significantly higher retention in in-vessel graphite tiles compared to lab-exposed samples, identifying the amorphous surface layer as the main retention site. Later contract work revealed that trace oxygen in the gas mix dramatically increases hydrogen retention."
+            "description": "Earned my M.Sc. and Ph.D. while working in this lab, gaining hands-on experience with vacuum and plasma systems. Investigated hydrogen retention in plasma-facing components of the <a href='https://en.wikipedia.org/wiki/WEST_(formerly_Tore_Supra)' target='_blank' rel='noopener noreferrer'>Tore Supra tokamak</a>. Found significantly higher retention in in-vessel graphite tiles compared to lab-exposed samples, identifying the amorphous surface layer as the main retention site. Later contract work revealed that trace oxygen in the gas mix dramatically increases hydrogen retention."
         }
     ],
     "skilllist": [
@@ -95,7 +95,7 @@
     {
         "title": "Spectroscopy",
         "skills": [
-            "Atomic/molecular spectroscopy (<a href='https://www.horiba.com/int/scientific/technologies/vacuum-ultra-violet-spectroscopy/vacuum-ultra-violet-spectroscopy/' target='blank' rel='noopener noreferrer'>VUV</a>, <a href='https://en.wikipedia.org/wiki/Laser-induced_breakdown_spectroscopy' target='blank' rel='noopener noreferrer'>LIBS</a>, Raman)",
+            "Atomic/molecular spectroscopy (<a href='https://www.horiba.com/int/scientific/technologies/vacuum-ultra-violet-spectroscopy/vacuum-ultra-violet-spectroscopy/' target='_blank' rel='noopener noreferrer'>VUV</a>, <a href='https://en.wikipedia.org/wiki/Laser-induced_breakdown_spectroscopy' target='_blank' rel='noopener noreferrer'>LIBS</a>, Raman)",
             "BH, H₂, C emission analysis, CR models for H and He"
         ]
     },

@@ -1,0 +1,72 @@
+.project-content{
+  max-width:1100px;margin:0 auto;
+  padding:clamp(8px,2vw,24px);
+}
+
+.project-title{margin-bottom:1rem;line-height:1.2}
+
+.project-layout{
+  display:grid;gap:clamp(16px,3vw,32px);align-items:start;
+  grid-template-columns:minmax(240px,1fr) minmax(320px,2fr);
+}
+
+.project-layout.full{grid-template-columns:1fr}
+
+.project-figure{margin:0}
+.project-figure img{
+  display:block;width:100%;height:auto;object-fit:contain;
+  max-height:clamp(240px,45vh,520px);
+  border-radius:12px;box-shadow:0 6px 24px rgba(0,0,0,.18);
+}
+.project-figure figcaption{margin-top:.5rem;font-size:.9rem;opacity:.8}
+
+.project-body{line-height:1.75;font-size:1.06rem}
+.project-body>*:first-child{margin-top:0}
+.project-body img{max-width:100%;height:auto}
+
+.project-more{margin-top:2rem;line-height:1.75}
+
+.md-figure{margin:1rem 0}
+.md-figure img{max-width:100%;height:auto;border-radius:8px}
+.md-figure figcaption{margin-top:.35rem;font-size:.9rem;opacity:.8}
+
+.gallery{
+  display:grid;gap:12px;margin-top:1.5rem;
+  grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
+}
+.gallery figure{margin:0}
+.gallery img{width:100%;height:auto;display:block;border-radius:10px}
+.gallery figcaption{margin-top:.35rem;font-size:.85rem;opacity:.8}
+
+@media (max-width:900px){
+  .project-layout{grid-template-columns:1fr}
+  .project-figure img{max-height:none}
+}
+/* --- single-image gallery clamp --- */
+.gallery.single { 
+  display: block;
+  margin: 1.5rem auto;
+}
+
+/* limit the inner figure so it can't go full-width */
+.gallery.single figure {
+  max-width: clamp(520px, 75vw, 960px);
+  margin: 0 auto;
+}
+
+/* ensure it's not cropped*/
+.gallery.single img {
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+  max-height: clamp(280px, 60vh, 720px);
+  border-radius: 12px;
+  box-shadow: 0 6px 24px rgba(0,0,0,.18);
+}
+
+.gallery.single figcaption {
+  margin-top: .45rem;
+  font-size: .9rem;
+  opacity: .8;
+  text-align: center;
+}

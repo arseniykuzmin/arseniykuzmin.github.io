@@ -1,0 +1,1 @@
+I developed a new filter for X-ray and radio isotope sources used for non-destructive inspecion of welded joints. Significant improvement of the detection limit for defects was achived. This designed was patented, <a href='https://patents.google.com/patent/RU2530452C1/en?oq=RU2530452C1' target='_blank' rel='noopener noreferrer'>RU2530452C1</a>.

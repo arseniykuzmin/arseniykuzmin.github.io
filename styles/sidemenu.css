@@ -23,24 +23,3 @@
     overflow-y: auto;
 }
 
-.nav {
-    list-style-type: none;
-    padding-left: 0;
-}
-
-.nav-item {
-    margin-bottom: 0.5rem;
-}
-
-.nav-link {
-    color: #333;
-    text-decoration: none;
-}
-
-.nav-link.active,
-.nav-link:hover {
-    color: #007BFF;
-    /* This is a blue color. Adjust as needed. */
-    text-decoration: none;
-    /* Removing the underline. */
-}

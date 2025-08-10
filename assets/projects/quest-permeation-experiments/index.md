@@ -1,0 +1,1 @@
+For several years I worked as a member of the QUEST tokamak team. I worked with membrane prboes to detect atomic and ionic hydrogen flux, coming to the walls of the device. Several iterations of the diagnostic were designed and adopted, and several papers regarding hydrogen recycling in QUEST were published.

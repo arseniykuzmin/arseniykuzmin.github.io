@@ -1,4 +1,16 @@
 [
+{
+        "authors": "A. Kuzmin,A.  Ajrapetov, L. Begrambekov, P. Shigin",
+        "title": "Investigation of hydrogen isotope trapping and retention in Tore Supra tiles",
+        "conference": {
+            "name": "International Conference “Interaction between hydrogen isotopes and structural materials” (IHISM 2008)",
+            "location": "Nizhnij Novgorod, Russia",
+            "date": "04-08 July 2008",
+            "year": "2008"
+        },
+        "presentation": "oral presentation"
+    },
+
     {
         "authors": "A. Airapetov, L. Begrambekov, A. Kuzmin, P. Shigin",
         "title": "Oxygen depletion from carbon fiber composite in deuterium plasma with oxygen admixture",

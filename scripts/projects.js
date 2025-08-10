@@ -1,64 +1,34 @@
 // Function to fetch and populate data
 async function fetchData() {
     try {
-        const response = await fetch('data/projects.json'); // Replace with the path to your JSON file
-        const data = await response.json();
+        const [data, sizes] = await Promise.all([
+            fetch('data/projects.json').then(r => r.json()),
+            fetch('data/image-sizes.json').then(r => r.json())
+        ]);
+
+        const sizeAttr = src => {
+            const info = sizes[src.replace(/^\//, '')];
+            return info ? ` width="${info.width}" height="${info.height}"` : '';
+        };
 
         const gridContainer = document.getElementById('gridContainer');
 
-        // Create grid items and popups based on the data
-        data.forEach(item => {
-            // Create grid item
-            const gridItem = document.createElement('div');
-            gridItem.className = 'grid-item';
-            gridItem.style.backgroundImage = `url(${item.imageUrl})`;
-            gridItem.innerHTML = `<h2>${item.title}</h2>`;
-            gridItem.onclick = () => openPopup(item.id);
-            gridContainer.appendChild(gridItem);
-
-            // Create popup container
-            const popupContainer = document.createElement('div');
-            popupContainer.className = 'popup-container';
-            popupContainer.id = `popup${item.id}`;
-            popupContainer.style.display = 'none';
-
-            // Create popup content
-            const popupContent = document.createElement('div');
-            popupContent.className = 'popup-content';
-            popupContent.innerHTML = `
-    <span class="close-button" onclick="closePopup(${item.id})">X</span>
-    <h2>${item.title}</h2>
-    <img src="${item.imageUrl}" alt="${item.title}">
-    ${item.content}
-        `;
-            popupContainer.appendChild(popupContent);
-
-            // Add popup container to the body
-            document.body.appendChild(popupContainer);
+        // Create link cards based on the data
+        data.forEach(({ id, title, summary, imageUrl }) => {
+            const card = document.createElement('a');
+            card.className = 'grid-item';
+            card.href = `project.html?id=${id}`;
+            card.innerHTML = `
+                <img src="${imageUrl}" alt="${title}" loading="lazy" decoding="async"${sizeAttr(imageUrl)}>
+                <h2>${title}</h2>
+                <p>${summary}</p>
+            `;
+            gridContainer.appendChild(card);
         });
     } catch (error) {
         console.error('Error fetching data:', error);
     }
 }
 
-// Function to open a popup
-function openPopup(popupId) {
-    const popup = document.getElementById(`popup${popupId}`);
-    popup.style.display = 'flex';
-
-    // Add an event listener to close the popup when clicking on the background
-    popup.addEventListener('click', function (event) {
-        if (event.target === popup) {
-            closePopup(popupId);
-        }
-    });
-}
-
-// Function to close a popup
-function closePopup(popupId) {
-    const popup = document.getElementById(`popup${popupId}`);
-    popup.style.display = 'none';
-}
-
-// Call the fetchData function to populate the grid and popups
+// Call the fetchData function to populate the grid
 fetchData();

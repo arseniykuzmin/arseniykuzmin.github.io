@@ -1,0 +1,1 @@
+I developed a prototype device to investigate cell adhesion in a batch. To do so, we measured displacement of cells in the field of view and estimated the adhesion forces from the parameters of the actuater and measured dispacement. Cell identification is done automatically with the help of cellpose. Based on my prototype a US grant was won by my collaborators.

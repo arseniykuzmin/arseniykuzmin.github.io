@@ -1,0 +1,1 @@
+We've investigated how oxygen presence in hydrogen plasma affects retention in graphites. Turnes out, addition of a small concentration of oxygen leads to a tremendous increas in retention, even when ion irradiation energy is close to 0, or when irradiating graphites with only electrons.

@@ -1,0 +1,1 @@
+This python project workes with molecular hydrogen Fulcher-alpha emission. It analized 1 and 2 temperature Boltzman distributino, and calculates rotational and vibrational temperatures of hydrogen molecules in the ground (X) and excited (d) states. The code is avaliable on <a href='https://github.com/queezz/fulcheranalyzer' target='_blank' rel='noopener noreferrer'>GitHub</a>.

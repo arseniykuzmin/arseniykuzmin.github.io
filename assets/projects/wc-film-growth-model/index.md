@@ -1,0 +1,1 @@
+Tungsten-Carbon film is deposited by simultaneous spattering of W and C targets by ions from Ar+H plasma. The growth of the film was investigated at different stages. Scanning electron microscopy (SEM) to follow the development of surface morphology of the film. A growth model of two component film is proposed.
