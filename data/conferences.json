@@ -213,9 +213,25 @@
         "type": "poster"
     },
     "authors": "A. Kuzmin, T. Shikama, T. Kawate, S. Masuzaki, M. Shoji, F. Nespoli, R. Lunsford, E. Gilson, M. Hasuo",
-    "presentation":"oral presentation"
+    "presentation":"poster presentation"
     
-  }
+  },
+
+
+   {
+    "title": "BH molecular emission in the divertor region of LHD: Q-branch analysis and rotational temperature measurement",
+    "conference":{
+        "name": "22nd International Conference on Fusion Reactor Materials",
+        "conf": "ICFRC 2025",
+        "year": 2025,
+        "location": "Shizuoka, Japan",
+        "date": "28 Setember - 3 October 2025",
+        "type": "poster"
+    },
+    "authors": "A. Kuzmin, J. Hayashi, N. Mizuno, T. Shikama, M. Hasuo",
+    "presentation":"poster presentation"
+    
+  }  
 
 
 
