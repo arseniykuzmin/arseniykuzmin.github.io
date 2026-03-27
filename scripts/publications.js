@@ -141,7 +141,7 @@ firstButton.addEventListener('click', function () {
 });
 
 // Load publications from JSON file
-fetch('assets/data/publications.json')
+fetch('data/publications.json')
     .then((response) => response.json())
     .then((data) => {
         originalPublications = data;

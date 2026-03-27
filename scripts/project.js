@@ -99,7 +99,7 @@ async function loadProject() {
   try {
     const [projects, sizes] = await Promise.all([
       fetch(root + "data/projects.json").then(r => r.json()),
-      fetch(root + "assets/data/image-sizes.json").then(r => r.json())
+      fetch(root + "data/image-sizes.json").then(r => r.json())
     ]);
     let project = null;
     if (slugFromPath) {

@@ -3,7 +3,7 @@ async function fetchData() {
     try {
         const [data, sizes] = await Promise.all([
             fetch('data/projects.json').then(r => r.json()),
-            fetch('assets/data/image-sizes.json').then(r => r.json())
+            fetch('data/image-sizes.json').then(r => r.json())
         ]);
 
         const sizeAttr = src => {
