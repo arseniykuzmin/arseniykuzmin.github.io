@@ -1,12 +1,15 @@
 <!DOCTYPE html>
+<!-- TEMPLATE: templates/base.html | page: publications -->
 <html>
 
 <head>
+    <!-- BEGIN base.html: head (dark-mode bootstrap) -->
     <script>
         if (localStorage.getItem('darkMode') === '1') {
         document.documentElement.classList.add('dark-mode');
         }
     </script>    
+    <meta charset="UTF-8">
     <title>Arseniy Kuzmin: Publications</title>
     <link rel="stylesheet" href="styles/styles.css">
     <link rel="stylesheet" href="styles/sortbuttons.css">
@@ -15,16 +18,20 @@
     <meta name="viewport" content="width=device-width">
     <!--JQuery for button arrows -->
     <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <!-- END base.html: head -->
 </head>
 
 <body>
+    <!-- BEGIN base.html: body chrome (order: navbar.js, scroltotop.js, scroll-to-top) -->
     <script src="scripts/navbar.js"></script>
-    <nav id="navbar"></nav>
     <!-- Floating button to go back to the top -->
     <script src="scripts/scroltotop.js"></script>
     <div class="scroll-to-top-button" id="scrollToTopButton"><span class="scroll-to-top-arrow"></span></div>
+    <!-- END base.html: body chrome -->
 
+    <!-- BEGIN base.html: {{ content }} -->
     <div class="main-content">
+        <nav id="navbar"></nav>
         <div class="citations">
             <h1>Publication List</h1>
             <div class="button-container">
@@ -40,6 +47,7 @@
 
         <div id="citations" class="citations"></div>
     </div>
+    <!-- END base.html: {{ content }} -->
     <script src="scripts/publications.js"></script>
 </body>
 

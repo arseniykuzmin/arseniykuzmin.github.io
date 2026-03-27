@@ -1,7 +1,9 @@
 <!DOCTYPE html>
+<!-- TEMPLATE: templates/base.html | page: conferences -->
 <html>
 
 <head>
+    <!-- BEGIN base.html: head (dark-mode bootstrap) -->
     <script>
   if (localStorage.getItem('darkMode') === '1') {
     document.documentElement.classList.add('dark-mode');
@@ -20,10 +22,21 @@
     <meta property="og:title" content="Arseniy Kuzmin, Plasma Physicist">
     <meta property="og:description" content="Hello. I'm an experienced plasma physicist looking for a job.">
     <meta property="og:url" content="https://queezz.github.io/index.html">
+    <!-- END base.html: head -->
 </head>
 
 <body>
+    <!-- Page-specific: conferences loader (must run before DOM ready handlers register; keep first) -->
     <script src="scripts/conferences.js"></script>
+    <!-- BEGIN base.html: body chrome (order: navbar.js, scroltotop.js, scroll-to-top) -->
+    <script src="scripts/navbar.js"></script>
+    <!-- <script src="scripts/sidemenu.js" defer></script> -->
+    <!-- Floating button to go back to the top -->
+    <script src="scripts/scroltotop.js"></script>
+    <div class="scroll-to-top-button" id="scrollToTopButton"><span class="scroll-to-top-arrow"></span></div>
+    <!-- END base.html: body chrome -->
+
+    <!-- BEGIN base.html: {{ content }} -->
     <div class="main-content">
         <nav id="navbar"></nav>
         <div class="citations">
@@ -50,14 +63,9 @@
                 </nav>
             </div>
         </div>
-
+        -->
     </div>
--->
-        <script src="scripts/navbar.js"></script>
-        <!-- <script src="scripts/sidemenu.js" defer></script> -->
-        <!-- Floating button to go back to the top -->
-        <script src="scripts/scroltotop.js"></script>
-        <div class="scroll-to-top-button" id="scrollToTopButton"><span class="scroll-to-top-arrow"></span></div>
+    <!-- END base.html: {{ content }} -->
 </body>
 
 </html>
