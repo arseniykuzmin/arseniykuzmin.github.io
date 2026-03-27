@@ -35,7 +35,7 @@ function toggleNavbar() {
 }
 
 function loadNavbar() {
-    fetch('navbar.html')
+    fetch((typeof window.__SITE_ROOT__ !== 'undefined' ? window.__SITE_ROOT__ : '') + 'navbar.html')
         .then(response => response.text())
         .then(data => {
             const navbarElement = document.getElementById('navbar');

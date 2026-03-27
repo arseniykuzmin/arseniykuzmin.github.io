@@ -1,0 +1,61 @@
+/* Vertical scroll navigation with progress */
+.scroll-nav {
+    position: fixed;
+    top: 10vh;
+    right: 20px;
+    width: 20px;
+    height: 80vh;
+    z-index: 1000;
+}
+
+.scroll-nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    position: relative;
+}
+
+.scroll-nav li {
+    margin: 0;
+    padding: 0;
+}
+
+.scroll-nav a {
+    display: block;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: #ccc;
+    margin: 10px auto;
+    text-indent: -9999px;
+}
+
+.scroll-nav a.active,
+.scroll-nav a:hover {
+    background: #007BFF;
+}
+
+.scroll-nav .progress {
+    position: absolute;
+    left: 50%;
+    top: 0;
+    transform: translateX(-50%);
+    width: 2px;
+    background: #007BFF;
+    height: 0;
+}
+
+.scroll-nav .progress-label {
+    position: absolute;
+    bottom: -20px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 12px;
+}
+
+@media (max-width: 960px) {
+    .scroll-nav {
+        display: none;
+    }
+}

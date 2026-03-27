@@ -1,0 +1,238 @@
+[
+    {
+            "authors": "A. Kuzmin,A.  Ajrapetov, L. Begrambekov, P. Shigin",
+            "title": "Investigation of hydrogen isotope trapping and retention in Tore Supra tiles",
+            "conference": {
+                "name": "International Conference “Interaction between hydrogen isotopes and structural materials” (IHISM 2008)",
+                "location": "Nizhnij Novgorod, Russia",
+                "date": "04-08 July 2008",
+                "year": "2008"
+            },
+            "presentation": "oral presentation"
+        },
+    
+        {
+            "authors": "A. Airapetov, L. Begrambekov, A. Kuzmin, P. Shigin",
+            "title": "Oxygen depletion from carbon fiber composite in deuterium plasma with oxygen admixture",
+            "conference": {
+                "name": "International Conference “Interaction between hydrogen isotopes and structural materials” (IHISM 2009)",
+                "location": "Sarov, Russia",
+                "date": "06-09 July 2009",
+                "year": "2009"
+            },
+            "presentation": "oral presentation"
+        },
+        {
+            "authors": "L. Begrambekov, A. Kuzmin, A. Makarov, Ya. Sadovsky, P. Shigin",
+            "title": "Deposition of carbon and tungsten-carbon films in argon discharge with deuterium contaminant",
+            "conference": {
+                "name": "17th international summer school on vacuum, electron and ion technologies (VEIT 2011)",
+                "location": "Sunny Beach, Bulgaria",
+                "date": "19-23 September 2011",
+                "year": "2011"
+            },
+            "presentation": "oral presentation"
+        },
+        {
+            "authors": "A. Kuzmin, H. Zushi, I. Takagi, S. K. Sharma, A. Rusinov, Y. Inoue, Y. Hirooka, H. Zhou, M. Kobayashi, M. Sakamoto, K. Hanada, N. Yoshida, K. Nakamura, A. Fujisawa, K. Matsuoka, H. Idei, Y. Nagashima, M. Hasegawa, T. Onchi, S. Banerjee, K. Mishra",
+            "title": "Atomic hydrogen flux measurement using permeation probes in steady state QUEST spherical tokamak plasma",
+            "conference": {
+                "name": "10th international conference on tritium science and technology (TRITIUM 2013)",
+                "location": "Nice, France",
+                "date": "21-25 October 2013",
+                "year": "2013"
+            },
+            "presentation": "poster presentation"
+        },
+        {
+            "authors": "A. Kuzmin, H. Zushi, I. Takagi, S. K. Sharma, Y. Hirooka, H. Zhou, M. Kobayashi, M. Sakamoto, K. Hanada, N. Yoshida, K. Nakamura, A. Fujisawa, K. Matsuoka, H. Idei, Y. Nagashima, M. Hasegawa, T. Onchi, S. Banerjee, K. Mishra",
+            "title": "Global gas balance and influence of atomic hydrogen irradiation on the wall inventory in steady-state operation of QUEST tokamak",
+            "conference": {
+                "name": "21st international conference on plasma surface interactions in controlled fusion devices (PSI 2014)",
+                "location": "Kanazawa, Japan",
+                "date": "26-30 May 2014",
+                "year": "2014"
+            },
+            "presentation": "poster presentation"
+        },
+        {
+            "authors": "H. Zushi, A. Kuzmin, I. Takagi, S. K. Sharma, M. Hasegawa, M. Kobayashi, Y. Hirooka, N. Yoshida, A. Rusinov, A. Inoue, H. Zhou, A. Fujisawa, K. Hanada, H. Idei, K. Nakamura, Y. Nagashima, K. Matsuoka, T. Onchi, S. Tashima, S. Banerjee, N. Sakaguchi, E. Kalinnikova, K. Mishra, X. Liu, S. Kubo, Y. Ueda, T. Fujita, S. Ide, N. Ohno, A. Hatayama, A. Ejiri, T. Yamaguchi, J. Hiratsuka, H. Togashi, Y. Takase, A. Fukuyama, O. Mitarai",
+            "title": "Determination of the system function for the particle circulation process using perturbation technique in QUEST",
+            "conference": {
+                "name": "25th fusion energy conference (FEC 2014)",
+                "location": "St. Petersburg, Russia",
+                "date": "13-18 October 2014",
+                "year": "2014"
+            },
+            "presentation": "poster presentation"
+        },
+        {
+            "authors": "A. Kuzmin, H. Zushi, I. Takagi, K. Hanada, Y. Hirooka, H. Zhou, M. Kobayashi, M. Sakamoto, S. K. Sharma, A. Rusinov, N. Yoshida, K. Nakamura, A. Fujisawa, K. Matsuoka, H. Idei, Y. Nagashima, M. Hasegawa, T. Onchi, K. Mishra",
+            "title": "Gas balance and permeation probes for hydrogen retention analysis in QUEST",
+            "conference": {
+                "name": "8th IAEA technical meeting on 'steady state operation' of magnetic fusion devices (IAEA SSO 2015)",
+                "location": "Nara, Japan",
+                "date": "26-29 May 2015",
+                "year": "2015"
+            },
+            "presentation": "poster presentation"
+        },
+        {
+            "authors": "A. Kuzmin, H. Zushi, I. Takagi, K. Hanada, Y. Hirooka, H. Zhou, M. Kobayashi, M. Sakamoto, T. Onchi, Y. Oyama, N. Yoshida, K. Nakamura, A. Fujisawa, K. Matsuoka, H. Idei, Y. Nagashima, M. Hasegawa, K. Mishra",
+            "title": "Permeation probes for hydrogen retention measurements",
+            "conference": {
+                "name": "22nd international conference on ion-surface interactions (ISI 2015)",
+                "location": "Moscow, Russia",
+                "date": "20-24 August 2015",
+                "year": "2015"
+            },
+            "presentation": "oral presentation"
+        },
+        {
+            "authors": "A. Kuzmin, H. Zushi, I. Takagi, S. K. Sharma, M. Kobayashi, Y. Hirooka, T. Onchi, K. Hanada, Y. Oyama, N. Yoshida, K. Nakamura, A. Fujisawa, H. Idei, Y. Nagashima, M. Hasegawa, T. Mutoh, K. Mishra, H. Ohwada",
+            "title": "Spatial distribution of the hydrogen retention in long duration discharges",
+            "conference": {
+                "name": "22nd international conference on plasma surface interactions in controlled fusion devices (PSI-22)",
+                "location": "Rome, Italy",
+                "date": "30 May - 3 June 2016",
+                "year": "2016"
+            },
+            "presentation": "poster presentation"
+        },
+        {
+            "authors": "A. Kuzmin, M. Kobayashi, M. Hasuo, T. Shikama, T. Nakano, K. Fujii, M. Goto, T. Morisaki",
+            "title": "Investigation of the impurity flow velocity and temperature in the edge plasma of LHD: dependence on density and isotope effect",
+            "conference": {
+                "name": "26th international Toki conference on plasma and fusion research & 11th Asia Plasma and Fusion Association Conference (ITC-26 & APFA-11)",
+                "location": "Toki, Japan",
+                "date": "2017",
+                "year": "2017"
+            },
+            "presentation": "poster presentation"
+        },
+        {
+            "authors": "A. Kuzmin, M. Kobayashi, T. Nakano, G. Kawamura, M. Hasuob, K. Fujiib, T. Morisaki",
+            "title": "Measurements of the impurity flow velocity and temperature in a wide plasma parameter range for Deuterium and Hydrogen plasmas in the divertor legs of the stochastic layer in LHD",
+            "conference": {
+                "name": "23rd International Conference on Plasma Surface Interactions in Controlled Fusion Devices (PSI-23)",
+                "location": "Princeton, New Jersy, USA",
+                "date": "17-22 June 2018",
+                "year": "2018"
+            },
+            "presentation": "poster presentation"
+        },
+        {
+            "authors": "A. Kuzmin, M. Kobayashi, T. Nakanoa, G. Kawamura, M. Hasuob, K. Fujiib, T. Morisaki",
+            "title": "Helium and carbon collisional-radiative model for evaluation of plasma parameters in stochastic layer of LHD",
+            "conference": {
+                "name": "27th international Toki conference & 13th Asia Pacific Plasma Theory Conference (ITC-27 & APPTC2018)",
+                "location": "Toki, Japan",
+                "date": "2018",
+                "year": "2018"
+            },
+            "presentation": "poster presentation"
+        },
+        {
+            "authors": "A. Kuzmin, M. Kobayashi, T. Nakanoa, G. Kawamura, M. Hasuob, K. Fujiib, T. Morisaki",
+            "title": "Ro-vibrational population distribution in the ground state of hydrogen and deuterium molecules in LHD peripheral plasma deduced from emission spectroscopy",
+            "conference": {
+                "name": "29th international Toki conference (ITC-29)",
+                "location": "Toki, Japan",
+                "date": "2020",
+                "year": "2020"
+            },
+            "poster": "Poster-2-F3-14",
+            "presentation": "poster presentation"
+        },
+        {
+            "authors": "A. Kuzmin, M. Kobayashi, K. Hanada, H. Idei, T. Onchi, S. Mori, N. Yoneda, T. Shikama, M. Hasuo, T. Ido, Y. Nagashima, R. Ikezoe, M. Hasegawa, K. Kuroda, K. Kono, S. Matsuo, T. Nagata, S. Shimabukuro, A. Higashijima, I. Niiya, H. Zushi",
+            "title": "Investigation of radial distribution of atomic hydrogen flow to the plasma facing components in steady state tokamak operation",
+            "conference": {
+                "name": "24th international conference on plasma surface interactions in controlled fusion devices (PSI-24)",
+                "location": "Jeju, Korea (online)",
+                "date": "25-29 January 2021",
+                "year": "2021"
+            },
+            "presentation": "poster presentation"
+        },
+        {
+            "authors": "A. Kuzmin, K. Miura, K. Hanada, T. Shikama, K. Fujii, M. Kobayashi, M. Hasuo",
+            "title": "Oxygen effect on hydrogen permeability through PdCu membrane under hydrogen plasma irradiation",
+            "conference": {
+                "name": "30th international Toki conference (ITC-30)",
+                "location": "Toki, Japan (online)",
+                "date": "2021",
+                "year": "2021"
+            },
+            "presentation": "poster presentation"
+        },
+        {
+            "authors": "A. Kuzmin, K. Miura, M. Kobayashi, K. Hanada, K. Fujii, T. Shikama, M. Hasuo",
+            "title": "Atomic and ionic hydrogen flux probe for quantitative in-situ monitoring of hydrogen recycling",
+            "conference": {
+                "name": "25th international conference on plasma surface interactions in controlled fusion devices (PSI-25)",
+                "location": "Korea (online)",
+                "date": "13-17 June 2022",
+                "year": "2022"
+            },
+            "presentation": "poster presentation"
+        },
+        {
+            "authors": "A. Kuzmin, K. Miura, S. Kurokawa, T. Shikama, M. Hasuo",
+            "title": "Effect of oxygen on plasma driven permeation of hydrogen through metal membranes",
+            "conference": {
+                "name": "International conference on materials innovation for sustainable development goals (MRM2023 / IUMRS-ICA2023)",
+                "location": "Kyoto, Japan",
+                "date": "11-16 December 2023",
+                "year": "2023"
+            },
+            "presentation": "oral presentation"
+        },
+    
+     {
+        "title": "Effect of oxide and tungsten films on plasma driven hydrogen permeation through Pd, Ni, and steel membranes",
+        "conference":{
+            "name":"13th International Conference on Material Science and Engineering Technology",
+            "conf": "ICMSET 2024",
+            "year": "2024",
+            "location": "Nagoya, Japan",
+            "date": "22-24 November 2024"
+        },
+        "presentation": "oral presentation",
+        "authors":  "A. Kuzmin,J. Hayashi, T. Hashizuka, T. Shikama,M. Hasuo"
+      },
+    
+       {
+        "title": "BH molecular emission in the divertor region of LHD: Q-branch analysis and rotational temperature measurement",
+        "conference":{
+            "name": "22nd International Conference on Atomic Processes in Plasmas",
+            "conf": "APiP 2025",
+            "year": 2025,
+            "location": "Tokyo, Japan",
+            "date": "21-25 July 2025",
+            "type": "poster"
+        },
+        "authors": "A. Kuzmin, T. Shikama, T. Kawate, S. Masuzaki, M. Shoji, F. Nespoli, R. Lunsford, E. Gilson, M. Hasuo",
+        "presentation":"poster presentation"
+        
+      },
+    
+    
+       {
+        "title": "Formation, surface characterization, and stability of boron-containing films under plasma irradiation",
+        "conference":{
+            "name": "22nd International Conference on Fusion Reactor Materials",
+            "conf": "ICFRC 2025",
+            "year": 2025,
+            "location": "Shizuoka, Japan",
+            "date": "28 Setember - 3 October 2025",
+            "type": "poster"
+        },
+        "authors": "A. Kuzmin, J. Hayashi, N. Mizuno, T. Shikama, M. Hasuo",
+        "presentation":"poster presentation"
+        
+      }  
+    
+    
+    
+    ]

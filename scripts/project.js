@@ -1,13 +1,112 @@
+const galleryItems = [];
+let currentIndex = 0;
+
+const lightbox = document.createElement("div");
+lightbox.id = "imgLightbox";
+lightbox.innerHTML = `
+  <button class="nav prev">&#10094;</button>
+  <figure>
+    <img alt="">
+    <figcaption></figcaption>
+  </figure>
+  <button class="nav next">&#10095;</button>
+`;
+let isSwiping = false;
+let touchStartX = 0;
+
+lightbox.addEventListener("click", () => {
+  if (isSwiping) {
+    isSwiping = false;
+    return;
+  }
+  lightbox.classList.remove("show");
+});
+
+lightbox.addEventListener("touchstart", e => {
+  touchStartX = e.touches[0].clientX;
+  isSwiping = false;
+}, { passive: true });
+
+lightbox.addEventListener("touchmove", e => {
+  if (Math.abs(e.touches[0].clientX - touchStartX) > 30) {
+    isSwiping = true;
+  }
+}, { passive: true });
+
+lightbox.addEventListener("touchend", e => {
+  if (!isSwiping) return;
+  const diff = e.changedTouches[0].clientX - touchStartX;
+  if (diff > 0) {
+    showLightbox(currentIndex - 1);
+  } else {
+    showLightbox(currentIndex + 1);
+  }
+});
+document.body.appendChild(lightbox);
+
+const prevBtn = lightbox.querySelector(".prev");
+const nextBtn = lightbox.querySelector(".next");
+prevBtn.addEventListener("click", e => {
+  e.stopPropagation();
+  showLightbox(currentIndex - 1);
+});
+nextBtn.addEventListener("click", e => {
+  e.stopPropagation();
+  showLightbox(currentIndex + 1);
+});
+
+document.addEventListener("keydown", e => {
+  if (!lightbox.classList.contains("show")) return;
+  if (e.key === "ArrowLeft") showLightbox(currentIndex - 1);
+  else if (e.key === "ArrowRight") showLightbox(currentIndex + 1);
+  else if (e.key === "Escape") lightbox.classList.remove("show");
+});
+
+function showLightbox(index) {
+  if (!galleryItems.length) return;
+  if (index < 0) index = galleryItems.length - 1;
+  if (index >= galleryItems.length) index = 0;
+  currentIndex = index;
+  const item = galleryItems[currentIndex];
+  lightbox.querySelector("img").src = item.src;
+  lightbox.querySelector("figcaption").textContent = item.caption || "";
+  lightbox.classList.add("show");
+}
+
+function slugFromPathname() {
+  const parts = location.pathname.split("/").filter(Boolean);
+  const i = parts.indexOf("projects");
+  if (i < 0 || i + 1 >= parts.length) return null;
+  let seg = parts[i + 1];
+  if (seg.endsWith(".html")) seg = seg.replace(/\.html$/, "");
+  if (!seg || seg === "index") return null;
+  return seg;
+}
+
+/** Root-relative paths like img/foo resolve incorrectly under /projects/<slug>/; force site-root URLs. */
+function siteAssetUrl(url) {
+  if (!url || /^(?:https?:|data:|\/)/i.test(url)) return url;
+  return "/" + String(url).replace(/^\/+/, "");
+}
+
 async function loadProject() {
-  const id = new URLSearchParams(location.search).get("id");
-  if (!id) return;
+  const idParam = new URLSearchParams(location.search).get("id");
+  const slugFromPath = slugFromPathname();
+  if (!slugFromPath && !idParam) return;
+
+  const root = typeof window.__SITE_ROOT__ !== "undefined" ? window.__SITE_ROOT__ : "";
 
   try {
     const [projects, sizes] = await Promise.all([
-      fetch("data/projects.json").then(r => r.json()),
-      fetch("data/image-sizes.json").then(r => r.json())
+      fetch(root + "data/projects.json").then(r => r.json()),
+      fetch(root + "assets/data/image-sizes.json").then(r => r.json())
     ]);
-    const project = projects.find(p => String(p.id) === String(id));
+    let project = null;
+    if (slugFromPath) {
+      project = projects.find(p => p.slug === slugFromPath);
+    } else if (idParam) {
+      project = projects.find(p => String(p.id) === String(idParam));
+    }
     if (!project) return;
 
     document.title = project.title;
@@ -21,7 +120,7 @@ async function loadProject() {
     const layout = document.createElement("section");
     layout.className = "project-layout";
 
-    const mdPath = project.markdownUrl.replace(/^\//, "");
+    const mdPath = root + "projects/" + project.slug + "/index.md";
     const mdText = await (await fetch(mdPath)).text();
     const { fm, body } = parseFrontMatter(mdText);
 
@@ -31,7 +130,7 @@ async function loadProject() {
       return info ? ` width="${info.width}" height="${info.height}"` : "";
     };
 
-    const heroSrc = fm.hero || project.imageUrl || "";
+    const heroSrc = siteAssetUrl(fm.hero || project.imageUrl || "");
     if (heroSrc) {
       const figure = document.createElement("figure");
       figure.className = "project-figure";
@@ -45,9 +144,14 @@ async function loadProject() {
 
     // markdown renderer with <figure> for images (title becomes caption)
     const renderer = new marked.Renderer();
-    renderer.image = (href, title, text) =>
-      `<figure class="md-figure"><img src="${href}" alt="${escapeHtml(text || "")}" loading="lazy" decoding="async"${sizeAttr(href)}>` +
-      (title ? `<figcaption>${escapeHtml(title)}</figcaption>` : "") + `</figure>`;
+    renderer.image = (href, title, text) => {
+      const src = siteAssetUrl(href);
+      return (
+        `<figure class="md-figure"><img src="${src}" alt="${escapeHtml(text || "")}" loading="lazy" decoding="async"${sizeAttr(src)}>` +
+        (title ? `<figcaption>${escapeHtml(title)}</figcaption>` : "") +
+        `</figure>`
+      );
+    };
 
     const [lead, rest] = splitLead(body);
     const article = document.createElement("article");
@@ -65,16 +169,35 @@ async function loadProject() {
       container.appendChild(more);
     }
 
-    if (Array.isArray(fm.gallery) && fm.gallery.length) {
-      const g = document.createElement("div");
-      g.className = "gallery";
-       if (fm.gallery.length === 1) g.classList.add("single");
-      g.innerHTML = fm.gallery.map(
-        item => `<figure><img src="${item.src}" alt="" loading="lazy" decoding="async"${sizeAttr(item.src)}>
-          ${item.caption ? `<figcaption>${escapeHtml(item.caption)}</figcaption>` : ""}</figure>`
-      ).join("");
-      container.appendChild(g);
-    }
+if (Array.isArray(fm.gallery) && fm.gallery.length) {
+  const g = document.createElement("div");
+  g.className = "gallery";
+  if (fm.gallery.length === 1) g.classList.add("single");
+
+  g.innerHTML = fm.gallery
+    .map(item => {
+      const src = siteAssetUrl(item.src);
+      const captionHtml = item.caption ? `<figcaption>${escapeHtml(item.caption)}</figcaption>` : "";
+      return `<figure>
+                <div class="thumb">
+                  <img src="${src}" alt="" loading="lazy" decoding="async" ${sizeAttr(src)}>
+                </div>
+                ${captionHtml}
+              </figure>`;
+    })
+    .join("");
+
+  container.appendChild(g);
+
+  fm.gallery.forEach(item => {
+    galleryItems.push({ src: siteAssetUrl(item.src), caption: item.caption || "" });
+  });
+
+  g.querySelectorAll("img").forEach((img, idx) => {
+    img.addEventListener("click", () => showLightbox(idx));
+  });
+}
+
 
     if (fm.layout === "full") layout.classList.add("full");
   } catch (e) {

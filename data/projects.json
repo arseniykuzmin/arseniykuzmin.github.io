@@ -1,107 +1,107 @@
 [
   {
     "id": 1,
-    "title": "Deposition Device",
+    "slug": "deposition-device",
+    "title": "W-C Deposition Device",
     "summary": "Device for simultaneous tungsten-carbon film deposition.",
-    "imageUrl": "img/vup2-metal.jpg",
-    "markdownUrl": "assets/projects/deposition-device/index.md"
+    "imageUrl": "/img/vup2-metal.jpg"
   },
   {
     "id": 2,
+    "slug": "hydrogen-retention-tore-supra",
     "title": "Hydrogen Retention in Tore-Supra Tiles",
     "summary": "Study of hydrogen retention in Tore-Supra tokamak tiles.",
-    "imageUrl": "img/ToreSupra.png",
-    "markdownUrl": "assets/projects/hydrogen-retention-tore-supra/index.md"
+    "imageUrl": "/img/ToreSupra.png"
   },
   {
     "id": 3,
+    "slug": "wc-film-growth-model",
     "title": "Tungsten-Carbon Film Growth Model",
     "summary": "Modeling growth of W-C films during dual sputtering.",
-    "imageUrl": "img/wcfilm.jpg",
-    "markdownUrl": "assets/projects/wc-film-growth-model/index.md"
+    "imageUrl": "/img/wcfilm.jpg"
   },
   {
     "id": 4,
+    "slug": "oxygen-removal-graphite-wall",
     "title": "Oxygen Removal from Graphite Wall",
     "summary": "Glow discharge cleaning parameters for oxygen removal.",
-    "imageUrl": "img/CO2-m.png",
-    "markdownUrl": "assets/projects/oxygen-removal-graphite-wall/index.md"
+    "imageUrl": "/img/CO2-m.png"
   },
   {
     "id": 5,
+    "slug": "cell-adhesion-study",
     "title": "Cell Adhesion Study",
     "summary": "Prototype to measure cell adhesion forces using automated tracking.",
-    "imageUrl": "img/bioshake.png",
-    "markdownUrl": "assets/projects/cell-adhesion-study/index.md"
+    "imageUrl": "/img/bioshake.png"
   },
   {
     "id": 6,
+    "slug": "plasma-device-control-unit",
     "title": "Plasma Device Control Unit",
     "summary": "Open-source control and acquisition unit for plasma experiments.",
-    "imageUrl": "img/ControlUnit.png",
-    "markdownUrl": "assets/projects/plasma-device-control-unit/index.md"
+    "imageUrl": "/img/ControlUnit.png"
   },
   {
     "id": 7,
+    "slug": "x-ray-filter-inspection",
     "title": "X-ray Filter for Non-destructive Inspection",
     "summary": "Improved X-ray filter design for weld inspection.",
-    "imageUrl": "img/Xrayfilter.jpg",
-    "markdownUrl": "assets/projects/x-ray-filter-inspection/index.md"
+    "imageUrl": "/img/Xrayfilter.jpg"
   },
   {
     "id": 8,
+    "slug": "quest-permeation-experiments",
     "title": "Permeation Experiments in QUEST",
     "summary": "Hydrogen flux measurements with membrane probes in QUEST tokamak.",
-    "imageUrl": "img/kaainquest.jpg",
-    "markdownUrl": "assets/projects/quest-permeation-experiments/index.md"
+    "imageUrl": "/img/kaainquest.jpg"
   },
   {
     "id": 9,
+    "slug": "carbon-impurity-flow-lhd",
     "title": "Carbon impurity flow in LHD",
     "summary": "Analysis of carbon impurity transport in LHD peripheral plasma.",
-    "imageUrl": "img/carbonflow.png",
-    "markdownUrl": "assets/projects/carbon-impurity-flow-lhd/index.md"
+    "imageUrl": "/img/carbonflow.png"
   },
   {
     "id": 10,
+    "slug": "boron-powder-plasma-sputtering",
     "title": "Boron powder plasma sputtering",
     "summary": "Prototype sputtering device for boron powder deposition.",
-    "imageUrl": "img/boronpowder.jpg",
-    "markdownUrl": "assets/projects/boron-powder-plasma-sputtering/index.md"
+    "imageUrl": "/img/boronpowder.jpg"
   },
   {
     "id": 11,
+    "slug": "hydrogen-molecule-spectroscopy",
     "title": "Hydrogen Molecule Spectroscopy",
     "summary": "Spectroscopy of hydrogen molecule populations in LHD plasma.",
-    "imageUrl": "img/fulcheralpha.png",
-    "markdownUrl": "assets/projects/hydrogen-molecule-spectroscopy/index.md"
+    "imageUrl": "/img/fulcheralpha.png"
   },
   {
     "id": 12,
+    "slug": "seawater-desalination-device",
     "title": "Seawater Desalination Device",
     "summary": "Renewable-powered multi-effect evaporation desalination system.",
-    "imageUrl": "img/CuFefilm.png",
-    "markdownUrl": "assets/projects/seawater-desalination-device/index.md"
+    "imageUrl": "/img/CuFefilm.png"
   },
   {
     "id": 13,
+    "slug": "echelle-spectrometer-gui",
     "title": "GUI for Echelle Spectrometer Image processing",
     "summary": "PyQt GUI converts 2D echelle images to calibrated spectra.",
-    "imageUrl": "img/echellegui.png",
-    "markdownUrl": "assets/projects/echelle-spectrometer-gui/index.md"
+    "imageUrl": "/img/echellegui.png"
   },
   {
     "id": 14,
+    "slug": "oxygen-effect-hydrogen-retention",
     "title": "Oxygen Effect on Hydrogen Retention in Graphites",
     "summary": "Oxygen addition drastically increases hydrogen retention in graphites.",
-    "imageUrl": "img/D2O2-m.png",
-    "markdownUrl": "assets/projects/oxygen-effect-hydrogen-retention/index.md"
+    "imageUrl": "/img/D2O2-m.png"
   },
   {
     "id": 15,
+    "slug": "fulcher-alpha-analizer",
     "title": "Fulcher-alpha Emission Analizer",
     "summary": "Python tool for analyzing molecular hydrogen Fulcher-alpha emission.",
-    "imageUrl": "img/fulcheranalizer.png",
-    "markdownUrl": "assets/projects/fulcher-alpha-analizer/index.md"
+    "imageUrl": "/img/fulcheranalizer.png"
   }
 ]

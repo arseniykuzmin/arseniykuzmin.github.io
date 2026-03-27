@@ -1,13 +1,13 @@
 ---
-hero: /assets/projects/hydrogen-retention-tore-supra/ToreSupra.png
+hero: /projects/hydrogen-retention-tore-supra/ToreSupra.png
 hero_caption: First wall overview and selected tiles
 layout: split
 gallery:
-  - src: /assets/projects/hydrogen-retention-tore-supra/sem_1.jpg
+  - src: /projects/hydrogen-retention-tore-supra/sem_1.jpg
     caption: Coating detail
-  - src: /assets/projects/hydrogen-retention-tore-supra/retention_tsitrone.png
+  - src: /projects/hydrogen-retention-tore-supra/retention_tsitrone.png
     caption: Particle flux trapped in the wall calculated from particle balance
-  - src: /assets/projects/hydrogen-retention-tore-supra/tds_summary.jpg
+  - src: /projects/hydrogen-retention-tore-supra/tds_summary.jpg
     caption: H/D retention summary
 ---
 
@@ -29,4 +29,4 @@ $> 20$ discharges; He$^{+}$ bombardment of inner wall.
 | He$^{+}$ flux density | $6\times10^{17}\ \mathrm{at\\,s^{-1}\\,m^{-2}}$            |
 
 
-<!-- ![Optical micrograph](/assets/projects/hydrogen-retention-tore-supra/optical.jpg "Optical micrograph of the surface") -->
+<!-- ![Optical micrograph](/projects/hydrogen-retention-tore-supra/optical.jpg "Optical micrograph of the surface") -->

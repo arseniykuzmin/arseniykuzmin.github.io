@@ -3,7 +3,7 @@ async function fetchData() {
     try {
         const [data, sizes] = await Promise.all([
             fetch('data/projects.json').then(r => r.json()),
-            fetch('data/image-sizes.json').then(r => r.json())
+            fetch('assets/data/image-sizes.json').then(r => r.json())
         ]);
 
         const sizeAttr = src => {
@@ -14,10 +14,10 @@ async function fetchData() {
         const gridContainer = document.getElementById('gridContainer');
 
         // Create link cards based on the data
-        data.forEach(({ id, title, summary, imageUrl }) => {
+        data.forEach(({ slug, title, summary, imageUrl }) => {
             const card = document.createElement('a');
             card.className = 'grid-item';
-            card.href = `project.html?id=${id}`;
+            card.href = `projects/${slug}/`;
             card.innerHTML = `
                 <img src="${imageUrl}" alt="${title}" loading="lazy" decoding="async"${sizeAttr(imageUrl)}>
                 <h2>${title}</h2>
