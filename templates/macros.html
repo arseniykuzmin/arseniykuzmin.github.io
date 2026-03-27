@@ -1,0 +1,20 @@
+{% macro citation_item(pub, num) %}
+        <div class="citations-item">
+          <div class="title"><p> [{{ num }}] {{ pub.title | e }}</p></div>
+          <div class="authors">{{ pub.authors | transform_authors }}</div>
+          <div class="journal">{{ pub.venue | e }} {{ pub.volume | e }} ({{ pub.year | e }}) {{ pub.pages | e }}
+      {% if pub.doi %}<a class="citations-link" href="https://doi.org/{{ pub.doi | e }}" target="_blank" rel="noopener noreferrer">{{ pub.doi | e }}</a>{% endif %}</div></div>
+{% endmacro %}
+
+{% macro conference_item(conf, num) %}
+            <div class="conference-item">
+                <h3>{{ num }}. {{ conf.title | e }}</h3>
+                <div class="authors">{{ conf.authors | e }}</div>
+                <div class="conference-details">
+                    <p>Conference: {{ conf.conference.name | e }}</p>
+                    <p>Location: {{ conf.conference.location | e }}</p>
+                    <p>Date: {{ conf.conference.date | e }}</p>
+                    <p>Presentation: {{ conf.presentation | e }}</p>
+                </div>
+            </div>
+{% endmacro %}

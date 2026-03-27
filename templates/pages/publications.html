@@ -1,0 +1,45 @@
+{% extends "base_build.html" %}
+{% from "macros.html" import citation_item %}
+
+{% block head_title %}Arseniy Kuzmin: Publications{% endblock %}
+
+{% block head_extra %}
+    <link rel="stylesheet" href="styles/sortbuttons.css">
+    <link rel="stylesheet" href="styles/citations.css">
+    <meta name="viewport" content="width=device-width">
+{% endblock %}
+
+{% block navbar %}
+{% include "partials/navbar.html" %}
+{% endblock %}
+
+{% block chrome %}
+{% include "partials/inlined_navbar_chrome.html" %}
+{% endblock %}
+
+{% block content %}
+        <div class="citations">
+            <h1>Publication List</h1>
+            <div class="button-container">
+                <button id="sortButton" class="sort-button">Year<span class="arrow"></span></button>
+                <button id="filterButton" class="toggle-button">Featured</button>
+                <button id="firstButton" class="toggle-button">1st&nbsp;*</button>
+                <p id="publicationCount" class="count-label">{{ publications_sorted | length }}</p>
+            </div>
+            <p>* - first and corresponding author</p>
+        </div>
+
+        <div id="citations" class="citations">
+{% for pub in publications_sorted %}
+{{ citation_item(pub, loop.index) }}
+{% endfor %}
+        </div>
+{% endblock %}
+
+{% block body_scripts_bottom %}
+    <script type="application/json" id="embed-publications">{{ publications | tojson }}</script>
+    <script>
+window.__PUBLICATIONS_DATA__ = JSON.parse(document.getElementById('embed-publications').textContent);
+{% include "partials/publications_runtime.js" %}
+    </script>
+{% endblock %}

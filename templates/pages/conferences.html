@@ -1,0 +1,50 @@
+{% extends "base_build.html" %}
+{% from "macros.html" import conference_item %}
+
+{% block head_title %}Arseniy Kuzmin: Conferences{% endblock %}
+
+{% block head_extra %}
+    <link rel="stylesheet" href="styles/conferences.css">
+    <link rel="stylesheet" href="styles/sortbuttons.css">
+    <link rel="stylesheet" href="styles/citations.css">
+    <link rel="stylesheet" href="styles/styles.css">
+    <meta name="keywords" content="physics, fusion, hydrogen, oxygen, tokamak">
+    <meta name="viewport" content="width=device-width">
+    <meta name="description" content="Plasma physicist">
+    <meta property="og:image" content="https://queezz.github.io/kaa.jpg">
+    <meta property="og:title" content="Arseniy Kuzmin, Plasma Physicist">
+    <meta property="og:description" content="Hello. I'm an experienced plasma physicist looking for a job.">
+    <meta property="og:url" content="https://queezz.github.io/index.html">
+{% endblock %}
+
+{% block navbar %}
+{% include "partials/navbar.html" %}
+{% endblock %}
+
+{% block chrome %}
+{% include "partials/inlined_navbar_chrome.html" %}
+{% endblock %}
+
+{% block content %}
+        <div class="citations">
+            <h1>International Conferences</h1>
+            <div class="button-container">
+                <button id="sortButton" class="sort-button">Year<span class="arrow"></span></button>
+                <p id="conferenceCount" class="count-label">{{ conferences_sorted | length }}</p>
+            </div>
+
+            <div class="citations" id="conference-list">
+{% for conf in conferences_sorted %}
+{{ conference_item(conf, loop.index) }}
+{% endfor %}
+            </div>
+        </div>
+{% endblock %}
+
+{% block body_scripts_bottom %}
+    <script type="application/json" id="embed-conferences">{{ conferences | tojson }}</script>
+    <script>
+window.__CONFERENCES_DATA__ = JSON.parse(document.getElementById('embed-conferences').textContent);
+{% include "partials/conferences_runtime.js" %}
+    </script>
+{% endblock %}

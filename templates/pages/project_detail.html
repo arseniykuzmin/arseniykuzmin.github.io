@@ -1,0 +1,30 @@
+{% extends "base_build.html" %}
+
+{% block head_title %}{{ project.title | e }}{% endblock %}
+
+{% block head_extra %}
+    <meta name="viewport" content="width=device-width" />
+    <link rel="stylesheet" href="styles/project.css" />
+    <link rel="stylesheet" href="styles/scrollnav.css" />
+{% endblock %}
+
+{% block navbar %}
+{% include "partials/navbar.html" %}
+{% endblock %}
+
+{% block chrome %}
+{% include "partials/inlined_navbar_chrome.html" %}
+{% endblock %}
+
+{% block content %}
+    <a href="../../projects.html" class="back-link">&larr; Back to Projects</a>
+    <div id="projectContainer" class="project-content">{{ project_body }}</div>
+{% endblock %}
+
+{% block body_scripts_bottom %}
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.css">
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/contrib/auto-render.min.js"></script>
+  <script defer src="scripts/project_detail_ui.js"></script>
+  <script defer src="scripts/scrollnav.js"></script>
+{% endblock %}

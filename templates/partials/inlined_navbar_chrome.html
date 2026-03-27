@@ -1,0 +1,47 @@
+    <script>
+function updateToggleIcon() {
+    const toggleButton = document.getElementById('darkModeToggle');
+    const isDark = document.documentElement.classList.contains('dark-mode');
+
+    if (toggleButton) {
+        toggleButton.textContent = isDark ? '🌝' : '🌚';
+    }
+}
+
+function setupDarkModeToggle() {
+    const toggleButton = document.getElementById('darkModeToggle');
+
+    if (!toggleButton) {
+        console.warn('Dark mode toggle button not found after navbar load');
+        return;
+    }
+
+    toggleButton.addEventListener('click', () => {
+        const html = document.documentElement;
+        html.classList.toggle('dark-mode');
+        const isDark = html.classList.contains('dark-mode');
+        localStorage.setItem('darkMode', isDark ? '1' : '0');
+        updateToggleIcon();
+    });
+
+    updateToggleIcon();
+}
+
+function toggleNavbar() {
+    const navbarItems = document.getElementById('navbarItems');
+    const toggleIcon = document.getElementById('toggleIcon');
+
+    navbarItems.classList.toggle('show');
+    toggleIcon.innerHTML = navbarItems.classList.contains('show') ? '&#10005;' : '&#9776;';
+}
+
+function loadNavbar() {
+    setupDarkModeToggle();
+}
+
+window.addEventListener('load', loadNavbar);
+    </script>
+    <script src="scripts/scroltotop.js"></script>
+
+    <!-- Floating button to go back to the top -->
+    <div class="scroll-to-top-button" id="scrollToTopButton"><span class="scroll-to-top-arrow"></span></div>

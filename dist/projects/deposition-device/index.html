@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <script>
+        if (localStorage.getItem('darkMode') === '1') {
+        document.documentElement.classList.add('dark-mode');
+        }
+    </script>
+    <base href="../../../">
+    <meta charset="UTF-8">
+    <title>W-C Deposition Device</title>
+    <link rel="stylesheet" href="styles/styles.css">
+    
+    <meta name="viewport" content="width=device-width" />
+    <link rel="stylesheet" href="styles/project.css" />
+    <link rel="stylesheet" href="styles/scrollnav.css" />
+
+</head>
+
+<body>
+
+
+    <script>
+function updateToggleIcon() {
+    const toggleButton = document.getElementById('darkModeToggle');
+    const isDark = document.documentElement.classList.contains('dark-mode');
+
+    if (toggleButton) {
+        toggleButton.textContent = isDark ? '🌝' : '🌚';
+    }
+}
+
+function setupDarkModeToggle() {
+    const toggleButton = document.getElementById('darkModeToggle');
+
+    if (!toggleButton) {
+        console.warn('Dark mode toggle button not found after navbar load');
+        return;
+    }
+
+    toggleButton.addEventListener('click', () => {
+        const html = document.documentElement;
+        html.classList.toggle('dark-mode');
+        const isDark = html.classList.contains('dark-mode');
+        localStorage.setItem('darkMode', isDark ? '1' : '0');
+        updateToggleIcon();
+    });
+
+    updateToggleIcon();
+}
+
+function toggleNavbar() {
+    const navbarItems = document.getElementById('navbarItems');
+    const toggleIcon = document.getElementById('toggleIcon');
+
+    navbarItems.classList.toggle('show');
+    toggleIcon.innerHTML = navbarItems.classList.contains('show') ? '&#10005;' : '&#9776;';
+}
+
+function loadNavbar() {
+    setupDarkModeToggle();
+}
+
+window.addEventListener('load', loadNavbar);
+    </script>
+    <script src="scripts/scroltotop.js"></script>
+
+    <!-- Floating button to go back to the top -->
+    <div class="scroll-to-top-button" id="scrollToTopButton"><span class="scroll-to-top-arrow"></span></div>
+
+<div class="main-content">
+    <nav id="navbar">
+<div class="navbar">
+    <div class="navbar-container">
+        <div class="navbar-logo"><a href="/index.html">Arseniy Kuzmin</a></div>
+        <div class="navbar-toggle" onclick="toggleNavbar()">
+            <span id="toggleIcon">&#9776;</span>
+        </div>
+        <ul class="navbar-items" id="navbarItems">
+            <li><a href="/index.html">About</a></li>
+            <li><a href="/conferences.html">Conferences</a></li>
+            <li><a href="/publications.html">Publications</a></li>
+            <li><a href="/projects.html">Projects</a></li>
+        </ul>
+         <button id="darkModeToggle" style="margin-left: auto;">🌙</button>
+    </div>
+</div>
+</nav>
+    
+    <a href="../../projects.html" class="back-link">&larr; Back to Projects</a>
+    <div id="projectContainer" class="project-content"><h1 class="project-title">W-C Deposition Device</h1><section class="project-layout"><figure class="project-figure"><img src="/projects/deposition-device/wc_maker_cad.png" alt="W-C Deposition Device" decoding="async" fetchpriority="high" width="608" height="710"><figcaption>W–C thin film deposition device</figcaption></figure><article class="project-body"><p>A multi-material deposition device was developed to investigate tungsten–carbon (W–C) film growth during simultaneous deposition, motivated by fusion research context. ITER and other tokamaks have moved from graphite to tungsten and beryllium plasma-facing components, yet graphite divertors remain in some machines, and even in ITER the tungsten strike-point placement remains under discussion. This prompted a closer examination of W–C film formation and its interaction with hydrogen and oxygen under controlled plasma conditions, with results on hydrogen retention in carbon films produced using this setup published in <a href="#ref1">1</a>.</p>
+<p>Built in 2010–2011 in Russia, the setup features coaxial disk–ring graphite (C) and tungsten (W) sputter targets with independent biasing, a minimal yet stable target–sample distance, and a slide-in heated cassette for four 10 mm square substrates. These and other results were included in my doctoral thesis but have not been formally published beyond <a href="#ref1">1</a>.</p></article></section><section class="project-more"><h3>Parameters</h3>
+<ul>
+<li>
+<p><strong>Vacuum System</strong><br/>
+Forepump + diffusion pump with N₂ cold trap; base pressure $7\times 10^{-6}$ Torr; oil-vapor partial pressure $\le 4\times 10^{-7}$ Torr.</p>
+</li>
+<li>
+<p><strong>Plasma</strong><br/>
+  Thermionic glow-discharge configuration with heated cathode producing abundant thermo-electrons.<br/>
+  The discharge is not self-sustained; instead, thermionic emission enables higher plasma currents approaching arc levels while maintaining low working pressures.<br/>
+  DC discharge between anode and W cathode; anode at +100 V; discharge current 1.8–2.3 A.<br/>
+  Electron temperature ≈ 12.5 eV; $n_e \approx 4.5\times 10^{10}\ \mathrm{cm^{-3}}$.<br/>
+  Substrates float (~15 V); ion energy at substrates ≈ 15 eV.</p>
+</li>
+<li>
+<p><strong>Working Gas</strong><br/>
+  Ar + H₂ + trace O₂. Typical partial pressures:  </p>
+</li>
+<li>Ar $\approx 10^{-3}$ Torr  </li>
+<li>H₂ $= 10^{-6}\text{–}10^{-3}$ Torr  </li>
+<li>
+<p>O₂ $\approx 2\times 10^{-6}$ Torr<br/>
+  Residual gas at $8\times 10^{-6}$ Torr is dominated by H₂O (~85%).</p>
+</li>
+<li>
+<p><strong>Deposition</strong><br/>
+  Hydrogen flux near target:<br/>
+  $\mathrm{H^+} \approx 2\times 10^{14}\text{–}4.2\times 10^{15}\ \mathrm{cm^{-2}\,s^{-1}}$<br/>
+  $\mathrm{Ar^+} \approx 2\times 10^{15}\text{–}8\times 10^{15}\ \mathrm{cm^{-2}\,s^{-1}}$<br/>
+  H-atom flux up to $\sim 1.4\times 10^{19}\ \mathrm{cm^{-2}\,s^{-1}}$<br/>
+  Mean energies of arriving C and W atoms ≈ 0.18 eV.</p>
+</li>
+<li>
+<p><strong>Substrates &amp; Temperature</strong><br/>
+  Stainless steel (AISI 321), C/C composite (CFCN11), and W.<br/>
+  Typical deposition at 450 K; post-anneal up to 1200 K.</p>
+</li>
+<li>
+<p><strong>Deposition Window</strong><br/>
+  Co-sputtering rate 0.04–0.7 nm s⁻¹ for 20–200 min, giving 20 nm–2.5 µm films.<br/>
+  Three-channel gas inlet for controlled Ar/H₂/O₂ ratios.</p>
+</li>
+<li>
+<p><strong>Chamber &amp; Cooling</strong><br/>
+  Vacuum chamber based on the VUP-2 (Вакуумный Универсальный Пост-2) deposition stand, with a plasma box containing a tungsten cathode inside a water-cooled copper housing. Mica and ceramic insulation separate the cathode from the housing, and the cooling design prevents filament heat from overheating the assembly. </p>
+</li>
+<li>
+<p><strong>Purpose</strong><br/>
+  Study W–C film growth and concurrent H/O uptake under controlled low-energy plasma irradiation.</p>
+</li>
+</ul>
+<hr/>
+<h3>References</h3>
+<p><span id="ref1">[1]</span> L. Begrambekov, A. Kuzmin, <em>et al.</em>, <strong>Deuterium trapping in carbon films formed in different deposition conditions</strong>, <em>Journal of Nuclear Materials</em>, 435(1–3), 78–83 (2013). DOI: <a href="https://doi.org/10.1016/j.jnucmat.2013.01.211" rel="noopener" target="_blank">10.1016/j.jnucmat.2013.01.211</a></p></section><div class="gallery"><figure><div class="thumb"><img src="/projects/deposition-device/samples_heated.jpg" alt="" loading="lazy" decoding="async" width="913" height="608"></div><figcaption>Sample heater at work</figcaption></figure><figure><div class="thumb"><img src="/projects/deposition-device/vup2-metal.jpg" alt="" loading="lazy" decoding="async" width="1709" height="1709"></div><figcaption>Two-material sputtering target</figcaption></figure><figure><div class="thumb"><img src="/projects/deposition-device/wc-film.jpg" alt="" loading="lazy" decoding="async" width="1081" height="878"></div><figcaption>W–C film example SEM image</figcaption></figure></div></div>
+
+</div>
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.css">
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/contrib/auto-render.min.js"></script>
+  <script defer src="scripts/project_detail_ui.js"></script>
+  <script defer src="scripts/scrollnav.js"></script>
+
+</body>
+
+</html>
