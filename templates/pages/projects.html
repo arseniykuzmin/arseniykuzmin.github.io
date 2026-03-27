@@ -1,6 +1,11 @@
 {% extends "base_build.html" %}
-{# build.py passes projects + image_sizes for future static cards; projects.js still fetches JSON at runtime. #}
-{# Data loaded: {{ projects|length }} projects, {{ image_sizes|length }} image-size keys #}
+{# Static project grid; data from build.py (projects, image_sizes). No projects.js. #}
+
+{% macro project_img_size_attrs(imageUrl) -%}
+{%- set key = imageUrl[1:] if imageUrl.startswith('/') else imageUrl -%}
+{%- set info = image_sizes.get(key) -%}
+{%- if info %} width="{{ info.width }}" height="{{ info.height }}"{%- endif -%}
+{%- endmacro %}
 
 {% block head_title %}Arseniy Kuzmin: Projects{% endblock %}
 
@@ -75,11 +80,16 @@ window.addEventListener('load', loadNavbar);
 {% block content %}
         <h1>Projects</h1>
         <div class="grid-container" id="gridContainer">
-            <!-- Grid items will be added here -->
+{% for p in projects %}
+            <a class="grid-item" href="projects/{{ p.slug }}/">
+                <img src="{{ p.imageUrl }}" alt="{{ p.title }}" loading="lazy" decoding="async"{{ project_img_size_attrs(p.imageUrl) }}>
+                <h2>{{ p.title }}</h2>
+                <p>{{ p.summary }}</p>
+            </a>
+{% endfor %}
         </div>
 {% endblock %}
 
 {% block body_scripts_bottom %}
-    <script src="scripts/projects.js"></script>
     <script src="scripts/scrollnav.js" defer></script>
 {% endblock %}
