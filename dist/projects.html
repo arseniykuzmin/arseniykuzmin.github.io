@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <script>
+        if (localStorage.getItem('darkMode') === '1') {
+        document.documentElement.classList.add('dark-mode');
+        }
+    </script>
+    <base href="../">
+    <meta charset="UTF-8">
+    <title>Arseniy Kuzmin: Projects</title>
+    <link rel="stylesheet" href="styles/styles.css">
+    
+    <link rel="stylesheet" href="styles/projects.css">
+    <link rel="stylesheet" href="styles/scrollnav.css">
+    <meta name="keywords" content="physics, fusion, hydrogen, oxygen, tokamak">
+    <meta name="viewport" content="width=device-width">
+    <meta name="description" content="Plasma physicist">
+    <meta property="og:image" content="https://queezz.github.io/kaa.jpg">
+    <meta property="og:title" content="Arseniy Kuzmin, Plasma Physicist">
+    <meta property="og:description" content="Hello. I'm an experienced plasma physicist looking for a job.">
+    <meta property="og:url" content="https://queezz.github.io/index.html">
+
+</head>
+
+<body>
+
+
+    <script>
+function updateToggleIcon() {
+    const toggleButton = document.getElementById('darkModeToggle');
+    const isDark = document.documentElement.classList.contains('dark-mode');
+
+    if (toggleButton) {
+        toggleButton.textContent = isDark ? '🌝' : '🌚';
+    }
+}
+
+function setupDarkModeToggle() {
+    const toggleButton = document.getElementById('darkModeToggle');
+
+    if (!toggleButton) {
+        console.warn('Dark mode toggle button not found after navbar load');
+        return;
+    }
+
+    toggleButton.addEventListener('click', () => {
+        const html = document.documentElement;
+        html.classList.toggle('dark-mode');
+        const isDark = html.classList.contains('dark-mode');
+        localStorage.setItem('darkMode', isDark ? '1' : '0');
+        updateToggleIcon();
+    });
+
+    updateToggleIcon();
+}
+
+function toggleNavbar() {
+    const navbarItems = document.getElementById('navbarItems');
+    const toggleIcon = document.getElementById('toggleIcon');
+
+    navbarItems.classList.toggle('show');
+    toggleIcon.innerHTML = navbarItems.classList.contains('show') ? '&#10005;' : '&#9776;';
+}
+
+function loadNavbar() {
+    setupDarkModeToggle();
+}
+
+window.addEventListener('load', loadNavbar);
+    </script>
+    <script src="scripts/scroltotop.js"></script>
+
+    <!-- Floating button to go back to the top -->
+    <div class="scroll-to-top-button" id="scrollToTopButton"><span class="scroll-to-top-arrow"></span></div>
+
+<div class="main-content">
+    <nav id="navbar">
+<div class="navbar">
+    <div class="navbar-container">
+        <div class="navbar-logo"><a href="/index.html">Arseniy Kuzmin</a></div>
+        <div class="navbar-toggle" onclick="toggleNavbar()">
+            <span id="toggleIcon">&#9776;</span>
+        </div>
+        <ul class="navbar-items" id="navbarItems">
+            <li><a href="/index.html">About</a></li>
+            <li><a href="/conferences.html">Conferences</a></li>
+            <li><a href="/publications.html">Publications</a></li>
+            <li><a href="/projects.html">Projects</a></li>
+        </ul>
+         <button id="darkModeToggle" style="margin-left: auto;">🌙</button>
+    </div>
+</div>
+</nav>
+    
+        <h1>Projects</h1>
+        <div class="grid-container" id="gridContainer">
+            <!-- Grid items will be added here -->
+        </div>
+
+</div>
+
+    <script src="scripts/projects.js"></script>
+    <script src="scripts/scrollnav.js" defer></script>
+
+</body>
+
+</html>

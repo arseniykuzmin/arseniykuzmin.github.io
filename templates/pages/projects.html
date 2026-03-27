@@ -1,0 +1,85 @@
+{% extends "base_build.html" %}
+{# build.py passes projects + image_sizes for future static cards; projects.js still fetches JSON at runtime. #}
+{# Data loaded: {{ projects|length }} projects, {{ image_sizes|length }} image-size keys #}
+
+{% block head_title %}Arseniy Kuzmin: Projects{% endblock %}
+
+{% block head_extra %}
+    <link rel="stylesheet" href="styles/projects.css">
+    <link rel="stylesheet" href="styles/scrollnav.css">
+    <meta name="keywords" content="physics, fusion, hydrogen, oxygen, tokamak">
+    <meta name="viewport" content="width=device-width">
+    <meta name="description" content="Plasma physicist">
+    <meta property="og:image" content="https://queezz.github.io/kaa.jpg">
+    <meta property="og:title" content="Arseniy Kuzmin, Plasma Physicist">
+    <meta property="og:description" content="Hello. I'm an experienced plasma physicist looking for a job.">
+    <meta property="og:url" content="https://queezz.github.io/index.html">
+{% endblock %}
+
+{% block navbar %}
+{% include "partials/navbar.html" %}
+{% endblock %}
+
+{# Same chrome order as root projects.html: navbar behavior, scroltotop.js, scroll button.
+   Inline script mirrors scripts/navbar.js but skips fetch (navbar markup is already in DOM). #}
+{% block chrome %}
+    <script>
+function updateToggleIcon() {
+    const toggleButton = document.getElementById('darkModeToggle');
+    const isDark = document.documentElement.classList.contains('dark-mode');
+
+    if (toggleButton) {
+        toggleButton.textContent = isDark ? '🌝' : '🌚';
+    }
+}
+
+function setupDarkModeToggle() {
+    const toggleButton = document.getElementById('darkModeToggle');
+
+    if (!toggleButton) {
+        console.warn('Dark mode toggle button not found after navbar load');
+        return;
+    }
+
+    toggleButton.addEventListener('click', () => {
+        const html = document.documentElement;
+        html.classList.toggle('dark-mode');
+        const isDark = html.classList.contains('dark-mode');
+        localStorage.setItem('darkMode', isDark ? '1' : '0');
+        updateToggleIcon();
+    });
+
+    updateToggleIcon();
+}
+
+function toggleNavbar() {
+    const navbarItems = document.getElementById('navbarItems');
+    const toggleIcon = document.getElementById('toggleIcon');
+
+    navbarItems.classList.toggle('show');
+    toggleIcon.innerHTML = navbarItems.classList.contains('show') ? '&#10005;' : '&#9776;';
+}
+
+function loadNavbar() {
+    setupDarkModeToggle();
+}
+
+window.addEventListener('load', loadNavbar);
+    </script>
+    <script src="scripts/scroltotop.js"></script>
+
+    <!-- Floating button to go back to the top -->
+    <div class="scroll-to-top-button" id="scrollToTopButton"><span class="scroll-to-top-arrow"></span></div>
+{% endblock %}
+
+{% block content %}
+        <h1>Projects</h1>
+        <div class="grid-container" id="gridContainer">
+            <!-- Grid items will be added here -->
+        </div>
+{% endblock %}
+
+{% block body_scripts_bottom %}
+    <script src="scripts/projects.js"></script>
+    <script src="scripts/scrollnav.js" defer></script>
+{% endblock %}
