@@ -317,18 +317,22 @@ def copy_static_assets() -> None:
 
 
 def clean_dist(path: Path, retries: int = 8, delay: float = 0.5) -> None:
-    """Remove the output dir, retrying on transient Windows file locks.
+    """Empty dist/ in place, keeping the folder itself.
 
-    On Windows, Dropbox / antivirus / search indexers briefly hold handles
-    under dist/, so a plain rmtree can fail with WinError 32 right after a
-    previous build. Retry a few times to let the handle release instead of
-    crashing the build.
+    Deleting the contents rather than the folder preserves any per-folder
+    marker set on it -- notably the Dropbox "ignored" flag -- so the output
+    dir stays out of sync across rebuilds. On Windows, Dropbox / antivirus /
+    indexers briefly hold handles under dist/, so retry on transient locks
+    (WinError 32) instead of crashing the build.
     """
+    path.mkdir(parents=True, exist_ok=True)
     for attempt in range(1, retries + 1):
-        if not path.exists():
-            return
         try:
-            shutil.rmtree(path)
+            for child in path.iterdir():
+                if child.is_dir() and not child.is_symlink():
+                    shutil.rmtree(child)
+                else:
+                    child.unlink()
             return
         except OSError:
             if attempt == retries:
@@ -339,7 +343,6 @@ def clean_dist(path: Path, retries: int = 8, delay: float = 0.5) -> None:
 
 def main() -> None:
     clean_dist(DIST)
-    DIST.mkdir(parents=True)
     copy_static_assets()
 
     env = make_env()
