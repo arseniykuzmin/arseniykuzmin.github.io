@@ -9,6 +9,16 @@ from pathlib import Path
 from . import builder
 
 
+class _NoCacheHandler(http.server.SimpleHTTPRequestHandler):
+    """Serve dist/ with caching disabled so local previews never go stale."""
+
+    def end_headers(self) -> None:
+        self.send_header("Cache-Control", "no-cache, no-store, must-revalidate")
+        self.send_header("Pragma", "no-cache")
+        self.send_header("Expires", "0")
+        super().end_headers()
+
+
 def build_command(_args: argparse.Namespace) -> None:
     builder.main()
 
@@ -21,7 +31,7 @@ def serve_command(args: argparse.Namespace) -> None:
     if not dist.exists():
         raise SystemExit(f"Missing {dist}; run `cvsite build` first.")
 
-    handler = functools.partial(http.server.SimpleHTTPRequestHandler, directory=str(dist))
+    handler = functools.partial(_NoCacheHandler, directory=str(dist))
     with socketserver.TCPServer((args.host, args.port), handler) as httpd:
         url = f"http://{args.host}:{args.port}/"
         print(f"Serving {dist} at {url}")

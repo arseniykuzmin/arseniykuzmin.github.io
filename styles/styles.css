@@ -250,7 +250,7 @@
 
 /* MARK: main */
 .main-content {
-    margin-top: calc(var(--header-height) + 16px);
+    margin-top: calc(var(--header-height) - 8px);
     max-width: var(--main-content-width);
     margin-left: auto;
     margin-right: auto;
@@ -295,7 +295,7 @@ h3 span {
 
 @media (max-width:960px) {
     .main-content {
-        margin-top: calc(var(--header-height) + 8px);
+        margin-top: calc(var(--header-height) - 8px);
     }
 }
 

@@ -11,7 +11,6 @@
 
 {% block head_extra %}
     <link rel="stylesheet" href="styles/projects.css">
-    <link rel="stylesheet" href="styles/scrollnav.css">
     <meta name="keywords" content="physics, fusion, hydrogen, oxygen, tokamak">
     <meta name="viewport" content="width=device-width">
     <meta name="description" content="Plasma physicist">
@@ -32,9 +31,7 @@
 {% block content %}
         <section class="projects-page">
             <header class="projects-header">
-                <p class="projects-kicker">Selected work</p>
                 <h1>Projects</h1>
-                <p>Experimental devices, plasma diagnostics, and analysis tools from fusion, thin films, spectroscopy, and instrumentation work.</p>
             </header>
 
             <div class="grid-container" id="gridContainer">
@@ -52,8 +49,4 @@
 {% endfor %}
             </div>
         </section>
-{% endblock %}
-
-{% block body_scripts_bottom %}
-    <script src="scripts/scrollnav.js" defer></script>
 {% endblock %}

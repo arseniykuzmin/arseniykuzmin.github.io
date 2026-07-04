@@ -26,7 +26,7 @@ SITE_URL = "https://arseniykuzmin.github.io"
 MIRROR_URL = "https://queezz.github.io"
 STATIC_DIRS = ("img", "styles", "static")
 ROOT_STATIC_FILES = (".nojekyll",)
-SCRIPT_FILES = ("project_detail_ui.js", "scrollnav.js", "scroltotop.js")
+SCRIPT_FILES = ("project_detail_ui.js", "scroltotop.js")
 
 
 def load_json(name: str):
