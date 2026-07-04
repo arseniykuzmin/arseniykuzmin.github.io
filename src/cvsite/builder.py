@@ -63,13 +63,14 @@ def mirror_url(path: str) -> str:
     return MIRROR_URL + "/" + path.lstrip("/")
 
 
-def render_ctx(path: str = "") -> dict:
+def render_ctx(path: str = "", nav_active: str | None = None) -> dict:
     return {
         "base_href": "/",
         "site_url": SITE_URL,
         "mirror_url": MIRROR_URL,
         "canonical_url": page_url(path),
         "alternate_url": mirror_url(path),
+        "nav_active": nav_active,
     }
 
 
@@ -307,14 +308,14 @@ def main() -> None:
     write(
         DIST / "index.html",
         env.get_template("pages/index.html").render(
-            **render_ctx(),
+            **render_ctx(nav_active="about"),
             about=about,
         ),
     )
     write(
         DIST / "projects.html",
         env.get_template("pages/projects.html").render(
-            **render_ctx("projects.html"),
+            **render_ctx("projects.html", nav_active="projects"),
             projects=projects,
             image_sizes=image_sizes,
         ),
@@ -322,7 +323,7 @@ def main() -> None:
     write(
         DIST / "publications.html",
         env.get_template("pages/publications.html").render(
-            **render_ctx("publications.html"),
+            **render_ctx("publications.html", nav_active="publications"),
             publications=publications,
             publications_sorted=pubs_sorted,
         ),
@@ -330,7 +331,7 @@ def main() -> None:
     write(
         DIST / "conferences.html",
         env.get_template("pages/conferences.html").render(
-            **render_ctx("conferences.html"),
+            **render_ctx("conferences.html", nav_active="conferences"),
             conferences=conferences,
             conferences_sorted=conf_sorted,
         ),
@@ -344,7 +345,7 @@ def main() -> None:
         write(
             DIST / "projects" / slug / "index.html",
             tpl_detail.render(
-                **render_ctx(f"projects/{slug}/"),
+                **render_ctx(f"projects/{slug}/", nav_active="projects"),
                 project=proj,
                 project_body=body_html,
             ),

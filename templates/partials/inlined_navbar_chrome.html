@@ -2,7 +2,6 @@
 function updateToggleIcon() {
     const toggleButton = document.getElementById('darkModeToggle');
     const isDark = document.documentElement.classList.contains('dark-mode');
-
     if (toggleButton) {
         toggleButton.textContent = isDark ? '🌝' : '🌚';
     }
@@ -10,36 +9,55 @@ function updateToggleIcon() {
 
 function setupDarkModeToggle() {
     const toggleButton = document.getElementById('darkModeToggle');
-
-    if (!toggleButton) {
-        console.warn('Dark mode toggle button not found after navbar load');
-        return;
-    }
-
+    if (!toggleButton) return;
     toggleButton.addEventListener('click', () => {
         const html = document.documentElement;
         html.classList.toggle('dark-mode');
-        const isDark = html.classList.contains('dark-mode');
-        localStorage.setItem('darkMode', isDark ? '1' : '0');
+        localStorage.setItem('darkMode', html.classList.contains('dark-mode') ? '1' : '0');
         updateToggleIcon();
     });
-
     updateToggleIcon();
 }
 
-function toggleNavbar() {
-    const navbarItems = document.getElementById('navbarItems');
-    const toggleIcon = document.getElementById('toggleIcon');
+function setupPrimaryNav() {
+    const toggle = document.querySelector('.nav-toggle');
+    const menu = document.getElementById('primary-menu');
+    if (!toggle || !menu) return;
 
-    navbarItems.classList.toggle('show');
-    toggleIcon.innerHTML = navbarItems.classList.contains('show') ? '&#10005;' : '&#9776;';
+    const close = () => {
+        toggle.setAttribute('aria-expanded', 'false');
+        menu.classList.remove('is-open');
+    };
+    const open = () => {
+        toggle.setAttribute('aria-expanded', 'true');
+        menu.classList.add('is-open');
+    };
+
+    toggle.addEventListener('click', () => {
+        toggle.getAttribute('aria-expanded') === 'true' ? close() : open();
+    });
+
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && toggle.getAttribute('aria-expanded') === 'true') {
+            close();
+            toggle.focus();
+        }
+    });
+
+    document.addEventListener('click', (e) => {
+        if (toggle.getAttribute('aria-expanded') !== 'true') return;
+        if (!menu.contains(e.target) && !toggle.contains(e.target)) close();
+    });
+
+    menu.addEventListener('click', (e) => {
+        if (e.target.closest('a')) close();
+    });
 }
 
-function loadNavbar() {
+document.addEventListener('DOMContentLoaded', () => {
     setupDarkModeToggle();
-}
-
-window.addEventListener('load', loadNavbar);
+    setupPrimaryNav();
+});
     </script>
     <script src="scripts/scroltotop.js"></script>
 

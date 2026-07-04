@@ -22,8 +22,8 @@
 {% block chrome %}
 {% include "partials/inlined_navbar_chrome.html" %}
 {% endblock %}
+{% block navbar %}{% endblock %}
 <div class="main-content">
-    <nav id="navbar">{% block navbar %}{% endblock %}</nav>
     {% block content %}{% endblock %}
 </div>
 {% block body_scripts_bottom %}{% endblock %}

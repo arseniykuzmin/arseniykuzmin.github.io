@@ -1,15 +1,17 @@
-<div class="navbar">
-    <div class="navbar-container">
-        <div class="navbar-logo"><a href="/index.html">Arseniy Kuzmin</a></div>
-        <div class="navbar-toggle" onclick="toggleNavbar()">
-            <span id="toggleIcon">&#9776;</span>
-        </div>
-        <ul class="navbar-items" id="navbarItems">
-            <li><a href="/index.html">About</a></li>
-            <li><a href="/conferences.html">Conferences</a></li>
-            <li><a href="/publications.html">Publications</a></li>
-            <li><a href="/projects.html">Projects</a></li>
-        </ul>
-         <button id="darkModeToggle" style="margin-left: auto;">🌙</button>
+<header class="site-header">
+    <div class="site-header-inner">
+        <a class="site-brand" href="/index.html">Arseniy Kuzmin</a>
+        <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="primary-menu" aria-label="Menu">
+            <span class="nav-toggle-box"><span class="nav-toggle-inner"></span></span>
+        </button>
+        <nav class="primary-nav" aria-label="Primary">
+            <ul class="nav-menu" id="primary-menu">
+                <li><a href="/index.html"{% if nav_active == 'about' %} class="is-active" aria-current="page"{% endif %}>About</a></li>
+                <li><a href="/conferences.html"{% if nav_active == 'conferences' %} class="is-active" aria-current="page"{% endif %}>Conferences</a></li>
+                <li><a href="/publications.html"{% if nav_active == 'publications' %} class="is-active" aria-current="page"{% endif %}>Publications</a></li>
+                <li><a href="/projects.html"{% if nav_active == 'projects' %} class="is-active" aria-current="page"{% endif %}>Projects</a></li>
+            </ul>
+        </nav>
+        <button id="darkModeToggle" type="button" aria-label="Toggle dark mode">🌙</button>
     </div>
-</div>
+</header>
