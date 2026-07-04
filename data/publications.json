@@ -763,5 +763,22 @@
     "language": "english",
     "aknotes": "",
     "keywords": "japanese"
+  },
+  {
+    "type": "article",
+    "authors": "Nagashima, Y. and Hanada, K. and Zushi, H. and Idei, H. and Hasegawa, M. and Nakamura, K. and Onchi, T. and Ikezoe, R. and Ido, T. and Kinoshita, T. and Fujisawa, A. and Kawasaki, S. and Nagata, T. and Shimabukuro, S. and Mutaguchi, T. and Kono, K. and Niiya, I. and Sugiyama, I. and Higashijima, A. and Kojima, S. and Kuroda, K. and Ejiri, A. and Takase, Y. and Shikama, T. and Kuzmin, A. and Nagaoka, K.",
+    "title": "Development of a limiter-like Langmuir probe system for the Q-shu university experiment with steady-state spherical tokamak (QUEST) all-metal device",
+    "venue": "Review of Scientific Instruments",
+    "year": "2025",
+    "note": "",
+    "issn": "",
+    "doi": "10.1063/5.0283183",
+    "url": "",
+    "volume": "96",
+    "pages": "093509",
+    "abstract": "A limiter-like Langmuir probe system was developed to measure scrape-off layer (SOL) plasmas in the Q-shu University Experiment with a steady-state Spherical Tokamak (QUEST) all-metal device. The system is mainly made of metals such as tungsten to keep compatibility with the all-metal conditions under which retention of plasma fueling gases in first walls is controlled. The system also includes built-in water coolant systems to withstand high heat loads originating from high energy electrons excited by radio frequency plasma heating/current drive systems during the fully non-inductive operations. Development of the system enables us to measure scrape-off layer plasmas in the presence of high energy electrons during fully non-inductive steady-state tokamak operations in QUEST. Preliminary experimental results of plasma measurements in QUEST SOL plasmas where high energy particles exist are presented.",
+    "language": "english",
+    "aknotes": "",
+    "keywords": ""
   }
 ]
