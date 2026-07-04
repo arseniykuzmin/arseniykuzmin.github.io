@@ -8,8 +8,8 @@ the About page layout.
 ## Decisions
 - Kept venue-badge enrichment in the build layer so server-rendered HTML and
   client-side filter rerenders use the same codes and stable badge colors.
-- Copied `data/mypapers.bib` into `dist/data/mypapers.bib` instead of copying
-  all source data files.
+- Copied source `data/mypapers.bib` into public
+  `dist/data/ArseniyKuzmin.bib` instead of copying all source data files.
 - Left the mirror deploy work queued because it still needs a user-provided
   cross-repo token/secret.
 - Deferred the broader image performance pass; the card/About work was already

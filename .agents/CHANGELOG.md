@@ -11,7 +11,7 @@ session handoffs stay in [`log/`](log/), and future work stays in
   badges, year/location/presentation metadata, and no shifting list numbers.
 - Added live Publications search so text filters compose with year sorting and
   Featured / first-author toggles.
-- Added a generated BibTeX download at `data/mypapers.bib`.
+- Added a generated BibTeX download at `data/ArseniyKuzmin.bib`.
 - Tightened About: two-column Education on desktop, chip-like Skills, more
   compact Experience cards, and cleaner expand/collapse text.
 

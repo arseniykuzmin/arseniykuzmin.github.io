@@ -175,34 +175,34 @@ def size_attr_dict(sizes: dict, src: str) -> dict:
     return {"width": str(info["width"]), "height": str(info["height"])}
 
 
+def author_name_span(name: str, is_me: bool = False) -> str:
+    safe = esc_text(name.strip())
+    if is_me:
+        safe = f"<b><u>{safe}</u></b>"
+    return f'<span class="author-name">{safe}</span>'
+
+
+def initials_name(parts: list[str]) -> str:
+    if len(parts) == 2:
+        initials = " ".join(p[0] + "." for p in parts[1].split() if p)
+        return f"{initials} {parts[0]}".strip()
+    if len(parts) <= 1:
+        return parts[0] if parts else ""
+    initials = " ".join(p[0] + "." for p in parts[:-1] if p)
+    return f"{initials} {parts[-1]}".strip()
+
+
 def transform_authors_py(authors: str | None) -> Markup:
-    """Port of transformAuthors() in scripts/publications.js."""
+    """Port of transformAuthors() in publications_runtime.js."""
     if not authors:
         return Markup("")
     if " and " not in authors:
         name_parts = [x.strip() for x in authors.strip().split(", ")]
-        if len(name_parts) == 2:
-            initials = " ".join(p[0] + "." for p in name_parts[1].split() if p)
-            return Markup(f"{initials} {name_parts[0]}")
-        if len(name_parts) <= 1:
-            return Markup(esc_text(authors))
-        initials = " ".join(p[0] + "." for p in name_parts[:-1] if p)
-        return Markup(f"{initials} {name_parts[-1]}")
+        return Markup(author_name_span(initials_name(name_parts), "kuzmin" in authors.lower()))
     out: list[str] = []
     for author in authors.split(" and "):
         name_parts = [x.strip() for x in author.strip().split(", ")]
-        if len(name_parts) == 2:
-            initials = " ".join(p[0] + "." for p in name_parts[1].split() if p)
-            if "kuzmin" in name_parts[0].lower():
-                out.append(f"<b><u>{initials} {name_parts[0]}</u></b>")
-            else:
-                out.append(f"{initials} {name_parts[0]}")
-        else:
-            initials = " ".join(p[0] + "." for p in name_parts[:-1] if p)
-            if "kuzmin" in name_parts[0].lower():
-                out.append(f"<b><u>{initials} {name_parts[-1]}</u></b>")
-            else:
-                out.append(f"{initials} {name_parts[-1]}")
+        out.append(author_name_span(initials_name(name_parts), "kuzmin" in author.lower()))
     return Markup(", ".join(out))
 
 
@@ -398,7 +398,7 @@ def copy_static_assets() -> None:
     for filename in ROOT_STATIC_FILES:
         copy_file(ROOT / filename, DIST / filename)
 
-    copy_file(DATA / "mypapers.bib", DIST / "data" / "mypapers.bib")
+    copy_file(DATA / "mypapers.bib", DIST / "data" / "ArseniyKuzmin.bib")
 
     for filename in SCRIPT_FILES:
         copy_file(ROOT / "scripts" / filename, DIST / "scripts" / filename)

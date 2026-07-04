@@ -154,6 +154,10 @@
     line-height: 1.45;
 }
 
+.paper-card .authors .author-name {
+    white-space: nowrap;
+}
+
 .paper-card .authors b,
 .paper-card .authors u {
     color: #2d2923;

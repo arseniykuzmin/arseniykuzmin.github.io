@@ -1,23 +1,34 @@
-// Function to scroll back to the top when the button is clicked
-function scrollToTop() {
-    document.body.scrollTop = 0; // For Safari
-    document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE, and Opera
-}
-
-// Attach the scrollToTop function to the button's click event
 document.addEventListener('DOMContentLoaded', () => {
-    // Get the button element after the page has fully loaded
-    const scrollToTopButton = document.getElementById('scrollToTopButton');
+    const button = document.getElementById('scrollToTopButton');
+    if (!button) return;
 
-    // Show the button when the user scrolls down 20px from the top of the document
-    window.onscroll = function () {
-        if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
-            scrollToTopButton.classList.add('show');
-        } else {
-            scrollToTopButton.classList.remove('show');
+    let lastY = window.scrollY;
+    let hideUntilDirectionChanges = false;
+
+    function updateScrollTopButton() {
+        const y = window.scrollY;
+        const scrollingUp = y < lastY;
+        const scrollingDown = y > lastY;
+
+        if (y <= 420 || scrollingDown) {
+            hideUntilDirectionChanges = false;
         }
-    };
 
-    // Attach the scrollToTop function to the button's click event
-    scrollToTopButton.addEventListener('click', scrollToTop);
+        const show = y > 420 && scrollingUp && !hideUntilDirectionChanges;
+
+        button.classList.toggle('show', show);
+        button.setAttribute('aria-hidden', show ? 'false' : 'true');
+        lastY = y;
+    }
+
+    button.addEventListener('click', () => {
+        hideUntilDirectionChanges = true;
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+        button.classList.remove('show');
+        button.setAttribute('aria-hidden', 'true');
+    });
+
+    button.setAttribute('aria-hidden', 'true');
+    updateScrollTopButton();
+    window.addEventListener('scroll', updateScrollTopButton, { passive: true });
 });

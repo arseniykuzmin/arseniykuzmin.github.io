@@ -1,6 +1,15 @@
 <header class="site-header">
     <div class="site-header-inner">
         <a class="site-brand" href="/index.html">Arseniy Kuzmin</a>
+        {% set section_titles = {
+            'about': 'About',
+            'conferences': 'Conferences',
+            'publications': 'Papers',
+            'projects': 'Projects'
+        } %}
+        <button class="site-section-title" type="button" data-scroll-top hidden>
+            {{ section_titles.get(nav_active, '') }}
+        </button>
         <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="primary-menu" aria-label="Menu">
             <span class="nav-toggle-box"><span class="nav-toggle-inner"></span></span>
         </button>

@@ -35,6 +35,30 @@ function badgeHue(text) {
     return 20 + (total % 300);
 }
 
+function authorNameSpan(name, isMe) {
+    var safeName = escapeHTML(String(name || '').trim());
+    if (isMe) {
+        safeName = '<b><u>' + safeName + '</u></b>';
+    }
+    return '<span class="author-name">' + safeName + '</span>';
+}
+
+function initialsName(nameParts) {
+    if (nameParts.length === 2) {
+        var initials = nameParts[1].split(' ').map(function (initial) {
+            return initial.charAt(0) + '.';
+        }).join(' ');
+        return (initials + ' ' + nameParts[0]).trim();
+    }
+    if (nameParts.length <= 1) {
+        return nameParts[0] || '';
+    }
+    var initials = nameParts.slice(0, -1).map(function (initial) {
+        return initial.charAt(0) + '.';
+    }).join(' ');
+    return (initials + ' ' + nameParts[nameParts.length - 1]).trim();
+}
+
 function transformAuthors(authors) {
     if (!authors) {
         return '';
@@ -42,40 +66,12 @@ function transformAuthors(authors) {
 
     if (authors.indexOf(' and ') === -1) {
         var nameParts = authors.trim().split(', ');
-        if (nameParts.length === 2) {
-            var initials = nameParts[1].split(' ').map(function (initial) {
-                return initial.charAt(0) + '.';
-            }).join(' ');
-            return escapeHTML(initials + ' ' + nameParts[0]);
-        } else {
-            var initials = nameParts.slice(0, -1).map(function (initial) {
-                return initial.charAt(0) + '.';
-            }).join(' ');
-            return escapeHTML(initials + ' ' + nameParts[nameParts.length - 1]);
-        }
+        return authorNameSpan(initialsName(nameParts), authors.toLowerCase().includes('kuzmin'));
     } else {
         var authorList = authors.split(' and ');
         var transformedAuthors = authorList.map(function (author) {
             var nameParts = author.trim().split(', ');
-            if (nameParts.length === 2) {
-                var initials = nameParts[1].split(' ').map(function (initial) {
-                    return initial.charAt(0) + '.';
-                }).join(' ');
-                var name = initials + ' ' + nameParts[0];
-                if (nameParts[0].toLowerCase().includes('kuzmin')) {
-                    return '<b><u>' + escapeHTML(name) + '</u></b>';
-                }
-                return escapeHTML(name);
-            } else {
-                var initials = nameParts.slice(0, -1).map(function (initial) {
-                    return initial.charAt(0) + '.';
-                }).join(' ');
-                var name = initials + ' ' + nameParts[nameParts.length - 1];
-                if (nameParts[0].toLowerCase().includes('kuzmin')) {
-                    return '<b><u>' + escapeHTML(name) + '</u></b>';
-                }
-                return escapeHTML(name);
-            }
+            return authorNameSpan(initialsName(nameParts), author.toLowerCase().includes('kuzmin'));
         });
         return transformedAuthors.join(', ');
     }
