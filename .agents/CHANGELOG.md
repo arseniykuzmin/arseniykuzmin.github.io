@@ -6,6 +6,19 @@ session handoffs stay in [`log/`](log/), and future work stays in
 
 ## 2026-07-04
 
+### Completed two-domain shipment
+- Published the polished generated build to `arseniykuzmin.github.io`; the
+  GitHub Pages deploy briefly failed at the opaque deploy step, then recovered
+  and served the current build.
+- Mirrored the generated `dist/` output into the sibling `cvpage` checkout and
+  pushed `queezz.github.io`, replacing the old runtime-JS site there.
+- Updated the Pages workflow to current Pages action versions
+  (`configure-pages@v6`, `upload-pages-artifact@v5`, `deploy-pages@v5`).
+- Fixed the top-bar flash by emitting the navbar before the inline chrome
+  script and initializing header behavior immediately after the header markup.
+- Confirmed `queezz.github.io` no longer blinks on repeat visits; the same fix
+  is present in the source build for `arseniykuzmin.github.io`.
+
 ### Polished publications, navigation, and project detail pages
 - Restored citation-style publication venue lines with years, normalized
   publication title typography, and repaired compressed author formatting.

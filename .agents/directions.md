@@ -11,20 +11,22 @@ Generated output is ignored and rebuilt into `dist/`. The old runtime-JS pages
 have been retired locally, static root assets moved into `static/`, and active
 agent notes now live in this repo.
 
-Shipped and live on `arseniykuzmin.github.io` via the GitHub Pages Action:
-the Jinja2 build, plus (2026-07-04) an accessible top nav + mobile hamburger,
-project-detail rails with a build-time "On this page" outline, softened dark
-mode, Publications/Conferences card lists with live filters, a tighter About
-page, the QUEST/PSI publications, a fully populated Control Unit project,
-polished publication/conference listing alignment, and a mobile project details
-drawer. The `queezz.github.io` mirror still needs its Phase 2 token.
+Shipped and live on both `arseniykuzmin.github.io` and `queezz.github.io`:
+the Jinja2 build, accessible top nav + mobile hamburger, project-detail rails
+with a build-time "On this page" outline, softened dark mode,
+Publications/Conferences card lists with live filters, a tighter About page,
+the QUEST/PSI publications, a populated Control Unit project, polished
+publication/conference listing alignment, a mobile project Details drawer, and
+the navbar initialization flash fix.
 
 ## Confirmed decisions
 - **Source of truth:** `arseniykuzmin.github.io`.
 - **Build system:** custom Jinja2 static generator, exposed through `cvsite`.
-- **Deployment:** GitHub Action builds on push and publishes `dist/`.
+- **Deployment:** `arseniykuzmin.github.io` builds and deploys from `master`
+  via GitHub Actions. `queezz.github.io` was manually refreshed from the
+  generated `dist/` output in the sibling `cvpage` checkout.
 - **URLs:** keep CV live at both `arseniykuzmin.github.io` and
-  `queezz.github.io`; the mirror needs a Phase 2 token/secret.
+  `queezz.github.io`.
 - **Blog:** Chirpy is not part of the CV cleanup. It remains parked for a
   possible future blog.
 - **Commits:** no `Co-Authored-By`; agent commits end with an `agent:` line
@@ -37,7 +39,7 @@ drawer. The `queezz.github.io` mirror still needs its Phase 2 token.
 - Deployment reminder: pushing `dev` alone does not update the live site. For
   user-visible fixes, fast-forward `master` to `dev` and push `master`; then
   allow the Pages Action a short time to finish.
-- The `cvsite` Jinja2 build is live on `arseniykuzmin.github.io`.
+- The `cvsite` Jinja2 build is live on both public URLs.
 - Active `.agents/` notes are in this repo.
 - Historical/unpushed `.agents` notes still exist in sibling `cvpage`.
 - `cv.code-workspace` has a pre-existing local edit; leave it out of commits
@@ -62,10 +64,11 @@ drawer. The `queezz.github.io` mirror still needs its Phase 2 token.
 
 ## Next work
 
-### 1. Mirror to `queezz.github.io`
-Extend the Action to also publish `dist/` to `queezz/queezz.github.io`.
-Because the repos are under different accounts, this needs a cross-repo deploy
-token or deploy key stored as a repo secret. The user must create/provide this.
+### 1. Optional automated mirror
+The `queezz.github.io` mirror is live after a manual refresh from `dist/`.
+If automatic mirroring is wanted later, extend the Action to publish `dist/` to
+`queezz/queezz.github.io`. Because the repos are under different accounts, this
+needs a cross-repo deploy token or deploy key stored as a repo secret.
 
 ### 2. Performance and visual regularity
 - Resize/compress large images; consider WebP/AVIF and `srcset`.
@@ -81,5 +84,6 @@ token or deploy key stored as a repo secret. The user must create/provide this.
 ## Open user decisions
 - Whether to retire, archive, or leave the historical `.agents` copy in
   `cvpage`.
-- Cross-repo deploy token/secret for the `queezz.github.io` mirror.
+- Whether to automate the `queezz.github.io` mirror with a cross-repo deploy
+  token/secret, or keep refreshing it manually from the local `cvpage` checkout.
 - Whether the future blog stays on `queezz.github.io` or moves elsewhere.
