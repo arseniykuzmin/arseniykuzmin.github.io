@@ -6,6 +6,30 @@ session handoffs stay in [`log/`](log/), and future work stays in
 
 ## 2026-07-04
 
+### Shipped the nav, rails, and Control Unit overhaul
+Second production deploy of the day (a stack of `dev` commits merged to
+`master`). Highlights:
+- Accessible top nav with a real mobile hamburger (`aria-expanded`/`controls`,
+  Esc / outside-click / link close); active page via `aria-current`; the
+  dark-mode toggle moved into the menu; full-width mobile tap targets.
+- Project-detail left/right rails: all-projects nav, a metadata card, and a
+  build-time "On this page" outline. Fixed the outline anchors so they scroll
+  in-page under `<base href="/">` (they were jumping to root); galleries now
+  appear in the outline via a Gallery heading.
+- Retired the blue scroll dot-rail. Softened dark mode to warm off-whites
+  (Material convention: no pure white on near-black) and added
+  `color-scheme: dark` so form controls render dark.
+- Conferences: live filter box (filter/sort compose), plus the QUEST
+  (Nagashima, RSI 2025) and PSI-27 (BH emission) entries.
+- Populated the Control Unit project — a six-shot evolution gallery
+  (spaghetti to ESP32 TC logger) and the LAN/ESP32 direction; images curated
+  from the local albums (HEIC decoded via pillow-heif) and compressed.
+- Shrunk oversized titles, tightened the header gap, simplified the Projects
+  header.
+- Build/serve robustness: threaded `cvsite serve`, no-cache headers, and a
+  dist cleanup that empties in place and retries the Windows/Dropbox lock
+  (`dist/` is now marked Dropbox-ignored).
+
 ### Shipped the cvsite build to production
 - Verified `cvsite build` green: 4 top-level pages, 15 project detail pages,
   `.nojekyll` copied, and `<base href="/">` in generated HTML.

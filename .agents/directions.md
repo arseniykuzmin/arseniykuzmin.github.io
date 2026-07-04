@@ -11,9 +11,12 @@ Generated output is ignored and rebuilt into `dist/`. The old runtime-JS pages
 have been retired locally, static root assets moved into `static/`, and active
 agent notes now live in this repo.
 
-Shipped: `dev` was merged to `master` and pushed. The GitHub Pages Action
-builds and deploys `dist/`, so `arseniykuzmin.github.io` now serves the new
-Jinja2 build. The `queezz.github.io` mirror is still pending its Phase 2 token.
+Shipped and live on `arseniykuzmin.github.io` via the GitHub Pages Action:
+the Jinja2 build, plus (2026-07-04) an accessible top nav + mobile hamburger,
+project-detail rails with a build-time "On this page" outline, softened dark
+mode, a Conferences filter, the QUEST/PSI publications, and a fully populated
+Control Unit project. The `queezz.github.io` mirror still needs its Phase 2
+token.
 
 ## Confirmed decisions
 - **Source of truth:** `arseniykuzmin.github.io`.
@@ -23,7 +26,8 @@ Jinja2 build. The `queezz.github.io` mirror is still pending its Phase 2 token.
   `queezz.github.io`; the mirror needs a Phase 2 token/secret.
 - **Blog:** Chirpy is not part of the CV cleanup. It remains parked for a
   possible future blog.
-- **Commits:** no `Co-Authored-By`; agent commits end with `agent: gpt-5 codex`.
+- **Commits:** no `Co-Authored-By`; agent commits end with an `agent:` line
+  naming the model (e.g. `agent: claude opus 4.8`).
 - **Push rule:** do not push before local testing and explicit user approval.
 
 ## Current state
@@ -59,35 +63,29 @@ Extend the Action to also publish `dist/` to `queezz/queezz.github.io`.
 Because the repos are under different accounts, this needs a cross-repo deploy
 token or deploy key stored as a repo secret. The user must create/provide this.
 
-### 2. Navigation and rails
-Replace the current hacked navigation with a deliberate system:
+### 2. Publications & Conferences as cards
+Redesign both list pages to look like the user's paperlib (a dark card grid;
+see the 2026-07-04 handoff for a reference screenshot). Each entry becomes a
+card: the title, an emoji or two in place of boilerplate labels where it reads
+well, and a coloured **badge for the venue** — a short journal/conference code
+matching `journals.toml` in the paperlib library at
+`C:\Users\queezz\Dropbox\10-Research\40-Articles-Library\`.
 
-- **Global top nav:** keep `About`, `Conferences`, `Publications`, `Projects`
-  on desktop; normalize active state, spacing, dark mode, and focus behavior.
-- **Mobile nav:** implement a real hamburger button with `aria-expanded`,
-  `aria-controls`, predictable menu behavior, and no 20px fixed-navbar hack.
-- **Project detail left rail:** desktop-only project collection navigation,
-  including back to all projects and nearby/all project titles.
-- **Project detail right rail:** desktop-only metadata card plus real
-  "On this page" outline.
-- **Long non-project pages:** use a text outline instead of the dot/progress
-  rail. Hide rails on mobile.
-- **Mobile rails:** collapse rails away; put metadata in normal content flow.
+- **Publications filter:** add the same live filter box already on Conferences.
+  `templates/partials/conferences_runtime.js` is the working template — it
+  filters by title/authors/venue/year and updates the count; re-render from the
+  embedded JSON on load so filter + sort compose.
+- **Retire the `[N]` number** on each card. It shifts as you filter and this is
+  not a bibliography. If people want citations, just serve the full BibTeX
+  (`data/mypapers.bib`) as a downloadable file instead of pretending to be a
+  reference manager.
 
-Data needed for project metadata:
-- Optional fields in `data/projects.json`: `period`, `topic`, `lab`,
-  `collaborators`, `relatedPaper`, `relatedUrl`.
-- Do not invent years. Use category/topic labels until reliable date ranges are
-  available.
+### 3. Tighten the landing page (About)
+The About page feels busy; exact direction still open.
+- Put **Education** in two side-by-side cards on desktop to save vertical space.
+- Make **Skills** and **Experience** more concise / less dense.
 
-Implementation preference:
-- Generate outlines at build time from headings where practical.
-- Use JS only for active-section highlighting and mobile menu behavior.
-- Retire `styles/scrollnav.css` and `scripts/scrollnav.js` once the replacement
-  outline exists.
-- Keep rails quiet and secondary; the project content/images remain primary.
-
-### 3. Performance and visual regularity
+### 4. Performance and visual regularity
 - Resize/compress large images; consider WebP/AVIF and `srcset`.
 - Dedupe images duplicated across `img/` and `projects/<slug>/`.
 - Consolidate stylesheets and introduce shared CSS variables.
