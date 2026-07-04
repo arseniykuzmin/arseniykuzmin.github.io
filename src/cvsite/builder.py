@@ -33,14 +33,23 @@ VENUE_ABBR = {
     "Atoms": "Atoms",
     "arXiv": "arXiv",
     "arXive": "arXiv",
+    "Bulletin of the Russian Academy of Sciences: Physics": "RuAcadPhys",
     "Fusion Engineering and Design": "FED",
     "Journal of Nuclear Materials": "JNM",
+    "Journal of Physics: Conference Series": "JPConf",
     "Journal of Plasma and Fusion Research": "JPFR",
     "Journal of Plasma Fusion Research": "JPFR",
     "Journal of Quantitative Spectroscopy and Radiative Transfer": "JQSRT",
+    "Journal of Surface Investigation. X-ray, Synchrotron and Neutron Techniques": "RuSurface",
+    "Journal of Surface Investigation. X-ray, Synchrotron and Neutron Techniques volume": "RuSurface",
+    "Journal of Surface Investigation: X-ray, Synchrotron and Neutron Techniques": "RuSurface",
     "Nuclear Materials and Energy": "NME",
     "Physics of Plasmas": "PoP",
+    "Physics of Plasma": "PoP",
     "Plasma and Fusion Research": "PFR",
+    "Plasma and Fusion Research: Letters": "PFR",
+    "Plasma and Fusion Research: Rapid Communications": "PFR",
+    "Plasma and Fusion Research: Regular Articles": "PFR",
     "Plasma Physics and Controlled Fusion": "PPCF",
     "Review of Scientific Instruments": "RSI",
     "Vacuum": "Vacuum",
@@ -70,9 +79,9 @@ def acronym(text: str, max_len: int = 8) -> str:
     if not words:
         return "Work"
     caps = "".join(w[0].upper() for w in words if w[:1].isalpha())
-    if 2 <= len(caps) <= max_len:
-        return caps
-    return "".join(words[:2])[:max_len]
+    if len(caps) >= 2:
+        return caps[:max_len]
+    return "".join(words[:2])[:max_len] or "Work"
 
 
 def conference_code(conference: dict) -> str:

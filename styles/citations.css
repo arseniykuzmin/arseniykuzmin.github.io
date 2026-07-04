@@ -178,6 +178,10 @@
     text-decoration: none;
 }
 
+.paper-link:visited {
+    color: #1f2418;
+}
+
 .paper-link:hover {
     background: #d6f3a6;
 }
@@ -210,6 +214,17 @@ html.dark-mode .bibtex-link {
     color: #ffe8a6;
     background: #2a2518;
     border-color: #6d5722;
+}
+
+html.dark-mode .citations .paper-link,
+html.dark-mode .citations .paper-link:visited {
+    color: #16210f;
+    background: #c8ee8a;
+}
+
+html.dark-mode .citations .paper-link:hover {
+    color: #101807;
+    background: #ddffa9;
 }
 
 html.dark-mode #conferenceCount,
