@@ -28,6 +28,7 @@ MIRROR_URL = "https://queezz.github.io"
 STATIC_DIRS = ("img", "styles", "static")
 ROOT_STATIC_FILES = (".nojekyll",)
 SCRIPT_FILES = ("project_detail_ui.js", "scroltotop.js")
+ASSET_VERSION = str(int(time.time()))
 
 VENUE_ABBR = {
     "Atoms": "Atoms",
@@ -152,6 +153,10 @@ def mirror_url(path: str) -> str:
     if not path:
         return MIRROR_URL + "/"
     return MIRROR_URL + "/" + path.lstrip("/")
+
+
+def asset_url(path: str) -> str:
+    return f"{path}?v={ASSET_VERSION}"
 
 
 def render_ctx(path: str = "", nav_active: str | None = None) -> dict:
@@ -376,6 +381,7 @@ def make_env() -> Environment:
         autoescape=select_autoescape(["html", "xml"]),
     )
     env.filters["transform_authors"] = transform_authors_py
+    env.globals["asset_url"] = asset_url
     return env
 
 

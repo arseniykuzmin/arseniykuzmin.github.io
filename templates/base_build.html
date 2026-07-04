@@ -16,7 +16,7 @@
     {% if canonical_url %}<link rel="canonical" href="{{ canonical_url }}">{% endif %}
     {% if alternate_url %}<link rel="alternate" href="{{ alternate_url }}">{% endif %}
     <link rel="icon" href="static/favicon.ico">
-    <link rel="stylesheet" href="styles/styles.css">
+    <link rel="stylesheet" href="{{ asset_url('styles/styles.css') }}">
     <script type="speculationrules">
     {"prefetch": [{"where": {"href_matches": "/*"}, "eagerness": "moderate"}]}
     </script>

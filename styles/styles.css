@@ -23,6 +23,7 @@
     --accent: #8c0c0c;
     --accent-strong: #b01414;
     --header-height: 64px;
+    --current-header-height: var(--header-height);
     --nav-surface: #f2f2f2;
     --nav-ink: #333333;
 }
@@ -179,31 +180,44 @@ html {
 /* Mobile: hamburger + collapsible panel */
 @media (max-width: 760px) {
     .site-header-inner {
+        flex-wrap: wrap;
         gap: 10px;
         padding: 0 16px;
     }
 
     .site-brand {
-        flex: 0 1 auto;
+        flex: 1 1 auto;
         min-width: 0;
         overflow: hidden;
         text-overflow: ellipsis;
         font-size: clamp(18px, 6vw, 22px);
     }
 
+    .site-header.is-scrolled .site-header-inner {
+        row-gap: 0;
+        padding-top: 6px;
+        padding-bottom: 7px;
+    }
+
     .site-header.is-scrolled .site-brand {
-        font-size: 18px;
+        flex-basis: calc(100% - 54px);
     }
 
     .site-section-title:not([hidden]) {
         display: block;
-        flex: 1 1 auto;
+        flex: 0 0 100%;
+        order: 3;
+        margin-top: -5px;
+        color: #7e756b;
+        font-size: 16px;
+        line-height: 1.15;
     }
 
     .nav-toggle {
         display: block;
         margin-left: auto;
         flex: 0 0 40px;
+        order: 2;
     }
 
     .primary-nav {
@@ -269,21 +283,21 @@ html {
 
 .scroll-to-top-button {
     position: fixed;
-    top: calc(var(--header-height) + 8px);
+    top: calc(var(--current-header-height) + 5px);
     left: 50%;
     z-index: 9998;
     display: inline-flex;
     align-items: center;
-    gap: 7px;
-    min-height: 34px;
-    padding: 0 14px;
-    color: #ffffff;
-    background-color: #8c0c0c;
+    gap: 5px;
+    min-height: 26px;
+    padding: 0 10px;
+    color: #f6f2ec;
+    background-color: rgba(65, 59, 53, 0.94);
     border: 1px solid rgba(255, 255, 255, 0.18);
     border-radius: 999px;
-    box-shadow: 0 8px 20px rgba(36, 33, 29, 0.22);
+    box-shadow: 0 4px 12px rgba(36, 33, 29, 0.18);
     cursor: pointer;
-    font-size: 13px;
+    font-size: 12px;
     font-weight: 700;
     line-height: 1;
     opacity: 0;
@@ -307,7 +321,7 @@ html {
     width: 0;
     height: 0;
     border-style: solid;
-    border-width: 0 5px 7px 5px;
+    border-width: 0 4px 6px 4px;
     border-color: transparent transparent currentColor transparent;
 }
 
@@ -405,7 +419,7 @@ html.dark-mode .scroll-to-top-button {
     color: #f3eee6;
     background-color: #3a332d;
     border-color: #574d43;
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.35);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.35);
 }
 
 html.dark-mode .section-title {

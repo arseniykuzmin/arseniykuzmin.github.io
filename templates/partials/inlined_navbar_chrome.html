@@ -59,10 +59,15 @@ function setupHeaderScrollTitle() {
     const sectionTitle = document.querySelector('.site-section-title');
     if (!header || !sectionTitle) return;
 
+    const updateHeaderHeight = () => {
+        document.documentElement.style.setProperty('--current-header-height', header.offsetHeight + 'px');
+    };
+
     const update = () => {
         const scrolled = window.scrollY > 96;
         header.classList.toggle('is-scrolled', scrolled);
         sectionTitle.hidden = !scrolled;
+        window.requestAnimationFrame(updateHeaderHeight);
     };
 
     sectionTitle.addEventListener('click', () => {
@@ -71,6 +76,7 @@ function setupHeaderScrollTitle() {
 
     update();
     window.addEventListener('scroll', update, { passive: true });
+    window.addEventListener('resize', updateHeaderHeight);
 }
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -79,7 +85,7 @@ document.addEventListener('DOMContentLoaded', () => {
     setupHeaderScrollTitle();
 });
     </script>
-    <script src="scripts/scroltotop.js"></script>
+    <script src="{{ asset_url('scripts/scroltotop.js') }}"></script>
 
     <!-- Floating button to go back to the top -->
     <button class="scroll-to-top-button" id="scrollToTopButton" type="button" aria-label="Back to top" aria-hidden="true">
