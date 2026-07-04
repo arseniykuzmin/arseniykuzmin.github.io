@@ -79,11 +79,17 @@ function setupHeaderScrollTitle() {
     window.addEventListener('resize', updateHeaderHeight);
 }
 
-document.addEventListener('DOMContentLoaded', () => {
+function initNavbarChrome() {
     setupDarkModeToggle();
     setupPrimaryNav();
     setupHeaderScrollTitle();
-});
+}
+
+if (document.readyState === 'loading' && !document.querySelector('.site-header')) {
+    document.addEventListener('DOMContentLoaded', initNavbarChrome, { once: true });
+} else {
+    initNavbarChrome();
+}
     </script>
     <script src="{{ asset_url('scripts/scroltotop.js') }}"></script>
 
