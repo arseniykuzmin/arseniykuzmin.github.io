@@ -6,6 +6,17 @@ session handoffs stay in [`log/`](log/), and future work stays in
 
 ## 2026-07-04
 
+### Shipped the cvsite build to production
+- Verified `cvsite build` green: 4 top-level pages, 15 project detail pages,
+  `.nojekyll` copied, and `<base href="/">` in generated HTML.
+- Confirmed clean working tree with `dist/` ignored.
+- Merged `dev` into `master` (fast-forward, 8 commits) and pushed `master`.
+- The GitHub Pages Action builds and deploys `dist/`, so
+  `arseniykuzmin.github.io` now serves the Jinja2 `cvsite` build instead of the
+  old runtime-JS pages.
+- Mirror to `queezz.github.io` remains deferred pending the Phase 2 deploy
+  token.
+
 ### Normalized agent landing spots
 - Added root `AGENTS.md` as the first-read landing page for agents.
 - Made `.agents/README.md` point to the root landing page and clarify

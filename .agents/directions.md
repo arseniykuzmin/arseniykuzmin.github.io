@@ -11,8 +11,9 @@ Generated output is ignored and rebuilt into `dist/`. The old runtime-JS pages
 have been retired locally, static root assets moved into `static/`, and active
 agent notes now live in this repo.
 
-Nothing has been pushed. The live sites still show the old version until
-`dev` is merged to `master` and pushed.
+Shipped: `dev` was merged to `master` and pushed. The GitHub Pages Action
+builds and deploys `dist/`, so `arseniykuzmin.github.io` now serves the new
+Jinja2 build. The `queezz.github.io` mirror is still pending its Phase 2 token.
 
 ## Confirmed decisions
 - **Source of truth:** `arseniykuzmin.github.io`.
@@ -26,8 +27,9 @@ Nothing has been pushed. The live sites still show the old version until
 - **Push rule:** do not push before local testing and explicit user approval.
 
 ## Current state
-- Branch: `dev`.
-- Latest local cleanup commit: `b10a993 Clean up CV site build`.
+- Work branch: `dev`. `master` now holds the shipped build and deploys via the
+  GitHub Pages Action on every push.
+- The `cvsite` Jinja2 build is live on `arseniykuzmin.github.io`.
 - Active `.agents/` notes are in this repo.
 - Historical/unpushed `.agents` notes still exist in sibling `cvpage`.
 - `cv.code-workspace` has a pre-existing local edit; leave it out of commits
@@ -52,18 +54,12 @@ Nothing has been pushed. The live sites still show the old version until
 
 ## Next work
 
-### 1. Review and ship the local cleanup
-- Manually inspect the generated site with `cvsite serve`.
-- Decide whether the committed `dev` state is ready to merge to `master`.
-- Merge `dev` to `master` when ready.
-- Push only after explicit user approval.
-
-### 2. Mirror to `queezz.github.io`
+### 1. Mirror to `queezz.github.io`
 Extend the Action to also publish `dist/` to `queezz/queezz.github.io`.
 Because the repos are under different accounts, this needs a cross-repo deploy
 token or deploy key stored as a repo secret. The user must create/provide this.
 
-### 3. Navigation and rails
+### 2. Navigation and rails
 Replace the current hacked navigation with a deliberate system:
 
 - **Global top nav:** keep `About`, `Conferences`, `Publications`, `Projects`
@@ -91,7 +87,7 @@ Implementation preference:
   outline exists.
 - Keep rails quiet and secondary; the project content/images remain primary.
 
-### 4. Performance and visual regularity
+### 3. Performance and visual regularity
 - Resize/compress large images; consider WebP/AVIF and `srcset`.
 - Dedupe images duplicated across `img/` and `projects/<slug>/`.
 - Consolidate stylesheets and introduce shared CSS variables.
@@ -99,7 +95,6 @@ Implementation preference:
   scale.
 
 ## Open user decisions
-- Whether to merge/push the current `dev` cleanup.
 - Whether to retire, archive, or leave the historical `.agents` copy in
   `cvpage`.
 - Cross-repo deploy token/secret for the `queezz.github.io` mirror.
