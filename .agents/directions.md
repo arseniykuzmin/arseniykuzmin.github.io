@@ -1,153 +1,106 @@
 # Directions - CV site cleanup
 
-Forward-looking map: where things stand and what's next. Detailed session
-records are in [`log/`](log/); the full background dig is
+Forward-looking map: current state, decisions, and next work. Completed
+milestones are in [`CHANGELOG.md`](CHANGELOG.md); detailed session records are
+in [`log/`](log/); background archaeology is in
 [`CV_SITE_ARCHAEOLOGY_2026-07-02.md`](CV_SITE_ARCHAEOLOGY_2026-07-02.md).
 
-## TL;DR for the next session
-Cleaning up (not rebuilding) the CV site. A working custom **Jinja2 static
-site** (`build.py`) is the keeper; the old runtime-JS pages and the Chirpy
-trial are being retired/parked. Repo/branch admin + a build venv are **done**.
-Phase 1 has been implemented locally on `arseniykuzmin.github.io/dev`: the
-Jinja build now creates a self-contained ignored `dist/`, a GitHub Pages Action
-is in place, and Gen-1 runtime pages/scripts were retired. It has been rebuilt
-and served locally, but **nothing has been pushed; the live sites are still the
-old version.**
+## TL;DR
+The CV site now has a custom Jinja2 static build packaged as `cvsite`.
+Generated output is ignored and rebuilt into `dist/`. The old runtime-JS pages
+have been retired locally, static root assets moved into `static/`, and active
+agent notes now live in this repo.
+
+Nothing has been pushed. The live sites still show the old version until
+`dev` is merged to `master` and pushed.
 
 ## Confirmed decisions
-- **Keep the custom Jinja2 build** (`arseniykuzmin.github.io/dev`); drop Chirpy
-  from the CV. Chirpy is parked for a **future blog** on `cvpage` branch
-  `blog-chirpy` (+ the `chirpy` remote).
-- **CV live at BOTH URLs** (arseniykuzmin.github.io and queezz.github.io) - a
-  mirror, one source of truth.
-- **Deploy via GitHub Action** (build on push, publish `dist/`) - not manual,
-  not committed output.
-- **User rules:** never push before testing locally. Commits: no
-  `Co-Authored-By`; end with `agent: <model>` (see
-  [`commit-culture.md`](commit-culture.md)).
+- **Source of truth:** `arseniykuzmin.github.io`.
+- **Build system:** custom Jinja2 static generator, exposed through `cvsite`.
+- **Deployment:** GitHub Action builds on push and publishes `dist/`.
+- **URLs:** keep CV live at both `arseniykuzmin.github.io` and
+  `queezz.github.io`; the mirror needs a Phase 2 token/secret.
+- **Blog:** Chirpy is not part of the CV cleanup. It remains parked for a
+  possible future blog.
+- **Commits:** no `Co-Authored-By`; agent commits end with `agent: gpt-5 codex`.
+- **Push rule:** do not push before local testing and explicit user approval.
 
-## Assumed defaults (confirm with user; otherwise proceed on these)
-- **Source of truth = `arseniykuzmin.github.io`** (build.py + freshest data
-  already there).
-- **Work on `dev`; when good, merge `dev` -> `master`; the Action deploys from
-  `master`.**
+## Current state
+- Branch: `dev`.
+- Latest local cleanup commit: `b10a993 Clean up CV site build`.
+- Active `.agents/` notes are in this repo.
+- Historical/unpushed `.agents` notes still exist in sibling `cvpage`.
+- `cv.code-workspace` has a pre-existing local edit; leave it out of commits
+  unless the user explicitly asks.
+- Preferred local commands:
+  - `cvsite build`
+  - `cvsite serve`
+  - `cvsite serve --port 9000`
+  - `cvsite serve --no-build`
+- Build venv: `$env:USERPROFILE\.venvs\cvsite`.
 
-## Current state (2026-07-04)
-- **arseniykuzmin.github.io**: on `dev`. Phase 1 is implemented locally:
-  `build.py` produces a self-contained `dist/`, `.github/workflows/pages.yml`
-  deploys Pages from `dist/`, tracked `dist/` has been removed from the index,
-  and Gen-1 runtime pages/scripts were deleted. The project has also moved to a
-  `src/cvsite` package with `cvsite build` / `cvsite serve`, and loose root
-  assets were moved to `static/`.
-- **Agents:** active `.agents/` notes now live in this repo. The sibling
-  `cvpage/.agents` copy is historical/unpushed context.
-- **Working tree note:** `cv.code-workspace` has a pre-existing local edit
-  (**not ours - leave it**). Nothing pushed.
-- **Build venv:** use `$env:USERPROFILE\.venvs\cvsite`.
+## Technical notes
+- `dist/` is generated output and must stay ignored.
+- Generated HTML uses `<base href="/">`, so local preview must serve `dist/` as
+  the web root.
+- `build.py` is only a compatibility wrapper; the real implementation is under
+  `src/cvsite/`.
+- On Windows, an active preview server can hold handles under `dist/`; stop the
+  server before manually rebuilding. `cvsite serve` builds before serving.
+- Root deployment metadata `.nojekyll` stays at repo root and is copied to
+  `dist/`; media assets belong under `static/`, `img/`, or project folders.
 
-## Key technical note
-`build.py` now assembles a self-contained `dist/`: shared `styles/`, `img/`,
-required `scripts/`, root image/favicon files, `.nojekyll`, and project-local
-media are copied into the artifact. Generated pages use `base href="/"`, so
-preview `dist/` through a local server rather than by double-clicking HTML.
+## Next work
 
-## Plan
+### 1. Review and ship the local cleanup
+- Manually inspect the generated site with `cvsite serve`.
+- Decide whether the committed `dev` state is ready to merge to `master`.
+- Merge `dev` to `master` when ready.
+- Push only after explicit user approval.
 
-### Phase 1 - build & deploy `arseniykuzmin.github.io` (local complete; no push)
-1. Done: upgraded `build.py` to produce a self-contained `dist/`.
-2. Done: added `.github/workflows/pages.yml`.
-3. Done: removed `dist/` from the index and ignored generated output.
-4. Done: retired Gen-1 runtime pages/scripts. `project_detail_ui.js` was kept
-   because generated project pages still reference it.
-5. Done: fixed canonical/alternate/OG URLs for the source site plus mirror.
-6. Done: rebuilt and served locally; see
-   [`log/2026-07-03-phase-1-local-deploy-cleanup.md`](log/2026-07-03-phase-1-local-deploy-cleanup.md).
+### 2. Mirror to `queezz.github.io`
+Extend the Action to also publish `dist/` to `queezz/queezz.github.io`.
+Because the repos are under different accounts, this needs a cross-repo deploy
+token or deploy key stored as a repo secret. The user must create/provide this.
 
-### Phase 1b - Python project tooling (local complete; no push)
-Done locally:
-- Added `pyproject.toml`.
-- Moved builder code into `src/cvsite/builder.py`.
-- Added CLI entry point:
-  - `cvsite build` -> rebuild `dist/`.
-  - `cvsite serve` -> build and serve `dist/` as the web root.
-  - Options: `--port`, `--host`, `--no-build`.
-- Kept `build.py` as a thin compatibility wrapper.
-- Updated GitHub Action to run `cvsite build`.
-- Updated `requirements.txt` to install the package (`-e .`).
-- Moved loose root assets (`favicon.ico`, `kaa.jpg`, `kaa.png`) into `static/`
-  and updated templates/metadata to reference `static/...`.
+### 3. Navigation and rails
+Replace the current hacked navigation with a deliberate system:
 
-Verified:
-- `cvsite build` works after editable install into the project venv.
-- `cvsite serve --no-build --port 8777` served `projects.html` with HTTP 200.
-- Generated local href/src integrity check passed: 313 refs.
+- **Global top nav:** keep `About`, `Conferences`, `Publications`, `Projects`
+  on desktop; normalize active state, spacing, dark mode, and focus behavior.
+- **Mobile nav:** implement a real hamburger button with `aria-expanded`,
+  `aria-controls`, predictable menu behavior, and no 20px fixed-navbar hack.
+- **Project detail left rail:** desktop-only project collection navigation,
+  including back to all projects and nearby/all project titles.
+- **Project detail right rail:** desktop-only metadata card plus real
+  "On this page" outline.
+- **Long non-project pages:** use a text outline instead of the dot/progress
+  rail. Hide rails on mobile.
+- **Mobile rails:** collapse rails away; put metadata in normal content flow.
 
-See [`log/2026-07-04-src-package-and-static-assets.md`](log/2026-07-04-src-package-and-static-assets.md).
-
-### Phase 2 - mirror to `queezz.github.io` (needs the user)
-Extend the Action to also publish `dist/` to `queezz/queezz.github.io`. The
-repos are under different accounts, so this needs a **cross-repo deploy token**
-(PAT or deploy key) as a repo secret - **the user must create it** (agent can't;
-`gh` isn't installed). Until then, `queezz.github.io` stays live on its current
-content.
-
-### Phase 3 - cosmetics / performance / UI regularity (against the clean build)
-- **Perf:** ~13.9 MB of images (several 1-2 MB PNGs) -> resize + WebP/AVIF +
-  `srcset` (biggest win). Dedupe images duplicated across `img/` and
-  `projects/<slug>/`.
-- **CSS:** consolidate the 9 stylesheets; hoist the color/dark-mode palette to
-  CSS variables; replace the `moveProfileIfNeeded` JS layout hack with CSS.
-- **Regularity:** consistent section/figure/card spacing + type scale.
-- Full findings: archaeology section 5 through section 7.
-
-### Phase 3b - navigation and rails
-The current nav is still hacked together: a fixed top bar, inline hamburger
-logic, and the old right-side dot/progress "on this page" nav. Replace this
-with a deliberate navigation system.
-
-Recommended structure:
-- **Global top nav:** keep top-level tabs (`About`, `Conferences`,
-  `Publications`, `Projects`) on desktop. Normalize active state, spacing,
-  dark-mode behavior, and keyboard focus. Remove inline `onclick` in favor of a
-  small, explicit nav script or inline module.
-- **Mobile nav:** use a real hamburger button with `aria-expanded`,
-  `aria-controls`, escape/overlay behavior if needed, and predictable full-width
-  menu. Avoid relying on the current fixed 20px navbar hack.
-- **Project detail left rail:** desktop-only rail listing project navigation:
-  back to all projects plus nearby/all project titles. It should answer "where
-  am I in the project collection?" without forcing the user back to the grid.
-- **Right rail on project detail:** desktop-only rail with:
-  - a compact project metadata card (`year` or `period`, `topic`, `lab`,
-    `related paper`, optional collaborators/co-authors), only when data exists;
-  - an "On this page" outline generated from headings in the project markdown.
-- **Right rail on long non-project pages:** use a real text outline for sections
-  instead of the dot/progress rail. Hide on mobile.
-- **Mobile for rails:** collapse rails away. Put project metadata below the hero
-  or title, and rely on page flow plus the hamburger/global nav.
-
-Data implications:
-- Add optional structured fields to `data/projects.json`, for example:
-  `period`, `topic`, `lab`, `collaborators`, `relatedPaper`, `relatedUrl`.
-- Do not invent years where the source is unclear. Use categories/topics until
-  reliable date ranges are available.
+Data needed for project metadata:
+- Optional fields in `data/projects.json`: `period`, `topic`, `lab`,
+  `collaborators`, `relatedPaper`, `relatedUrl`.
+- Do not invent years. Use category/topic labels until reliable date ranges are
+  available.
 
 Implementation preference:
-- Generate outlines at build time from rendered headings where possible. Use JS
-  only for active-section highlighting and mobile menu behavior.
-- Remove or retire `styles/scrollnav.css` and `scripts/scrollnav.js` once the
-  replacement outline exists.
-- Keep rails desktop-only (`min-width` breakpoint around 1100-1200px) so the
-  main text does not become cramped.
+- Generate outlines at build time from headings where practical.
+- Use JS only for active-section highlighting and mobile menu behavior.
+- Retire `styles/scrollnav.css` and `scripts/scrollnav.js` once the replacement
+  outline exists.
+- Keep rails quiet and secondary; the project content/images remain primary.
 
-Risk to watch:
-- A 3-column layout can easily make the project pages feel like a dashboard.
-  Keep rails quiet, narrow, and secondary; the project content and images should
-  remain the visual center.
+### 4. Performance and visual regularity
+- Resize/compress large images; consider WebP/AVIF and `srcset`.
+- Dedupe images duplicated across `img/` and `projects/<slug>/`.
+- Consolidate stylesheets and introduce shared CSS variables.
+- Continue regularizing section spacing, figure spacing, card layout, and type
+  scale.
 
-## Things that need the user (don't block Phase 1)
-- Confirm the two assumed defaults (source repo; `dev` -> `master` deploy flow).
-- Phase 2 deploy token for the queezz mirror.
-- Decide whether to retire or leave the historical `.agents` copy in
-  `cvpage/master`.
-- Whether the future blog stays on `queezz.github.io` or moves (affects the
-  "both live" URL split).
+## Open user decisions
+- Whether to merge/push the current `dev` cleanup.
+- Whether to retire, archive, or leave the historical `.agents` copy in
+  `cvpage`.
+- Cross-repo deploy token/secret for the `queezz.github.io` mirror.
+- Whether the future blog stays on `queezz.github.io` or moves elsewhere.

@@ -26,15 +26,15 @@
   and `styles/sidemenu.css`.
 
 ## State
-- Build passes with `C:\Users\queezz\.venvs\bh\Scripts\python.exe build.py`.
+- Build passes with the then-active local Python venv running `build.py`.
 - Generated `dist/` is present locally and ignored by Git.
 - Internal generated href/src integrity check passed: 294 local references.
 - Local preview at `http://127.0.0.1:8765/` returned HTTP 200 for:
   `/`, `/projects.html`, `/publications.html`, `/conferences.html`,
   `/projects/deposition-device/`, shared CSS/JS, and representative root and
   project images.
-- In-app browser attachment failed with a local `EPERM` on
-  `C:\Users\queezz\AppData`, so visual smoke testing was limited to served HTTP
+- In-app browser attachment failed with a local `EPERM` under `%LOCALAPPDATA%`,
+  so visual smoke testing was limited to served HTTP
   checks.
 - Nothing has been pushed.
 

@@ -30,7 +30,7 @@ grounded, and less hacked together.
   and dark-mode overrides.
 
 ## State
-- Build passes with `C:\Users\queezz\.venvs\bh\Scripts\python.exe build.py`.
+- Build passes with the then-active local Python venv running `build.py`.
 - Generated href/src integrity check passed: 294 local references.
 - Local server at `http://127.0.0.1:8765/` returned HTTP 200 for the projects
   page, a project detail page, and the new project CSS files.

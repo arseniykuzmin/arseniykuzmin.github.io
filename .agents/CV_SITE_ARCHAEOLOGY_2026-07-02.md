@@ -1,6 +1,6 @@
 # CV Site — Archaeology
 
-*Private working notes. Location: `Dropbox/JobHunting/` (not inside either git repo → never pushed).*
+*Private working notes. Location: `<Dropbox>/JobHunting/` (not inside either git repo → never pushed).*
 *Compiled: 2026-07-02. No files were modified in either repo to produce this.*
 
 ---
@@ -22,7 +22,7 @@ You have **two repositories** and **three generations** of the same CV site.
 
 ## 1. The two repositories
 
-Both folders sit in `Dropbox/JobHunting/` (yes, both under Dropbox). Neither has a `.gitignore`.
+Both folders sit in `<Dropbox>/JobHunting/` (yes, both under Dropbox). Neither has a `.gitignore`.
 
 ### A. `arseniykuzmin.github.io/`  → `github.com/arseniykuzmin/arseniykuzmin.github.io`
 Branches:
