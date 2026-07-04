@@ -4,7 +4,7 @@
 
 {% block head_extra %}
     <meta name="viewport" content="width=device-width" />
-    <link rel="stylesheet" href="styles/project.css" />
+    <link rel="stylesheet" href="{{ asset_url('styles/project.css') }}" />
 {% endblock %}
 
 {% block navbar %}
@@ -30,7 +30,12 @@
             </aside>
 
             <main class="project-main">
-                <a href="projects.html" class="back-link back-link--mobile">&larr; Projects</a>
+                <div class="project-mobile-actions">
+                    <a href="projects.html" class="back-link back-link--mobile">&larr; Projects</a>
+                    <button class="project-details-button" type="button" data-project-drawer-open aria-controls="projectDetailsDrawer" aria-expanded="false">
+                        Details
+                    </button>
+                </div>
                 <div id="projectContainer" class="project-content">{{ project_body }}</div>
             </main>
 
@@ -38,20 +43,73 @@
                 <div class="rail-card">
                     <p class="rail-card-label">Category</p>
                     <p class="rail-card-value">{{ project.category | default("Selected work") | e }}</p>
-{% if project.period %}
+                </div>
+{% if project_meta.period or project_meta.lab or project_meta.links %}
+                <div class="rail-card rail-card--meta">
+                    <p class="rail-card-label">Details</p>
+{% if project_meta.period %}
                     <p class="rail-card-label">Period</p>
-                    <p class="rail-card-value">{{ project.period | e }}</p>
+                    <p class="rail-card-value">{{ project_meta.period | e }}</p>
 {% endif %}
-{% if project.lab %}
+{% if project_meta.lab %}
                     <p class="rail-card-label">Lab</p>
-                    <p class="rail-card-value">{{ project.lab | e }}</p>
+                    <p class="rail-card-value">{{ project_meta.lab | e }}</p>
 {% endif %}
-{% if project.relatedUrl %}
-                    <p class="rail-card-value"><a href="{{ project.relatedUrl | e }}" target="_blank" rel="noopener noreferrer">Related &#8599;</a></p>
+{% if project_meta.links %}
+                    <div class="rail-link-list">
+{% for link in project_meta.links %}
+                        <a href="{{ link.url | e }}" target="_blank" rel="noopener noreferrer">{{ link.label | e }} &#8599;</a>
+{% endfor %}
+                    </div>
 {% endif %}
                 </div>
+{% endif %}
 {% if outline %}
                 <nav class="rail-outline" aria-label="On this page">
+                    <p class="rail-outline-title">On this page</p>
+                    <ul>
+{% for h in outline %}
+                        <li class="lvl-{{ h.level }}"><a href="projects/{{ current_slug }}/#{{ h.id }}">{{ h.text | e }}</a></li>
+{% endfor %}
+                    </ul>
+                </nav>
+{% endif %}
+            </aside>
+        </div>
+
+        <div class="project-drawer" id="projectDetailsDrawer" aria-hidden="true">
+            <button class="project-drawer-backdrop" type="button" data-project-drawer-close aria-label="Close project details"></button>
+            <aside class="project-drawer-sheet" role="dialog" aria-modal="true" aria-labelledby="projectDetailsTitle" tabindex="-1">
+                <div class="project-drawer-header">
+                    <h2 id="projectDetailsTitle">Project Details</h2>
+                    <button class="project-drawer-close" type="button" data-project-drawer-close aria-label="Close project details">&times;</button>
+                </div>
+                <div class="rail-card">
+                    <p class="rail-card-label">Category</p>
+                    <p class="rail-card-value">{{ project.category | default("Selected work") | e }}</p>
+                </div>
+{% if project_meta.period or project_meta.lab or project_meta.links %}
+                <div class="rail-card rail-card--meta">
+                    <p class="rail-card-label">Details</p>
+{% if project_meta.period %}
+                    <p class="rail-card-label">Period</p>
+                    <p class="rail-card-value">{{ project_meta.period | e }}</p>
+{% endif %}
+{% if project_meta.lab %}
+                    <p class="rail-card-label">Lab</p>
+                    <p class="rail-card-value">{{ project_meta.lab | e }}</p>
+{% endif %}
+{% if project_meta.links %}
+                    <div class="rail-link-list">
+{% for link in project_meta.links %}
+                        <a href="{{ link.url | e }}" target="_blank" rel="noopener noreferrer">{{ link.label | e }} &#8599;</a>
+{% endfor %}
+                    </div>
+{% endif %}
+                </div>
+{% endif %}
+{% if outline %}
+                <nav class="rail-outline project-drawer-outline" aria-label="On this page">
                     <p class="rail-outline-title">On this page</p>
                     <ul>
 {% for h in outline %}
@@ -69,5 +127,5 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.css">
   <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.js"></script>
   <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/contrib/auto-render.min.js"></script>
-  <script defer src="scripts/project_detail_ui.js"></script>
+  <script defer src="{{ asset_url('scripts/project_detail_ui.js') }}"></script>
 {% endblock %}

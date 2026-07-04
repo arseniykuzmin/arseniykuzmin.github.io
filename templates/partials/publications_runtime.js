@@ -43,7 +43,25 @@ function authorNameSpan(name, isMe) {
     return '<span class="author-name">' + safeName + '</span>';
 }
 
+function cleanPublicationTitle(title) {
+    return String(title || '')
+        .replaceAll('$\\beta$p', 'βₚ')
+        .replaceAll('$\\beta_p$', 'βₚ')
+        .replaceAll('\\beta', 'β')
+        .replaceAll('$', '')
+        .replace(/\bH2\b/g, 'H₂')
+        .replace(/\bD2\b/g, 'D₂')
+        .replaceAll('Q-shu university experiment', 'Q-shu University Experiment');
+}
+
+function normalizeAuthorText(author) {
+    return String(author || '').trim().replace(/,(?=\S)/g, ', ').replace(/\s+/g, ' ');
+}
+
 function initialsName(nameParts) {
+    nameParts = nameParts.map(function (part) {
+        return part.trim();
+    }).filter(Boolean);
     if (nameParts.length === 2) {
         var initials = nameParts[1].split(' ').map(function (initial) {
             return initial.charAt(0) + '.';
@@ -65,12 +83,12 @@ function transformAuthors(authors) {
     }
 
     if (authors.indexOf(' and ') === -1) {
-        var nameParts = authors.trim().split(', ');
+        var nameParts = normalizeAuthorText(authors).split(', ');
         return authorNameSpan(initialsName(nameParts), authors.toLowerCase().includes('kuzmin'));
     } else {
         var authorList = authors.split(' and ');
         var transformedAuthors = authorList.map(function (author) {
-            var nameParts = author.trim().split(', ');
+            var nameParts = normalizeAuthorText(author).split(', ');
             return authorNameSpan(initialsName(nameParts), author.toLowerCase().includes('kuzmin'));
         });
         return transformedAuthors.join(', ');
@@ -131,7 +149,7 @@ function renderPublications() {
 
         var title = document.createElement('h2');
         title.className = 'paper-title';
-        title.textContent = publication.title || '';
+        title.textContent = cleanPublicationTitle(publication.title);
         card.appendChild(title);
 
         var authors = document.createElement('div');
@@ -142,7 +160,8 @@ function renderPublications() {
         var meta = document.createElement('div');
         meta.className = 'paper-meta';
         var venueLine = String(publication.venue || '');
-        if (publication.volume) venueLine += ' ' + publication.volume;
+        if (publication.year) venueLine += ' ' + publication.year;
+        if (publication.volume) venueLine += ', ' + publication.volume;
         if (publication.pages) venueLine += ', ' + publication.pages;
         meta.innerHTML = '<span class="paper-venue">' + escapeHTML(venueLine) + '</span>';
         card.appendChild(meta);

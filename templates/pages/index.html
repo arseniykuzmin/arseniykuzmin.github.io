@@ -3,7 +3,7 @@
 {% block head_title %}Arseniy Kuzmin: About{% endblock %}
 
 {% block head_extra %}
-    <link rel="stylesheet" href="styles/about.css">
+    <link rel="stylesheet" href="{{ asset_url('styles/about.css') }}">
     <meta name="keywords" content="physics, fusion, hydrogen, oxygen, tokamak">
     <meta name="viewport" content="width=device-width">
     <meta name="description" content="Plasma physicist">
@@ -75,8 +75,9 @@
             <div class="experience-item">
                 <div class="experience-title"><h2>{{ exp.title | e }}</h2></div>
                 <div class="experience-details">
-                    <p>{{ exp.employer | e }} ({{ exp.location | e }})</p>
+                    <p><a href="{{ exp.url | e }}" target="_blank" rel="noopener noreferrer">{{ exp.employer | e }}</a> ({{ exp.location | e }})</p>
                     <p>{{ exp.startDate | e }} - {{ exp.endDate | e }}</p>
+                    <span class="experience-duration">{{ exp.startDate | experience_duration(exp.endDate) }}</span>
                 </div>
                 <span class="skills-arrow">show more</span>
                 <div class="experience-description collapsed">

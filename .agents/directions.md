@@ -15,8 +15,9 @@ Shipped and live on `arseniykuzmin.github.io` via the GitHub Pages Action:
 the Jinja2 build, plus (2026-07-04) an accessible top nav + mobile hamburger,
 project-detail rails with a build-time "On this page" outline, softened dark
 mode, Publications/Conferences card lists with live filters, a tighter About
-page, the QUEST/PSI publications, and a fully populated Control Unit project.
-The `queezz.github.io` mirror still needs its Phase 2 token.
+page, the QUEST/PSI publications, a fully populated Control Unit project,
+polished publication/conference listing alignment, and a mobile project details
+drawer. The `queezz.github.io` mirror still needs its Phase 2 token.
 
 ## Confirmed decisions
 - **Source of truth:** `arseniykuzmin.github.io`.
@@ -72,6 +73,10 @@ token or deploy key stored as a repo secret. The user must create/provide this.
 - Consolidate stylesheets and introduce shared CSS variables.
 - Continue regularizing section spacing, figure spacing, card layout, and type
   scale.
+
+### 3. Project content details
+- Fill in missing project metadata/details where available, especially periods,
+  links, tags, and short project-specific notes for the mobile Details drawer.
 
 ## Open user decisions
 - Whether to retire, archive, or leave the historical `.agents` copy in

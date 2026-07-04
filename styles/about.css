@@ -166,17 +166,15 @@ h3 {
 
 .skills-description {
     display: flex;
-    flex-wrap: wrap;
-    gap: 6px;
+    flex-direction: column;
+    gap: 4px;
     min-width: 0;
 }
 
 .skills-description p {
     margin: 0;
-    padding: 3px 7px;
+    padding: 0;
     color: #4e4638;
-    background: #ede7da;
-    border-radius: 4px;
     font-size: 13px;
     line-height: 1.35;
 }
@@ -218,8 +216,33 @@ h3 {
     margin: 0;
 }
 
+.experience-duration {
+    display: inline-flex;
+    align-items: center;
+    min-height: 18px;
+    padding: 0 6px;
+    color: #5f584e;
+    background: #ebe6dc;
+    border: 1px solid #d9d0c1;
+    border-radius: 999px;
+    font-size: 11px;
+    font-weight: 700;
+    line-height: 1;
+    white-space: nowrap;
+}
+
 .experience-details p:first-child {
     font-weight: 600;
+}
+
+.experience-details a {
+    color: inherit;
+    text-decoration: none;
+}
+
+.experience-details a:hover,
+.experience-details a:focus-visible {
+    text-decoration: underline;
 }
 
 .experience-description {
@@ -239,15 +262,22 @@ h3 {
 
 .skills-arrow {
     display: inline-flex;
-    margin-top: 8px;
-    min-height: 26px;
+    margin-top: 7px;
+    min-height: 20px;
     align-items: center;
-    color: #7d2419;
+    color: #77705f;
     background: transparent;
-    border-bottom: 1px solid currentColor;
+    border: 0;
     cursor: pointer;
     font-size: 12px;
-    font-weight: 700;
+    font-weight: 600;
+    line-height: 1;
+}
+
+.skills-arrow:hover,
+.skills-arrow:focus-visible {
+    color: #4f493f;
+    text-decoration: none;
 }
 
 html.dark-mode .education-item,
@@ -286,13 +316,23 @@ html.dark-mode .experience-description {
     color: #c7c0b4;
 }
 
+html.dark-mode .experience-duration {
+    color: #d8d0c3;
+    background: #36312a;
+    border-color: #4b443a;
+}
+
 html.dark-mode .skills-description p {
-    color: #e3d8c4;
-    background: #3a3327;
+    color: #cfc7ba;
 }
 
 html.dark-mode .skills-arrow {
-    color: #f0b6a4;
+    color: #aaa196;
+}
+
+html.dark-mode .skills-arrow:hover,
+html.dark-mode .skills-arrow:focus-visible {
+    color: #d4ccc0;
 }
 
 @media (max-width: 760px) {

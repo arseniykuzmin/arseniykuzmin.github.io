@@ -6,6 +6,18 @@ session handoffs stay in [`log/`](log/), and future work stays in
 
 ## 2026-07-04
 
+### Polished publications, navigation, and project detail pages
+- Restored citation-style publication venue lines with years, normalized
+  publication title typography, and repaired compressed author formatting.
+- Regularized top nav/tab widths, page title scale, and the Publications /
+  Conferences filter/control layout so the listing pages align visually.
+- Refined mobile nav affordances, the compact back-to-top pill, and project
+  detail rails.
+- Added a mobile project Details drawer so category, links, and page outline
+  remain available without crowding the top of project content.
+- Added compact Experience duration badges and restored institution links on
+  the About page.
+
 ### Shipped publication cards and a leaner About page
 - Redesigned Publications and Conferences as dark paper-style cards with venue
   badges, year/location/presentation metadata, and no shifting list numbers.

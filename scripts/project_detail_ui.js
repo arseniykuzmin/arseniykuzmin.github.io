@@ -132,9 +132,8 @@
   }
 
   function initOutline() {
-    const outline = document.querySelector(".rail-outline");
-    if (!outline) return;
-    const links = Array.from(outline.querySelectorAll("a"));
+    const links = Array.from(document.querySelectorAll(".rail-outline a"));
+    if (!links.length) return;
     const byTarget = new Map();
     links.forEach(function (a) {
       const href = a.getAttribute("href") || "";
@@ -142,7 +141,9 @@
       if (hash < 0) return;
       const id = decodeURIComponent(href.slice(hash + 1));
       const el = document.getElementById(id);
-      if (el) byTarget.set(el, a);
+      if (!el) return;
+      if (!byTarget.has(el)) byTarget.set(el, []);
+      byTarget.get(el).push(a);
     });
     if (!byTarget.size) return;
     const observer = new IntersectionObserver(
@@ -152,14 +153,55 @@
           links.forEach(function (l) {
             l.classList.remove("is-active");
           });
-          const a = byTarget.get(entry.target);
-          if (a) a.classList.add("is-active");
+          const activeLinks = byTarget.get(entry.target) || [];
+          activeLinks.forEach(function (a) {
+            a.classList.add("is-active");
+          });
         });
       },
       { rootMargin: "-80px 0px -70% 0px", threshold: 0 }
     );
-    byTarget.forEach(function (a, el) {
+    byTarget.forEach(function (_links, el) {
       observer.observe(el);
+    });
+  }
+
+  function initProjectDrawer() {
+    const drawer = document.getElementById("projectDetailsDrawer");
+    const openButton = document.querySelector("[data-project-drawer-open]");
+    if (!drawer || !openButton) return;
+
+    const closeButtons = Array.from(
+      drawer.querySelectorAll("[data-project-drawer-close]")
+    );
+    const sheet = drawer.querySelector(".project-drawer-sheet");
+
+    function openDrawer() {
+      drawer.classList.add("is-open");
+      drawer.setAttribute("aria-hidden", "false");
+      openButton.setAttribute("aria-expanded", "true");
+      document.body.classList.add("project-drawer-open");
+      if (sheet) sheet.focus({ preventScroll: true });
+    }
+
+    function closeDrawer() {
+      drawer.classList.remove("is-open");
+      drawer.setAttribute("aria-hidden", "true");
+      openButton.setAttribute("aria-expanded", "false");
+      document.body.classList.remove("project-drawer-open");
+    }
+
+    openButton.addEventListener("click", openDrawer);
+    closeButtons.forEach(function (button) {
+      button.addEventListener("click", closeDrawer);
+    });
+    drawer.querySelectorAll("a[href*='#']").forEach(function (link) {
+      link.addEventListener("click", closeDrawer);
+    });
+    document.addEventListener("keydown", function (e) {
+      if (e.key === "Escape" && drawer.classList.contains("is-open")) {
+        closeDrawer();
+      }
     });
   }
 
@@ -167,5 +209,6 @@
     initGallery();
     renderMath();
     initOutline();
+    initProjectDrawer();
   });
 })();

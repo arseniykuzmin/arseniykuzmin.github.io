@@ -2,6 +2,12 @@
 hero: /projects/plasma-device-control-unit/controlunit-render.jpg
 hero_caption: CAD layout of the aluminum-framed unit — a Raspberry Pi with a stacked HAT, DAC boards, and a front panel of feedthroughs, thermocouple ports, and mains inlet.
 layout: split
+period: 2019-Present
+links:
+  - label: GitHub
+    url: https://github.com/queezz/ControlUnit
+  - label: Documentation
+    url: https://queezz.github.io/ControlUnit/
 gallery:
   - src: /projects/plasma-device-control-unit/controlunit-spaghetti.jpg
     caption: 2019 — a bare Raspberry Pi and HAT in a food container, wired straight into the plasma bench.
@@ -22,9 +28,6 @@ hydrogen transport experiments (PIHTI). It runs on a Raspberry Pi with a
 Python/PyQt interface — logging vacuum and plasma parameters, driving the gas
 flows, and closing the loop on plasma current — while staying cheap, hackable,
 and fully documented.
-
-Code on [GitHub](https://github.com/queezz/ControlUnit) ·
-[Documentation](https://queezz.github.io/ControlUnit/)
 
 <!--more-->
 

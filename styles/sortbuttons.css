@@ -1,20 +1,28 @@
 .toggle-button {
     position: relative;
-    padding: 10px;
-    font-size: 16px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 104px;
+    height: 36px;
+    box-sizing: border-box;
+    padding: 0 14px;
+    font-size: 15px;
     border: none;
     background-color: #8c0c0c;
     color: #fff;
     cursor: pointer;
     border-radius: 4px;
     transition: background-color 0.3s ease;
-    margin: 5px;
+    margin: 0;
 }
 
 .sort-button {
     position: relative;
     display: inline-flex;
     align-items: center;
+    justify-content: center;
+    min-width: 104px;
     height: 36px;
     box-sizing: border-box;
     padding: 0 30px 0 14px;
@@ -25,7 +33,7 @@
     cursor: pointer;
     border-radius: 4px;
     transition: background-color 0.3s ease;
-    margin: 5px;
+    margin: 0;
 }
 
 .toggle-button:hover,
@@ -52,10 +60,8 @@
 }
 
 .button-container {
-    display: flex;
+    display: grid;
     align-items: center;
-    justify-content: space-between;
-    margin-bottom: 10px;
 }
 
 

@@ -26,18 +26,20 @@
 
 {% block content %}
         <div class="citations">
-            <h1>International Conferences</h1>
+            <div class="citations-heading">
+                <h1 class="page-title">International Conferences</h1>
+            </div>
             <div class="button-container">
                 <input type="search" id="conferenceFilter" class="filter-box" placeholder="Filter conferences…" aria-label="Filter conferences" autocomplete="off">
                 <button id="sortButton" class="sort-button">Year<span class="arrow"></span></button>
                 <p id="conferenceCount" class="count-label">{{ conferences_sorted | length }}</p>
             </div>
+        </div>
 
-            <div class="citations paper-grid" id="conference-list">
+        <div class="citations paper-grid" id="conference-list">
 {% for conf in conferences_sorted %}
 {{ conference_item(conf) }}
 {% endfor %}
-            </div>
         </div>
 {% endblock %}
 

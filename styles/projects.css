@@ -24,12 +24,8 @@
     text-transform: uppercase;
 }
 
-.projects-header h1 {
+.projects-header .page-title {
     color: var(--project-ink);
-    font-size: clamp(1.7rem, 3vw, 2.5rem);
-    font-weight: 600;
-    line-height: 1.05;
-    margin: 0;
 }
 
 .projects-header p:last-child {

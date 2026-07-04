@@ -9,7 +9,7 @@
 .citations h1 {
     margin: 0 0 14px;
     line-height: 1.2;
-    font-size: 28px;
+    font-size: var(--page-title-size);
     font-weight: 600;
     color: #8c0c0c;
 }
@@ -19,6 +19,7 @@
     align-items: center;
     flex-wrap: wrap;
     gap: 10px;
+    min-height: calc(var(--page-title-size) * 1.16);
     margin-bottom: 14px;
 }
 
@@ -27,10 +28,11 @@
 }
 
 .button-container {
-    display: flex;
+    display: grid;
+    grid-template-columns: minmax(0, 300px) repeat(2, max-content) minmax(16px, 1fr) minmax(3ch, max-content);
     align-items: center;
-    flex-wrap: wrap;
-    gap: 8px;
+    column-gap: 14px;
+    row-gap: 10px;
     margin-bottom: 16px;
 }
 
@@ -38,7 +40,7 @@
     height: 36px;
     box-sizing: border-box;
     padding: 0 12px;
-    width: min(300px, 100%);
+    width: 100%;
     font-size: 15px;
     color: #242321;
     background: #fff;
@@ -58,7 +60,9 @@
 }
 
 .count-label {
-    margin: 0 0 0 auto;
+    grid-column: -2 / -1;
+    justify-self: end;
+    margin: 0;
     min-width: 3ch;
     font-size: 16px;
     font-weight: 700;
@@ -134,7 +138,7 @@
 
 .paper-year {
     flex: 0 0 auto;
-    color: #e8c66e;
+    color: #8c0c0c;
     font-size: 14px;
     font-weight: 700;
 }
@@ -142,6 +146,7 @@
 .paper-title {
     margin: 0;
     color: #2d2923;
+    background: transparent;
     font-size: 18px;
     line-height: 1.28;
     font-weight: 700;
@@ -231,6 +236,11 @@ html.dark-mode .paper-card {
 
 html.dark-mode .paper-title {
     color: #fffaf0;
+    background: transparent;
+}
+
+html.dark-mode .paper-year {
+    color: #e8c66e;
 }
 
 html.dark-mode .paper-card .authors {
@@ -275,13 +285,14 @@ html.dark-mode #publicationCount {
         padding: 0;
     }
 
-    .citations h1 {
-        font-size: 24px;
-    }
-
     .citations-heading {
         gap: 8px;
         margin-bottom: 12px;
+    }
+
+    .button-container {
+        grid-template-columns: minmax(92px, max-content) minmax(104px, max-content) minmax(12px, 1fr) minmax(3ch, max-content);
+        column-gap: 8px;
     }
 
     .bibtex-link {
@@ -291,10 +302,10 @@ html.dark-mode #publicationCount {
     }
 
     .filter-box {
-        width: 100%;
+        grid-column: 1 / -1;
     }
 
     .count-label {
-        margin-left: auto;
+        grid-column: -2 / -1;
     }
 }

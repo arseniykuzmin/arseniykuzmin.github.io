@@ -26,6 +26,7 @@
     --current-header-height: var(--header-height);
     --nav-surface: #f2f2f2;
     --nav-ink: #333333;
+    --page-title-size: clamp(1.55rem, 2.1vw, 1.75rem);
 }
 
 @view-transition {
@@ -90,7 +91,7 @@ html {
 .nav-menu {
     display: flex;
     align-items: center;
-    gap: 24px;
+    gap: 14px;
     margin: 0;
     padding: 0;
     list-style: none;
@@ -98,9 +99,12 @@ html {
 
 .nav-menu a {
     display: inline-block;
+    min-width: 104px;
+    box-sizing: border-box;
     padding: 6px 2px;
     color: var(--nav-ink);
     font-size: 16px;
+    text-align: center;
     text-decoration: none;
     border-bottom: 2px solid transparent;
     transition: color 0.15s ease, border-color 0.15s ease;
@@ -179,45 +183,40 @@ html {
 
 /* Mobile: hamburger + collapsible panel */
 @media (max-width: 760px) {
+    :root {
+        --header-height: 54px;
+    }
+
     .site-header-inner {
-        flex-wrap: wrap;
-        gap: 10px;
-        padding: 0 16px;
+        gap: 8px;
+        padding: 0 14px;
     }
 
     .site-brand {
-        flex: 1 1 auto;
+        flex: 0 1 auto;
         min-width: 0;
         overflow: hidden;
         text-overflow: ellipsis;
-        font-size: clamp(18px, 6vw, 22px);
-    }
-
-    .site-header.is-scrolled .site-header-inner {
-        row-gap: 0;
-        padding-top: 6px;
-        padding-bottom: 7px;
+        font-size: clamp(17px, 5.4vw, 20px);
     }
 
     .site-header.is-scrolled .site-brand {
-        flex-basis: calc(100% - 54px);
+        font-size: 17px;
     }
 
     .site-section-title:not([hidden]) {
         display: block;
-        flex: 0 0 100%;
-        order: 3;
-        margin-top: -5px;
-        color: #7e756b;
-        font-size: 16px;
-        line-height: 1.15;
+        flex: 1 1 auto;
+        font-size: 14px;
     }
 
     .nav-toggle {
         display: block;
         margin-left: auto;
-        flex: 0 0 40px;
-        order: 2;
+        flex: 0 0 36px;
+        width: 36px;
+        height: 36px;
+        padding: 7px;
     }
 
     .primary-nav {
@@ -239,19 +238,49 @@ html {
         transition: max-height 0.2s ease;
     }
 
+    .nav-menu li {
+        border-top: 1px solid rgba(140, 12, 12, 0.1);
+    }
+
+    .nav-menu li:first-child {
+        border-top: 0;
+    }
+
     .nav-menu.is-open {
         max-height: 70vh;
     }
 
     .nav-menu a {
         display: block;
-        padding: 14px 20px;
+        min-width: 0;
+        position: relative;
+        padding: 14px 44px 14px 20px;
         font-size: 18px;
+        text-align: left;
         border-bottom: 0;
         border-left: 3px solid transparent;
     }
 
+    .nav-menu a::after {
+        content: "";
+        position: absolute;
+        top: 50%;
+        right: 22px;
+        width: 7px;
+        height: 7px;
+        border-top: 2px solid currentColor;
+        border-right: 2px solid currentColor;
+        opacity: 0.45;
+        transform: translateY(-50%) rotate(45deg);
+    }
+
+    .nav-menu a:hover,
+    .nav-menu a:focus-visible {
+        background-color: rgba(140, 12, 12, 0.06);
+    }
+
     .nav-menu a.is-active {
+        background-color: rgba(140, 12, 12, 0.08);
         border-bottom-color: transparent;
         border-left-color: var(--accent);
     }
@@ -347,6 +376,14 @@ body {
 h1 {
     color: #8c0c0c;
     margin-bottom: 20px;
+}
+
+.page-title {
+    margin: 0;
+    color: var(--accent);
+    font-size: var(--page-title-size);
+    font-weight: 600;
+    line-height: 1.16;
 }
 
 h3 span {
@@ -483,6 +520,21 @@ html.dark-mode .nav-menu a.is-active {
     border-left-color: #ff9a9a;
 }
 
+@media (max-width: 760px) {
+    html.dark-mode .nav-menu li {
+        border-top-color: rgba(255, 255, 255, 0.07);
+    }
+
+    html.dark-mode .nav-menu a:hover,
+    html.dark-mode .nav-menu a:focus-visible {
+        background-color: rgba(255, 154, 154, 0.08);
+    }
+
+    html.dark-mode .nav-menu a.is-active {
+        background-color: rgba(255, 154, 154, 0.09);
+    }
+}
+
 html.dark-mode .nav-toggle-inner,
 html.dark-mode .nav-toggle-inner::before,
 html.dark-mode .nav-toggle-inner::after {
@@ -500,6 +552,10 @@ html.dark-mode .citations h2,
 html.dark-mode .citations h3 {
     background-color: #1c1c1c;
     color: #dcd6cc;
+}
+
+html.dark-mode .citations .paper-title {
+    background-color: transparent;
 }
 
 html.dark-mode .citations h1 span {

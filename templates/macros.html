@@ -4,10 +4,10 @@
                 <span class="venue-badge">{{ pub.venue_abbr | e }}</span>
                 <span class="paper-year">📅 {{ pub.year | e }}</span>
             </div>
-            <h2 class="paper-title">{{ pub.title | e }}</h2>
+            <h2 class="paper-title">{{ pub.title | clean_publication_title | e }}</h2>
             <div class="authors">{{ pub.authors | transform_authors }}</div>
             <div class="paper-meta">
-                <span class="paper-venue">{{ pub.venue | e }}{% if pub.volume %} {{ pub.volume | e }}{% endif %}{% if pub.pages %}, {{ pub.pages | e }}{% endif %}</span>
+                <span class="paper-venue">{{ pub.venue | e }}{% if pub.year %} {{ pub.year | e }}{% endif %}{% if pub.volume %}, {{ pub.volume | e }}{% endif %}{% if pub.pages %}, {{ pub.pages | e }}{% endif %}</span>
             </div>
 {% if pub.doi %}
             <div class="paper-actions">

@@ -9,6 +9,7 @@ import json
 import re
 import shutil
 import time
+from datetime import date
 from pathlib import Path
 
 import markdown
@@ -187,7 +188,31 @@ def author_name_span(name: str, is_me: bool = False) -> str:
     return f'<span class="author-name">{safe}</span>'
 
 
+def clean_publication_title(title: str | None) -> str:
+    text = str(title or "")
+    replacements = {
+        r"$\beta$p": "βₚ",
+        r"$\beta_p$": "βₚ",
+        r"\beta": "β",
+        "$": "",
+    }
+    for old, new in replacements.items():
+        text = text.replace(old, new)
+    text = re.sub(r"\bH2\b", "H₂", text)
+    text = re.sub(r"\bD2\b", "D₂", text)
+    text = text.replace("Q-shu university experiment", "Q-shu University Experiment")
+    return text
+
+
+def normalize_author_text(author: str) -> str:
+    text = str(author or "").strip()
+    text = re.sub(r",(?=\S)", ", ", text)
+    text = re.sub(r"\s+", " ", text)
+    return text
+
+
 def initials_name(parts: list[str]) -> str:
+    parts = [p.strip() for p in parts if p.strip()]
     if len(parts) == 2:
         initials = " ".join(p[0] + "." for p in parts[1].split() if p)
         return f"{initials} {parts[0]}".strip()
@@ -202,13 +227,51 @@ def transform_authors_py(authors: str | None) -> Markup:
     if not authors:
         return Markup("")
     if " and " not in authors:
-        name_parts = [x.strip() for x in authors.strip().split(", ")]
+        normalized = normalize_author_text(authors)
+        name_parts = [x.strip() for x in normalized.split(", ")]
         return Markup(author_name_span(initials_name(name_parts), "kuzmin" in authors.lower()))
     out: list[str] = []
     for author in authors.split(" and "):
-        name_parts = [x.strip() for x in author.strip().split(", ")]
+        normalized = normalize_author_text(author)
+        name_parts = [x.strip() for x in normalized.split(", ")]
         out.append(author_name_span(initials_name(name_parts), "kuzmin" in author.lower()))
     return Markup(", ".join(out))
+
+
+def parse_month_year(value: str | None) -> tuple[int, int] | None:
+    if not value:
+        return None
+    match = re.fullmatch(r"\s*(\d{1,2})/(\d{4})\s*", str(value))
+    if not match:
+        return None
+    month = int(match.group(1))
+    year = int(match.group(2))
+    if month < 1 or month > 12:
+        return None
+    return year, month
+
+
+def experience_duration(start_date: str | None, end_date: str | None) -> str:
+    start = parse_month_year(start_date)
+    if not start:
+        return ""
+    if str(end_date).strip().lower() == "present":
+        end = (date.today().year, date.today().month)
+    else:
+        end = parse_month_year(end_date)
+    if not end:
+        return ""
+
+    months = (end[0] - start[0]) * 12 + (end[1] - start[1])
+    if months < 0:
+        return ""
+    years, rem_months = divmod(months, 12)
+    parts = []
+    if years:
+        parts.append(f"{years}y")
+    if rem_months or not parts:
+        parts.append(f"{rem_months}m")
+    return " ".join(parts)
 
 
 def initial_publications_sorted(data: list) -> list:
@@ -243,7 +306,7 @@ def md_to_html_fragment(md: str, sizes: dict) -> str:
         return ""
     html_out = markdown.markdown(
         md,
-        extensions=["extra", "tables", "nl2br", "sane_lists"],
+        extensions=["extra", "tables", "sane_lists"],
     )
     soup = BeautifulSoup(html_out, "html.parser")
     for p in list(soup.find_all("p")):
@@ -293,7 +356,7 @@ def slugify(text: str) -> str:
 
 def build_project_container_html(
     slug: str, project: dict, sizes: dict
-) -> tuple[Markup, list[dict]]:
+) -> tuple[Markup, list[dict], dict]:
     md_path = PROJECTS_SRC / slug / "index.md"
     raw = md_path.read_text(encoding="utf-8")
     fm, body = parse_front_matter(raw)
@@ -372,7 +435,17 @@ def build_project_container_html(
         used_ids.add(hid)
         heading["id"] = hid
         outline.append({"id": hid, "text": text, "level": int(heading.name[1])})
-    return Markup(str(soup)), outline
+    project_meta = {
+        "period": fm.get("period") or project.get("period"),
+        "lab": fm.get("lab") or project.get("lab"),
+        "links": fm.get("links") or [],
+    }
+    if project.get("relatedUrl"):
+        project_meta["links"] = [
+            *project_meta["links"],
+            {"label": "Related", "url": project["relatedUrl"]},
+        ]
+    return Markup(str(soup)), outline, project_meta
 
 
 def make_env() -> Environment:
@@ -381,6 +454,8 @@ def make_env() -> Environment:
         autoescape=select_autoescape(["html", "xml"]),
     )
     env.filters["transform_authors"] = transform_authors_py
+    env.filters["clean_publication_title"] = clean_publication_title
+    env.filters["experience_duration"] = experience_duration
     env.globals["asset_url"] = asset_url
     return env
 
@@ -491,7 +566,7 @@ def main() -> None:
     projects_nav = [{"slug": p["slug"], "title": p["title"]} for p in projects]
     for proj in projects:
         slug = proj["slug"]
-        body_html, outline = build_project_container_html(slug, proj, image_sizes)
+        body_html, outline, project_meta = build_project_container_html(slug, proj, image_sizes)
         write(
             DIST / "projects" / slug / "index.html",
             tpl_detail.render(
@@ -499,6 +574,7 @@ def main() -> None:
                 project=proj,
                 project_body=body_html,
                 outline=outline,
+                project_meta=project_meta,
                 projects_nav=projects_nav,
                 current_slug=slug,
             ),
