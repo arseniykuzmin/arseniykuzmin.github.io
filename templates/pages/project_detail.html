@@ -17,8 +17,10 @@
 {% endblock %}
 
 {% block content %}
-    <a href="../../projects.html" class="back-link">&larr; Back to Projects</a>
-    <div id="projectContainer" class="project-content">{{ project_body }}</div>
+    <section class="project-detail-page">
+        <a href="projects.html" class="back-link">&larr; Projects</a>
+        <div id="projectContainer" class="project-content">{{ project_body }}</div>
+    </section>
 {% endblock %}
 
 {% block body_scripts_bottom %}

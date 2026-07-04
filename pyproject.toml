@@ -1,0 +1,22 @@
+[build-system]
+requires = ["setuptools>=69"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "cvsite"
+version = "0.1.0"
+description = "Static site builder for arseniykuzmin.github.io"
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = [
+    "Jinja2>=3.1.0",
+    "PyYAML>=6.0",
+    "markdown>=3.5",
+    "beautifulsoup4>=4.12",
+]
+
+[project.scripts]
+cvsite = "cvsite.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]

@@ -15,10 +15,10 @@
     <meta name="keywords" content="physics, fusion, hydrogen, oxygen, tokamak">
     <meta name="viewport" content="width=device-width">
     <meta name="description" content="Plasma physicist">
-    <meta property="og:image" content="https://queezz.github.io/kaa.jpg">
+    <meta property="og:image" content="{{ site_url }}/static/kaa.jpg">
     <meta property="og:title" content="Arseniy Kuzmin, Plasma Physicist">
     <meta property="og:description" content="Hello. I'm an experienced plasma physicist looking for a job.">
-    <meta property="og:url" content="https://queezz.github.io/index.html">
+    <meta property="og:url" content="{{ canonical_url }}">
 {% endblock %}
 
 {% block navbar %}
@@ -30,16 +30,28 @@
 {% endblock %}
 
 {% block content %}
-        <h1>Projects</h1>
-        <div class="grid-container" id="gridContainer">
+        <section class="projects-page">
+            <header class="projects-header">
+                <p class="projects-kicker">Selected work</p>
+                <h1>Projects</h1>
+                <p>Experimental devices, plasma diagnostics, and analysis tools from fusion, thin films, spectroscopy, and instrumentation work.</p>
+            </header>
+
+            <div class="grid-container" id="gridContainer">
 {% for p in projects %}
-            <a class="grid-item" href="projects/{{ p.slug }}/">
-                <img src="{{ p.imageUrl }}" alt="{{ p.title }}" loading="lazy" decoding="async"{{ project_img_size_attrs(p.imageUrl) }}>
-                <h2>{{ p.title }}</h2>
-                <p>{{ p.summary }}</p>
-            </a>
+                <a class="grid-item" href="projects/{{ p.slug }}/">
+                    <figure class="project-card-media">
+                        <img src="{{ p.imageUrl }}" alt="{{ p.title }}" loading="lazy" decoding="async"{{ project_img_size_attrs(p.imageUrl) }}>
+                    </figure>
+                    <div class="project-card-body">
+                        <span class="project-card-meta">{{ p.category | default("Selected work") }}</span>
+                        <h2>{{ p.title }}</h2>
+                        <p>{{ p.summary }}</p>
+                    </div>
+                </a>
 {% endfor %}
-        </div>
+            </div>
+        </section>
 {% endblock %}
 
 {% block body_scripts_bottom %}

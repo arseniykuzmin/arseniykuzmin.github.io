@@ -10,6 +10,9 @@
     {% if base_href %}<base href="{{ base_href }}">{% endif %}
     <meta charset="UTF-8">
     <title>{% block head_title %}{% endblock %}</title>
+    {% if canonical_url %}<link rel="canonical" href="{{ canonical_url }}">{% endif %}
+    {% if alternate_url %}<link rel="alternate" href="{{ alternate_url }}">{% endif %}
+    <link rel="icon" href="static/favicon.ico">
     <link rel="stylesheet" href="styles/styles.css">
     {% block head_extra %}{% endblock %}
 </head>
@@ -17,9 +20,7 @@
 <body>
 {% block body_scripts_top %}{% endblock %}
 {% block chrome %}
-    <script src="scripts/navbar.js"></script>
-    <script src="scripts/scroltotop.js"></script>
-    <div class="scroll-to-top-button" id="scrollToTopButton"><span class="scroll-to-top-arrow"></span></div>
+{% include "partials/inlined_navbar_chrome.html" %}
 {% endblock %}
 <div class="main-content">
     <nav id="navbar">{% block navbar %}{% endblock %}</nav>
