@@ -318,8 +318,9 @@ h3 span {
 
 /* MARK: Dark */
 html.dark-mode {
+    color-scheme: dark;
     background-color: #1c1c1c;
-    color: #e0e0e0;
+    color: #cbc5bb;
 }
 
 html.dark-mode a {
@@ -340,7 +341,7 @@ html.dark-mode .education-item {
 html.dark-mode h1,
 html.dark-mode h2,
 html.dark-mode h3 {
-    color: #ffffff;
+    color: #dcd6cc;
 }
 
 html.dark-mode .scroll-to-top-button {
@@ -365,7 +366,7 @@ html.dark-mode .skills-title,
 html.dark-mode .education-item-title,
 html.dark-mode .experience-title,
 html.dark-mode .section-title {
-    color: #fff;
+    color: #dcd6cc;
 }
 
 html.dark-mode .education-item-degree {
@@ -413,14 +414,14 @@ html.dark-mode .nav-toggle-inner::after {
 /* Citations - Dark mode overrides */
 html.dark-mode .citations {
     background-color: #1c1c1c;
-    color: #e0e0e0;
+    color: #cbc5bb;
 }
 
 html.dark-mode .citations h1,
 html.dark-mode .citations h2,
 html.dark-mode .citations h3 {
     background-color: #1c1c1c;
-    color: #e0e0e0;
+    color: #dcd6cc;
 }
 
 html.dark-mode .citations h1 span {

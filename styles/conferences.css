@@ -3,14 +3,18 @@
 }
 
 .filter-box {
+    height: 36px;
+    box-sizing: border-box;
     margin: 5px;
-    padding: 9px 12px;
+    padding: 0 12px;
     width: min(260px, 44vw);
     font-size: 15px;
     color: #242321;
     background: #fff;
     border: 1px solid #d8d5ce;
     border-radius: 4px;
+    appearance: none;
+    -webkit-appearance: none;
 }
 
 .filter-box::placeholder {
@@ -23,7 +27,11 @@
 }
 
 html.dark-mode .filter-box {
-    color: #f0eee8;
-    background: #2a2a2a;
-    border-color: #46423a;
+    color: #cbc5bb;
+    background: #242320;
+    border-color: #3a3630;
+}
+
+html.dark-mode .filter-box::placeholder {
+    color: #8b8780;
 }
