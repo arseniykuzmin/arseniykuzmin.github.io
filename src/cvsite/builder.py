@@ -189,7 +189,15 @@ def md_to_html_fragment(md: str, sizes: dict) -> str:
     return str(soup)
 
 
-def build_project_container_html(slug: str, project: dict, sizes: dict) -> Markup:
+def slugify(text: str) -> str:
+    s = re.sub(r"[^\w\s-]", "", str(text).lower()).strip()
+    s = re.sub(r"[\s_]+", "-", s)
+    return s or "section"
+
+
+def build_project_container_html(
+    slug: str, project: dict, sizes: dict
+) -> tuple[Markup, list[dict]]:
     md_path = PROJECTS_SRC / slug / "index.md"
     raw = md_path.read_text(encoding="utf-8")
     fm, body = parse_front_matter(raw)
@@ -249,7 +257,25 @@ def build_project_container_html(slug: str, project: dict, sizes: dict) -> Marku
                 f'loading="lazy" decoding="async"{w_h}></div>{cap_h}</figure>'
             )
         parts.append("</div>")
-    return Markup("".join(parts))
+
+    body_html = "".join(parts)
+    soup = BeautifulSoup(body_html, "html.parser")
+    outline: list[dict] = []
+    used_ids: set[str] = set()
+    for heading in soup.find_all(["h2", "h3"]):
+        text = heading.get_text(strip=True)
+        if not text:
+            continue
+        base = slugify(text)
+        hid = base
+        n = 1
+        while hid in used_ids:
+            hid = f"{base}-{n}"
+            n += 1
+        used_ids.add(hid)
+        heading["id"] = hid
+        outline.append({"id": hid, "text": text, "level": int(heading.name[1])})
+    return Markup(str(soup)), outline
 
 
 def make_env() -> Environment:
@@ -339,15 +365,19 @@ def main() -> None:
 
     # dist/projects/<slug>/index.html
     tpl_detail = env.get_template("pages/project_detail.html")
+    projects_nav = [{"slug": p["slug"], "title": p["title"]} for p in projects]
     for proj in projects:
         slug = proj["slug"]
-        body_html = build_project_container_html(slug, proj, image_sizes)
+        body_html, outline = build_project_container_html(slug, proj, image_sizes)
         write(
             DIST / "projects" / slug / "index.html",
             tpl_detail.render(
                 **render_ctx(f"projects/{slug}/", nav_active="projects"),
                 project=proj,
                 project_body=body_html,
+                outline=outline,
+                projects_nav=projects_nav,
+                current_slug=slug,
             ),
         )
 

@@ -131,8 +131,38 @@
     });
   }
 
+  function initOutline() {
+    const outline = document.querySelector(".rail-outline");
+    if (!outline) return;
+    const links = Array.from(outline.querySelectorAll("a"));
+    const byTarget = new Map();
+    links.forEach(function (a) {
+      const id = decodeURIComponent(a.getAttribute("href").slice(1));
+      const el = document.getElementById(id);
+      if (el) byTarget.set(el, a);
+    });
+    if (!byTarget.size) return;
+    const observer = new IntersectionObserver(
+      function (entries) {
+        entries.forEach(function (entry) {
+          if (!entry.isIntersecting) return;
+          links.forEach(function (l) {
+            l.classList.remove("is-active");
+          });
+          const a = byTarget.get(entry.target);
+          if (a) a.classList.add("is-active");
+        });
+      },
+      { rootMargin: "-80px 0px -70% 0px", threshold: 0 }
+    );
+    byTarget.forEach(function (a, el) {
+      observer.observe(el);
+    });
+  }
+
   document.addEventListener("DOMContentLoaded", function () {
     initGallery();
     renderMath();
+    initOutline();
   });
 })();

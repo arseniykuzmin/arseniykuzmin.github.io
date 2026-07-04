@@ -5,7 +5,6 @@
 {% block head_extra %}
     <meta name="viewport" content="width=device-width" />
     <link rel="stylesheet" href="styles/project.css" />
-    <link rel="stylesheet" href="styles/scrollnav.css" />
 {% endblock %}
 
 {% block navbar %}
@@ -18,8 +17,51 @@
 
 {% block content %}
     <section class="project-detail-page">
-        <a href="projects.html" class="back-link">&larr; Projects</a>
-        <div id="projectContainer" class="project-content">{{ project_body }}</div>
+        <div class="project-shell">
+            <aside class="project-rail project-rail--left">
+                <a class="rail-back" href="projects.html">&larr; All projects</a>
+                <nav aria-label="Projects">
+                    <ul class="rail-project-list">
+{% for p in projects_nav %}
+                        <li><a href="projects/{{ p.slug }}/"{% if p.slug == current_slug %} class="is-active" aria-current="page"{% endif %}>{{ p.title | e }}</a></li>
+{% endfor %}
+                    </ul>
+                </nav>
+            </aside>
+
+            <main class="project-main">
+                <a href="projects.html" class="back-link back-link--mobile">&larr; Projects</a>
+                <div id="projectContainer" class="project-content">{{ project_body }}</div>
+            </main>
+
+            <aside class="project-rail project-rail--right">
+                <div class="rail-card">
+                    <p class="rail-card-label">Category</p>
+                    <p class="rail-card-value">{{ project.category | default("Selected work") | e }}</p>
+{% if project.period %}
+                    <p class="rail-card-label">Period</p>
+                    <p class="rail-card-value">{{ project.period | e }}</p>
+{% endif %}
+{% if project.lab %}
+                    <p class="rail-card-label">Lab</p>
+                    <p class="rail-card-value">{{ project.lab | e }}</p>
+{% endif %}
+{% if project.relatedUrl %}
+                    <p class="rail-card-value"><a href="{{ project.relatedUrl | e }}" target="_blank" rel="noopener noreferrer">Related &#8599;</a></p>
+{% endif %}
+                </div>
+{% if outline %}
+                <nav class="rail-outline" aria-label="On this page">
+                    <p class="rail-outline-title">On this page</p>
+                    <ul>
+{% for h in outline %}
+                        <li class="lvl-{{ h.level }}"><a href="#{{ h.id }}">{{ h.text | e }}</a></li>
+{% endfor %}
+                    </ul>
+                </nav>
+{% endif %}
+            </aside>
+        </div>
     </section>
 {% endblock %}
 
@@ -28,5 +70,4 @@
   <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.js"></script>
   <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/contrib/auto-render.min.js"></script>
   <script defer src="scripts/project_detail_ui.js"></script>
-  <script defer src="scripts/scrollnav.js"></script>
 {% endblock %}
