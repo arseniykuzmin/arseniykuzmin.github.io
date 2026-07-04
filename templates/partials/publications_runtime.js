@@ -159,7 +159,7 @@ function renderPublications() {
             doi.href = 'https://doi.org/' + publication.doi;
             doi.target = '_blank';
             doi.rel = 'noopener noreferrer';
-            doi.textContent = 'DOI';
+            doi.textContent = 'open DOI';
             actions.appendChild(doi);
             card.appendChild(actions);
         }
