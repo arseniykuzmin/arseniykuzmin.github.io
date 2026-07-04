@@ -94,6 +94,9 @@ def conference_code(conference: dict) -> str:
         code = matches[-1]
         code = re.sub(r"\b(?:19|20)\d{2}\b", "", code).strip(" -/")
         if code:
+            ordinal = re.search(r"\b(\d+)(?:st|nd|rd|th)\b", name, re.I)
+            if code.upper() == "PSI" and ordinal:
+                return f"PSI-{ordinal.group(1)}"
             return code
     return acronym(name, max_len=12)
 

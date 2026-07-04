@@ -19,13 +19,14 @@
 
 {% block content %}
         <div class="citations">
-            <h1>Publication List</h1>
+            <div class="citations-heading">
+                <h1>Publication List</h1>
+                <a class="bibtex-link" href="data/mypapers.bib" download>BibTeX</a>
+            </div>
             <div class="button-container">
                 <input type="search" id="publicationFilter" class="filter-box" placeholder="Filter publications…" aria-label="Filter publications" autocomplete="off">
                 <button id="sortButton" class="sort-button">Year<span class="arrow"></span></button>
                 <button id="filterButton" class="toggle-button">Featured</button>
-                <button id="firstButton" class="toggle-button">1st author</button>
-                <a class="bibtex-link" href="data/mypapers.bib" download>BibTeX</a>
                 <p id="publicationCount" class="count-label">{{ publications_sorted | length }}</p>
             </div>
         </div>

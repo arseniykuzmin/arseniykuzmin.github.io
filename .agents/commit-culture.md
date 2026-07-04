@@ -44,6 +44,10 @@ agent: gpt-5 codex
 - Work on `dev` unless directions say otherwise.
 - When the site is good locally, merge `dev` to `master`; the GitHub Pages
   Action deploys from `master`.
+- **Do not confuse pushed with deployed.** A push to `dev` is only a remote
+  backup/review branch; it will not change `arseniykuzmin.github.io`. If the
+  user expects to see the change live, fast-forward `master` to `dev` and push
+  `master`, then say that the Pages Action still needs a short time to deploy.
 - Do not push unless the user explicitly asks.
 - Do not create tags unless the user explicitly asks.
 

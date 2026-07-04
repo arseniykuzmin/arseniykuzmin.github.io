@@ -33,6 +33,9 @@ The `queezz.github.io` mirror still needs its Phase 2 token.
 ## Current state
 - Work branch: `dev`. `master` now holds the shipped build and deploys via the
   GitHub Pages Action on every push.
+- Deployment reminder: pushing `dev` alone does not update the live site. For
+  user-visible fixes, fast-forward `master` to `dev` and push `master`; then
+  allow the Pages Action a short time to finish.
 - The `cvsite` Jinja2 build is live on `arseniykuzmin.github.io`.
 - Active `.agents/` notes are in this repo.
 - Historical/unpushed `.agents` notes still exist in sibling `cvpage`.

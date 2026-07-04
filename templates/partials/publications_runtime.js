@@ -1,11 +1,9 @@
 var publicationsData = [];
 var sortButton;
 var filterButton;
-var firstButton;
 var filterInput;
 var sortAscending = false;
 var filterFeatured = false;
-var filterFirst = false;
 var filterText = '';
 
 function escapeHTML(value) {
@@ -100,24 +98,12 @@ function isFeatured(publication) {
     return Boolean(publication.aknotes && publication.aknotes.indexOf('featured') !== -1);
 }
 
-function isFirstAuthor(publication) {
-    var authors = String(publication.authors || '').split(' and ');
-    return (
-        (
-            String(authors[0] || '').toLowerCase().includes('kuzmin') ||
-            String(publication.title || '').toLowerCase().includes('ro-vibrational population')
-        ) &&
-        !String(publication.title || '').toLowerCase().includes('corrigendum')
-    );
-}
-
 function currentPublications() {
     var text = filterText.trim().toLowerCase();
     var list = publicationsData.filter(function (publication) {
         return (
             publicationMatches(publication, text) &&
-            (!filterFeatured || isFeatured(publication)) &&
-            (!filterFirst || isFirstAuthor(publication))
+            (!filterFeatured || isFeatured(publication))
         );
     });
 
@@ -187,7 +173,6 @@ function renderPublications() {
 publicationsData = window.__PUBLICATIONS_DATA__ || [];
 sortButton = document.getElementById('sortButton');
 filterButton = document.getElementById('filterButton');
-firstButton = document.getElementById('firstButton');
 filterInput = document.getElementById('publicationFilter');
 
 if (sortButton) {
@@ -202,14 +187,6 @@ if (filterButton) {
     filterButton.addEventListener('click', function () {
         filterFeatured = !filterFeatured;
         filterButton.classList.toggle('active', filterFeatured);
-        renderPublications();
-    });
-}
-
-if (firstButton) {
-    firstButton.addEventListener('click', function () {
-        filterFirst = !filterFirst;
-        firstButton.classList.toggle('active', filterFirst);
         renderPublications();
     });
 }

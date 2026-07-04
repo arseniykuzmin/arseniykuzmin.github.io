@@ -26,13 +26,18 @@ function badgeHue(text) {
 }
 
 function fallbackCode(name) {
-    var matches = String(name || '').match(/\(([^()]+)\)/g) || [];
+    var fullName = String(name || '');
+    var matches = fullName.match(/\(([^()]+)\)/g) || [];
     if (matches.length) {
         var code = matches[matches.length - 1].replace(/[()]/g, '');
         code = code.replace(/\b(?:19|20)\d{2}\b/g, '').replace(/^[\s-/]+|[\s-/]+$/g, '');
+        var ordinal = fullName.match(/\b(\d+)(?:st|nd|rd|th)\b/i);
+        if (code.toUpperCase() === 'PSI' && ordinal) {
+            return 'PSI-' + ordinal[1];
+        }
         if (code) return code;
     }
-    var words = String(name || '').match(/[A-Za-z0-9]+/g) || [];
+    var words = fullName.match(/[A-Za-z0-9]+/g) || [];
     var acronym = words.map(function (word) { return word.charAt(0).toUpperCase(); }).join('');
     return acronym.length > 1 && acronym.length <= 12 ? acronym : words.slice(0, 2).join('').slice(0, 12);
 }
