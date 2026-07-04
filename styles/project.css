@@ -349,11 +349,22 @@
   line-height: 1.35;
 }
 
+.project-section-title {
+  color: var(--project-ink);
+  font-size: 1.4rem;
+  line-height: 1.2;
+  margin: clamp(30px, 5vw, 48px) 0 0.6em;
+}
+
 .gallery {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
   gap: 16px;
   margin-top: clamp(28px, 5vw, 48px);
+}
+
+.project-section-title + .gallery {
+  margin-top: 0;
 }
 
 .gallery figure {

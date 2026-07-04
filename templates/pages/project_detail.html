@@ -55,7 +55,7 @@
                     <p class="rail-outline-title">On this page</p>
                     <ul>
 {% for h in outline %}
-                        <li class="lvl-{{ h.level }}"><a href="#{{ h.id }}">{{ h.text | e }}</a></li>
+                        <li class="lvl-{{ h.level }}"><a href="projects/{{ current_slug }}/#{{ h.id }}">{{ h.text | e }}</a></li>
 {% endfor %}
                     </ul>
                 </nav>

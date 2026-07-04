@@ -241,6 +241,7 @@ def build_project_container_html(
         parts.append(f'<section class="project-more">{more_html}</section>')
     gallery = fm.get("gallery")
     if isinstance(gallery, list) and gallery:
+        parts.append('<h2 class="project-section-title">Gallery</h2>')
         single = len(gallery) == 1
         parts.append(f'<div class="gallery{" single" if single else ""}">')
         for item in gallery:

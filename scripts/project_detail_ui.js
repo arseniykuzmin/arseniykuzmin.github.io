@@ -137,7 +137,10 @@
     const links = Array.from(outline.querySelectorAll("a"));
     const byTarget = new Map();
     links.forEach(function (a) {
-      const id = decodeURIComponent(a.getAttribute("href").slice(1));
+      const href = a.getAttribute("href") || "";
+      const hash = href.indexOf("#");
+      if (hash < 0) return;
+      const id = decodeURIComponent(href.slice(hash + 1));
       const el = document.getElementById(id);
       if (el) byTarget.set(el, a);
     });
