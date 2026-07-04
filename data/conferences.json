@@ -230,6 +230,20 @@
     },
     "authors": "A. Kuzmin, J. Hayashi, N. Mizuno, T. Shikama, M. Hasuo",
     "presentation":"poster presentation"
+  },
+
+  {
+    "title": "BH molecular emission in the divertor region of LHD: dependence on magnetic axis, plasma parameters, and multi-view spectroscopy",
+    "conference":{
+        "name": "27th International Conference on Plasma Surface Interactions in Controlled Fusion Devices",
+        "conf": "PSI-27",
+        "year": 2026,
+        "location": "Regensburg, Germany",
+        "date": "17-22 May 2026",
+        "type": "poster"
+    },
+    "authors": "A. Kuzmin, T. Shikama, M. Goto, T. Kawate, S. Masuzaki, M. Shoji, F. Nespoli, R. Lunsford, E. Gilson, M. Hasuo",
+    "presentation": "poster presentation"
     
   }  
 

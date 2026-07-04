@@ -1,3 +1,29 @@
 .conference-item {
     border-bottom: 1px solid #a91a1a;
 }
+
+.filter-box {
+    margin: 5px;
+    padding: 9px 12px;
+    width: min(260px, 44vw);
+    font-size: 15px;
+    color: #242321;
+    background: #fff;
+    border: 1px solid #d8d5ce;
+    border-radius: 4px;
+}
+
+.filter-box::placeholder {
+    color: #9a978f;
+}
+
+.filter-box:focus {
+    outline: 2px solid rgba(140, 12, 12, 0.4);
+    outline-offset: 1px;
+}
+
+html.dark-mode .filter-box {
+    color: #f0eee8;
+    background: #2a2a2a;
+    border-color: #46423a;
+}

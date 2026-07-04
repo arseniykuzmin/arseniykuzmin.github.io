@@ -31,6 +31,7 @@
             <div class="button-container">
                 <button id="sortButton" class="sort-button">Year<span class="arrow"></span></button>
                 <p id="conferenceCount" class="count-label">{{ conferences_sorted | length }}</p>
+                <input type="search" id="conferenceFilter" class="filter-box" placeholder="Filter conferences…" aria-label="Filter conferences" autocomplete="off">
             </div>
 
             <div class="citations" id="conference-list">
