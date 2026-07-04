@@ -3,7 +3,6 @@ from __future__ import annotations
 import argparse
 import functools
 import http.server
-import socketserver
 from pathlib import Path
 
 from . import builder
@@ -32,7 +31,7 @@ def serve_command(args: argparse.Namespace) -> None:
         raise SystemExit(f"Missing {dist}; run `cvsite build` first.")
 
     handler = functools.partial(_NoCacheHandler, directory=str(dist))
-    with socketserver.TCPServer((args.host, args.port), handler) as httpd:
+    with http.server.ThreadingHTTPServer((args.host, args.port), handler) as httpd:
         url = f"http://{args.host}:{args.port}/"
         print(f"Serving {dist} at {url}")
         try:
