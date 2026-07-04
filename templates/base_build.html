@@ -3,10 +3,13 @@
 
 <head>
     <script>
-        if (localStorage.getItem('darkMode') === '1') {
-        document.documentElement.classList.add('dark-mode');
-        }
+        (function () {
+            if (localStorage.getItem('darkMode') === '1') {
+                document.documentElement.classList.add('dark-mode');
+            }
+        })();
     </script>
+    <style>html{background-color:#fff}html.dark-mode{background-color:#1c1c1c}</style>
     {% if base_href %}<base href="{{ base_href }}">{% endif %}
     <meta charset="UTF-8">
     <title>{% block head_title %}{% endblock %}</title>
@@ -14,6 +17,9 @@
     {% if alternate_url %}<link rel="alternate" href="{{ alternate_url }}">{% endif %}
     <link rel="icon" href="static/favicon.ico">
     <link rel="stylesheet" href="styles/styles.css">
+    <script type="speculationrules">
+    {"prefetch": [{"where": {"href_matches": "/*"}, "eagerness": "moderate"}]}
+    </script>
     {% block head_extra %}{% endblock %}
 </head>
 

@@ -27,6 +27,14 @@
     --nav-ink: #333333;
 }
 
+@view-transition {
+    navigation: auto;
+}
+
+html {
+    background-color: #fff;
+}
+
 /* MARK: Site header / primary nav */
 .site-header {
     position: fixed;
@@ -89,8 +97,9 @@
     border-bottom-color: var(--accent);
 }
 
-#darkModeToggle {
-    margin-left: 4px;
+.nav-theme {
+    display: flex;
+    align-items: center;
 }
 
 /* Hamburger toggle — hidden on desktop */
@@ -449,24 +458,36 @@ html.dark-mode #publicationCount {
     color: #ffc857; /* soft yellow or pick your preferred highlight color */
 }
 
-/* Dark mode toggle button — global, not specific to theme */
+/* Dark mode toggle — subtle, at the end of the nav menu */
 #darkModeToggle {
-    font-size: 1.5rem;
+    font-size: 1.05rem;
+    line-height: 1;
     background: none;
     border: none;
     color: inherit;
     cursor: pointer;
-    padding: 0 10px;
-    align-self: center;
+    padding: 6px;
+    opacity: 0.7;
+    transition: opacity 0.15s ease;
     display: flex;
     align-items: center;
-    justify-content: center;
+}
+
+#darkModeToggle:hover {
+    opacity: 1;
 }
 
 @media (max-width: 760px) {
+    .nav-theme {
+        border-top: 1px solid rgba(0, 0, 0, 0.08);
+    }
+
     #darkModeToggle {
-        margin-left: 0;
-        padding: 4px;
+        width: 100%;
+        justify-content: flex-start;
+        padding: 13px 20px;
+        font-size: 1.25rem;
+        opacity: 1;
     }
 }
 
