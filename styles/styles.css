@@ -190,6 +190,7 @@ html {
     }
 
     .nav-menu a {
+        display: block;
         padding: 14px 20px;
         font-size: 18px;
         border-bottom: 0;
