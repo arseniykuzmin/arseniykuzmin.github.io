@@ -29,10 +29,88 @@ STATIC_DIRS = ("img", "styles", "static")
 ROOT_STATIC_FILES = (".nojekyll",)
 SCRIPT_FILES = ("project_detail_ui.js", "scroltotop.js")
 
+VENUE_ABBR = {
+    "Atoms": "Atoms",
+    "arXiv": "arXiv",
+    "arXive": "arXiv",
+    "Fusion Engineering and Design": "FED",
+    "Journal of Nuclear Materials": "JNM",
+    "Journal of Plasma and Fusion Research": "JPFR",
+    "Journal of Plasma Fusion Research": "JPFR",
+    "Journal of Quantitative Spectroscopy and Radiative Transfer": "JQSRT",
+    "Nuclear Materials and Energy": "NME",
+    "Physics of Plasmas": "PoP",
+    "Plasma and Fusion Research": "PFR",
+    "Plasma Physics and Controlled Fusion": "PPCF",
+    "Review of Scientific Instruments": "RSI",
+    "Vacuum": "Vacuum",
+}
+
 
 def load_json(name: str):
     with open(DATA / name, encoding="utf-8") as f:
         return json.load(f)
+
+
+def badge_hue(text: str) -> int:
+    total = sum(ord(ch) for ch in str(text))
+    return 20 + (total % 300)
+
+
+def venue_code(name: str | None) -> str:
+    if not name:
+        return "Work"
+    full = str(name).strip()
+    base = full.split(":", 1)[0].strip()
+    return VENUE_ABBR.get(full) or VENUE_ABBR.get(base) or acronym(full, max_len=10)
+
+
+def acronym(text: str, max_len: int = 8) -> str:
+    words = re.findall(r"[A-Za-z0-9]+", str(text))
+    if not words:
+        return "Work"
+    caps = "".join(w[0].upper() for w in words if w[:1].isalpha())
+    if 2 <= len(caps) <= max_len:
+        return caps
+    return "".join(words[:2])[:max_len]
+
+
+def conference_code(conference: dict) -> str:
+    explicit = str(conference.get("conf") or "").strip()
+    if explicit:
+        return explicit
+    name = str(conference.get("name") or "").strip()
+    matches = re.findall(r"\(([^()]+)\)", name)
+    if matches:
+        code = matches[-1]
+        code = re.sub(r"\b(?:19|20)\d{2}\b", "", code).strip(" -/")
+        if code:
+            return code
+    return acronym(name, max_len=12)
+
+
+def enrich_publications(publications: list[dict]) -> list[dict]:
+    out = []
+    for pub in publications:
+        item = dict(pub)
+        code = venue_code(item.get("venue"))
+        item["venue_abbr"] = code
+        item["badge_hue"] = badge_hue(code)
+        out.append(item)
+    return out
+
+
+def enrich_conferences(conferences: list[dict]) -> list[dict]:
+    out = []
+    for conf in conferences:
+        item = dict(conf)
+        c = dict(item.get("conference") or {})
+        code = conference_code(c)
+        c["abbr"] = code
+        c["badge_hue"] = badge_hue(code)
+        item["conference"] = c
+        out.append(item)
+    return out
 
 
 def esc_attr(s) -> str:
@@ -308,6 +386,8 @@ def copy_static_assets() -> None:
     for filename in ROOT_STATIC_FILES:
         copy_file(ROOT / filename, DIST / filename)
 
+    copy_file(DATA / "mypapers.bib", DIST / "data" / "mypapers.bib")
+
     for filename in SCRIPT_FILES:
         copy_file(ROOT / "scripts" / filename, DIST / "scripts" / filename)
 
@@ -348,8 +428,8 @@ def main() -> None:
 
     env = make_env()
     about = load_json("about.json")
-    publications = load_json("publications.json")
-    conferences = load_json("conferences.json")
+    publications = enrich_publications(load_json("publications.json"))
+    conferences = enrich_conferences(load_json("conferences.json"))
     projects = load_json("projects.json")
     image_sizes = load_json("image-sizes.json")
 

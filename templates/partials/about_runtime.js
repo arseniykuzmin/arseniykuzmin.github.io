@@ -5,7 +5,7 @@ document.querySelectorAll('.experience-item .skills-arrow').forEach(function (ex
     expArrow.addEventListener('click', function () {
         descriptionDiv.classList.toggle('collapsed');
         experienceItem.classList.toggle('expanded');
-        expArrow.textContent = expArrow.innerText === 'show more' ? '. . . . . . hide ' : 'show more';
+        expArrow.textContent = expArrow.innerText === 'show more' ? 'hide' : 'show more';
     });
 });
 

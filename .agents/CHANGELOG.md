@@ -6,6 +6,15 @@ session handoffs stay in [`log/`](log/), and future work stays in
 
 ## 2026-07-04
 
+### Shipped publication cards and a leaner About page
+- Redesigned Publications and Conferences as dark paper-style cards with venue
+  badges, year/location/presentation metadata, and no shifting list numbers.
+- Added live Publications search so text filters compose with year sorting and
+  Featured / first-author toggles.
+- Added a generated BibTeX download at `data/mypapers.bib`.
+- Tightened About: two-column Education on desktop, chip-like Skills, more
+  compact Experience cards, and cleaner expand/collapse text.
+
 ### Shipped the nav, rails, and Control Unit overhaul
 Second production deploy of the day (a stack of `dev` commits merged to
 `master`). Highlights:

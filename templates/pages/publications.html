@@ -21,17 +21,18 @@
         <div class="citations">
             <h1>Publication List</h1>
             <div class="button-container">
+                <input type="search" id="publicationFilter" class="filter-box" placeholder="Filter publications…" aria-label="Filter publications" autocomplete="off">
                 <button id="sortButton" class="sort-button">Year<span class="arrow"></span></button>
                 <button id="filterButton" class="toggle-button">Featured</button>
-                <button id="firstButton" class="toggle-button">1st&nbsp;*</button>
+                <button id="firstButton" class="toggle-button">1st author</button>
+                <a class="bibtex-link" href="data/mypapers.bib" download>BibTeX</a>
                 <p id="publicationCount" class="count-label">{{ publications_sorted | length }}</p>
             </div>
-            <p>* - first and corresponding author</p>
         </div>
 
-        <div id="citations" class="citations">
+        <div id="citations" class="citations paper-grid">
 {% for pub in publications_sorted %}
-{{ citation_item(pub, loop.index) }}
+{{ citation_item(pub) }}
 {% endfor %}
         </div>
 {% endblock %}

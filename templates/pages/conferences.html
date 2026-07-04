@@ -34,9 +34,9 @@
                 <p id="conferenceCount" class="count-label">{{ conferences_sorted | length }}</p>
             </div>
 
-            <div class="citations" id="conference-list">
+            <div class="citations paper-grid" id="conference-list">
 {% for conf in conferences_sorted %}
-{{ conference_item(conf, loop.index) }}
+{{ conference_item(conf) }}
 {% endfor %}
             </div>
         </div>

@@ -4,6 +4,44 @@ var filterInput;
 var sortAscending = false;
 var filterText = '';
 
+function escapeHTML(value) {
+    return String(value || '').replace(/[&<>"']/g, function (ch) {
+        return {
+            '&': '&amp;',
+            '<': '&lt;',
+            '>': '&gt;',
+            '"': '&quot;',
+            "'": '&#39;'
+        }[ch];
+    });
+}
+
+function badgeHue(text) {
+    var total = 0;
+    var s = String(text || 'Work');
+    for (var i = 0; i < s.length; i++) {
+        total += s.charCodeAt(i);
+    }
+    return 20 + (total % 300);
+}
+
+function fallbackCode(name) {
+    var matches = String(name || '').match(/\(([^()]+)\)/g) || [];
+    if (matches.length) {
+        var code = matches[matches.length - 1].replace(/[()]/g, '');
+        code = code.replace(/\b(?:19|20)\d{2}\b/g, '').replace(/^[\s-/]+|[\s-/]+$/g, '');
+        if (code) return code;
+    }
+    var words = String(name || '').match(/[A-Za-z0-9]+/g) || [];
+    var acronym = words.map(function (word) { return word.charAt(0).toUpperCase(); }).join('');
+    return acronym.length > 1 && acronym.length <= 12 ? acronym : words.slice(0, 2).join('').slice(0, 12);
+}
+
+function conferenceBadge(conference) {
+    var c = conference.conference || {};
+    return c.abbr || c.conf || fallbackCode(c.name) || 'Conf';
+}
+
 function conferenceMatches(conference, text) {
     if (!text) return true;
     var c = conference.conference || {};
@@ -12,8 +50,10 @@ function conferenceMatches(conference, text) {
         conference.authors,
         c.name,
         c.conf,
+        c.abbr,
         c.location,
-        c.year
+        c.year,
+        conference.presentation
     ].join(' ').toLowerCase();
     return hay.indexOf(text) !== -1;
 }
@@ -38,41 +78,39 @@ function renderConferences() {
 
     for (var i = 0; i < list.length; i++) {
         var conference = list[i];
-        var num = i + 1;
+        var c = conference.conference || {};
+        var code = conferenceBadge(conference);
 
-        var conferenceItem = document.createElement('div');
-        conferenceItem.classList.add('conference-item');
+        var card = document.createElement('article');
+        card.className = 'paper-card conference-card';
+        card.style.setProperty('--badge-hue', c.badge_hue || badgeHue(code));
 
-        var title = document.createElement('h3');
-        title.textContent = num + '. ' + conference.title;
-        conferenceItem.appendChild(title);
+        var top = document.createElement('div');
+        top.className = 'paper-card-top';
+        top.innerHTML = '<span class="venue-badge">' + escapeHTML(code) + '</span>' +
+            '<span class="paper-year">📅 ' + escapeHTML(c.year) + '</span>';
+        card.appendChild(top);
+
+        var title = document.createElement('h2');
+        title.className = 'paper-title';
+        title.textContent = conference.title || '';
+        card.appendChild(title);
 
         var authors = document.createElement('div');
-        authors.classList.add('authors');
-        authors.textContent = conference.authors;
-        conferenceItem.appendChild(authors);
+        authors.className = 'authors';
+        authors.textContent = conference.authors || '';
+        card.appendChild(authors);
 
-        var conferenceDetails = document.createElement('div');
-        conferenceDetails.classList.add('conference-details');
+        var meta = document.createElement('div');
+        meta.className = 'paper-meta';
+        var presentationIcon = String(conference.presentation || '').toLowerCase().indexOf('oral') !== -1 ? '🎤' : '📌';
+        meta.innerHTML = '<span>' + escapeHTML(c.name) + '</span>' +
+            '<span>📍 ' + escapeHTML(c.location) + '</span>' +
+            '<span>' + escapeHTML(c.date) + '</span>' +
+            '<span>' + presentationIcon + ' ' + escapeHTML(conference.presentation) + '</span>';
+        card.appendChild(meta);
 
-        var conferenceName = document.createElement('p');
-        conferenceName.textContent = 'Conference: ' + conference.conference.name;
-        conferenceDetails.appendChild(conferenceName);
-
-        var conferenceLocation = document.createElement('p');
-        conferenceLocation.textContent = 'Location: ' + conference.conference.location;
-        conferenceDetails.appendChild(conferenceLocation);
-
-        var conferenceDate = document.createElement('p');
-        conferenceDate.textContent = 'Date: ' + conference.conference.date;
-        conferenceDetails.appendChild(conferenceDate);
-
-        var presentationType = document.createElement('p');
-        presentationType.textContent = 'Presentation: ' + conference.presentation;
-        conferenceDetails.appendChild(presentationType);
-
-        conferenceItem.appendChild(conferenceDetails);
-        conferenceList.appendChild(conferenceItem);
+        conferenceList.appendChild(card);
     }
 
     document.getElementById('conferenceCount').textContent = list.length;

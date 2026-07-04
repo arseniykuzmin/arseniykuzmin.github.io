@@ -1,20 +1,35 @@
-{% macro citation_item(pub, num) %}
-        <div class="citations-item">
-          <div class="title"><p> [{{ num }}] {{ pub.title | e }}</p></div>
-          <div class="authors">{{ pub.authors | transform_authors }}</div>
-          <div class="journal">{{ pub.venue | e }} {{ pub.volume | e }} ({{ pub.year | e }}) {{ pub.pages | e }}
-      {% if pub.doi %}<a class="citations-link" href="https://doi.org/{{ pub.doi | e }}" target="_blank" rel="noopener noreferrer">{{ pub.doi | e }}</a>{% endif %}</div></div>
+{% macro citation_item(pub) %}
+        <article class="paper-card publication-card" style="--badge-hue: {{ pub.badge_hue }}">
+            <div class="paper-card-top">
+                <span class="venue-badge">{{ pub.venue_abbr | e }}</span>
+                <span class="paper-year">📅 {{ pub.year | e }}</span>
+            </div>
+            <h2 class="paper-title">{{ pub.title | e }}</h2>
+            <div class="authors">{{ pub.authors | transform_authors }}</div>
+            <div class="paper-meta">
+                <span class="paper-venue">{{ pub.venue | e }}{% if pub.volume %} {{ pub.volume | e }}{% endif %}{% if pub.pages %}, {{ pub.pages | e }}{% endif %}</span>
+            </div>
+{% if pub.doi %}
+            <div class="paper-actions">
+                <a class="paper-link" href="https://doi.org/{{ pub.doi | e }}" target="_blank" rel="noopener noreferrer">DOI</a>
+            </div>
+{% endif %}
+        </article>
 {% endmacro %}
 
-{% macro conference_item(conf, num) %}
-            <div class="conference-item">
-                <h3>{{ num }}. {{ conf.title | e }}</h3>
-                <div class="authors">{{ conf.authors | e }}</div>
-                <div class="conference-details">
-                    <p>Conference: {{ conf.conference.name | e }}</p>
-                    <p>Location: {{ conf.conference.location | e }}</p>
-                    <p>Date: {{ conf.conference.date | e }}</p>
-                    <p>Presentation: {{ conf.presentation | e }}</p>
+{% macro conference_item(conf) %}
+            <article class="paper-card conference-card" style="--badge-hue: {{ conf.conference.badge_hue }}">
+                <div class="paper-card-top">
+                    <span class="venue-badge">{{ conf.conference.abbr | e }}</span>
+                    <span class="paper-year">📅 {{ conf.conference.year | e }}</span>
                 </div>
-            </div>
+                <h2 class="paper-title">{{ conf.title | e }}</h2>
+                <div class="authors">{{ conf.authors | e }}</div>
+                <div class="paper-meta">
+                    <span>{{ conf.conference.name | e }}</span>
+                    <span>📍 {{ conf.conference.location | e }}</span>
+                    <span>{{ conf.conference.date | e }}</span>
+                    <span>{% if "oral" in conf.presentation %}🎤{% else %}📌{% endif %} {{ conf.presentation | e }}</span>
+                </div>
+            </article>
 {% endmacro %}

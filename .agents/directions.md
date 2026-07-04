@@ -14,9 +14,9 @@ agent notes now live in this repo.
 Shipped and live on `arseniykuzmin.github.io` via the GitHub Pages Action:
 the Jinja2 build, plus (2026-07-04) an accessible top nav + mobile hamburger,
 project-detail rails with a build-time "On this page" outline, softened dark
-mode, a Conferences filter, the QUEST/PSI publications, and a fully populated
-Control Unit project. The `queezz.github.io` mirror still needs its Phase 2
-token.
+mode, Publications/Conferences card lists with live filters, a tighter About
+page, the QUEST/PSI publications, and a fully populated Control Unit project.
+The `queezz.github.io` mirror still needs its Phase 2 token.
 
 ## Confirmed decisions
 - **Source of truth:** `arseniykuzmin.github.io`.
@@ -63,29 +63,7 @@ Extend the Action to also publish `dist/` to `queezz/queezz.github.io`.
 Because the repos are under different accounts, this needs a cross-repo deploy
 token or deploy key stored as a repo secret. The user must create/provide this.
 
-### 2. Publications & Conferences as cards
-Redesign both list pages to look like the user's paperlib (a dark card grid;
-see the 2026-07-04 handoff for a reference screenshot). Each entry becomes a
-card: the title, an emoji or two in place of boilerplate labels where it reads
-well, and a coloured **badge for the venue** — a short journal/conference code
-matching `journals.toml` in the paperlib library at
-`C:\Users\queezz\Dropbox\10-Research\40-Articles-Library\`.
-
-- **Publications filter:** add the same live filter box already on Conferences.
-  `templates/partials/conferences_runtime.js` is the working template — it
-  filters by title/authors/venue/year and updates the count; re-render from the
-  embedded JSON on load so filter + sort compose.
-- **Retire the `[N]` number** on each card. It shifts as you filter and this is
-  not a bibliography. If people want citations, just serve the full BibTeX
-  (`data/mypapers.bib`) as a downloadable file instead of pretending to be a
-  reference manager.
-
-### 3. Tighten the landing page (About)
-The About page feels busy; exact direction still open.
-- Put **Education** in two side-by-side cards on desktop to save vertical space.
-- Make **Skills** and **Experience** more concise / less dense.
-
-### 4. Performance and visual regularity
+### 2. Performance and visual regularity
 - Resize/compress large images; consider WebP/AVIF and `srcset`.
 - Dedupe images duplicated across `img/` and `projects/<slug>/`.
 - Consolidate stylesheets and introduce shared CSS variables.

@@ -1,100 +1,236 @@
-/* Citations */
+/* Publication and conference cards */
 .citations {
-    counter-reset: mycounter;
     max-width: var(--main-content-width);
     margin: 0 auto;
-    background-color: #ffffff;
     padding: 10px;
-}
-
-
-.citations-spacer {
-    padding: 50px 0 30px 0;
-}
-
-.split {
-    margin: 0;
-    padding: 0;
-    list-style: none;
-}
-
-.split li::before {
-    counter-increment: mycounter;
-    content: counter(mycounter) ". ";
-}
-
-.citations .citations-item {
-    border-bottom: 1px solid #a91a1a;
+    box-sizing: border-box;
 }
 
 .citations h1 {
-    background-color: #fff;
-    margin: -10px auto 0 auto;
-    z-index: 5;
-    line-height: 1.3em;
-    font-size: 24px;
-    text-align: left;
-    font-weight: normal;
+    margin: 0 0 14px;
+    line-height: 1.2;
+    font-size: 28px;
+    font-weight: 600;
+    color: #8c0c0c;
 }
 
-.citations h1 span {
-    letter-spacing: 2px;
-    padding: 8px 20px;
-    font-size: 11px;
-    z-index: 100;
-    color: #fff;
-    background-color: #000;
+.button-container {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 16px;
 }
 
-.citations .citations-item .title {
-    font-family: "Archer-Book", Georgia, Serif;
-    font-size: 18px;
-    font-weight: normal;
-}
-
-div.citations .authors {
-    font-family: "Archer-Book", Georgia, Serif;
-    font-size: 12px;
-    font-weight: normal;
-    margin-bottom: 10px;
-}
-
-.citations .authors span {
-    font-family: "Archer-Book", Georgia, Serif;
-    font-weight: normal;
-    font-style: italic;
-    text-decoration: underline;
-    margin-top: 5px;
-    color: #888;
-}
-
-.citations .journal {
-    font-size: 14px;
-    font-weight: normal;
-    margin-top: 2px;
-    margin-bottom: 10px;
-}
-
-.citations .citations-link {
-    margin: 5px 0 5px 10px;
+.filter-box {
+    height: 36px;
+    box-sizing: border-box;
+    padding: 0 12px;
+    width: min(300px, 100%);
     font-size: 15px;
+    color: #242321;
+    background: #fff;
+    border: 1px solid #d8d5ce;
+    border-radius: 4px;
+    appearance: none;
+    -webkit-appearance: none;
 }
 
-.citations .citations-link a {
-    margin-right: 5px;
-    border-radius: 100%;
-    padding: 5px;
-    background-color: #fff;
+.filter-box::placeholder {
+    color: #8f8a82;
 }
 
-.citations .citations-link a:hover {
-    transition: .4s;
-    background-color: #dbff38;
+.filter-box:focus {
+    outline: 2px solid rgba(140, 12, 12, 0.4);
+    outline-offset: 1px;
 }
 
-@media (max-width: 960px) {
+.count-label {
+    margin: 0 0 0 auto;
+    min-width: 3ch;
+    font-size: 16px;
+    font-weight: 700;
+    color: #8c0c0c;
+    text-align: right;
+}
+
+.bibtex-link {
+    display: inline-flex;
+    align-items: center;
+    height: 36px;
+    box-sizing: border-box;
+    padding: 0 12px;
+    color: #742310;
+    background: #fff7e2;
+    border: 1px solid #d9ba70;
+    border-radius: 4px;
+    font-size: 14px;
+    font-weight: 700;
+    text-decoration: none;
+}
+
+.bibtex-link:hover {
+    background: #ffe8a6;
+}
+
+.paper-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 340px), 1fr));
+    gap: 14px;
+    padding-top: 0;
+}
+
+.paper-card {
+    min-height: 220px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 16px;
+    color: #f0ece3;
+    background:
+        linear-gradient(135deg, rgba(255, 255, 255, 0.055), rgba(255, 255, 255, 0)),
+        #25231f;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    box-shadow: 0 10px 22px rgba(36, 33, 29, 0.16);
+}
+
+.paper-card-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+}
+
+.venue-badge {
+    display: inline-flex;
+    align-items: center;
+    max-width: 70%;
+    min-height: 28px;
+    box-sizing: border-box;
+    padding: 4px 9px;
+    color: hsl(var(--badge-hue), 48%, 18%);
+    background: hsl(var(--badge-hue), 72%, 78%);
+    border: 1px solid hsl(var(--badge-hue), 58%, 52%);
+    border-radius: 5px;
+    font-size: 13px;
+    font-weight: 800;
+    line-height: 1.1;
+    overflow-wrap: anywhere;
+}
+
+.paper-year {
+    flex: 0 0 auto;
+    color: #e8c66e;
+    font-size: 14px;
+    font-weight: 700;
+}
+
+.paper-title {
+    margin: 0;
+    color: #fffaf0;
+    font-size: 18px;
+    line-height: 1.28;
+    font-weight: 700;
+}
+
+.paper-card .authors {
+    color: #d2cbbb;
+    font-family: "Archer-Book", Georgia, Serif;
+    font-size: 13px;
+    line-height: 1.45;
+}
+
+.paper-card .authors b,
+.paper-card .authors u {
+    color: #ffffff;
+    text-decoration-color: #e8c66e;
+}
+
+.paper-meta {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    margin-top: auto;
+    color: #bfb8aa;
+    font-size: 13px;
+    line-height: 1.35;
+}
+
+.paper-actions {
+    display: flex;
+    gap: 8px;
+    padding-top: 2px;
+}
+
+.paper-link {
+    display: inline-flex;
+    align-items: center;
+    min-height: 30px;
+    box-sizing: border-box;
+    padding: 5px 10px;
+    color: #1f2418;
+    background: #bfe08c;
+    border-radius: 4px;
+    font-size: 13px;
+    font-weight: 800;
+    text-decoration: none;
+}
+
+.paper-link:hover {
+    background: #d6f3a6;
+}
+
+html.dark-mode .citations,
+html.dark-mode .citations h1 {
+    color: #dcd6cc;
+    background: transparent;
+}
+
+html.dark-mode .filter-box {
+    color: #cbc5bb;
+    background: #242320;
+    border-color: #3a3630;
+}
+
+html.dark-mode .filter-box::placeholder {
+    color: #8b8780;
+}
+
+html.dark-mode .paper-card {
+    background:
+        linear-gradient(135deg, rgba(255, 255, 255, 0.055), rgba(255, 255, 255, 0)),
+        #23211d;
+    border-color: rgba(255, 255, 255, 0.12);
+    box-shadow: none;
+}
+
+html.dark-mode .bibtex-link {
+    color: #ffe8a6;
+    background: #2a2518;
+    border-color: #6d5722;
+}
+
+html.dark-mode #conferenceCount,
+html.dark-mode #publicationCount {
+    color: #ffc857;
+}
+
+@media (max-width: 680px) {
     .citations {
         padding: 0;
     }
-}
 
+    .citations h1 {
+        font-size: 24px;
+    }
+
+    .filter-box {
+        width: 100%;
+    }
+
+    .count-label {
+        margin-left: 0;
+    }
+}
