@@ -8,6 +8,7 @@ import html
 import json
 import re
 import shutil
+import time
 from pathlib import Path
 
 import markdown
@@ -315,9 +316,29 @@ def copy_static_assets() -> None:
         copy_file(path, DIST / path.relative_to(ROOT))
 
 
+def clean_dist(path: Path, retries: int = 8, delay: float = 0.5) -> None:
+    """Remove the output dir, retrying on transient Windows file locks.
+
+    On Windows, Dropbox / antivirus / search indexers briefly hold handles
+    under dist/, so a plain rmtree can fail with WinError 32 right after a
+    previous build. Retry a few times to let the handle release instead of
+    crashing the build.
+    """
+    for attempt in range(1, retries + 1):
+        if not path.exists():
+            return
+        try:
+            shutil.rmtree(path)
+            return
+        except OSError:
+            if attempt == retries:
+                raise
+            print(f"{path} is locked; retrying ({attempt}/{retries - 1})...")
+            time.sleep(delay)
+
+
 def main() -> None:
-    if DIST.exists():
-        shutil.rmtree(DIST)
+    clean_dist(DIST)
     DIST.mkdir(parents=True)
     copy_static_assets()
 
