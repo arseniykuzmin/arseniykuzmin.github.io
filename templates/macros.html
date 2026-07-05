@@ -14,9 +14,21 @@
             <div class="paper-meta">
                 <span class="paper-venue">{{ pub.venue | e }}{% if pub.year %} {{ pub.year | e }}{% endif %}{% if pub.volume %}, {{ pub.volume | e }}{% endif %}{% if pub.pages %}, {{ pub.pages | e }}{% endif %}</span>
             </div>
-{% if pub.doi %}
+{% if pub.doi or pub.patent_url %}
             <div class="paper-actions">
+{% if pub.doi %}
                 <a class="paper-link" href="https://doi.org/{{ pub.doi | e }}" target="_blank" rel="noopener noreferrer">open DOI</a>
+{% endif %}
+{% if pub.patent_url %}
+                <a class="paper-link" href="{{ pub.patent_url | e }}" target="_blank" rel="noopener noreferrer">patent</a>
+{% endif %}
+{% if pub.corrigendum_doi %}
+                <a class="paper-link" href="https://doi.org/{{ pub.corrigendum_doi | e }}" target="_blank" rel="noopener noreferrer">corrigendum</a>
+{% endif %}
+            </div>
+{% elif pub.corrigendum_doi %}
+            <div class="paper-actions">
+                <a class="paper-link" href="https://doi.org/{{ pub.corrigendum_doi | e }}" target="_blank" rel="noopener noreferrer">corrigendum</a>
             </div>
 {% endif %}
         </article>

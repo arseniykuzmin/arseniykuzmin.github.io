@@ -6,6 +6,12 @@ session handoffs stay in [`log/`](log/), and future work stays in
 
 ## 2026-07-05
 
+### Reconciled publication metadata with paperlib
+- Removed two duplicate 2010 publication rows from cvsite, added the missed
+  2017 Nuclear Fusion hydrogen-recycling paper and one Russian patent entry,
+  and attached the 2022 JQSRT corrigendum as a link on the original paper rather
+  than counting it as a separate publication.
+
 ### Polished project/publication links and listing controls
 - Added project-to-publication links using stable publication-card anchors,
   including compact project-rail labels such as "Begrambekov JNM 2013".

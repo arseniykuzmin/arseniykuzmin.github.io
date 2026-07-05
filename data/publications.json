@@ -99,7 +99,9 @@
     "abstract": "Wide wavelength range with high-resolution emission spectroscopy was applied to LHD peripheral plasmas. All measured Fulcher-a band Q-branches spectra (600–630 nm) were measured with a single shot exposure time of 100–200 ms for all investigated discharges. Ro-vibrational populations up to v = 2 and N = 11 for H2 and up to v = 3 and N = 14 for D2 in the 3p3Πu state were estimated, where v and N are vibrational and rotational quantum numbers, respectively. It was found that the rotational population of every vibrational state follows two-temperature Boltzmann distribution. From the calculation with a coronal model, ro-vibrational populations distribution up to such high N quantum numbers in the ground state are deduced.",
     "language": "english",
     "aknotes": "",
-    "keywords": "first, corresponding"
+    "keywords": "first, corresponding",
+    "corrigendum": "Corrigendum: JQSRT, 291 (2022) 108316 (4 pp.)",
+    "corrigendum_doi": "10.1016/j.jqsrt.2022.108316"
   },
   {
     "type": "article",
@@ -301,40 +303,6 @@
     "volume": "390-391",
     "pages": "589-592",
     "abstract": "Deuterium trapping in carbon fiber composite N11 and pyrolitic graphite PG99 irradiated with plasma ions and electrons was examined with thermal desorption spectrometry. It has been found that the deuterium trapping takes place even at ion and electron energies of about 10eV. For equal ion fluences, the deuterium retention and probability of CD4 formation are higher for ion irradiation at lower ion flux. Peculiarities of the deuterium retention and CD4 formation are explained; driving forces and mechanisms of the D trapping are discussed.",
-    "language": "english",
-    "aknotes": "featured",
-    "keywords": ""
-  },
-  {
-    "type": "article",
-    "authors": "A. A. Airapetov and L. B. Begrambekov and S. V. Vergazov and A. A. Kuzmin and O. C. Fadina and P. A. Shigin",
-    "title": "Hydrogen TDS spectra and their relation to the conditions of implantation and retention of hydrogen in graphite materials",
-    "venue": "Journal of Surface Investigation. X-ray, Synchrotron and Neutron Techniques volume",
-    "year": "2010",
-    "note": "",
-    "issn": "",
-    "doi": "10.1134/S1027451010040038",
-    "url": "",
-    "volume": "4",
-    "pages": "567-571",
-    "abstract": "Based on the literature thermal desorption spectroscopy (TDS) data, TDS spectra of hydrogen were analyzed and classified by graphite materials and implantation conditions. Using our experimental results, all the spectra were recalculated to the equal heating rate of 5K/s. The peak positions in TDS spectra have been found to be related to irradiation conditions and to the type of hydrogen traps. An example of using the established regularities of the TDS spectra is given to obtain the data on hydrogen trapping and retention in graphite materials.",
-    "language": "english",
-    "aknotes": "featured",
-    "keywords": ""
-  },
-  {
-    "type": "article",
-    "authors": "Airapetov, A. A. and Begrambekov, L. B. and Vergazov, S. V. and Kuzmin, A. A. and Smirnov, V. M. and Shigin, P. A.",
-    "title": "Trapping and retention of deuterium in plasma-irradiated carbonic materials",
-    "venue": "Bulletin of the Russian Academy of Sciences: Physics",
-    "year": "2010",
-    "note": "",
-    "issn": "",
-    "doi": "10.3103/S1062873810020279",
-    "url": "",
-    "volume": "74-2",
-    "pages": "248-253",
-    "abstract": "Trapping and retention of deuterium in the graphitized carbon composite CFC N11 and pyrolytic graphite PG99 under plasma irradiation were investigated using the technique of thermal desorption spectroscopy. In particular, it was shown that (1) deuterium is trapped even when the energy of irradiating ions approaches zero and in the case of electron irradiation’ (2) the doses being equal, trapping depends on irradiation duration’ and (3) the effect of temperature on trapping depends on the ion energy. Two mechanisms of deuterium trapping are considered. The observed regularities are explained by the peculiarities of their action in different conditions.",
     "language": "english",
     "aknotes": "featured",
     "keywords": ""
@@ -780,5 +748,39 @@
     "language": "english",
     "aknotes": "",
     "keywords": ""
+  },
+  {
+    "type": "article",
+    "authors": "K. Hanada and N. Yoshida and T. Honda and Z. Wang and A. Kuzmin and I. Takagi and T. Hirata and Y. Oya and M. Miyamoto and H. Zushi and M. Hasegawa and K. Nakamura and A. Fujisawa and H. Idei and Y. Nagashima and O. Watanabe and T. Onchi and K. Kuroda and H. Long and H. Watanabe and K. Tokunaga and A. Higashijima and S. Kawasaki and T. Nagata and Y. Takase and A. Fukuyama and O. Mitarai",
+    "title": "Investigation of hydrogen recycling in long-duration discharges and its modification with a hot wall in the spherical tokamak QUEST",
+    "venue": "Nuclear Fusion",
+    "year": "2017",
+    "note": "",
+    "issn": "",
+    "doi": "10.1088/1741-4326/aa8121",
+    "url": "",
+    "volume": "57-12",
+    "pages": "126061",
+    "abstract": "",
+    "language": "english",
+    "aknotes": "",
+    "keywords": ""
+  },
+  {
+    "type": "misc",
+    "authors": "A. S. Dekopov and N. N. Zlobin and A. A. Kuzmin and A. V. Petrov and V. N. Khoroshev",
+    "title": "Method and apparatus for radioisotope flaw detection of annular weld joints",
+    "venue": "Russian Patent",
+    "year": "2014",
+    "note": "",
+    "issn": "",
+    "doi": "",
+    "url": "https://patents.google.com/patent/RU2530452C1/en?oq=RU2530452C1",
+    "volume": "",
+    "pages": "",
+    "abstract": "",
+    "language": "english",
+    "aknotes": "",
+    "keywords": "radioisotope, flaw-detection, weld-joints"
   }
 ]

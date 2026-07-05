@@ -214,16 +214,37 @@ function renderPublications() {
         meta.innerHTML = '<span class="paper-venue">' + escapeHTML(venueLine) + '</span>';
         card.appendChild(meta);
 
-        if (publication.doi) {
+        var patentUrl = publication.patent_url || (publication.venue === 'Russian Patent' ? publication.url : '');
+        if (publication.doi || publication.corrigendum_doi || patentUrl) {
             var actions = document.createElement('div');
             actions.className = 'paper-actions';
-            var doi = document.createElement('a');
-            doi.className = 'paper-link';
-            doi.href = 'https://doi.org/' + publication.doi;
-            doi.target = '_blank';
-            doi.rel = 'noopener noreferrer';
-            doi.textContent = 'open DOI';
-            actions.appendChild(doi);
+            if (publication.doi) {
+                var doi = document.createElement('a');
+                doi.className = 'paper-link';
+                doi.href = 'https://doi.org/' + publication.doi;
+                doi.target = '_blank';
+                doi.rel = 'noopener noreferrer';
+                doi.textContent = 'open DOI';
+                actions.appendChild(doi);
+            }
+            if (patentUrl) {
+                var patent = document.createElement('a');
+                patent.className = 'paper-link';
+                patent.href = patentUrl;
+                patent.target = '_blank';
+                patent.rel = 'noopener noreferrer';
+                patent.textContent = 'patent';
+                actions.appendChild(patent);
+            }
+            if (publication.corrigendum_doi) {
+                var correction = document.createElement('a');
+                correction.className = 'paper-link';
+                correction.href = 'https://doi.org/' + publication.corrigendum_doi;
+                correction.target = '_blank';
+                correction.rel = 'noopener noreferrer';
+                correction.textContent = 'corrigendum';
+                actions.appendChild(correction);
+            }
             card.appendChild(actions);
         }
 

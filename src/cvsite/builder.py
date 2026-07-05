@@ -56,6 +56,7 @@ VENUE_ABBR = {
     "Plasma and Fusion Research: Regular Articles": "PFR",
     "Plasma Physics and Controlled Fusion": "PPCF",
     "Review of Scientific Instruments": "RSI",
+    "Russian Patent": "RussPat",
     "Vacuum": "Vacuum",
 }
 
@@ -123,6 +124,8 @@ def enrich_publications(publications: list[dict]) -> list[dict]:
         code = venue_code(item.get("venue"))
         item["venue_abbr"] = code
         item["badge_hue"] = badge_hue(code)
+        if str(item.get("venue") or "").strip() == "Russian Patent" and item.get("url"):
+            item["patent_url"] = item["url"]
         marker_text = " ".join(str(item.get(key) or "") for key in ("aknotes", "keywords")).lower()
         item["is_corresponding"] = "corresponding" in marker_text
         base = publication_anchor_base(item)
