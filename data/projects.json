@@ -8,10 +8,7 @@
     "imageUrl": "/img/vup2-metal.jpg",
     "relatedPublicationDois": [
       "10.1016/j.jnucmat.2013.01.211"
-    ],
-    "relatedPublicationLabels": {
-      "10.1016/j.jnucmat.2013.01.211": "Begrambekov JNM 2013"
-    }
+    ]
   },
   {
     "id": 2,
@@ -38,7 +35,7 @@
     "slug": "oxygen-removal-graphite-wall",
     "title": "Oxygen Removal from Graphite Wall",
     "category": "Plasma cleaning",
-    "summary": "Glow discharge cleaning parameters for oxygen removal.",
+    "summary": "A doctoral-project piece of tokamak housekeeping: how energetic should cleaning ions be before they start burying the oxygen you are trying to remove?",
     "imageUrl": "/img/CO2-m.png",
     "relatedPublicationDois": [
       "10.1016/j.jnucmat.2010.10.054"
@@ -65,8 +62,14 @@
     "slug": "x-ray-filter-inspection",
     "title": "X-ray Filter for Non-destructive Inspection",
     "category": "Design patent",
-    "summary": "Improved X-ray filter design for weld inspection.",
-    "imageUrl": "/img/Xrayfilter.jpg"
+    "summary": "MCNP simulation and patented filter design for radioisotope inspection of annular welded joints.",
+    "imageUrl": "/img/Xrayfilter.jpg",
+    "patents": [
+      {
+        "label": "RU2530452C1",
+        "url": "https://patents.google.com/patent/RU2530452C1/en?oq=RU2530452C1"
+      }
+    ]
   },
   {
     "id": 8,
@@ -101,9 +104,9 @@
     "id": 10,
     "slug": "boron-powder-plasma-sputtering",
     "title": "Boron powder plasma sputtering",
-    "category": "Deposition prototype",
-    "summary": "Prototype sputtering device for boron powder deposition.",
-    "imageUrl": "/img/boronpowder.jpg"
+    "category": "Plasma sputtering",
+    "summary": "Plasma sputtering source for boron-film deposition and in-situ surface studies.",
+    "imageUrl": "/projects/boron-powder-plasma-sputtering/2024-11-11-Boron-Deposition-Installation-02.jpg"
   },
   {
     "id": 11,
@@ -139,11 +142,10 @@
     "slug": "oxygen-effect-hydrogen-retention",
     "title": "Oxygen Effect on Hydrogen Retention in Graphites",
     "category": "Retention study",
-    "summary": "Oxygen addition drastically increases hydrogen retention in graphites.",
+    "summary": "Small oxygen additions make graphite retain much more hydrogen.",
     "imageUrl": "/img/D2O2-m.png",
     "relatedPublicationDois": [
-      "10.1134/S1027451010040038",
-      "10.3103/S1062873810020279"
+      "10.1016/j.jnucmat.2013.01.211"
     ]
   },
   {

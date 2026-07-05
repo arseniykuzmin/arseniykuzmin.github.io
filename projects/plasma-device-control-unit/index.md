@@ -1,7 +1,6 @@
 ---
 hero: /projects/plasma-device-control-unit/controlunit-render.jpg
 hero_caption: CAD layout of the aluminum-framed unit — a Raspberry Pi with a stacked HAT, DAC boards, and a front panel of feedthroughs, thermocouple ports, and mains inlet.
-layout: split
 period: 2019-Present
 links:
   - label: GitHub

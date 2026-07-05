@@ -55,10 +55,13 @@
                         <span class="project-card-meta">{{ p.category | default("Selected work") }}</span>
                         <h2>{{ p.title }}</h2>
                         <p>{{ p.summary }}</p>
-{% if p.related_papers %}
-                        <div class="project-card-papers" aria-label="Related publications">
+{% if p.related_papers or p.patents %}
+                        <div class="project-card-papers" aria-label="Project outputs">
 {% for paper in p.related_papers %}
-                            <a class="project-paper-link" href="{{ paper.href | e }}" aria-label="Publication: {{ paper.title | clean_publication_title | e }}" title="{{ paper.title | clean_publication_title | e }}">Paper: {{ paper.short_label | e }}</a>
+                            <a class="project-paper-link" href="{{ paper.href | e }}" aria-label="Publication: {{ paper.title | clean_publication_title | e }}" title="{{ paper.title | clean_publication_title | e }}">{{ paper.short_label | e }}</a>
+{% endfor %}
+{% for patent in p.patents | default([]) %}
+                            <a class="project-paper-link project-patent-link" href="{{ patent.url | e }}" target="_blank" rel="noopener noreferrer" aria-label="Patent: {{ patent.label | e }}" title="Patent: {{ patent.label | e }}">Patent {{ patent.label | e }}</a>
 {% endfor %}
                         </div>
 {% endif %}

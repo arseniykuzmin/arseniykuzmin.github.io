@@ -131,10 +131,19 @@
     gap: 10px;
 }
 
+.paper-card-badges {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 6px;
+    flex: 1 1 auto;
+    min-width: 0;
+}
+
 .venue-badge {
     display: inline-flex;
     align-items: center;
-    max-width: 70%;
+    flex: 0 0 auto;
     min-height: 28px;
     box-sizing: border-box;
     padding: 4px 9px;
@@ -145,7 +154,7 @@
     font-size: 13px;
     font-weight: 800;
     line-height: 1.1;
-    overflow-wrap: anywhere;
+    white-space: nowrap;
 }
 
 .paper-year {
@@ -153,6 +162,23 @@
     color: #8c0c0c;
     font-size: 14px;
     font-weight: 700;
+}
+
+.paper-role-pill {
+    display: inline-flex;
+    align-items: center;
+    min-height: 22px;
+    box-sizing: border-box;
+    padding: 2px 7px;
+    color: #5d5145;
+    background: #eee8dc;
+    border: 1px solid #d5cabc;
+    border-radius: 999px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    line-height: 1.1;
+    white-space: nowrap;
 }
 
 .paper-title {
@@ -265,6 +291,12 @@ html.dark-mode .paper-year {
     color: #e8c66e;
 }
 
+html.dark-mode .paper-role-pill {
+    color: #e7ded0;
+    background: #353028;
+    border-color: #554b3d;
+}
+
 html.dark-mode .paper-card .authors {
     color: #d2cbbb;
 }
@@ -313,7 +345,7 @@ html.dark-mode #publicationCount {
     }
 
     .button-container {
-        grid-template-columns: minmax(92px, max-content) minmax(104px, max-content) minmax(12px, 1fr) minmax(3ch, max-content);
+        grid-template-columns: minmax(92px, max-content) minmax(76px, max-content) minmax(12px, 1fr) minmax(3ch, max-content);
         column-gap: 8px;
     }
 

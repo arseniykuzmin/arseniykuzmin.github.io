@@ -3,17 +3,17 @@
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    min-width: 104px;
-    height: 36px;
+    min-width: 0;
+    height: 28px;
     box-sizing: border-box;
-    padding: 0 14px;
-    font-size: 15px;
-    border: none;
-    background-color: #8c0c0c;
-    color: #fff;
+    padding: 0 10px;
+    font-size: 13px;
+    border: 1px solid #d7cfc5;
+    background-color: #f2eee7;
+    color: #5f332c;
     cursor: pointer;
-    border-radius: 4px;
-    transition: background-color 0.3s ease;
+    border-radius: 999px;
+    transition: background-color 0.18s ease, border-color 0.18s ease, color 0.18s ease;
     margin: 0;
 }
 
@@ -36,13 +36,38 @@
     margin: 0;
 }
 
-.toggle-button:hover,
+.toggle-button:hover {
+    color: #3d211d;
+    background-color: #e8dfd2;
+    border-color: #c9bcae;
+}
+
 .sort-button:hover {
     background-color: #a91a1a;
 }
 
 .toggle-button.active {
-    background-color: #d42626;
+    color: #fff;
+    background-color: #8c0c0c;
+    border-color: #8c0c0c;
+}
+
+html.dark-mode .toggle-button {
+    color: #d7cfc1;
+    background-color: #2d2923;
+    border-color: #4a4338;
+}
+
+html.dark-mode .toggle-button:hover {
+    color: #f0ece3;
+    background-color: #383228;
+    border-color: #5a5144;
+}
+
+html.dark-mode .toggle-button.active {
+    color: #fff3f3;
+    background-color: #7f1f1f;
+    border-color: #b75a5a;
 }
 
 .count-label {

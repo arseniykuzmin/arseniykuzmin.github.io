@@ -123,6 +123,8 @@ def enrich_publications(publications: list[dict]) -> list[dict]:
         code = venue_code(item.get("venue"))
         item["venue_abbr"] = code
         item["badge_hue"] = badge_hue(code)
+        marker_text = " ".join(str(item.get(key) or "") for key in ("aknotes", "keywords")).lower()
+        item["is_corresponding"] = "corresponding" in marker_text
         base = publication_anchor_base(item)
         seen_anchors[base] = seen_anchors.get(base, 0) + 1
         item["anchor_id"] = base if seen_anchors[base] == 1 else f"{base}-{seen_anchors[base]}"
@@ -275,19 +277,22 @@ def fit_size(width: int, height: int, max_width: int, max_height: int | None = N
     return max(1, round(width * scale)), max(1, round(height * scale))
 
 
+def image_has_alpha(im: Image.Image) -> bool:
+    return im.mode in {"RGBA", "LA"} or (im.mode == "P" and "transparency" in im.info)
+
+
 def save_optimized_image(src: Path, rel_out: str, max_width: int, quality: int = 78) -> dict | None:
     dst = DIST / GENERATED_ASSETS / rel_out
     dst.parent.mkdir(parents=True, exist_ok=True)
     try:
         with Image.open(src) as im:
-            im = im.convert("RGBA" if im.mode in {"RGBA", "LA", "P"} else "RGB")
+            has_alpha = image_has_alpha(im)
+            im = im.convert("RGBA" if has_alpha else "RGB")
             width, height = im.size
             out_w, out_h = fit_size(width, height, max_width)
             if (out_w, out_h) != im.size:
                 im = im.resize((out_w, out_h), Image.Resampling.LANCZOS)
             save_kwargs = {"quality": quality, "method": 6}
-            if im.mode == "RGBA":
-                save_kwargs["lossless"] = False
             im.save(dst, "WEBP", **save_kwargs)
             return {
                 "src": f"{GENERATED_ASSETS}/{rel_out}",
@@ -495,7 +500,7 @@ def slugify(text: str) -> str:
 
 
 def build_project_container_html(
-    slug: str, project: dict, sizes: dict
+    slug: str, project: dict, sizes: dict, hero_media: dict | None = None
 ) -> tuple[Markup, list[dict], dict]:
     md_path = PROJECTS_SRC / slug / "index.md"
     raw = md_path.read_text(encoding="utf-8")
@@ -506,20 +511,28 @@ def build_project_container_html(
     parts.append('<header class="project-header">')
     parts.append(f'<p class="project-kicker">{esc_text(project.get("category", "Selected work"))}</p>')
     parts.append(f'<h1 class="project-title">{esc_text(title)}</h1>')
-    summary = project.get("summary")
+    summary = fm.get("subtitle") or project.get("summary")
     if summary:
         parts.append(f'<p class="project-subtitle">{esc_text(summary)}</p>')
     parts.append("</header>")
     layout_classes = ["project-layout"]
     hero_raw = fm.get("hero") or project.get("imageUrl") or ""
-    hero_src = site_asset_url(hero_raw) if hero_raw else ""
+    use_optimized_hero = hero_media and hero_raw == project.get("imageUrl")
+    hero_src = hero_media["url"] if use_optimized_hero else site_asset_url(hero_raw) if hero_raw else ""
+    layout_mode = fm.get("layout")
     if not hero_src:
         layout_classes.append("full")
-    if fm.get("layout") == "full":
+    elif layout_mode == "full":
         layout_classes.append("full")
+    else:
+        layout_classes.append("flow")
     parts.append(f'<section class="{" ".join(layout_classes)}">')
     if hero_src:
-        wh = size_attr_dict(sizes, hero_src)
+        wh = (
+            {"width": str(hero_media["width"]), "height": str(hero_media["height"])}
+            if use_optimized_hero
+            else size_attr_dict(sizes, hero_src)
+        )
         w_h = ""
         if wh:
             w_h = f' width="{esc_attr(wh["width"])}" height="{esc_attr(wh["height"])}"'
@@ -710,7 +723,9 @@ def main() -> None:
     projects_nav = [{"slug": p["slug"], "title": p["title"]} for p in projects]
     for proj in projects:
         slug = proj["slug"]
-        body_html, outline, project_meta = build_project_container_html(slug, proj, image_sizes)
+        body_html, outline, project_meta = build_project_container_html(
+            slug, proj, image_sizes, project_card_media.get(slug)
+        )
         write(
             DIST / "projects" / slug / "index.html",
             tpl_detail.render(

@@ -64,6 +64,18 @@
 {% endif %}
                 </div>
 {% endif %}
+{% if project.patents %}
+                <div class="rail-card rail-card--patents">
+                    <p class="rail-card-label">Patent</p>
+                    <div class="rail-paper-list">
+{% for patent in project.patents %}
+                        <div class="rail-paper-item">
+                            <a href="{{ patent.url | e }}" target="_blank" rel="noopener noreferrer" title="Patent: {{ patent.label | e }}">{{ patent.label | e }} &#8599;</a>
+                        </div>
+{% endfor %}
+                    </div>
+                </div>
+{% endif %}
 {% if project.related_papers %}
                 <div class="rail-card rail-card--papers">
                     <p class="rail-card-label">Published work</p>
@@ -121,6 +133,18 @@
 {% endfor %}
                     </div>
 {% endif %}
+                </div>
+{% endif %}
+{% if project.patents %}
+                <div class="rail-card rail-card--patents">
+                    <p class="rail-card-label">Patent</p>
+                    <div class="rail-paper-list">
+{% for patent in project.patents %}
+                        <div class="rail-paper-item">
+                            <a href="{{ patent.url | e }}" target="_blank" rel="noopener noreferrer" title="Patent: {{ patent.label | e }}">{{ patent.label | e }} &#8599;</a>
+                        </div>
+{% endfor %}
+                    </div>
                 </div>
 {% endif %}
 {% if project.related_papers %}

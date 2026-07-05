@@ -26,7 +26,7 @@
             <div class="button-container">
                 <input type="search" id="publicationFilter" class="filter-box" placeholder="Filter publications…" aria-label="Filter publications" autocomplete="off">
                 <button id="sortButton" class="sort-button">Year<span class="arrow"></span></button>
-                <button id="filterButton" class="toggle-button">Featured</button>
+                <button id="filterButton" class="toggle-button" type="button" aria-pressed="false">Featured</button>
                 <p id="publicationCount" class="count-label">{{ publications_sorted | length }}</p>
             </div>
         </div>

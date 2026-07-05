@@ -120,6 +120,11 @@ function isFeatured(publication) {
     return Boolean(publication.aknotes && publication.aknotes.indexOf('featured') !== -1);
 }
 
+function isCorresponding(publication) {
+    var markers = [publication.aknotes, publication.keywords].join(' ').toLowerCase();
+    return markers.indexOf('corresponding') !== -1 || Boolean(publication.is_corresponding);
+}
+
 function currentPublications() {
     var text = filterText.trim().toLowerCase();
     var list = publicationsData.filter(function (publication) {
@@ -182,8 +187,12 @@ function renderPublications() {
 
         var top = document.createElement('div');
         top.className = 'paper-card-top';
-        top.innerHTML = '<span class="venue-badge">' + escapeHTML(code) + '</span>' +
-            '<span class="paper-year">📅 ' + escapeHTML(publication.year) + '</span>';
+        var badgeHTML = '<div class="paper-card-badges"><span class="venue-badge">' + escapeHTML(code) + '</span>';
+        if (isCorresponding(publication)) {
+            badgeHTML += '<span class="paper-role-pill">Corresponding</span>';
+        }
+        badgeHTML += '</div>';
+        top.innerHTML = badgeHTML + '<span class="paper-year">📅 ' + escapeHTML(publication.year) + '</span>';
         card.appendChild(top);
 
         var title = document.createElement('h2');
@@ -242,6 +251,7 @@ if (filterButton) {
     filterButton.addEventListener('click', function () {
         filterFeatured = !filterFeatured;
         filterButton.classList.toggle('active', filterFeatured);
+        filterButton.setAttribute('aria-pressed', filterFeatured ? 'true' : 'false');
         renderPublications();
     });
 }

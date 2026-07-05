@@ -1,7 +1,6 @@
 ---
 hero: /projects/deposition-device/wc_maker_cad.png
 hero_caption: W–C thin film deposition device
-layout: split
 gallery:
   - src: /projects/deposition-device/samples_heated.jpg
     caption: Sample heater at work

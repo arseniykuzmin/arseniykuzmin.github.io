@@ -17,7 +17,9 @@ with a build-time "On this page" outline, softened dark mode,
 Publications/Conferences card lists with live filters, a tighter About page,
 the QUEST/PSI publications, a populated Control Unit project, polished
 publication/conference listing alignment, a mobile project Details drawer, and
-the navbar initialization flash fix.
+the navbar initialization flash fix. Newer `dev` polish includes compact
+publication-card role/filter pills, project-to-publication card links, a first
+WebP image pass, and system-following theme initialization.
 
 ## Confirmed decisions
 - **Source of truth:** `arseniykuzmin.github.io`.
@@ -67,6 +69,10 @@ the navbar initialization flash fix.
   `relatedPublicationLabels` / `relatedPublicationNotes` for human wording in
   project rails and the mobile Details drawer. Full citation metadata and DOI
   links belong on `publications.html` publication cards.
+- Scientific PNGs should stand on their own. If a figure has floating labels,
+  transparent regions, or dark text, prepare the image asset so it remains
+  readable on the site background; do not add a global white canvas behind all
+  project/gallery images.
 
 ## Next work
 
@@ -77,7 +83,8 @@ If automatic mirroring is wanted later, extend the Action to publish `dist/` to
 needs a cross-repo deploy token or deploy key stored as a repo secret.
 
 ### 2. Performance and visual regularity
-- Resize/compress large images; consider WebP/AVIF and `srcset`.
+- Broaden image optimization beyond the first generated WebP pass; consider
+  AVIF and richer `srcset` where it is worth the extra build complexity.
 - Dedupe images duplicated across `img/` and `projects/<slug>/`.
 - Consolidate stylesheets and introduce shared CSS variables.
 - Continue regularizing section spacing, figure spacing, card layout, and type

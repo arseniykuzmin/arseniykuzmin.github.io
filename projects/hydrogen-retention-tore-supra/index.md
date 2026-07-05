@@ -1,7 +1,6 @@
 ---
 hero: /projects/hydrogen-retention-tore-supra/ToreSupra.png
 hero_caption: First wall overview and selected tiles
-layout: split
 gallery:
   - src: /projects/hydrogen-retention-tore-supra/sem_1.jpg
     caption: Coating detail

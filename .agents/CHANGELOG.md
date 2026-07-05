@@ -4,6 +4,31 @@ Completed CV-site work. Keep this as the compact historical ledger; detailed
 session handoffs stay in [`log/`](log/), and future work stays in
 [`directions.md`](directions.md).
 
+## 2026-07-05
+
+### Polished project/publication links and listing controls
+- Added project-to-publication links using stable publication-card anchors,
+  including compact project-rail labels such as "Begrambekov JNM 2013".
+- Added temporary publication-card hash highlighting with Esc/timeout escape so
+  linked cards are visible without staying permanently selected.
+- Moved deposition-device paper context out of a formal References block and
+  into concise body/rail wording.
+- Added generated WebP display assets for About and project-card images, with
+  lazy/eager loading tuned for faster page entry.
+- Made project-detail hero figures use the default flow layout so body text
+  wraps neatly beside and below the figure instead of leaving an empty column.
+- Made the site theme follow the system dark/light preference until the user
+  chooses a manual override.
+- Replaced the large Featured control with a compact pill-style toggle and
+  added a compact Corresponding role pill on publication cards.
+- Curated Featured publication metadata toward old lab carbon-retention papers,
+  the QUEST permeation/probe sequence, and the Fujii PoP molecular-hydrogen
+  dataset paper.
+- Populated boron sputtering, oxygen-removal, oxygen-retention, and X-ray
+  filter project pages with fuller narrative text, gallery captions, paper /
+  patent rail badges, and locally repaired PNG figures that remain readable
+  without a global white image canvas.
+
 ## 2026-07-04
 
 ### Completed two-domain shipment

@@ -152,10 +152,23 @@
     color: #5d5a55;
 }
 
+.project-patent-link,
+.project-patent-link:visited {
+    color: #5f4613;
+    background: #fff3cf;
+    border-color: #d8b95f;
+}
+
 .project-paper-link:hover,
 .project-paper-link:focus-visible {
     color: #332f2a;
     background: #e0dbd1;
+}
+
+.project-patent-link:hover,
+.project-patent-link:focus-visible {
+    color: #3d2a05;
+    background: #ffe6a3;
 }
 
 .project-paper-link:focus-visible {
@@ -206,10 +219,23 @@ html.dark-mode .project-paper-link:visited {
     border-color: #474138;
 }
 
+html.dark-mode .project-patent-link,
+html.dark-mode .project-patent-link:visited {
+    color: #ead08b;
+    background: #3a3322;
+    border-color: #6e5d2d;
+}
+
 html.dark-mode .project-paper-link:hover,
 html.dark-mode .project-paper-link:focus-visible {
     color: #f0ece3;
     background: #403b33;
+}
+
+html.dark-mode .project-patent-link:hover,
+html.dark-mode .project-patent-link:focus-visible {
+    color: #fff2c7;
+    background: #4a3f27;
 }
 
 @media (max-width: 720px) {

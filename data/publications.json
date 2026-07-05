@@ -13,8 +13,8 @@
     "pages": "1087-1090",
     "abstract": "Hydrogen wall pumping is studied in steady state tokamak operation (SSTO) of QUEST with all metal plasma facing materials PFMs at 100 °C. The duration of SSTO is up to 820 s in fully non-inductive plasma. Global gas balance analysis shows that wall pumping at the apparent (retention–release) rate of 1–6 × 1018 H/s is dominant and 70–80% of injected H2 can be retained in PFMs. However, immediately after plasma termination the H2 release rate enhances to ∼1019 H/s. In order to understand a true retention process the direct measurement of retention flux has been carried out by permeation probes. The comparison between the evaluated wall retention and results from global analysis is discussed.",
     "language": "english",
-    "aknotes": "",
-    "keywords": "first"
+    "aknotes": "featured",
+    "keywords": "first, corresponding"
   },
   {
     "type": "article",
@@ -30,8 +30,8 @@
     "pages": "178-182",
     "abstract": "Poloidal and radial distributions of the hydrogen flux, both atomic and ion, to the plasma facing materials (PFMs) are measured with four fixed and one movable PdCu membrane probes in the QUEST spherical tokamak. Direct information about hydrogen retention in the areas far from main plasma-wall interaction is essential because the significant part of the global retention is due to atomic hydrogen. Incident hydrogen flux Γinc is numerically reconstructed by fitting the experimentally measured hydrogen flux Γp, permeated through the membrane. The sensitivity of the probe is improved when compared with other work which allows dynamic changes of the retention flux to be monitored, allowing detection of 10% of the Γinc modulation, or ∼1017 H m−2s−1.",
     "language": "english",
-    "aknotes": "",
-    "keywords": "first"
+    "aknotes": "featured",
+    "keywords": "first, corresponding"
   },
   {
     "type": "article",
@@ -47,8 +47,8 @@
     "pages": "627-632",
     "abstract": "In order to understand the atomic hydrogen distribution in different kinds of plasma and its influence on the recycling, two kinds of plasmas were used: non-confined annular electron cyclotron resonance (ECR) and confined long duration plasmas. The permeation probes are used to measure directly the atomic hydrogen flux at several poloidal positions. The permeation through metals due to the ion and atom component of the hydrogen flux to the wall is indistinguishable. To estimate the contribution of the ions directly, Langmuir probes were used. The Гinc profile behind the plasma facing components (PFCs) is almost constant, ∼2 ×1018 H/s/m2.",
     "language": "english",
-    "aknotes": "",
-    "keywords": "first"
+    "aknotes": "featured",
+    "keywords": "first, corresponding"
   },
   {
     "type": "article",
@@ -65,7 +65,7 @@
     "abstract": "This paper presents carbon impurity flow velocity and temperature measurements in the divertor region for a wide density range ne = (1 - 14) ×1019 m−3, central electron temperature Te = 1.5 - 3.5 keV, and with total neutral beam injection power of 9 - 12 MW. The isotope effect on the transport is studied in hydrogen (H) and deuterium (D) discharges. Flow velocities for D plasma are systematically slower, by the factor of 1.4 - 2, compared to H plasma. For all selected discharges, the carbon ions flow toward the divertor in both H and D plasmas. Different velocities are obtained depending on the charge states. For C+ and C2+ they are in the range of 10 - 30 km/s, and 5 - 20 km/s for C3+ ions. It is also found that there is no change of flow direction even in the lowest density, where the impurity transport model predicts flow toward upstream in the thermal force dominant regime. In H discharges velocities increase proportionally to the plasma density, while in D discharges this dependency is weaker. Possible mechanism to interpret these observations is discussed based on the parallel momentum balance of impurity transport.",
     "language": "english",
     "aknotes": "",
-    "keywords": "first"
+    "keywords": "first, corresponding"
   },
   {
     "type": "article",
@@ -82,7 +82,7 @@
     "abstract": "Impurity flow velocity measurements have been conducted for different magnetic field configurations in a wide plasma parameter range in the divertor leg region of LHD for understanding of the edge impurity transport. In all cases (densities, magnetic configurations, hydrogen (H) & deuterium (D) discharges), flows of several tens of km/s are observed. It is found that the flow in thick stochastic layer is faster than in thin stochastic layer configuration by a factor of 3. Different velocities of different charge states of carbon impurity are observed. The simulation with EMC3-EIRENE code shows similar trend as the experiments, but only qualitatively: faster flow in H compared to D discharges due to the mass effect, faster flow in the case of thick stochastic layer. However, synthetic spectra show discrepancy with experiments in the absolute Doppler shift, where the impurity velocity in the experiments is one order faster compared to the simulations.",
     "language": "english",
     "aknotes": "",
-    "keywords": "first"
+    "keywords": "first, corresponding"
   },
   {
     "type": "article",
@@ -99,7 +99,7 @@
     "abstract": "Wide wavelength range with high-resolution emission spectroscopy was applied to LHD peripheral plasmas. All measured Fulcher-a band Q-branches spectra (600–630 nm) were measured with a single shot exposure time of 100–200 ms for all investigated discharges. Ro-vibrational populations up to v = 2 and N = 11 for H2 and up to v = 3 and N = 14 for D2 in the 3p3Πu state were estimated, where v and N are vibrational and rotational quantum numbers, respectively. It was found that the rotational population of every vibrational state follows two-temperature Boltzmann distribution. From the calculation with a coronal model, ro-vibrational populations distribution up to such high N quantum numbers in the ground state are deduced.",
     "language": "english",
     "aknotes": "",
-    "keywords": "first"
+    "keywords": "first, corresponding"
   },
   {
     "type": "article",
@@ -115,8 +115,8 @@
     "pages": "100872 (4 pp.).",
     "abstract": "To study radial distribution of hydrogen flux in peripheral plasma in long duration tokamak discharges,\npermeation and Langmuir reciprocate probes are used. The atomic hydrogen flux to the walls at several radial\npositions is deduced from the permeation flux. Contribution of the ions to the hydrogen flow is deduced from the\nLangmuir probe ion saturation current. It is found, that the atomic hydrogen has the most contribution to the\nhydrogen flow behind the plasma facing components (PFCs), while the ion flux there is negligible. The atomic\nflux behind the PFCs drops to the value of F~4.3 × 1015H/m2/s, which is ~6 % of that just in front of PFCs, F~\n7.7 × 1016H/m2/s.",
     "language": "english",
-    "aknotes": "",
-    "keywords": "Hydrogen, Atomic hydrogen, Steady state tokamak operation, PdCu, Permeation, first"
+    "aknotes": "featured",
+    "keywords": "Hydrogen, Atomic hydrogen, Steady state tokamak operation, PdCu, Permeation, first, corresponding"
   },
   {
     "type": "article",
@@ -132,8 +132,8 @@
     "pages": "113462 (5 pp.).",
     "abstract": "A new combination diagnostic as a hydrogen recycling monitor in harsh conditions is proposed. Combining permeation membrane probe with a Langmuir probe provides a possibility to measure both atomic and ionic hydrogen fluxes to plasma facing components. A brief overview of permeation probes is given. The range of measurable H fluxes is from 1016 to more than 1020 Hm−2s−1. Time response of the permeation probe is ∼0.1−0.5 s. A method to address disadvantages of permeation probes is proposed. This includes an introduction of a preparation chamber for Ar-plasma cleaning of the membrane and absolute calibration with a visible spectroscopy. The hydrogen recombination coefficient, evaluated in such calibration, is ku=5.9×10−30m4s−1, which agrees well with previous research.",
     "language": "",
-    "aknotes": "",
-    "keywords": "first"
+    "aknotes": "featured",
+    "keywords": "first, corresponding"
   },
   {
     "type": "article",
@@ -149,7 +149,7 @@
     "pages": "108751 (9 pp.).",
     "abstract": "We analyzed a thousand visible spectra of Fulcher-α band measured for divertor plasmas in Large Helical Device. With a coronal model and Bayesian inference, the population distribution of hydrogen molecule in the electronic ground state was estimated. The non-thermal population distribution was recovered with a two-temperature model, which has two sets of rotational and vibrational temperatures, as well as their mixture coefficient. The lower rotational temperature significantly changes according to the plasma parameters. Its nearly linear dependence on the electron density was found, which is consistent with previous works. The lower vibrational temperature also shows a small density dependence, as reported by a previous work. On the other hand, the higher rotational and vibrational temperatures as well as the mixture coefficient only show slight changes over the broad range of plasma parameters. These population parameters show a significant correlation; with higher electron density, all the temperatures and the fraction of the higher-temperature component increase simultaneously. This suggests that the electron impact plays an important role to determine the population distribution.",
     "language": "",
-    "aknotes": "featured",
+    "aknotes": "",
     "keywords": "Molecular spectroscopy, Divertor plasmas, Coronal model"
   },
   {
@@ -166,7 +166,7 @@
     "pages": "",
     "abstract": "Collisional thermalization of a particle ensemble under the energy dissipation can be seen in variety of systems, such as heated granular gasses and particles in plasmas. Despite its universal existence, analytical descriptions of the steady-state distribution have been missing. Here, we show that the steady-state energy distribution of the wide class of collisional energy cascades can be well approximated by the generalized Mittag-Leffler distribution, which is one of stable distributions. This distribution has a power-law tail, as similar to Levy's stable distribution, the index of which is related to the energy dissipation rate. We demonstrate its universality by comparing Mont-Carlo simulations of dissipative gasses as well as the spectroscopic observation of the atom velocity distribution in a low-temperature plasma.",
     "language": "",
-    "aknotes": "featured",
+    "aknotes": "",
     "keywords": "noreview"
   },
   {
@@ -302,7 +302,7 @@
     "pages": "589-592",
     "abstract": "Deuterium trapping in carbon fiber composite N11 and pyrolitic graphite PG99 irradiated with plasma ions and electrons was examined with thermal desorption spectrometry. It has been found that the deuterium trapping takes place even at ion and electron energies of about 10eV. For equal ion fluences, the deuterium retention and probability of CD4 formation are higher for ion irradiation at lower ion flux. Peculiarities of the deuterium retention and CD4 formation are explained; driving forces and mechanisms of the D trapping are discussed.",
     "language": "english",
-    "aknotes": "",
+    "aknotes": "featured",
     "keywords": ""
   },
   {
@@ -319,7 +319,7 @@
     "pages": "567-571",
     "abstract": "Based on the literature thermal desorption spectroscopy (TDS) data, TDS spectra of hydrogen were analyzed and classified by graphite materials and implantation conditions. Using our experimental results, all the spectra were recalculated to the equal heating rate of 5K/s. The peak positions in TDS spectra have been found to be related to irradiation conditions and to the type of hydrogen traps. An example of using the established regularities of the TDS spectra is given to obtain the data on hydrogen trapping and retention in graphite materials.",
     "language": "english",
-    "aknotes": "",
+    "aknotes": "featured",
     "keywords": ""
   },
   {
@@ -336,7 +336,7 @@
     "pages": "248-253",
     "abstract": "Trapping and retention of deuterium in the graphitized carbon composite CFC N11 and pyrolytic graphite PG99 under plasma irradiation were investigated using the technique of thermal desorption spectroscopy. In particular, it was shown that (1) deuterium is trapped even when the energy of irradiating ions approaches zero and in the case of electron irradiation’ (2) the doses being equal, trapping depends on irradiation duration’ and (3) the effect of temperature on trapping depends on the ion energy. Two mechanisms of deuterium trapping are considered. The observed regularities are explained by the peculiarities of their action in different conditions.",
     "language": "english",
-    "aknotes": "",
+    "aknotes": "featured",
     "keywords": ""
   },
   {
@@ -353,7 +353,7 @@
     "pages": "567--571",
     "abstract": "Based on the literature thermal desorption spectroscopy (TDS) data, TDS spectra of hydrogen were analyzed and classified by graphite materials and implantation conditions. Using our experimental results, all the spectra were recalculated to the equal heating rate of 5K/s. The peak positions in TDS spectra have been found to be related to irradiation conditions and to the type of hydrogen traps. An example of using the established regularities of the TDS spectra is given to obtain the data on hydrogen trapping and retention in graphite materials.",
     "language": "english",
-    "aknotes": "",
+    "aknotes": "featured",
     "keywords": ""
   },
   {
@@ -370,7 +370,7 @@
     "pages": "227--232",
     "abstract": "Trapping and retention of deuterium in the graphitized carbon composite CFC N11 and pyrolytic graphite PG99 under plasma irradiation were investigated using the technique of thermal desorption spectroscopy. In particular, it was shown that (1) deuterium is trapped even when the energy of irradiating ions approaches zero and in the case of electron irradiation’ (2) the doses being equal, trapping depends on irradiation duration’ and (3) the effect of temperature on trapping depends on the ion energy. Two mechanisms of deuterium trapping are considered. The observed regularities are explained by the peculiarities of their action in different conditions.",
     "language": "english",
-    "aknotes": "",
+    "aknotes": "featured",
     "keywords": ""
   },
   {
@@ -387,7 +387,7 @@
     "pages": "012026 (5 pp.).",
     "abstract": "The paper experimentally investigates and analyses the features and mechanisms of both of oxygen removal by deuterium glow discharge from CFC, pyrolytic graphite and stainless steel subjected to irradiation in oxygen contaminated plasma. It is shown that oxygen implanted in PG perpendicular to basal plates is removed after sputtering the layer slightly thicker than oxygen stopping zone (≈2nm). Fast deuterium ions penetrating into CFC during GDC transfer the trapped oxygen atoms into the bulk. Thus, much thicker surface layer has to be removed (500-1000 nm) for oxygen release.",
     "language": "english",
-    "aknotes": "",
+    "aknotes": "featured",
     "keywords": ""
   },
   {
