@@ -4,9 +4,17 @@
 <head>
     <script>
         (function () {
-            if (localStorage.getItem('darkMode') === '1') {
+            var storedTheme = null;
+            try {
+                storedTheme = localStorage.getItem('darkMode');
+            } catch (e) {
+                storedTheme = null;
+            }
+            var systemDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+            if (storedTheme === '1' || (storedTheme === null && systemDark)) {
                 document.documentElement.classList.add('dark-mode');
             }
+            document.documentElement.dataset.themeSource = storedTheme === null ? 'system' : 'manual';
         })();
     </script>
     <style>html{background-color:#fff}html.dark-mode{background-color:#1c1c1c}</style>

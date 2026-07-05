@@ -24,7 +24,14 @@
 {% block content %}
         <div class="personal-info">
             <div class="photo">
+{% if about_media %}
+                <picture>
+                    <source srcset="{{ about_media.url }}" type="image/webp">
+                    <img src="static/kaa.png" alt="Photo" width="{{ about_media.width }}" height="{{ about_media.height }}" decoding="async" fetchpriority="high">
+                </picture>
+{% else %}
                 <img src="static/kaa.png" alt="Photo" width="946" height="1171" decoding="async" fetchpriority="high">
+{% endif %}
                 <div class="photo-links">
                     <a href="https://github.com/queezz" target="_blank" title="GitHub">
                         <img src="img/github.svg" alt="GitHub" class="icon-link" width="24" height="24" loading="lazy" decoding="async">

@@ -19,7 +19,7 @@
     <section class="project-detail-page">
         <div class="project-shell">
             <aside class="project-rail project-rail--left">
-                <a class="rail-back" href="projects.html">&larr; All projects</a>
+                <a class="rail-back" href="projects.html#{{ current_slug }}">&larr; All projects</a>
                 <nav aria-label="Projects">
                     <ul class="rail-project-list">
 {% for p in projects_nav %}
@@ -31,7 +31,7 @@
 
             <main class="project-main">
                 <div class="project-mobile-actions">
-                    <a href="projects.html" class="back-link back-link--mobile">&larr; Projects</a>
+                    <a href="projects.html#{{ current_slug }}" class="back-link back-link--mobile">&larr; Projects</a>
                     <button class="project-details-button" type="button" data-project-drawer-open aria-controls="projectDetailsDrawer" aria-expanded="false">
                         Details
                     </button>
@@ -62,6 +62,21 @@
 {% endfor %}
                     </div>
 {% endif %}
+                </div>
+{% endif %}
+{% if project.related_papers %}
+                <div class="rail-card rail-card--papers">
+                    <p class="rail-card-label">Published work</p>
+                    <div class="rail-paper-list">
+{% for paper in project.related_papers %}
+                        <div class="rail-paper-item">
+                            <a href="{{ paper.href | e }}" title="{{ paper.title | clean_publication_title | e }}">{{ paper.short_label | e }}</a>
+{% if paper.note %}
+                            <p>{{ paper.note | e }}</p>
+{% endif %}
+                        </div>
+{% endfor %}
+                    </div>
                 </div>
 {% endif %}
 {% if outline %}
@@ -106,6 +121,21 @@
 {% endfor %}
                     </div>
 {% endif %}
+                </div>
+{% endif %}
+{% if project.related_papers %}
+                <div class="rail-card rail-card--papers">
+                    <p class="rail-card-label">Published work</p>
+                    <div class="rail-paper-list">
+{% for paper in project.related_papers %}
+                        <div class="rail-paper-item">
+                            <a href="{{ paper.href | e }}" title="{{ paper.title | clean_publication_title | e }}">{{ paper.short_label | e }}</a>
+{% if paper.note %}
+                            <p>{{ paper.note | e }}</p>
+{% endif %}
+                        </div>
+{% endfor %}
+                    </div>
                 </div>
 {% endif %}
 {% if outline %}

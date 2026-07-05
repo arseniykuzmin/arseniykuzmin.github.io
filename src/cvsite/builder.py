@@ -17,6 +17,7 @@ import yaml
 from bs4 import BeautifulSoup
 from jinja2 import Environment, FileSystemLoader, select_autoescape
 from markupsafe import Markup
+from PIL import Image
 
 ROOT = Path(__file__).resolve().parents[2]
 DIST = ROOT / "dist"
@@ -24,6 +25,7 @@ DATA = ROOT / "data"
 TEMPLATES = ROOT / "templates"
 PROJECTS_SRC = ROOT / "projects"
 STATIC = ROOT / "static"
+GENERATED_ASSETS = "generated"
 SITE_URL = "https://arseniykuzmin.github.io"
 MIRROR_URL = "https://queezz.github.io"
 STATIC_DIRS = ("img", "styles", "static")
@@ -86,6 +88,16 @@ def acronym(text: str, max_len: int = 8) -> str:
     return "".join(words[:2])[:max_len] or "Work"
 
 
+def anchor_token(text: str, fallback: str = "item") -> str:
+    token = re.sub(r"[^a-z0-9]+", "-", str(text).lower()).strip("-")
+    return token or fallback
+
+
+def publication_anchor_base(pub: dict) -> str:
+    key = str(pub.get("doi") or pub.get("title") or "").strip()
+    return "paper-" + anchor_token(key, fallback="publication")
+
+
 def conference_code(conference: dict) -> str:
     explicit = str(conference.get("conf") or "").strip()
     if explicit:
@@ -105,11 +117,73 @@ def conference_code(conference: dict) -> str:
 
 def enrich_publications(publications: list[dict]) -> list[dict]:
     out = []
+    seen_anchors: dict[str, int] = {}
     for pub in publications:
         item = dict(pub)
         code = venue_code(item.get("venue"))
         item["venue_abbr"] = code
         item["badge_hue"] = badge_hue(code)
+        base = publication_anchor_base(item)
+        seen_anchors[base] = seen_anchors.get(base, 0) + 1
+        item["anchor_id"] = base if seen_anchors[base] == 1 else f"{base}-{seen_anchors[base]}"
+        out.append(item)
+    return out
+
+
+def publication_doi_key(doi: str | None) -> str:
+    return str(doi or "").strip().lower()
+
+
+def project_publication_dois(project: dict) -> list[str]:
+    values = []
+    for key in ("publicationDoi", "publicationDois", "relatedPublicationDois"):
+        raw = project.get(key)
+        if not raw:
+            continue
+        if isinstance(raw, str):
+            values.append(raw)
+        elif isinstance(raw, list):
+            values.extend(str(item) for item in raw if item)
+    return values
+
+
+def enrich_projects(projects: list[dict], publications: list[dict]) -> list[dict]:
+    publications_by_doi: dict[str, dict] = {}
+    for pub in publications:
+        key = publication_doi_key(pub.get("doi"))
+        if key and key not in publications_by_doi:
+            publications_by_doi[key] = pub
+
+    out = []
+    for project in projects:
+        item = dict(project)
+        label_overrides = item.get("relatedPublicationLabels") or {}
+        note_overrides = item.get("relatedPublicationNotes") or {}
+        related = []
+        seen: set[str] = set()
+        for doi in project_publication_dois(item):
+            key = publication_doi_key(doi)
+            if not key or key in seen:
+                continue
+            seen.add(key)
+            pub = publications_by_doi.get(key)
+            if not pub:
+                continue
+            default_label = " ".join(
+                part for part in (str(pub.get("venue_abbr") or "Paper"), str(pub.get("year") or "")) if part
+            )
+            label = label_overrides.get(key) or label_overrides.get(str(doi)) or default_label
+            note = note_overrides.get(key) or note_overrides.get(str(doi)) or ""
+            related.append(
+                {
+                    "href": f"publications.html#{pub['anchor_id']}",
+                    "short_label": label,
+                    "note": note,
+                    "title": pub.get("title") or label,
+                    "doi": pub.get("doi") or doi,
+                }
+            )
+        item["related_papers"] = related
         out.append(item)
     return out
 
@@ -160,6 +234,10 @@ def asset_url(path: str) -> str:
     return f"{path}?v={ASSET_VERSION}"
 
 
+def generated_asset_url(path: str) -> str:
+    return asset_url(f"{GENERATED_ASSETS}/{path}")
+
+
 def render_ctx(path: str = "", nav_active: str | None = None) -> dict:
     return {
         "base_href": "/",
@@ -179,6 +257,68 @@ def size_attr_dict(sizes: dict, src: str) -> dict:
     if not info:
         return {}
     return {"width": str(info["width"]), "height": str(info["height"])}
+
+
+def source_path_for_site_asset(src: str) -> Path | None:
+    if not src:
+        return None
+    clean = str(src).split("?", 1)[0].lstrip("/")
+    path = ROOT / clean
+    if not path.is_file():
+        return None
+    return path
+
+
+def fit_size(width: int, height: int, max_width: int, max_height: int | None = None) -> tuple[int, int]:
+    max_height = max_height or max_width
+    scale = min(max_width / width, max_height / height, 1)
+    return max(1, round(width * scale)), max(1, round(height * scale))
+
+
+def save_optimized_image(src: Path, rel_out: str, max_width: int, quality: int = 78) -> dict | None:
+    dst = DIST / GENERATED_ASSETS / rel_out
+    dst.parent.mkdir(parents=True, exist_ok=True)
+    try:
+        with Image.open(src) as im:
+            im = im.convert("RGBA" if im.mode in {"RGBA", "LA", "P"} else "RGB")
+            width, height = im.size
+            out_w, out_h = fit_size(width, height, max_width)
+            if (out_w, out_h) != im.size:
+                im = im.resize((out_w, out_h), Image.Resampling.LANCZOS)
+            save_kwargs = {"quality": quality, "method": 6}
+            if im.mode == "RGBA":
+                save_kwargs["lossless"] = False
+            im.save(dst, "WEBP", **save_kwargs)
+            return {
+                "src": f"{GENERATED_ASSETS}/{rel_out}",
+                "url": generated_asset_url(rel_out),
+                "width": out_w,
+                "height": out_h,
+            }
+    except OSError as exc:
+        print(f"Skipping optimized image for {src}: {exc}")
+        return None
+
+
+def build_about_media() -> dict:
+    src = source_path_for_site_asset("static/kaa.png")
+    if not src:
+        return {}
+    optimized = save_optimized_image(src, "about/kaa-320.webp", max_width=320, quality=82)
+    return optimized or {}
+
+
+def build_project_card_media(projects: list[dict]) -> dict[str, dict]:
+    out: dict[str, dict] = {}
+    for project in projects:
+        slug = project.get("slug")
+        src = source_path_for_site_asset(project.get("imageUrl", ""))
+        if not slug or not src:
+            continue
+        optimized = save_optimized_image(src, f"project-cards/{slug}.webp", max_width=720, quality=78)
+        if optimized:
+            out[str(slug)] = optimized
+    return out
 
 
 def author_name_span(name: str, is_me: bool = False) -> str:
@@ -523,8 +663,10 @@ def main() -> None:
     about = load_json("about.json")
     publications = enrich_publications(load_json("publications.json"))
     conferences = enrich_conferences(load_json("conferences.json"))
-    projects = load_json("projects.json")
+    projects = enrich_projects(load_json("projects.json"), publications)
     image_sizes = load_json("image-sizes.json")
+    about_media = build_about_media()
+    project_card_media = build_project_card_media(projects)
 
     pubs_sorted = initial_publications_sorted(publications)
     conf_sorted = initial_conferences_sorted(conferences)
@@ -534,6 +676,7 @@ def main() -> None:
         env.get_template("pages/index.html").render(
             **render_ctx(nav_active="about"),
             about=about,
+            about_media=about_media,
         ),
     )
     write(
@@ -542,6 +685,7 @@ def main() -> None:
             **render_ctx("projects.html", nav_active="projects"),
             projects=projects,
             image_sizes=image_sizes,
+            project_card_media=project_card_media,
         ),
     )
     write(

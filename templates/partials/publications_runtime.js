@@ -5,6 +5,7 @@ var filterInput;
 var sortAscending = false;
 var filterFeatured = false;
 var filterText = '';
+var linkedPaperHighlightTimer;
 
 function escapeHTML(value) {
     return String(value || '').replace(/[&<>"']/g, function (ch) {
@@ -33,6 +34,13 @@ function badgeHue(text) {
         total += s.charCodeAt(i);
     }
     return 20 + (total % 300);
+}
+
+function publicationAnchorId(publication) {
+    if (publication.anchor_id) return publication.anchor_id;
+    var key = publication.doi || publication.title || 'publication';
+    var token = String(key).toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '');
+    return 'paper-' + (token || 'publication');
 }
 
 function authorNameSpan(name, isMe) {
@@ -129,6 +137,36 @@ function currentPublications() {
     return list;
 }
 
+function clearLinkedPaperHighlight() {
+    var highlighted = document.querySelector('.paper-card.is-linked-target');
+    if (highlighted) {
+        highlighted.classList.remove('is-linked-target');
+    }
+    if (linkedPaperHighlightTimer) {
+        clearTimeout(linkedPaperHighlightTimer);
+        linkedPaperHighlightTimer = null;
+    }
+}
+
+function applyLinkedPaperHighlight() {
+    if (!window.location.hash) return;
+
+    requestAnimationFrame(function () {
+        var target = document.getElementById(window.location.hash.slice(1));
+        if (!target) return;
+
+        clearLinkedPaperHighlight();
+        target.classList.add('is-linked-target');
+        target.scrollIntoView({ block: 'start' });
+
+        if (window.history && window.history.replaceState) {
+            window.history.replaceState(null, '', window.location.pathname + window.location.search);
+        }
+
+        linkedPaperHighlightTimer = setTimeout(clearLinkedPaperHighlight, 9000);
+    });
+}
+
 function renderPublications() {
     var list = currentPublications();
     var citations = document.getElementById('citations');
@@ -139,6 +177,7 @@ function renderPublications() {
         var code = venueCode(publication);
         var card = document.createElement('article');
         card.className = 'paper-card publication-card';
+        card.id = publicationAnchorId(publication);
         card.style.setProperty('--badge-hue', publication.badge_hue || badgeHue(code));
 
         var top = document.createElement('div');
@@ -183,6 +222,7 @@ function renderPublications() {
     }
 
     document.getElementById('publicationCount').textContent = list.length;
+    applyLinkedPaperHighlight();
 }
 
 publicationsData = window.__PUBLICATIONS_DATA__ || [];
@@ -212,5 +252,13 @@ if (filterInput) {
         renderPublications();
     });
 }
+
+document.addEventListener('keydown', function (event) {
+    if (event.key === 'Escape') {
+        clearLinkedPaperHighlight();
+    }
+});
+
+window.addEventListener('hashchange', applyLinkedPaperHighlight);
 
 renderPublications();

@@ -110,6 +110,18 @@
     border: 1px solid #ded8cf;
     border-radius: 8px;
     box-shadow: 0 8px 18px rgba(60, 47, 38, 0.1);
+    scroll-margin-top: 96px;
+}
+
+.paper-card:target,
+.paper-card.is-linked-target {
+    background:
+        linear-gradient(135deg, rgba(140, 12, 12, 0.12), rgba(255, 255, 255, 0)),
+        #fffaf0;
+    border-color: rgba(140, 12, 12, 0.9);
+    outline: 3px solid rgba(140, 12, 12, 0.28);
+    outline-offset: 3px;
+    box-shadow: 0 18px 42px rgba(140, 12, 12, 0.24);
 }
 
 .paper-card-top {
@@ -232,6 +244,16 @@ html.dark-mode .paper-card {
         #23211d;
     border-color: rgba(255, 255, 255, 0.12);
     box-shadow: none;
+}
+
+html.dark-mode .paper-card:target,
+html.dark-mode .paper-card.is-linked-target {
+    background:
+        linear-gradient(135deg, rgba(232, 198, 110, 0.14), rgba(255, 255, 255, 0)),
+        #2c271d;
+    border-color: rgba(232, 198, 110, 0.92);
+    outline-color: rgba(232, 198, 110, 0.34);
+    box-shadow: 0 18px 42px rgba(0, 0, 0, 0.36);
 }
 
 html.dark-mode .paper-title {

@@ -1,4 +1,33 @@
     <script>
+const THEME_QUERY = window.matchMedia ? window.matchMedia('(prefers-color-scheme: dark)') : null;
+
+function storedThemePreference() {
+    try {
+        return localStorage.getItem('darkMode');
+    } catch (e) {
+        return null;
+    }
+}
+
+function setStoredThemePreference(value) {
+    try {
+        localStorage.setItem('darkMode', value);
+    } catch (e) {
+        return;
+    }
+}
+
+function systemPrefersDark() {
+    return Boolean(THEME_QUERY && THEME_QUERY.matches);
+}
+
+function applyStoredOrSystemTheme() {
+    const stored = storedThemePreference();
+    const shouldUseDark = stored === '1' || (stored === null && systemPrefersDark());
+    document.documentElement.classList.toggle('dark-mode', shouldUseDark);
+    document.documentElement.dataset.themeSource = stored === null ? 'system' : 'manual';
+}
+
 function updateToggleIcon() {
     const toggleButton = document.getElementById('darkModeToggle');
     const isDark = document.documentElement.classList.contains('dark-mode');
@@ -12,10 +41,26 @@ function setupDarkModeToggle() {
     if (!toggleButton) return;
     toggleButton.addEventListener('click', () => {
         const html = document.documentElement;
-        html.classList.toggle('dark-mode');
-        localStorage.setItem('darkMode', html.classList.contains('dark-mode') ? '1' : '0');
+        const nextDark = !html.classList.contains('dark-mode');
+        html.classList.toggle('dark-mode', nextDark);
+        html.dataset.themeSource = 'manual';
+        setStoredThemePreference(nextDark ? '1' : '0');
         updateToggleIcon();
     });
+    if (THEME_QUERY) {
+        const onSystemThemeChange = () => {
+            if (storedThemePreference() === null) {
+                applyStoredOrSystemTheme();
+                updateToggleIcon();
+            }
+        };
+        if (THEME_QUERY.addEventListener) {
+            THEME_QUERY.addEventListener('change', onSystemThemeChange);
+        } else if (THEME_QUERY.addListener) {
+            THEME_QUERY.addListener(onSystemThemeChange);
+        }
+    }
+    applyStoredOrSystemTheme();
     updateToggleIcon();
 }
 

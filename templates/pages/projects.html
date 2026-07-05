@@ -36,16 +36,34 @@
 
             <div class="grid-container" id="gridContainer">
 {% for p in projects %}
-                <a class="grid-item" href="projects/{{ p.slug }}/">
+{% set image_loading = "eager" if loop.index <= 4 else "lazy" %}
+{% set image_priority = "high" if loop.index <= 4 else "auto" %}
+                <article class="grid-item" id="{{ p.slug }}">
+                    <a class="project-card-cover" href="projects/{{ p.slug }}/" aria-label="Open project: {{ p.title | e }}"></a>
                     <figure class="project-card-media">
-                        <img src="{{ p.imageUrl }}" alt="{{ p.title }}" loading="lazy" decoding="async"{{ project_img_size_attrs(p.imageUrl) }}>
+{% set card_media = project_card_media.get(p.slug) if project_card_media else none %}
+{% if card_media %}
+                        <picture>
+                            <source srcset="{{ card_media.url }}" type="image/webp">
+                            <img src="{{ p.imageUrl }}" alt="{{ p.title }}" loading="{{ image_loading }}" fetchpriority="{{ image_priority }}" decoding="async" width="{{ card_media.width }}" height="{{ card_media.height }}">
+                        </picture>
+{% else %}
+                        <img src="{{ p.imageUrl }}" alt="{{ p.title }}" loading="{{ image_loading }}" fetchpriority="{{ image_priority }}" decoding="async"{{ project_img_size_attrs(p.imageUrl) }}>
+{% endif %}
                     </figure>
                     <div class="project-card-body">
                         <span class="project-card-meta">{{ p.category | default("Selected work") }}</span>
                         <h2>{{ p.title }}</h2>
                         <p>{{ p.summary }}</p>
+{% if p.related_papers %}
+                        <div class="project-card-papers" aria-label="Related publications">
+{% for paper in p.related_papers %}
+                            <a class="project-paper-link" href="{{ paper.href | e }}" aria-label="Publication: {{ paper.title | clean_publication_title | e }}" title="{{ paper.title | clean_publication_title | e }}">Paper: {{ paper.short_label | e }}</a>
+{% endfor %}
+                        </div>
+{% endif %}
                     </div>
-                </a>
+                </article>
 {% endfor %}
             </div>
         </section>

@@ -61,6 +61,12 @@ the navbar initialization flash fix.
   server before manually rebuilding. `cvsite serve` builds before serving.
 - Root deployment metadata `.nojekyll` stays at repo root and is copied to
   `dist/`; media assets belong under `static/`, `img/`, or project folders.
+- Project pages should not grow manuscript-style `References` sections unless
+  the user explicitly asks for formal bibliography prose. Put publication
+  relationships in `data/projects.json` via `relatedPublicationDois`; use
+  `relatedPublicationLabels` / `relatedPublicationNotes` for human wording in
+  project rails and the mobile Details drawer. Full citation metadata and DOI
+  links belong on `publications.html` publication cards.
 
 ## Next work
 

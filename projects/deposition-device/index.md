@@ -10,9 +10,9 @@ gallery:
   - src: /projects/deposition-device/wc-film.jpg
     caption: W–C film example SEM image
 ---
-A multi-material deposition device was developed to investigate tungsten–carbon (W–C) film growth during simultaneous deposition, motivated by fusion research context. ITER and other tokamaks have moved from graphite to tungsten and beryllium plasma-facing components, yet graphite divertors remain in some machines, and even in ITER the tungsten strike-point placement remains under discussion. This prompted a closer examination of W–C film formation and its interaction with hydrogen and oxygen under controlled plasma conditions, with results on hydrogen retention in carbon films produced using this setup published in&nbsp;[1](#ref1).
+A multi-material deposition device was developed to investigate tungsten–carbon (W–C) film growth during simultaneous deposition, motivated by fusion research context. ITER and other tokamaks have moved from graphite to tungsten and beryllium plasma-facing components, yet graphite divertors remain in some machines, and even in ITER the tungsten strike-point placement remains under discussion. This prompted a closer examination of W–C film formation and its interaction with hydrogen and oxygen under controlled plasma conditions.
 
-Built in 2010–2011 in Russia, the setup features coaxial disk–ring graphite (C) and tungsten (W) sputter targets with independent biasing, a minimal yet stable target–sample distance, and a slide-in heated cassette for four 10 mm square substrates. These and other results were included in my doctoral thesis but have not been formally published beyond [1](#ref1).
+Built in 2010–2011 in Russia, the setup features coaxial disk–ring graphite (C) and tungsten (W) sputter targets with independent biasing, a minimal yet stable target–sample distance, and a slide-in heated cassette for four 10 mm square substrates. These and other results were included in my doctoral thesis, with the main published result in [Begrambekov JNM 2013](publications.html#paper-10-1016-j-jnucmat-2013-01-211).
 
 <!--more-->
 
@@ -55,7 +55,3 @@ Forepump + diffusion pump with N₂ cold trap; base pressure $7\times 10^{-6}$ T
 - **Purpose**  
   Study W–C film growth and concurrent H/O uptake under controlled low-energy plasma irradiation.
 
----
-
-### References
-<span id="ref1">[1]</span> L. Begrambekov, A. Kuzmin, *et al.*, **Deuterium trapping in carbon films formed in different deposition conditions**, *Journal of Nuclear Materials*, 435(1–3), 78–83 (2013). DOI: <a href="https://doi.org/10.1016/j.jnucmat.2013.01.211" target="_blank" rel="noopener">10.1016/j.jnucmat.2013.01.211</a>

@@ -1,5 +1,5 @@
 {% macro citation_item(pub) %}
-        <article class="paper-card publication-card" style="--badge-hue: {{ pub.badge_hue }}">
+        <article id="{{ pub.anchor_id | e }}" class="paper-card publication-card" style="--badge-hue: {{ pub.badge_hue }}">
             <div class="paper-card-top">
                 <span class="venue-badge">{{ pub.venue_abbr | e }}</span>
                 <span class="paper-year">📅 {{ pub.year | e }}</span>
