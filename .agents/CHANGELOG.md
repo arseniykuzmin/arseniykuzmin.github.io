@@ -4,6 +4,14 @@ Completed CV-site work. Keep this as the compact historical ledger; detailed
 session handoffs stay in [`log/`](log/), and future work stays in
 [`directions.md`](directions.md).
 
+## 2026-07-06
+
+### Updated seawater desalination project
+- Reworked the desalination project around the outdoor collector-field hero,
+  added the flow schematic/render/lab gallery, and reframed the text as a
+  lab-wide 2006-2012 applied R&D side project with practical engineering
+  lessons.
+
 ## 2026-07-05
 
 ### Reconciled publication metadata with paperlib
