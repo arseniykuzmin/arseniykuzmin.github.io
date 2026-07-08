@@ -12,6 +12,9 @@ session handoffs stay in [`log/`](log/), and future work stays in
   publication list structure unchanged.
 - Added Ruff to the documented venv requirements and recorded the reliable
   local-preview path for future browser verification.
+- Documented the sandbox escalation rule so future agents rerun required
+  network/permission-blocked commands with approval instead of chasing
+  workarounds.
 
 ## 2026-07-06
 

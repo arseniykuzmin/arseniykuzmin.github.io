@@ -63,6 +63,12 @@ WebP image pass, and system-following theme initialization.
   `src/cvsite/`.
 - On Windows, an active preview server can hold handles under `dist/`; stop the
   server before manually rebuilding. `cvsite serve` builds before serving.
+- The managed Codex shell has restricted network and filesystem permissions by
+  design. If a required command fails with symptoms such as blocked PyPI access,
+  `WinError 10013`, denied writes outside the workspace, or other sandbox-like
+  permission errors, rerun the same command with the tool's escalation mechanism
+  and a concise justification. Do not spend time inventing alternate local
+  workarounds for commands that should simply be approved.
 - In the managed agent shell, detached PowerShell jobs and `Start-Process`
   output redirection can exit early or fail because of environment/stdio quirks.
   For browser verification, prefer either running `cvsite serve --no-build` in a

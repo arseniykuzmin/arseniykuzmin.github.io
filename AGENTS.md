@@ -36,3 +36,6 @@ When work ships, remove it from `directions.md` and record it in
 - Preview command: `cvsite serve`.
 - Do not push unless the user explicitly asks.
 - Do not leak machine-specific full paths or usernames into docs.
+- Managed sandbox: if a required command fails with sandbox-style network or
+  permission errors, rerun the same command with the proper escalation request
+  instead of spending time on local workarounds.
