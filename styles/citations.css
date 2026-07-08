@@ -29,7 +29,7 @@
 
 .button-container {
     display: grid;
-    grid-template-columns: minmax(0, 300px) repeat(2, max-content) minmax(16px, 1fr) minmax(3ch, max-content);
+    grid-template-columns: minmax(0, 300px) repeat(3, max-content) minmax(16px, 1fr) minmax(3ch, max-content);
     align-items: center;
     column-gap: 14px;
     row-gap: 10px;
@@ -370,7 +370,13 @@ html.dark-mode #publicationCount {
         grid-column: 1 / -1;
     }
 
+    .corresponding-toggle {
+        grid-column: 1 / span 2;
+        justify-self: start;
+    }
+
     .count-label {
         grid-column: -2 / -1;
+        grid-row: 2;
     }
 }

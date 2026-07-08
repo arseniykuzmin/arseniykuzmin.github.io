@@ -1,9 +1,11 @@
 var publicationsData = [];
 var sortButton;
 var filterButton;
+var correspondingButton;
 var filterInput;
 var sortAscending = false;
 var filterFeatured = false;
+var filterCorresponding = false;
 var filterText = '';
 var linkedPaperHighlightTimer;
 
@@ -131,7 +133,8 @@ function currentPublications() {
     var list = publicationsData.filter(function (publication) {
         return (
             publicationMatches(publication, text) &&
-            (!filterFeatured || isFeatured(publication))
+            (!filterFeatured || isFeatured(publication)) &&
+            (!filterCorresponding || isCorresponding(publication))
         );
     });
 
@@ -275,6 +278,7 @@ function renderPublications() {
 publicationsData = window.__PUBLICATIONS_DATA__ || [];
 sortButton = document.getElementById('sortButton');
 filterButton = document.getElementById('filterButton');
+correspondingButton = document.getElementById('correspondingButton');
 filterInput = document.getElementById('publicationFilter');
 
 if (sortButton) {
@@ -290,6 +294,15 @@ if (filterButton) {
         filterFeatured = !filterFeatured;
         filterButton.classList.toggle('active', filterFeatured);
         filterButton.setAttribute('aria-pressed', filterFeatured ? 'true' : 'false');
+        renderPublications();
+    });
+}
+
+if (correspondingButton) {
+    correspondingButton.addEventListener('click', function () {
+        filterCorresponding = !filterCorresponding;
+        correspondingButton.classList.toggle('active', filterCorresponding);
+        correspondingButton.setAttribute('aria-pressed', filterCorresponding ? 'true' : 'false');
         renderPublications();
     });
 }
