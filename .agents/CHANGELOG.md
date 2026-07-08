@@ -4,6 +4,15 @@ Completed CV-site work. Keep this as the compact historical ledger; detailed
 session handoffs stay in [`log/`](log/), and future work stays in
 [`directions.md`](directions.md).
 
+## 2026-07-09
+
+### Updated JPFR publication metadata
+- Added the English subtitle and direct PDF link for the 2022 Journal of Plasma
+  Fusion Research Japanese review-style article, keeping DOI absent and the
+  publication list structure unchanged.
+- Added Ruff to the documented venv requirements and recorded the reliable
+  local-preview path for future browser verification.
+
 ## 2026-07-06
 
 ### Updated seawater desalination project

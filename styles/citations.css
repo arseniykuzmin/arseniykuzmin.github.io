@@ -190,6 +190,13 @@
     font-weight: 700;
 }
 
+.paper-subtitle {
+    margin: -4px 0 0;
+    color: #665d51;
+    font-size: 14px;
+    line-height: 1.35;
+}
+
 .paper-card .authors {
     color: #5e574d;
     font-family: "Archer-Book", Georgia, Serif;
@@ -285,6 +292,10 @@ html.dark-mode .paper-card.is-linked-target {
 html.dark-mode .paper-title {
     color: #fffaf0;
     background: transparent;
+}
+
+html.dark-mode .paper-subtitle {
+    color: #d2cbbb;
 }
 
 html.dark-mode .paper-year {

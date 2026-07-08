@@ -52,6 +52,8 @@ WebP image pass, and system-following theme initialization.
   - `cvsite serve --port 9000`
   - `cvsite serve --no-build`
 - Build venv: `$env:USERPROFILE\.venvs\cvsite`.
+- Verification venv setup: `python -m pip install -r requirements.txt` installs
+  `cvsite` plus Ruff for `python -m ruff check .`.
 
 ## Technical notes
 - `dist/` is generated output and must stay ignored.
@@ -61,6 +63,11 @@ WebP image pass, and system-following theme initialization.
   `src/cvsite/`.
 - On Windows, an active preview server can hold handles under `dist/`; stop the
   server before manually rebuilding. `cvsite serve` builds before serving.
+- In the managed agent shell, detached PowerShell jobs and `Start-Process`
+  output redirection can exit early or fail because of environment/stdio quirks.
+  For browser verification, prefer either running `cvsite serve --no-build` in a
+  long-lived foreground session, or serving `dist/` from the browser automation
+  runtime and stopping that temporary server after screenshots/checks.
 - Root deployment metadata `.nojekyll` stays at repo root and is copied to
   `dist/`; media assets belong under `static/`, `img/`, or project folders.
 - Project pages should not grow manuscript-style `References` sections unless

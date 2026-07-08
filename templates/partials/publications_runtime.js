@@ -107,6 +107,7 @@ function publicationMatches(publication, text) {
     if (!text) return true;
     var hay = [
         publication.title,
+        publication.translated_title,
         publication.authors,
         publication.venue,
         publication.venue_abbr,
@@ -200,6 +201,13 @@ function renderPublications() {
         title.textContent = cleanPublicationTitle(publication.title);
         card.appendChild(title);
 
+        if (publication.translated_title) {
+            var subtitle = document.createElement('p');
+            subtitle.className = 'paper-subtitle';
+            subtitle.textContent = '(' + cleanPublicationTitle(publication.translated_title) + ')';
+            card.appendChild(subtitle);
+        }
+
         var authors = document.createElement('div');
         authors.className = 'authors';
         authors.innerHTML = transformAuthors(publication.authors);
@@ -215,7 +223,7 @@ function renderPublications() {
         card.appendChild(meta);
 
         var patentUrl = publication.patent_url || (publication.venue === 'Russian Patent' ? publication.url : '');
-        if (publication.doi || publication.corrigendum_doi || patentUrl) {
+        if (publication.doi || publication.corrigendum_doi || patentUrl || publication.pdf_url) {
             var actions = document.createElement('div');
             actions.className = 'paper-actions';
             if (publication.doi) {
@@ -235,6 +243,15 @@ function renderPublications() {
                 patent.rel = 'noopener noreferrer';
                 patent.textContent = 'patent';
                 actions.appendChild(patent);
+            }
+            if (publication.pdf_url) {
+                var pdf = document.createElement('a');
+                pdf.className = 'paper-link';
+                pdf.href = publication.pdf_url;
+                pdf.target = '_blank';
+                pdf.rel = 'noopener noreferrer';
+                pdf.textContent = 'PDF';
+                actions.appendChild(pdf);
             }
             if (publication.corrigendum_doi) {
                 var correction = document.createElement('a');
