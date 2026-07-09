@@ -807,9 +807,47 @@ html.dark-mode .experience-duration {
 @media (max-width: 460px) {
     .about-hero {
         grid-template-columns: 1fr;
+        justify-items: center;
+        gap: 14px;
+    }
+
+    .photo,
+    .photo-frame,
+    .photo-frame > img,
+    .photo-frame picture > img {
+        width: 170px;
     }
 
     .photo {
-        align-items: flex-start;
+        align-items: center;
+    }
+
+    .photo-links {
+        bottom: 12px;
+        padding: 7px 12px;
+    }
+
+    .icon-link {
+        width: 28px;
+        height: 28px;
+    }
+
+    .photo-contact {
+        font-size: 11px;
+    }
+
+    .info {
+        width: 100%;
+        text-align: center;
+    }
+
+    .about-kicker,
+    .about-role {
+        margin-right: auto;
+        margin-left: auto;
+    }
+
+    #profile {
+        text-align: left;
     }
 }

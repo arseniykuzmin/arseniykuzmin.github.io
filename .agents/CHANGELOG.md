@@ -12,6 +12,7 @@ session handoffs stay in [`log/`](log/), and future work stays in
   hierarchy, and a secondary collapsible Toolbox.
 - Moved the contact cue under the hero photo with copy support for the email
   username and a compact English/Japanese communication note.
+- Restored a centered, larger hero portrait on narrow mobile viewports.
 
 ### Updated JPFR publication metadata
 - Added the English subtitle and direct PDF link for the 2022 Journal of Plasma
