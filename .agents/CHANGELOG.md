@@ -6,6 +6,13 @@ session handoffs stay in [`log/`](log/), and future work stays in
 
 ## 2026-07-09
 
+### Refreshed the queezz.github.io mirror
+- Rebuilt the current `arseniykuzmin.github.io` `dist/` output and mirrored it
+  into the sibling `queezz.github.io` checkout.
+- Committed and pushed the mirror refresh to `queezz/queezz.github.io` master
+  as `e3f63dc`, leaving the historical `.agents/` notes in that checkout
+  untouched.
+
 ### Reduced About landing-page density
 - Reworked the About page into a quieter single landing page with a compact
   hero, progressive-disclosure Education and Experience, a reduced Capabilities

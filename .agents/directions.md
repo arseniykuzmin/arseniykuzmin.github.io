@@ -17,9 +17,9 @@ with a build-time "On this page" outline, softened dark mode,
 Publications/Conferences card lists with live filters, a tighter About page,
 the QUEST/PSI publications, a populated Control Unit project, polished
 publication/conference listing alignment, a mobile project Details drawer, and
-the navbar initialization flash fix. Newer `dev` polish includes compact
-publication-card role/filter pills, project-to-publication card links, a first
-WebP image pass, and system-following theme initialization.
+the navbar initialization flash fix, compact publication-card role/filter
+pills, project-to-publication card links, a first WebP image pass, and
+system-following theme initialization.
 
 ## Confirmed decisions
 - **Source of truth:** `arseniykuzmin.github.io`.
