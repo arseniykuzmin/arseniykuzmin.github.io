@@ -4,6 +4,9 @@
     "position": "Kyoto University",
     "location": "Kyoto, Japan",
     "profile": "Physicist and experimentalist with extensive experience in plasma–surface interactions, spectroscopy, and hands-on development of diagnostics and control systems. Passionate about integrating hardware, software, and science to create robust, insightful experiments.",
+    "email_user": "arseniy.a.kuzmin",
+    "email_domain_hint": "at gmail",
+    "communication_note": "EN / JP",
     "education": [
         {
             "university": "National Research Nuclear University MEPhI",
@@ -84,6 +87,66 @@
         "Plasma Diagnostics",
         "Spectroscopy"
     ],
+    "capabilities": [
+        {
+            "title": "Plasma-facing materials & fusion devices",
+            "summary": "Hydrogen retention, impurity transport, wall-interaction studies, and TDS / spectroscopy diagnostics on QUEST, LHD, and Tore Supra."
+        },
+        {
+            "title": "Spectroscopy & molecular diagnostics",
+            "summary": "Atomic and molecular spectroscopy (<a href='https://www.horiba.com/int/scientific/technologies/vacuum-ultra-violet-spectroscopy/vacuum-ultra-violet-spectroscopy/' target='_blank' rel='noopener noreferrer'>VUV</a>, <a href='https://en.wikipedia.org/wiki/Laser-induced_breakdown_spectroscopy' target='_blank' rel='noopener noreferrer'>LIBS</a>, Raman), including BH, H<sub>2</sub>, and C emission analysis with CR models for H and He."
+        },
+        {
+            "title": "Experimental systems & diagnostics",
+            "summary": "Mechanical design and integration of plasma, vacuum, optical, control, and diagnostic systems from concept through working instruments."
+        },
+        {
+            "title": "Teaching & Mentoring",
+            "summary": "Undergraduate physics teaching, research mentoring, student-built instruments, and Kyoto University students presenting at conferences."
+        }
+    ],
+    "toolbox": [
+        {
+            "label": "Code/data",
+            "items": [
+                "Python/Jupyter",
+                "NumPy/SciPy",
+                "pandas",
+                "matplotlib",
+                "xarray/NetCDF",
+                "Git"
+            ]
+        },
+        {
+            "label": "Modeling",
+            "items": [
+                "TMAP7/8",
+                "FESTIM",
+                "MCNP",
+                "SRIM/TRIM",
+                "CR models"
+            ]
+        },
+        {
+            "label": "DAQ/control",
+            "items": [
+                "Raspberry Pi",
+                "ESP32",
+                "NI tools",
+                "PyQt/Flask UIs",
+                "KiCad"
+            ]
+        },
+        {
+            "label": "Design",
+            "items": [
+                "Inventor",
+                "SolidWorks",
+                "Fusion 360",
+                "vacuum/plasma/spectroscopy hardware integration"
+            ]
+        }
+    ],
 "skills": [
     {
         "title": "Fusion Devices",
@@ -100,7 +163,7 @@
         ]
     },
     {
-        "title": "Design",
+        "title": "Design & Diagnostics",
         "skills": [
             "Mechanical design of plasma/vacuum/optical systems",
             "Inventor, SolidWorks, Fusion 360"

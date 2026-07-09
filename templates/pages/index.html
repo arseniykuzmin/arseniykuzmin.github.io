@@ -22,77 +22,133 @@
 {% endblock %}
 
 {% block content %}
-        <div class="personal-info">
+        <main class="about-landing">
+        <section class="personal-info about-hero" aria-labelledby="title">
             <div class="photo">
+                <div class="photo-frame">
 {% if about_media %}
-                <picture>
-                    <source srcset="{{ about_media.url }}" type="image/webp">
-                    <img src="static/kaa.png" alt="Photo" width="{{ about_media.width }}" height="{{ about_media.height }}" decoding="async" fetchpriority="high">
-                </picture>
+                    <picture>
+                        <source srcset="{{ about_media.url }}" type="image/webp">
+                        <img src="static/kaa.png" alt="{{ about.name | e }}" width="{{ about_media.width }}" height="{{ about_media.height }}" decoding="async" fetchpriority="high">
+                    </picture>
 {% else %}
-                <img src="static/kaa.png" alt="Photo" width="946" height="1171" decoding="async" fetchpriority="high">
+                    <img src="static/kaa.png" alt="{{ about.name | e }}" width="946" height="1171" decoding="async" fetchpriority="high">
 {% endif %}
-                <div class="photo-links">
-                    <a href="https://github.com/queezz" target="_blank" title="GitHub">
-                        <img src="img/github.svg" alt="GitHub" class="icon-link" width="24" height="24" loading="lazy" decoding="async">
-                    </a>
-                    <a href="https://scholar.google.co.jp/citations?user=pGPepnYAAAAJ&hl=en" target="_blank" title="Google Scholar">
-                        <img src="img/google-scholar.svg" alt="Google Scholar" class="icon-link" width="24" height="24" loading="lazy" decoding="async">
-                    </a>
+                    <div class="photo-links">
+                        <a href="https://github.com/queezz" target="_blank" title="GitHub">
+                            <img src="img/github.svg" alt="GitHub" class="icon-link" width="34" height="34" loading="lazy" decoding="async">
+                        </a>
+                        <a href="https://scholar.google.co.jp/citations?user=pGPepnYAAAAJ&hl=en" target="_blank" title="Google Scholar">
+                            <img src="img/google-scholar.svg" alt="Google Scholar" class="icon-link" width="34" height="34" loading="lazy" decoding="async">
+                        </a>
+                    </div>
+                </div>
+                <div class="hero-contact photo-contact" aria-label="Contact and working languages">
+                    <span class="email-hint">
+                        <button class="email-user-copy" type="button" data-copy-text="{{ about.email_user | e }}" aria-label="Copy email username">{{ about.email_user | e }}</button>
+                        <span>{{ about.email_domain_hint | e }}</span>
+                    </span>
+                    <span>{{ about.communication_note | e }}</span>
                 </div>
             </div>
 
             <div class="info">
-                <h2 id="title">{{ about.title | e }}</h2>
-                <p id="location">{{ about.position | e }}, {{ about.location | e }}</p>
+                <p id="location" class="about-kicker">{{ about.position | e }} / {{ about.location | e }}</p>
+                <h1 id="title">{{ about.name | e }}</h1>
+                <p class="about-role">{{ about.title | e }}</p>
                 <p id="profile">{{ about.profile | e }}</p>
             </div>
-        </div>
+        </section>
 
-        <h3><span>Education</span></h3>
-        <div class="education-container" id="education">
+        <section class="landing-section capabilities-section" aria-labelledby="capabilities-title">
+            <header class="landing-section-header">
+                <h2 id="capabilities-title">Capabilities</h2>
+            </header>
+            <div class="capabilities-overview" id="skills">
+                <div class="capability-list">
+{% for capability in about.capabilities %}
+                    <article class="capability-item reveal-item">
+                        <span class="capability-index">0{{ loop.index }}</span>
+                        <div class="capability-copy">
+                            <h3>{{ capability.title | e }}</h3>
+                            <p>{{ capability.summary | safe }}</p>
+                        </div>
+                    </article>
+{% endfor %}
+                </div>
+                <details class="toolbox-disclosure reveal-item">
+                    <summary>Toolbox: code/data &middot; modeling &middot; DAQ/control &middot; CAD/mechanical design</summary>
+                    <div class="toolbox-panel">
+{% for group in about.toolbox %}
+                        <p class="toolbox-group">
+                            <span class="toolbox-group-label">{{ group["label"] | e }}:</span>
+                            <span class="toolbox-items">
+{% for tool in group["items"] %}
+                                <span>{{ tool | e }}</span>
+{% endfor %}
+                            </span>
+                        </p>
+{% endfor %}
+                    </div>
+                </details>
+            </div>
+        </section>
+
+        <section class="landing-section education-section" aria-labelledby="education-title">
+            <header class="landing-section-header">
+                <h2 id="education-title">Education</h2>
+                <p>MEPhI, Moscow</p>
+            </header>
+            <div class="education-container" id="education">
 {% for ed in about.education %}
-            <div class="education-item">
-                <div class="education-item-title">{{ ed.title | e }}</div>
-                <div class="education-item-degree">{{ ed.degree | e }}</div>
-                <a href="{{ ed.url | e }}" target="_blank" rel="noopener noreferrer">{{ ed.university | e }}</a>
-                <div class="education-item-graduation">{{ ed.entrance | e }} - {{ ed.graduation | e }}</div>
-                <div class="education-item-location">{{ ed.location | e }}</div>
+                <details class="education-item reveal-item">
+                    <summary>
+                        <span class="education-summary-main">
+                            <span class="education-item-degree">{{ ed.degree | e }}</span>
+                            <span class="education-item-university">{{ ed.university | e }}</span>
+                        </span>
+                        <span class="education-item-graduation">{{ ed.entrance | e }} - {{ ed.graduation | e }}</span>
+                    </summary>
+                    <div class="education-item-body">
+                        <p class="education-item-title">{{ ed.title | e }}</p>
+                        <a href="{{ ed.url | e }}" target="_blank" rel="noopener noreferrer">{{ ed.university | e }}</a>
+                        <div class="education-item-location">{{ ed.location | e }}</div>
+                    </div>
+                </details>
+{% endfor %}
             </div>
-{% endfor %}
-        </div>
+        </section>
 
-        <h3><span>Skills</span></h3>
-        <div class="skills-container" id="skills">
-{% for group in about.skills %}
-            <div class="skills-item">
-                <div class="skills-title">{{ group.title | e }}</div>
-                <div class="skills-description">
-{% for line in group.skills %}
-                    <p>{{ line | safe }}</p>
-{% endfor %}
-                </div>
-            </div>
-{% endfor %}
-        </div>
-
-        <h3><span>Experience</span></h3>
-        <div class="experience-container" id="experience">
+        <section class="landing-section experience-section" aria-labelledby="experience-title">
+            <header class="landing-section-header">
+                <h2 id="experience-title">Experience</h2>
+                <p>2006 - present</p>
+            </header>
+            <div class="experience-container" id="experience">
 {% for exp in about.experience %}
-            <div class="experience-item">
-                <div class="experience-title"><h2>{{ exp.title | e }}</h2></div>
-                <div class="experience-details">
-                    <p><a href="{{ exp.url | e }}" target="_blank" rel="noopener noreferrer">{{ exp.employer | e }}</a> ({{ exp.location | e }})</p>
-                    <p>{{ exp.startDate | e }} - {{ exp.endDate | e }}</p>
-                    <span class="experience-duration">{{ exp.startDate | experience_duration(exp.endDate) }}</span>
-                </div>
-                <span class="skills-arrow">show more</span>
-                <div class="experience-description collapsed">
-                    <p>{{ exp.description | safe }}</p>
-                </div>
-            </div>
+{% set duration = exp.startDate | experience_duration(exp.endDate) %}
+                <details class="experience-item reveal-item"{% if loop.first %} open{% endif %}>
+                    <summary class="experience-summary">
+                        <span class="experience-summary-main">
+                            <span class="experience-title">{{ exp.title | e }}</span>
+                            <span class="experience-employer">{{ exp.employer | e }} / {{ exp.location | e }}</span>
+                        </span>
+                        <span class="experience-meta">
+                            <span class="experience-dates">{{ exp.startDate | e }} - {{ exp.endDate | e }}</span>
+{% if duration %}
+                            <span class="experience-duration">{{ duration }}</span>
+{% endif %}
+                        </span>
+                    </summary>
+                    <div class="experience-description">
+                        <p class="experience-affiliation"><a href="{{ exp.url | e }}" target="_blank" rel="noopener noreferrer">{{ exp.employer | e }}</a> ({{ exp.location | e }})</p>
+                        <p>{{ exp.description | safe }}</p>
+                    </div>
+                </details>
 {% endfor %}
-        </div>
+            </div>
+        </section>
+        </main>
 {% endblock %}
 
 {% block body_scripts_bottom %}

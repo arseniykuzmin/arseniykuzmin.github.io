@@ -6,6 +6,13 @@ session handoffs stay in [`log/`](log/), and future work stays in
 
 ## 2026-07-09
 
+### Reduced About landing-page density
+- Reworked the About page into a quieter single landing page with a compact
+  hero, progressive-disclosure Education and Experience, a reduced Capabilities
+  hierarchy, and a secondary collapsible Toolbox.
+- Moved the contact cue under the hero photo with copy support for the email
+  username and a compact English/Japanese communication note.
+
 ### Updated JPFR publication metadata
 - Added the English subtitle and direct PDF link for the 2022 Journal of Plasma
   Fusion Research Japanese review-style article, keeping DOI absent and the
