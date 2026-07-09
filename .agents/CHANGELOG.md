@@ -6,6 +6,12 @@ session handoffs stay in [`log/`](log/), and future work stays in
 
 ## 2026-07-09
 
+### Polished mobile publication filters
+- Kept the publication Featured and Corresponding filter pills on one mobile
+  row with the year sort control and count.
+- Reduced the year sort button footprint on narrow screens and softened the
+  active red controls to a quieter burgundy.
+
 ### Refreshed the queezz.github.io mirror
 - Rebuilt the current `arseniykuzmin.github.io` `dist/` output and mirrored it
   into the sibling `queezz.github.io` checkout.

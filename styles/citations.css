@@ -356,8 +356,8 @@ html.dark-mode #publicationCount {
     }
 
     .button-container {
-        grid-template-columns: minmax(92px, max-content) minmax(76px, max-content) minmax(12px, 1fr) minmax(3ch, max-content);
-        column-gap: 8px;
+        grid-template-columns: max-content max-content max-content minmax(0, 1fr) minmax(3ch, max-content);
+        column-gap: 6px;
     }
 
     .bibtex-link {
@@ -368,11 +368,6 @@ html.dark-mode #publicationCount {
 
     .filter-box {
         grid-column: 1 / -1;
-    }
-
-    .corresponding-toggle {
-        grid-column: 1 / span 2;
-        justify-self: start;
     }
 
     .count-label {

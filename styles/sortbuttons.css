@@ -15,6 +15,7 @@
     border-radius: 999px;
     transition: background-color 0.18s ease, border-color 0.18s ease, color 0.18s ease;
     margin: 0;
+    white-space: nowrap;
 }
 
 .sort-button {
@@ -22,13 +23,13 @@
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    min-width: 104px;
+    min-width: 96px;
     height: 36px;
     box-sizing: border-box;
     padding: 0 30px 0 14px;
     font-size: 15px;
     border: none;
-    background-color: #8c0c0c;
+    background-color: #7c2424;
     color: #fff;
     cursor: pointer;
     border-radius: 4px;
@@ -43,13 +44,13 @@
 }
 
 .sort-button:hover {
-    background-color: #a91a1a;
+    background-color: #8d3030;
 }
 
 .toggle-button.active {
-    color: #fff;
-    background-color: #8c0c0c;
-    border-color: #8c0c0c;
+    color: #fff8f4;
+    background-color: #7f352f;
+    border-color: #7f352f;
 }
 
 html.dark-mode .toggle-button {
@@ -65,9 +66,9 @@ html.dark-mode .toggle-button:hover {
 }
 
 html.dark-mode .toggle-button.active {
-    color: #fff3f3;
-    background-color: #7f1f1f;
-    border-color: #b75a5a;
+    color: #fff3ed;
+    background-color: #70312d;
+    border-color: #9b5f56;
 }
 
 .count-label {
@@ -116,4 +117,23 @@ html.dark-mode .toggle-button.active {
     left: 6px;
     top: -1px;
     transform: rotate(-45deg);
+}
+
+@media (max-width: 680px) {
+    .toggle-button {
+        height: 28px;
+        padding: 0 8px;
+        font-size: 12.5px;
+    }
+
+    .sort-button {
+        min-width: 80px;
+        height: 34px;
+        padding: 0 24px 0 10px;
+        font-size: 14px;
+    }
+
+    .arrow {
+        right: 8px;
+    }
 }
